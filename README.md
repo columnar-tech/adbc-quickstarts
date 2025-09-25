@@ -1,4 +1,5 @@
-# Easy ADBC
+# ADBC Quickstarts
+
 Simple examples showing how to use ADBC to connect, run a query, and return the results.
 
 These examples use [dbc](https://docs.columnar.tech/dbc/) to install the drivers.
