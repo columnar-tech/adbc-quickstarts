@@ -48,13 +48,13 @@ This example uses [Dremio](https://www.dremio.com/), but other open source tools
      (If you are using Dremio Community, these were set during the installation instructions.)
    - For Dremio Cloud, remove `username` and `password`, create a personal access token (PAT), store it in a string variable `token` in the script, and set `db_kwargs` to:
 
-    ```python
-    db_kwargs={
-        "uri": "grpc+tls://data.dremio.cloud:443", # for US region
-        #"uri": "grpc+tls://data.eu.dremio.cloud:443", # for Europe region
-        "adbc.flight.sql.authorization_header": "Bearer " + token
-    }
-    ```
+     ```python
+     db_kwargs={
+         "uri": "grpc+tls://data.dremio.cloud:443", # for US region
+         #"uri": "grpc+tls://data.eu.dremio.cloud:443", # for Europe region
+         "adbc.flight.sql.authorization_header": "Bearer " + token
+     }
+     ```
 
 1. Run the Python script:
 
