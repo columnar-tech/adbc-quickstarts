@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Python and  Microsoft SQL Server with ADBC
+# Connecting Python and Microsoft SQL Server with ADBC
 
 ## Instructions
 

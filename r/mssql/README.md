@@ -1,4 +1,4 @@
-# Connecting R and  Microsoft SQL Server with ADBC
+# Connecting R and Microsoft SQL Server with ADBC
 
 ## Instructions
 
