@@ -29,19 +29,19 @@ This example uses [Dremio](https://www.dremio.com/), but other open source tools
      - `OptionDatabase::Username` and `OptionDatabase::Password` are the username and password of your Dremio account. (If you are using Dremio Community, these were set during the installation instructions.)
      - For Dremio Cloud, don't use username and password; instead create a personal access token (PAT), store it in a string variable `token` in `main()`, and set the options to:
 
-      ```rs
-      let opts = [
-           (
-               OptionDatabase::Uri,
-               "grpc+tls://data.dremio.cloud:443".into(), // for US region
-               //"grpc+tls://data.eu.dremio.cloud:443".into(), // for Europe region
-           ),
-           (
-               OptionDatabase::Other("adbc.flight.sql.authorization_header".to_string()),
-               format!("Bearer {}", token).into(),
-           ),
-      ];
-      ```
+       ```rs
+       let opts = [
+            (
+                OptionDatabase::Uri,
+                "grpc+tls://data.dremio.cloud:443".into(), // for US region
+                //"grpc+tls://data.eu.dremio.cloud:443".into(), // for Europe region
+            ),
+            (
+                OptionDatabase::Other("adbc.flight.sql.authorization_header".to_string()),
+                format!("Bearer {}", token).into(),
+            ),
+       ];
+       ```
 
    - If you changed `OptionDatabase::Uri` to point to a different Flight SQL server, also change the SQL SELECT statement in `statement.set_sql_query()`
 
