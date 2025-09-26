@@ -32,18 +32,18 @@ This example uses [Dremio](https://www.dremio.com/), but other open source tools
 1. Customize the R script `main.R` as needed
    - Change the connection arguments in `adbc_database_init()`
      - `uri` is the URI of your Dremio instance. The host and port will depend on your installation (the default port is 32010). The protocol scheme should be `grpc` or `grpc+tcp` if your Dremio instance is not using TLS (e.g. if you are using Dremio Community) and should be `grpc+tls` otherwise (e.g. when using Dremio Cloud).
-   - `username` and `password` are the username and password of your Dremio account.
-     (If you are using Dremio Community, these were set during the installation instructions.)
-   - For Dremio Cloud, remove `username` and `password`, create a personal access token (PAT), store it in a string variable `token` in the script, and set the database initialization to:
+     - `username` and `password` are the username and password of your Dremio account. (If you are using Dremio Community, these were set during the installation instructions.)
+     - For Dremio Cloud, remove `username` and `password`, create a personal access token (PAT), store it in a string variable `token` in the script, and set the database initialization to:
 
-    ```r
-    db <- adbc_database_init(
-      drv,
-      uri="grpc+tls://data.dremio.cloud:443", # for US region
-      #uri="grpc+tls://data.eu.dremio.cloud:443", # for Europe region
-      adbc.flight.sql.authorization_header=paste("Bearer", token)
-    )
-    ```
+       ```r
+       db <- adbc_database_init(
+         drv,
+         uri="grpc+tls://data.dremio.cloud:443", # for US region
+         #uri="grpc+tls://data.eu.dremio.cloud:443", # for Europe region
+         adbc.flight.sql.authorization_header=paste("Bearer", token)
+       )
+       ```
+   - If you changed `uri` to point to a different Flight SQL server, also change the SQL SELECT statement in `read_adbc()`
 
 1. Run the R script:
 

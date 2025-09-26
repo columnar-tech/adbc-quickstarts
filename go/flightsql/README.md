@@ -42,8 +42,7 @@ This example uses [Dremio](https://www.dremio.com/), but other open source tools
 1. Customize the Go program `main.go` as needed
    - Change the connection arguments in the `NewDatabase()` call
      - `uri` is the URI of your Dremio instance. The host and port will depend on your installation (the default port is 32010). The protocol scheme should be `grpc` or `grpc+tcp` if your Dremio instance is not using TLS (e.g. if you are using Dremio Community) and should be `grpc+tls` otherwise (e.g. when using Dremio Cloud).
-     - `username` and `password` are the username and password of your Dremio account.
-     (If you are using Dremio Community, these were set during the installation instructions.)
+     - `username` and `password` are the username and password of your Dremio account. (If you are using Dremio Community, these were set during the installation instructions.)
      - For Dremio Cloud, remove `username` and `password`, create a personal access token (PAT), store it in a string variable `token` in the program, and set the database configuration to:
 
        ```go
