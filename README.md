@@ -19,7 +19,7 @@ limitations under the License.
 Simple examples showing how to use ADBC to connect, run a query, and return the results.
 
 
-| These examples use [dbc]([https://docs.columnar.tech/dbc/](http://github.com/columnar-tech/dbc) to install the drivers. |
+| These examples use [dbc](https://github.com/columnar-tech/dbc) to install the drivers. |
 | ----------------------------------------------------------------------------------|
 
 ## Languages covered
