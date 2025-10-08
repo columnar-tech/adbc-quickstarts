@@ -55,7 +55,7 @@ fn main() {
         )
         .unwrap();
     let reader = statement.execute().unwrap();
-    let batches: Vec<RecordBatch> = reader.map(|b| b.unwrap()).collect();
+    let batches: Vec<RecordBatch> = reader.collect::<Result<_, _>>().unwrap();
 
     pretty::print_batches(&batches).expect("Failed to print batches");
 }

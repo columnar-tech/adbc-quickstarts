@@ -1,0 +1,12 @@
+[workspace]
+resolver = "3"
+members = [
+    "bigquery",
+    "duckdb",
+    "flightsql",
+    "mssql",
+    "mysql",
+    "postgresql",
+    "snowflake",
+    "sqlite",
+]
