@@ -30,7 +30,7 @@ fn main() {
 
     let opts = [(
         OptionDatabase::Uri,
-        "mssql://sa:Co1umn@r@localhost:1433/master?TrustServerCertificate=true".into(),
+        "mssql://sa:Co1umn&r@localhost:1433/master?TrustServerCertificate=true".into(),
     )];
     let db = driver
         .new_database_with_opts(opts)

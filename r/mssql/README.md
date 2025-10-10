@@ -25,7 +25,7 @@
    docker pull mcr.microsoft.com/mssql/server:2025-latest
 
    docker run \
-      -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Co1umn@r" \
+      -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Co1umn&r" \
       -p 1433:1433 --name mssql --hostname mssql \
       -d \
       mcr.microsoft.com/mssql/server:2025-latest
@@ -37,7 +37,7 @@
    docker cp games.sql mssql:/tmp/games.sql
 
    docker exec -it mssql /opt/mssql-tools18/bin/sqlcmd \
-     -S localhost -U sa -P 'Co1umn@r' -C -i /tmp/games.sql
+     -S localhost -U sa -P 'Co1umn&r' -C -i /tmp/games.sql
    ```
 
 ### Connect to SQL Server
