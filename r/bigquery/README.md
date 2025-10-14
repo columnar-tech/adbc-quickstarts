@@ -10,10 +10,10 @@
 
 1. [Create a Google account](https://accounts.google.com) or be able to log in to an existing one
 
-1. Install R package `adbcdrivermanager`:
+1. Install R packages `adbcdrivermanager` and `arrow`:
 
-   ```sh
-   install.packages("adbcdrivermanager")
+   ```r
+   install.packages(c("adbcdrivermanager", "arrow"))
    ```
 
 ### Set up BigQuery

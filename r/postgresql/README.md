@@ -12,10 +12,10 @@
 1. [Install PostgreSQL](https://www.postgresql.org/download/)
    - On macOS, if you have Homebrew installed, run `brew install postgresql@17`
 
-1. Install R package `adbcdrivermanager`:
+1. Install R packages `adbcdrivermanager` and `arrow`:
 
-   ```sh
-   install.packages("adbcdrivermanager")
+   ```r
+   install.packages(c("adbcdrivermanager", "arrow"))
    ```
 
 ### Set up PostgreSQL

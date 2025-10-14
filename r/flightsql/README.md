@@ -11,10 +11,10 @@ This example uses [Dremio](https://www.dremio.com/), but other open source tools
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
-1. Install R package `adbcdrivermanager`:
+1. Install R packages `adbcdrivermanager` and `arrow`:
 
-   ```sh
-   install.packages("adbcdrivermanager")
+   ```r
+   install.packages(c("adbcdrivermanager", "arrow"))
    ```
 
 ### Set up Dremio
