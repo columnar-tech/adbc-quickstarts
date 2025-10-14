@@ -45,7 +45,7 @@ limitations under the License.
 
 1. Create a table in SQL Server and load data into it:
 
-   ```sql
+   ```sh
    docker cp games.sql mssql:/tmp/games.sql
 
    docker exec -it mssql /opt/mssql-tools18/bin/sqlcmd \
