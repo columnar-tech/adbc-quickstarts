@@ -9,4 +9,5 @@ members = [
     "postgresql",
     "snowflake",
     "sqlite",
+    "trino",
 ]
