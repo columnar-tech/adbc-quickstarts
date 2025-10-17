@@ -7,6 +7,7 @@ members = [
     "mssql",
     "mysql",
     "postgresql",
+    "redshift",
     "snowflake",
     "sqlite",
     "trino",
