@@ -29,7 +29,7 @@ limitations under the License.
 
 1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
-### Set up SQL Server
+### Set up Trino
 
 1. Start Trino in a Docker container:
 
@@ -60,7 +60,7 @@ limitations under the License.
 
 ### Clean up
 
-1. Stop the Docker container running SQL Server:
+1. Stop the Docker container running Trino:
 
    ```sh
    docker stop trino
