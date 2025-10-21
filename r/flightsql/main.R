@@ -30,4 +30,6 @@ con |>
     SELECT AVG(tip_amount)
     FROM Samples.\"samples.dremio.com\".\"NYC-taxi-trips-iceberg\"
   ") |>
-  tibble::as_tibble()
+  tibble::as_tibble() # or:
+  # arrow::as_arrow_table() # to keep result in Arrow format
+  # arrow::as_record_batch_reader() # for larger results

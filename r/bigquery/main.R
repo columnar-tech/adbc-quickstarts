@@ -29,4 +29,6 @@ con |>
     SELECT word, corpus FROM `bigquery-public-data.samples.shakespeare`
      WHERE word_count = 1 ORDER BY RAND() LIMIT 5;
   ") |>
-  tibble::as_tibble()
+  tibble::as_tibble() # or:
+  # arrow::as_arrow_table() # to keep result in Arrow format
+  # arrow::as_record_batch_reader() # for larger results
