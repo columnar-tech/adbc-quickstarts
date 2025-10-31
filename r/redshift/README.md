@@ -49,7 +49,7 @@ limitations under the License.
 
 1. Configure the AWS CLI:
 
-   ```console
+   ```sh
    aws sso configure         # If you have never logged in before
    export AWS_PROFILE=<...>  # This comes from `sso configure`.
                              # Or use `aws configure list-profiles`
@@ -58,7 +58,7 @@ limitations under the License.
 
 1. Run this command in your terminal to log in with the AWS CLI:
 
-   ```console
+   ```sh
    aws sso login             # This will open the browser
    ```
 

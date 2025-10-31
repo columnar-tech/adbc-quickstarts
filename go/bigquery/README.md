@@ -32,8 +32,8 @@ limitations under the License.
 
 1. Run this command in your terminal to log in with the Google Cloud CLI:
 
-   ```console
-   $ gcloud auth application-default login
+   ```sh
+   gcloud auth application-default login
    ```
 
 ### Connect to BigQuery
