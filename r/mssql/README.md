@@ -38,8 +38,6 @@ limitations under the License.
 1. Start SQL Server in a Docker container:
 
    ```sh
-   docker pull mcr.microsoft.com/mssql/server:2025-latest
-
    docker run \
       -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Co1umn&r" \
       -p 1433:1433 --name mssql --hostname mssql \

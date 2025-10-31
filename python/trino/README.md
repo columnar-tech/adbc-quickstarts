@@ -34,8 +34,6 @@ limitations under the License.
 1. Start Trino in a Docker container:
 
    ```sh
-   docker pull trinodb/trino
-
    docker run -d --name trino -p 8080:8080 trinodb/trino
    ```
 
