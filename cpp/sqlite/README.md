@@ -44,7 +44,7 @@ limitations under the License.
 1. Install the SQLite ADBC driver:
 
    ```sh
-   dbc install sqlite
+   dbc install --level user sqlite
    ```
 
 1. Customize the C++ program `main.cpp` as needed

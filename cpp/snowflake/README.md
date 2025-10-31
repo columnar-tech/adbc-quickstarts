@@ -41,7 +41,7 @@ limitations under the License.
 1. Install the Snowflake ADBC driver:
 
    ```sh
-   dbc install snowflake
+   dbc install --level user snowflake
    ```
 
 1. Customize the C++ program `main.cpp`

@@ -50,15 +50,21 @@ This example uses [Dremio](https://www.dremio.com/), but other open source tools
 1. Install the Flight SQL ADBC driver:
 
    ```sh
-   dbc install flightsql
+   dbc install --level user flightsql
    ```
 
 1. Customize the C++ program `main.cpp` as needed
    - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
      - `uri` is the URI of your Dremio instance. The host and port will depend on your installation (the default port is 32010). The protocol scheme should be `grpc` or `grpc+tcp` if your Dremio instance is not using TLS (e.g. if you are using Dremio Community) and should be `grpc+tls` otherwise (e.g. when using Dremio Cloud).
      - `username` and `password` are the username and password of your Dremio account. (If you are using Dremio Community, these were set during the installation instructions.)
-     - For Dremio Cloud, remove the `username` and `password` options, create a personal access token (PAT), and set the authorization header:
+     - For Dremio Cloud, remove the existing `uri`, `username`, and `password` options, create a personal access token (PAT), and set the URI and authorization header as follows:
        ```cpp
+       // For US region:
+       CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
+                                        "grpc+tls://data.dremio.cloud:443", &error));
+       // For Europe region:
+       //CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
+       //                                 "grpc+tls://data.eu.dremio.cloud:443", &error));
        CHECK_ADBC(AdbcDatabaseSetOption(
            &database, "adbc.flight.sql.authorization_header",
            "Bearer YOUR_TOKEN_HERE", &error));

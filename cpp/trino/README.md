@@ -54,7 +54,7 @@ limitations under the License.
 1. Install the Trino ADBC driver:
 
    ```sh
-   dbc install trino
+   dbc install --level user trino
    ```
 
 1. Customize the C++ program `main.cpp` as needed,

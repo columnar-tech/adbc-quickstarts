@@ -67,7 +67,7 @@ limitations under the License.
 1. Install the SQL Server ADBC driver:
 
    ```sh
-   dbc install mssql
+   dbc install --level user mssql
    ```
 
 1. Customize the C++ program `main.cpp` as needed

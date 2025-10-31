@@ -54,7 +54,7 @@ limitations under the License.
 1. Install the MySQL ADBC driver:
 
    ```sh
-   dbc install mysql
+   dbc install --level user mysql
    ```
 
 1. Customize the C++ program `main.cpp` as needed

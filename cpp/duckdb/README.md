@@ -41,7 +41,7 @@ limitations under the License.
 1. Install the DuckDB ADBC driver:
 
    ```sh
-   dbc install duckdb
+   dbc install --level user duckdb
    ```
 
 1. Customize the C++ program `main.cpp` as needed

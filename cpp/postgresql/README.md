@@ -53,7 +53,7 @@ limitations under the License.
 1. Install the PostgreSQL ADBC driver:
 
    ```sh
-   dbc install postgresql
+   dbc install --level user postgresql
    ```
 
 1. Customize the C++ program `main.cpp` as needed

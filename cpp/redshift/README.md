@@ -75,7 +75,7 @@ limitations under the License.
 1. Install the Redshift ADBC driver:
 
    ```sh
-   dbc install redshift
+   dbc install --level user redshift
    ```
 
 1. Customize the C++ program `main.cpp`

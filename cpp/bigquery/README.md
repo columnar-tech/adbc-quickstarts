@@ -55,7 +55,7 @@ limitations under the License.
 1. Install the BigQuery ADBC driver:
 
    ```sh
-   dbc install bigquery
+   dbc install --level user bigquery
    ```
 
 1. Customize the C++ program `main.cpp` as needed
