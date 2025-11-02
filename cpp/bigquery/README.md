@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting R and BigQuery with ADBC
+# Connecting C++ and BigQuery with ADBC
 
 ## Instructions
 
@@ -26,11 +26,19 @@ limitations under the License.
 
 1. [Create a Google account](https://accounts.google.com) or be able to log in to an existing one
 
-1. Install R packages `adbcdrivermanager` and `arrow`:
+1. [Install miniforge](https://github.com/conda-forge/miniforge)
 
-   ```r
-   install.packages(c("adbcdrivermanager", "arrow"))
+1. Create and activate a new environment with the required C++ libraries:
+
+   ```sh
+   mamba create -n adbc-cpp -c conda-forge cmake compilers libadbc-driver-manager arrow-cpp
+
+   # Initialize mamba in your shell if not already done
+   eval "$(mamba shell hook --shell zsh)"
+   mamba activate adbc-cpp
    ```
+
+   (`cmake` is only needed if you use CMake to build the C++ program below.)
 
 ### Set up BigQuery
 
@@ -47,17 +55,40 @@ limitations under the License.
 1. Install the BigQuery ADBC driver:
 
    ```sh
-   dbc install bigquery
+   dbc install --level user bigquery
    ```
 
-1. Customize the R script `main.R` as needed
-   - Change the connection arguments in `adbc_database_init()`
+1. Customize the C++ program `main.cpp` as needed
+   - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
      - Change the value of the `adbc.bigquery.sql.project_id` argument to match the project ID you recorded in the earlier step
-     - Change the value of `adbc.bigquery.sql.dataset_id`, or keep it as is to use the public Shakespeare dataset
-   - If you changed the dataset, also change the SQL SELECT statement in `read_adbc()`
+     - Change the value of `adbc.bigquery.sql.dataset_id`, or keep it to use the public Shakespeare dataset
+   - If you changed the dataset, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`
 
-1. Run the R script:
+1. Build and run the C++ program:
 
+   Using Make:
    ```sh
-   Rscript main.R
+   make
+   ./bigquery_demo
+   ```
+
+   Or using CMake:
+   ```sh
+   cmake -B build
+   cmake --build build
+   ./build/bigquery_demo
+   ```
+
+### Clean up
+
+1. Clean build artifacts:
+
+   Using Make:
+   ```sh
+   make clean
+   ```
+
+   Using CMake:
+   ```sh
+   rm -rf build
    ```

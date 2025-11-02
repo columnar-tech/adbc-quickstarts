@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Go and SQLite with ADBC
+# Connecting C++ and SQLite with ADBC
 
 ## Instructions
 
@@ -25,22 +25,58 @@ limitations under the License.
 1. [Install SQLite](https://www.sqlite.org/download.html)
    - On macOS, if you have Homebrew installed, run `brew install sqlite`
 
+1. [Install miniforge](https://github.com/conda-forge/miniforge)
+
+1. Create and activate a new environment with the required C++ libraries:
+
+   ```sh
+   mamba create -n adbc-cpp -c conda-forge cmake compilers libadbc-driver-manager arrow-cpp
+
+   # Initialize mamba in your shell if not already done
+   eval "$(mamba shell hook --shell zsh)"
+   mamba activate adbc-cpp
+   ```
+
+   (`cmake` is only needed if you use CMake to build the C++ program below.)
+
 ### Connect to SQLite
 
 1. Install the SQLite ADBC driver:
 
    ```sh
-   dbc install sqlite
+   dbc install --level user sqlite
    ```
 
-1. Customize the Go program `main.go` as needed
-   - Change the connection arguments in the `NewDatabase()` call
+1. Customize the C++ program `main.cpp` as needed
+   - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
      - Set `uri` to the location of the SQLite database file you want to query, or keep it set to `games.sqlite` to use the database file included with this example
-   - If you changed the database file, also change the SQL SELECT statement in `stmt.SetSqlQuery()`
+   - If you changed the database file, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`
 
-1. Run the Go program:
+1. Build and run the C++ program:
 
+   Using Make:
    ```sh
-   go mod tidy
-   go run main.go
+   make
+   ./sqlite_demo
+   ```
+
+   Or using CMake:
+   ```sh
+   cmake -B build
+   cmake --build build
+   ./build/sqlite_demo
+   ```
+
+### Clean up
+
+1. Clean build artifacts:
+
+   Using Make:
+   ```sh
+   make clean
+   ```
+
+   Using CMake:
+   ```sh
+   rm -rf build
    ```

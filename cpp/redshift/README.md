@@ -14,23 +14,29 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting R and Amazon Redshift with ADBC
+# Connecting C++ and Amazon Redshift with ADBC
 
 ## Instructions
 
 ### Prerequisites
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
-
 1. [Install the AWS CLI](https://aws.amazon.com/cli/)
-
 1. [Create an AWS account](https://aws.amazon.com/) or be able to log in to an existing one
 
-1. Install R packages `adbcdrivermanager` and `arrow`:
+1. [Install miniforge](https://github.com/conda-forge/miniforge)
 
-   ```r
-   install.packages(c("adbcdrivermanager", "arrow"))
+1. Create and activate a new environment with the required C++ libraries:
+
+   ```sh
+   mamba create -n adbc-cpp -c conda-forge cmake compilers libadbc-driver-manager arrow-cpp
+
+   # Initialize mamba in your shell if not already done
+   eval "$(mamba shell hook --shell zsh)"
+   mamba activate adbc-cpp
    ```
+
+   (`cmake` is only needed if you use CMake to build the C++ program below.)
 
 ### Set Up Redshift
 
@@ -69,19 +75,42 @@ limitations under the License.
 1. Install the Redshift ADBC driver:
 
    ```sh
-   dbc install redshift
+   dbc install --level user redshift
    ```
 
-1. Customize the R script `main.R`
-   - Change the connection arguments in `adbc_database_init()`
+1. Customize the C++ program `main.cpp`
+   - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
      - Change the value of `uri` to match the hostname and port you recorded in the earlier step, or your SSH tunnel if necessary
      - Change the value of `redshift.cluster_type` to match your Redshift cluster type
      - Change the value of `redshift.workgroup_name` or `redshift.cluster_identifier` to match the workgroup name or cluster identifier you recorded in the earlier step
      - Change the value of `redshift.db_name` to match the database name you recorded in the earlier step (or leave it as `sample_data_dev` to use the built-in sample database)
-   - If you changed the database name, also change the SQL SELECT statement in `read_adbc()`
+   - If you changed the database name, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`
 
-1. Run the R script:
+1. Build and run the C++ program:
 
+   Using Make:
    ```sh
-   Rscript main.R
+   make
+   ./redshift_demo
+   ```
+
+   Or using CMake:
+   ```sh
+   cmake -B build
+   cmake --build build
+   ./build/redshift_demo
+   ```
+
+### Clean up
+
+1. Clean build artifacts:
+
+   Using Make:
+   ```sh
+   make clean
+   ```
+
+   Using CMake:
+   ```sh
+   rm -rf build
    ```
