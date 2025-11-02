@@ -29,7 +29,7 @@ limitations under the License.
 1. Create and activate a new environment with the required C++ libraries:
 
    ```sh
-   mamba create -n adbc-cpp -c conda-forge cmake compilers libadbc-driver-manager arrow-cpp
+   mamba create -n adbc-cpp -c conda-forge cmake compilers libadbc-driver-manager libarrow
 
    # Initialize mamba in your shell if not already done
    eval "$(mamba shell hook --shell zsh)"
