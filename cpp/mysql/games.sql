@@ -26,7 +26,7 @@ CREATE TABLE `games` (
   `min_age` TINYINT UNSIGNED,
   `min_players` TINYINT UNSIGNED,
   `max_players` TINYINT UNSIGNED,
-  `list_price` DECIMAL(19,2),
+  `list_price` DECIMAL(19,2), -- TODO: change to DECIMAL(5,2) after apache/arrow#48022 is fixed
   PRIMARY KEY (`id`)
 );
 
