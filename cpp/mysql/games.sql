@@ -26,7 +26,7 @@ CREATE TABLE `games` (
   `min_age` TINYINT UNSIGNED,
   `min_players` TINYINT UNSIGNED,
   `max_players` TINYINT UNSIGNED,
-  `list_price` DECIMAL(5,2),
+  `list_price` DECIMAL(19,2),
   PRIMARY KEY (`id`)
 );
 
