@@ -24,6 +24,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 
 ## Languages covered
 
+- C++
 - Go
 - Python
 - R
