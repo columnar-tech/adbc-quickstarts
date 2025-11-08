@@ -56,3 +56,10 @@ This example uses [Dremio](https://www.dremio.com/), but other open source tools
    ```sh
    mvn compile exec:exec
    ```
+
+   The output will look something like this:
+
+   ```
+   EXPR$0
+   1.43624642310197
+   ```
