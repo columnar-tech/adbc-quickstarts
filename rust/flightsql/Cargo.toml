@@ -18,7 +18,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-adbc_core = "0.20.0"
-adbc_driver_manager = "0.20.0"
-arrow = { version = "56.2.0", features = ["prettyprint"] }
-arrow-array = "56.2.0"
+adbc_core = "0.21.0"
+adbc_driver_manager = "0.21.0"
+arrow = { version = "57.0.0", features = ["prettyprint"] }
+arrow-array = "57.0.0"
