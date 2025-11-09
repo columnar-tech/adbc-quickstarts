@@ -22,7 +22,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 | These examples use [dbc](https://github.com/columnar-tech/dbc) to install the drivers. |
 | ----------------------------------------------------------------------------------|
 
-## Languages covered
+## Client languages covered
 
 - C++
 - Go
