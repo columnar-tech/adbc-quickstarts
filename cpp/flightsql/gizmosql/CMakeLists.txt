@@ -25,19 +25,19 @@ endif()
 
 find_package(Arrow REQUIRED)
 
-add_executable(flightsql_demo main.cpp)
+add_executable(gizmosql_demo main.cpp)
 
 if(DEFINED ENV{CONDA_PREFIX})
-    target_include_directories(flightsql_demo PRIVATE $ENV{CONDA_PREFIX}/include)
-    target_link_directories(flightsql_demo PRIVATE $ENV{CONDA_PREFIX}/lib)
+    target_include_directories(gizmosql_demo PRIVATE $ENV{CONDA_PREFIX}/include)
+    target_link_directories(gizmosql_demo PRIVATE $ENV{CONDA_PREFIX}/lib)
 endif()
 
-target_link_libraries(flightsql_demo
+target_link_libraries(gizmosql_demo
     adbc_driver_manager
     Arrow::arrow_shared
 )
 
-target_compile_options(flightsql_demo PRIVATE
+target_compile_options(gizmosql_demo PRIVATE
     -Wall
     -Werror
 )
