@@ -13,6 +13,8 @@ Simple Python examples showing how to use ADBC to connect, run a query, and retu
 - Google BigQuery
 - DuckDB
 - Apache Arrow Flight SQL
+  - Dremio
+  - GizmoSQL 
 - Microsoft SQL Server
 - MySQL
 - PostgreSQL
