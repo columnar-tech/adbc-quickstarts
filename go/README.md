@@ -13,6 +13,8 @@ Simple Go examples showing how to use ADBC to connect, run a query, and return t
 - Google BigQuery
 - DuckDB
 - Apache Arrow Flight SQL
+  - Dremio
+  - GizmoSQL 
 - Microsoft SQL Server
 - MySQL
 - PostgreSQL
