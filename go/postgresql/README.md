@@ -23,6 +23,8 @@ limitations under the License.
 
 ### Prerequisites
 
+1. [Install Go](https://go.dev/doc/install)
+
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 1. [Install PostgreSQL](https://www.postgresql.org/download/)

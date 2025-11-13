@@ -20,13 +20,13 @@ limitations under the License.
 
 ### Prerequisites
 
+1. [Install miniforge](https://github.com/conda-forge/miniforge)
+
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 1. [Install Google Cloud CLI](https://cloud.google.com/sdk/docs/install)
 
 1. [Create a Google account](https://accounts.google.com) or be able to log in to an existing one
-
-1. [Install miniforge](https://github.com/conda-forge/miniforge)
 
 1. Create and activate a new environment with the required C++ libraries:
 

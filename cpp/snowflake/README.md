@@ -20,9 +20,9 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
-
 1. [Install miniforge](https://github.com/conda-forge/miniforge)
+
+1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 1. Create and activate a new environment with the required C++ libraries:
 

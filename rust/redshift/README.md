@@ -20,8 +20,12 @@ limitations under the License.
 
 ### Prerequisites
 
+1. [Install Rust](https://www.rust-lang.org/tools/install)
+
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+
 1. [Install the AWS CLI](https://aws.amazon.com/cli/)
+
 1. [Create an AWS account](https://aws.amazon.com/) or be able to log in to an existing one
 
 ### Set Up Redshift

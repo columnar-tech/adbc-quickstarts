@@ -20,6 +20,8 @@ limitations under the License.
 
 ### Prerequisites
 
+1. [Install Go](https://go.dev/doc/install)
+
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 ### Connect to DuckDB

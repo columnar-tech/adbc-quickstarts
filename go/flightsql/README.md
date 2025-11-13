@@ -25,6 +25,8 @@ This example uses [Dremio](https://www.dremio.com/), but other open source tools
 
 ### Prerequisites
 
+1. [Install Go](https://go.dev/doc/install)
+
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 ### Set up Dremio

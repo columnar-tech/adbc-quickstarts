@@ -20,11 +20,13 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
-1. [Install the AWS CLI](https://aws.amazon.com/cli/)
-1. [Create an AWS account](https://aws.amazon.com/) or be able to log in to an existing one
-
 1. [Install miniforge](https://github.com/conda-forge/miniforge)
+
+1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+
+1. [Install the AWS CLI](https://aws.amazon.com/cli/)
+
+1. [Create an AWS account](https://aws.amazon.com/) or be able to log in to an existing one
 
 1. Create and activate a new environment with the required C++ libraries:
 
