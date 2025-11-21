@@ -12,29 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use adbc_core::options::{AdbcVersion, OptionDatabase};
-use adbc_core::{Connection, Database, Driver, LOAD_FLAG_DEFAULT, Statement};
-use adbc_driver_manager::ManagedDriver;
+use adbc_core::options::{AdbcVersion};
+use adbc_core::{Connection, Database, LOAD_FLAG_DEFAULT, Statement};
+use adbc_driver_manager::ManagedDatabase;
 use arrow::util::pretty;
 use arrow_array::RecordBatch;
 
 fn main() {
-    let mut driver = ManagedDriver::load_from_name(
-        "postgresql",
+    let db = ManagedDatabase::from_uri(
+        "postgresql://localhost:5432/demo",
         None,
         AdbcVersion::default(),
         LOAD_FLAG_DEFAULT,
         None,
     )
-    .expect("Failed to load driver");
-
-    let opts = [(
-        OptionDatabase::Uri,
-        "postgresql://localhost:5432/demo".into(),
-    )];
-    let db = driver
-        .new_database_with_opts(opts)
-        .expect("Failed to create database handle");
+    .expect("Failed to create database handle");
 
     let mut conn = db.new_connection().expect("Failed to create connection");
 
