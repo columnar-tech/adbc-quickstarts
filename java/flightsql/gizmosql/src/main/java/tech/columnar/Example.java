@@ -34,10 +34,9 @@ public class Example {
     public static void main(String[] args) throws Exception {
         Map<String, Object> params = new HashMap<>();
         JniDriver.PARAM_DRIVER.set(params, "flightsql");
-        params.put("uri", "grpc+tls://localhost:31337");
+        params.put("uri", "grpc+tcp://localhost:31337");
         params.put("username", "gizmosql_username");
         params.put("password", "gizmosql_password");
-        params.put("adbc.flight.sql.client_option.tls_skip_verify", "true");
 
         try (BufferAllocator allocator = new RootAllocator();
              AdbcDatabase db = AdbcDriverManager.getInstance().connect(DRIVER_FACTORY, allocator, params);

@@ -14,22 +14,19 @@
 
 # /// script
 # requires-python = ">=3.9"
-# dependencies = ["adbc-driver-flightsql>=1.8.0", "pyarrow>=20.0.0"]
+# dependencies = ["adbc-driver-manager>=1.8.0", "pyarrow>=20.0.0"]
 # ///
 
 import os
 
-from adbc_driver_flightsql import dbapi as gizmosql, DatabaseOptions
+from adbc_driver_flightsql import dbapi as gizmosql
 
-with gizmosql.connect(uri="grpc+tls://localhost:31337",
+with gizmosql.connect(uri="grpc+tcp://localhost:31337",
                       db_kwargs={"username": os.getenv("GIZMOSQL_USERNAME", "gizmosql_username"),
                                  "password": os.getenv("GIZMOSQL_PASSWORD", "gizmosql_password"),
-                                 DatabaseOptions.TLS_SKIP_VERIFY.value: "true"
-                                 # Not needed if you use a trusted CA-signed TLS cert
                                  }
                       ) as con, con.cursor() as cursor:
-    cursor.execute("SELECT n_nationkey, n_name FROM nation WHERE n_nationkey = ?",
-                   parameters=[24]
+    cursor.execute("SELECT * FROM region"
                    )
     table = cursor.fetch_arrow_table()
 

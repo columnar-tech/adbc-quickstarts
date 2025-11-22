@@ -29,10 +29,9 @@ fn main() {
     .expect("Failed to load driver");
 
     let opts = [
-        (OptionDatabase::Uri, "grpc+tls://localhost:31337".into()),
+        (OptionDatabase::Uri, "grpc+tcp://localhost:31337".into()),
         (OptionDatabase::Username, "gizmosql_username".into()),
         (OptionDatabase::Password, "gizmosql_password".into()),
-        (OptionDatabase::Other("adbc.flight.sql.client_option.tls_skip_verify".to_string()), "true".into()),
     ];
     let db = driver
         .new_database_with_opts(opts)
