@@ -25,9 +25,9 @@ This example uses [GizmoSQL](https://gizmodata.com/gizmosql), but other open sou
 
 ### Prerequisites
 
-1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
-
 1. [Install miniforge](https://github.com/conda-forge/miniforge)
+
+1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 1. Create and activate a new environment with the required C++ libraries:
 
