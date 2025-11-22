@@ -54,13 +54,11 @@ int main() {
 
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "driver", "flightsql", &error));
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
-                                   "grpc+tls://localhost:31337", &error));
+                                   "grpc+tcp://localhost:31337", &error));
   CHECK_ADBC(
       AdbcDatabaseSetOption(&database, "username", "gizmosql_username", &error));
   CHECK_ADBC(
       AdbcDatabaseSetOption(&database, "password", "gizmosql_password", &error));
-  CHECK_ADBC(
-      AdbcDatabaseSetOption(&database, "adbc.flight.sql.client_option.tls_skip_verify", "true", &error));
   CHECK_ADBC(AdbcDriverManagerDatabaseSetLoadFlags(
       &database, ADBC_LOAD_FLAG_DEFAULT, &error));
   CHECK_ADBC(AdbcDatabaseInit(&database, &error));

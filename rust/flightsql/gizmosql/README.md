@@ -29,21 +29,11 @@ This example uses [GizmoSQL](https://gizmodata.com/gizmosql), but other open sou
 
 ### Set up GizmoSQL server (if you don't already have one)
 
-1. [Install podman](https://podman.io/docs/installation)
+1. [Install Docker Engine](https://docs.docker.com/engine/install/)
 
 1. Start the GizmoSQL server:
 ```bash
-podman run --name gizmosql \
-           --detach \
-           --rm \
-           --tty \
-           --init \
-           --publish 31337:31337 \
-           --env TLS_ENABLED="1" \
-           --env GIZMOSQL_PASSWORD="gizmosql_password" \
-           --env PRINT_QUERIES="1" \
-           --pull always \
-           gizmodata/gizmosql:latest
+docker run -d --rm -it --init -p 31337:31337 --name gizmosql -e DATABASE_FILENAME=adbc_quickstart.db -e TLS_ENABLED=0 -e GIZMOSQL_PASSWORD=gizmosql_password -e PRINT_QUERIES=1 -e INIT_SQL_COMMANDS='CALL dbgen(sf=0.01);' --pull always gizmodata/gizmosql:latest-slim
 ```
 
 ### Connect to GizmoSQL

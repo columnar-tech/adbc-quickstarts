@@ -18,10 +18,9 @@ drv <- adbc_driver("flightsql")
 
 db <- adbc_database_init(
   drv,
-  uri="grpc+tls://localhost:31337",
+  uri="grpc+tcp://localhost:31337",
   username="gizmosql_username",
-  password="gizmosql_password",
-  adbc.flight.sql.client_option.tls_skip_verify="true"
+  password="gizmosql_password"
 )
 
 con <- adbc_connection_init(db)

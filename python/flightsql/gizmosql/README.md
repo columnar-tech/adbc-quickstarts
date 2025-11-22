@@ -32,21 +32,11 @@ This example uses [GizmoSQL](https://gizmodata.com/gizmosql), but other open sou
 
 ### Set up GizmoSQL server (if you don't already have one)
 
-1. [Install podman](https://podman.io/docs/installation)
+1. [Install Docker Engine](https://docs.docker.com/engine/install/)
 
 1. Start the GizmoSQL server:
 ```bash
-podman run --name gizmosql \
-           --detach \
-           --rm \
-           --tty \
-           --init \
-           --publish 31337:31337 \
-           --env TLS_ENABLED="1" \
-           --env GIZMOSQL_PASSWORD="gizmosql_password" \
-           --env PRINT_QUERIES="1" \
-           --pull always \
-           gizmodata/gizmosql:latest
+docker run -d --rm -it --init -p 31337:31337 --name gizmosql -e DATABASE_FILENAME=adbc_quickstart.db -e TLS_ENABLED=0 -e GIZMOSQL_PASSWORD=gizmosql_password -e PRINT_QUERIES=1 -e INIT_SQL_COMMANDS='CALL dbgen(sf=0.01);' --pull always gizmodata/gizmosql:latest-slim
 ```
 
 ### Connect to GizmoSQL
@@ -63,13 +53,6 @@ podman run --name gizmosql \
      - `username` and `password` are the username and password of your GizmoSQL admin user (the one specified when starting the instance).
      - You can optionally use JWT token authentication with GizmoSQL server (see more [here](https://github.com/gizmodata/generate-gizmosql-token)) - with username: `token` and a password value of the JWT token contents. 
 
-       ```python
-       db_kwargs={"username": os.getenv("GIZMOSQL_USERNAME", "gizmosql_username"),
-                  "password": os.getenv("GIZMOSQL_PASSWORD", "gizmosql_password"),
-                  DatabaseOptions.TLS_SKIP_VERIFY.value: "true"  # Not needed if you use a trusted CA-signed TLS cert
-                 }
-       ```
-
 1. Run the Python script:
 
    ```sh
@@ -80,9 +63,11 @@ podman run --name gizmosql \
 
    ```
    pyarrow.Table
-   n_nationkey: int32
-   n_name: string
+   r_regionkey: int32
+   r_name: string
+   r_comment: string
    ----
-   n_nationkey: [[24]]
-   n_name: [["UNITED STATES"]]
+   r_regionkey: [[0,1,2,3,4]]
+   r_name: [["AFRICA","AMERICA","ASIA","EUROPE","MIDDLE EAST"]]
+   r_comment: [["ar packages. regular excuses among the ironic requests cajole fluffily blithely final requests. fu (... 17 chars omitted)","s are. furiously even pinto bea","c, special dependencies around ","e dolphins are furiously about the carefully "," foxes boost furiously along the carefully dogged tithes. slyly regular orbits according to the sp (... 10 chars omitted)"]]
    ```

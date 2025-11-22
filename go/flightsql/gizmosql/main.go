@@ -27,10 +27,9 @@ func main() {
 
 	db, err := drv.NewDatabase(map[string]string{
 		"driver":   "flightsql",
-		"uri":      "grpc+tls://localhost:31337",
+		"uri":      "grpc+tcp://localhost:31337",
 		"username": "gizmosql_username",
 		"password": "gizmosql_password",
-		"adbc.flight.sql.client_option.tls_skip_verify": "true",
 	})
 	if err != nil {
 		log.Fatal(err)
