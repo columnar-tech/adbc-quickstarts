@@ -33,7 +33,7 @@ limitations under the License.
 1. Create and activate a new environment with the required C++ libraries:
 
    ```sh
-   mamba create -n adbc-cpp -c conda-forge cmake compilers libadbc-driver-manager libarrow
+   mamba create -n adbc-cpp -c conda-forge cmake compilers libarrow
 
    # Initialize mamba in your shell if not already done
    eval "$(mamba shell hook --shell zsh)"
@@ -41,6 +41,13 @@ limitations under the License.
    ```
 
    (`cmake` is only needed if you use CMake to build the C++ program below.)
+
+1. Follow [these instructions](https://github.com/apache/arrow-adbc/blob/main/CONTRIBUTING.md#cc) to build the C++ driver manager locally, in a separate conda environment. (Until version 22 of the ADBC libraries are released, you must build the C++ driver manager locally to test it with a URI as the only provided option.) In your `cmake` command, set `CMAKE_INSTALL_PREFIX` to the value of `$CONDA_PREFIX` in the `adbc-cpp` environment created in the previous step. Then install the C++ driver manager in that directory. For example, on an Apple Silicon Mac:
+
+   ```sh
+   cmake ../c -DCMAKE_INSTALL_PREFIX="/opt/homebrew/Caskroom/miniconda/base/envs/adbc-cpp"
+   cmake --build . --target install
+   ```
 
 ### Set up PostgreSQL
 

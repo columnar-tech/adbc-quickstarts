@@ -52,7 +52,6 @@ int main() {
   AdbcDatabase database = {};
   CHECK_ADBC(AdbcDatabaseNew(&database, &error));
 
-  CHECK_ADBC(AdbcDatabaseSetOption(&database, "driver", "postgresql", &error));
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
                                    "postgresql://localhost:5432/demo", &error));
   CHECK_ADBC(AdbcDriverManagerDatabaseSetLoadFlags(
