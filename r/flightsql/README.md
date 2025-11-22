@@ -32,7 +32,7 @@ This example uses [Dremio](https://www.dremio.com/), but other open source tools
 1. Install R packages `adbcdrivermanager` and `arrow`:
 
    ```r
-   install.packages(c("adbcdrivermanager", "arrow"))
+   install.packages(c("adbcdrivermanager", "tibble", "arrow"))
    ```
 
 ### Set up Dremio

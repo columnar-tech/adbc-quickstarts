@@ -33,7 +33,7 @@ limitations under the License.
 1. Install R packages `adbcdrivermanager` and `arrow`:
 
    ```r
-   install.packages(c("adbcdrivermanager", "arrow"))
+   install.packages(c("adbcdrivermanager", "tibble", "arrow"))
    ```
 
 ### Set up MySQL
