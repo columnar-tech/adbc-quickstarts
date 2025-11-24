@@ -29,10 +29,10 @@ limitations under the License.
 
 1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
-1. Install R packages `adbcdrivermanager` and `arrow`:
+1. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
 
    ```r
-   install.packages(c("adbcdrivermanager", "arrow"))
+   install.packages(c("adbcdrivermanager", "arrow", "tibble"))
    ```
 
 ### Set up Trino

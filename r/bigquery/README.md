@@ -28,10 +28,10 @@ limitations under the License.
 
 1. [Create a Google account](https://accounts.google.com) or be able to log in to an existing one
 
-1. Install R packages `adbcdrivermanager` and `arrow`:
+1. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
 
    ```r
-   install.packages(c("adbcdrivermanager", "arrow"))
+   install.packages(c("adbcdrivermanager", "arrow", "tibble"))
    ```
 
 ### Set up BigQuery

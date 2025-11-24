@@ -30,10 +30,10 @@ limitations under the License.
 1. [Install MySQL](https://dev.mysql.com/downloads/installer/)
    - On macOS, if you have Homebrew installed, run `brew install mysql`
 
-1. Install R packages `adbcdrivermanager` and `arrow`:
+1. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
 
    ```r
-   install.packages(c("adbcdrivermanager", "arrow"))
+   install.packages(c("adbcdrivermanager", "arrow", "tibble"))
    ```
 
 ### Set up MySQL
