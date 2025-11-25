@@ -14,11 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Go and Arrow Flight SQL with ADBC
+# Connecting Go and Dremio with ADBC
 
 ## Instructions
 
-This example uses [Dremio](https://www.dremio.com/), but other open source tools and vendor products that support Arrow Flight SQL will also work with this driver.
+This example uses [Dremio](https://www.dremio.com/), a data lakehouse platform that supports Arrow Flight SQL.
 
 > [!TIP]
 > If you already have a Dremio instance running, skip the steps to set up Dremio.

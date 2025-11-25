@@ -14,11 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Python and GizmoSQL (an Arrow Flight SQL server - powered by DuckDB or SQLite) with ADBC
+# Connecting Python and GizmoSQL with ADBC
 
 ## Instructions
 
-This example uses [GizmoSQL](https://gizmodata.com/gizmosql), but other open source tools and vendor products that support Arrow Flight SQL will also work with this driver.
+This example uses [GizmoSQL](https://gizmodata.com/gizmosql), a lightweight, high-performance SQL server powered by DuckDB or SQLite that supports Arrow Flight SQL.
 
 > [!TIP]
 > If you already have a GizmoSQL instance running, skip the steps to set up GizmoSQL.
