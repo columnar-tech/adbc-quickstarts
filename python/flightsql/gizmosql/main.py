@@ -17,23 +17,17 @@
 # dependencies = ["adbc-driver-manager>=1.8.0", "pyarrow>=20.0.0"]
 # ///
 
-import os
-
 from adbc_driver_manager import dbapi
 
-with (
-    dbapi.connect(
-        driver="flightsql",
-        db_kwargs={
-            "uri": "grpc+tcp://localhost:31337",
-            "username": "gizmosql_username",
-            "password": "gizmosql_password",
-        },
-    ) as con,
-    con.cursor() as cursor,
-):
+with dbapi.connect(
+    driver="flightsql",
+    db_kwargs={
+        "uri": "grpc+tcp://localhost:31337",
+        "username": "gizmosql_username",
+        "password": "gizmosql_password",
+    },
+) as con, con.cursor() as cursor:
     cursor.execute("SELECT * FROM region")
-                   )
     table = cursor.fetch_arrow_table()
 
 print(table)
