@@ -27,10 +27,10 @@ limitations under the License.
 1. [Install SQLite](https://www.sqlite.org/download.html)
    - On macOS, if you have Homebrew installed, run `brew install sqlite`
 
-1. Install R packages `adbcdrivermanager` and `arrow`:
+1. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
 
    ```r
-   install.packages(c("adbcdrivermanager", "arrow"))
+   install.packages(c("adbcdrivermanager", "arrow", "tibble"))
    ```
 
 ### Connect to SQLite

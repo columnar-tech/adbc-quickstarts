@@ -30,10 +30,10 @@ limitations under the License.
 1. [Install PostgreSQL](https://www.postgresql.org/download/)
    - On macOS, if you have Homebrew installed, run `brew install postgresql@17`
 
-1. Install R packages `adbcdrivermanager` and `arrow`:
+1. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
 
    ```r
-   install.packages(c("adbcdrivermanager", "arrow"))
+   install.packages(c("adbcdrivermanager", "arrow", "tibble"))
    ```
 
 ### Set up PostgreSQL
