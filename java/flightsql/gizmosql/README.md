@@ -32,9 +32,10 @@ This example uses [GizmoSQL](https://gizmodata.com/gizmosql), a lightweight, hig
 1. [Install Docker Engine](https://docs.docker.com/engine/install/)
 
 1. Start the GizmoSQL server:
-```bash
-docker run -d --rm -it --init -p 31337:31337 --name gizmosql -e DATABASE_FILENAME=adbc_quickstart.db -e TLS_ENABLED=0 -e GIZMOSQL_PASSWORD=gizmosql_password -e PRINT_QUERIES=1 -e INIT_SQL_COMMANDS='CALL dbgen(sf=0.01);' --pull always gizmodata/gizmosql:latest-slim
-```
+
+   ```sh
+   docker run -d --rm -it --init -p 31337:31337 --name gizmosql -e DATABASE_FILENAME=adbc_quickstart.db -e TLS_ENABLED=0 -e GIZMOSQL_PASSWORD=gizmosql_password -e PRINT_QUERIES=1 -e INIT_SQL_COMMANDS='CALL dbgen(sf=0.01);' --pull always gizmodata/gizmosql:latest-slim
+   ```
 
 ### Connect to GizmoSQL
 
@@ -65,4 +66,12 @@ docker run -d --rm -it --init -p 31337:31337 --name gizmosql -e DATABASE_FILENAM
    2       ASIA    c, special dependencies around 
    3       EUROPE  e dolphins are furiously about the carefully 
    4       MIDDLE EAST      foxes boost furiously along the carefully dogged tithes. slyly regular orbits according to the special epit
+   ```
+
+### Clean up
+
+1. Stop and remove the Docker container running GizmoSQL:
+
+   ```sh
+   docker stop gizmosql
    ```

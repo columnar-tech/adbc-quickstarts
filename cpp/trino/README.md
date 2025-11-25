@@ -92,8 +92,9 @@ limitations under the License.
    rm -rf build
    ```
 
-1. Stop the Docker container running Trino:
+1. Stop and remove the Docker container running Trino:
 
    ```sh
    docker stop trino
+   docker rm trino
    ```
