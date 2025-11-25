@@ -19,14 +19,20 @@
 
 import os
 
-from adbc_driver_flightsql import dbapi as gizmosql
+from adbc_driver_manager import dbapi
 
-with gizmosql.connect(uri="grpc+tcp://localhost:31337",
-                      db_kwargs={"username": os.getenv("GIZMOSQL_USERNAME", "gizmosql_username"),
-                                 "password": os.getenv("GIZMOSQL_PASSWORD", "gizmosql_password"),
-                                 }
-                      ) as con, con.cursor() as cursor:
-    cursor.execute("SELECT * FROM region"
+with (
+    dbapi.connect(
+        driver="flightsql",
+        db_kwargs={
+            "uri": "grpc+tcp://localhost:31337",
+            "username": "gizmosql_username",
+            "password": "gizmosql_password",
+        },
+    ) as con,
+    con.cursor() as cursor,
+):
+    cursor.execute("SELECT * FROM region")
                    )
     table = cursor.fetch_arrow_table()
 
