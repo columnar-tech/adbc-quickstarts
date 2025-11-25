@@ -56,7 +56,7 @@ This example uses [GizmoSQL](https://gizmodata.com/gizmosql), a lightweight, hig
 1. Install the Flight SQL ADBC driver:
 
    ```sh
-   dbc install flightsql
+   dbc install --level user flightsql
    ```
 
 
