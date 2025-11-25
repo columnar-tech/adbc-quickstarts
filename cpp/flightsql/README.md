@@ -16,86 +16,16 @@ limitations under the License.
 
 # Connecting C++ and Arrow Flight SQL with ADBC
 
-## Instructions
+This directory contains examples showing how to use ADBC to connect C++ applications to systems that support [Arrow Flight SQL](https://arrow.apache.org/docs/format/FlightSql.html).
 
-This example uses [Dremio](https://www.dremio.com/), but other open source tools and vendor products that support Arrow Flight SQL will also work with this driver.
+## Source systems covered
 
-> [!TIP]
-> If you already have a Dremio instance running, skip the steps to set up Dremio.
+Any open source tool or vendor product that implements Arrow Flight SQL should work with the ADBC driver for Flight SQL. The examples included here focus on two specific systems:
+- Dremio
+- GizmoSQL
 
-### Prerequisites
+Other systems that support Arrow Flight SQL include Apache Doris, Deephaven, Spice, and StarRocks. Examples for these are not yet included here. PRs are welcome if you'd like to contribute.
 
-1. [Install miniforge](https://github.com/conda-forge/miniforge)
+ ## Instructions
 
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
-
-1. Create and activate a new environment with the required C++ libraries:
-
-   ```sh
-   mamba create -n adbc-cpp -c conda-forge cmake compilers libadbc-driver-manager libarrow
-
-   # Initialize mamba in your shell if not already done
-   eval "$(mamba shell hook --shell zsh)"
-   mamba activate adbc-cpp
-   ```
-
-   (`cmake` is only needed if you use CMake to build the C++ program below.)
-
-### Set up Dremio
-
-1. [Sign up for Dremio Cloud](https://www.dremio.com/) or follow the instructions to [set up Dremio Community](https://docs.dremio.com/current/get-started/docker/).
-
-### Connect to Dremio
-
-1. Install the Flight SQL ADBC driver:
-
-   ```sh
-   dbc install --level user flightsql
-   ```
-
-1. Customize the C++ program `main.cpp` as needed
-   - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
-     - `uri` is the URI of your Dremio instance. The host and port will depend on your installation (the default port is 32010). The protocol scheme should be `grpc` or `grpc+tcp` if your Dremio instance is not using TLS (e.g. if you are using Dremio Community) and should be `grpc+tls` otherwise (e.g. when using Dremio Cloud).
-     - `username` and `password` are the username and password of your Dremio account. (If you are using Dremio Community, these were set during the installation instructions.)
-     - For Dremio Cloud, remove the existing `uri`, `username`, and `password` options, create a personal access token (PAT), and set the URI and authorization header as follows:
-       ```cpp
-       // For US region:
-       CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
-                                        "grpc+tls://data.dremio.cloud:443", &error));
-       // For Europe region:
-       //CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
-       //                                 "grpc+tls://data.eu.dremio.cloud:443", &error));
-       CHECK_ADBC(AdbcDatabaseSetOption(
-           &database, "adbc.flight.sql.authorization_header",
-           "Bearer YOUR_TOKEN_HERE", &error));
-       ```
-   - If you changed `uri` to point to a different Flight SQL server, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`
-
-1. Build and run the C++ program:
-
-   Using Make:
-   ```sh
-   make
-   ./flightsql_demo
-   ```
-
-   Or using CMake:
-   ```sh
-   cmake -B build
-   cmake --build build
-   ./build/flightsql_demo
-   ```
-
-### Clean up
-
-1. Clean build artifacts:
-
-   Using Make:
-   ```sh
-   make clean
-   ```
-
-   Using CMake:
-   ```sh
-   rm -rf build
-   ```
+Each subdirectory contains its own README with specific instructions.

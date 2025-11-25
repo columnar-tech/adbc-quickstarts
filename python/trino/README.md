@@ -58,7 +58,7 @@ limitations under the License.
 
 ### Clean up
 
-1. Stop the Docker container running Trino:
+1. Stop and remove the Docker container running Trino:
 
    ```sh
    docker stop trino
