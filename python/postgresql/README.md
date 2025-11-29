@@ -30,6 +30,15 @@ limitations under the License.
 1. [Install PostgreSQL](https://www.postgresql.org/download/)
    - On macOS, if you have Homebrew installed, run `brew install postgresql@17`
 
+1. Follow [these instructions](https://github.com/apache/arrow-adbc/blob/main/CONTRIBUTING.md#python) to build the Python driver manager locally. (Until version 22 of the ADBC libraries are released, you must build the Python driver manager locally to test it with a URI as the only provided option.) After completing those steps, also build a wheel:
+
+   ```sh
+   pip install build
+   python -m build
+   ```
+
+   Note the path to the `.whl` file under `dist/`. You will need it in a later step.
+
 ### Set up PostgreSQL
 
 1. Start PostgreSQL
@@ -49,10 +58,10 @@ limitations under the License.
      - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is to use the data included with this example
    - If you changed which database you're connecting to, also change the SQL SELECT statement in `cursor.execute()`
 
-1. Run the Python script:
+1. Use uv to run the Python script, using `--with` to specify the path to the `.whl` file created above. For example:
 
    ```sh
-   uv run main.py
+   uv run --with /path/to/arrow-adbc/python/adbc_driver_manager/dist/adbc_driver_manager-1.10.0.dev0-cp314-cp314-macosx_11_0_arm64.whl main.py
    ```
 
 ### Clean up
