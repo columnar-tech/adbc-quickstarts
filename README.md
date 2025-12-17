@@ -40,6 +40,8 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 - Microsoft SQL Server
 - MySQL
 - PostgreSQL
+  - Citus
+  - PostgreSQL
 - Amazon Redshift
 - Snowflake
 - SQLite
