@@ -32,6 +32,8 @@ Simple C++ examples showing how to use ADBC to connect, run a query, and return 
 - Microsoft SQL Server
 - MySQL
 - PostgreSQL
+  - Citus
+  - PostgreSQL
 - Amazon Redshift
 - Snowflake
 - SQLite

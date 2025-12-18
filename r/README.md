@@ -34,6 +34,8 @@ Simple R examples showing how to use ADBC to connect, run a query, and return th
 - Microsoft SQL Server
 - MySQL
 - PostgreSQL
+  - Citus
+  - PostgreSQL
 - Amazon Redshift
 - Snowflake
 - SQLite
