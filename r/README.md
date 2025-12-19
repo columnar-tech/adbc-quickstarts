@@ -30,7 +30,8 @@ Simple R examples showing how to use ADBC to connect, run a query, and return th
 - DuckDB
 - Apache Arrow Flight SQL
   - Dremio
-  - GizmoSQL 
+  - GizmoSQL
+  - StarRocks
 - Microsoft SQL Server
 - MySQL
 - PostgreSQL
