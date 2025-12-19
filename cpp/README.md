@@ -33,6 +33,8 @@ Simple C++ examples showing how to use ADBC to connect, run a query, and return 
   - GizmoSQL
 - Microsoft SQL Server
 - MySQL
+    - MariaDB
+    - MySQL
 - PostgreSQL
   - Citus
   - PostgreSQL

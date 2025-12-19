@@ -14,35 +14,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Java ADBC Quickstarts
+# Connecting Go and MySQL with ADBC
 
-Simple Java examples showing how to use ADBC to connect, run a query, and return the results.
-
-## Prerequisites
-
-1. [Install Maven](https://maven.apache.org/install.html)
-
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+This directory contains examples showing how to use ADBC to connect Go applications to MySQL-compatible database systems.
 
 ## Source systems covered
 
-- Google BigQuery
-- DuckDB
-- Apache Arrow Flight SQL
-  - Dremio
-  - GizmoSQL
-  - StarRocks
-- Microsoft SQL Server
+Any open source tool or vendor product that implements the MySQL protocol should work with the ADBC driver for MySQL. The examples included here focus on the following systems:
+
+- MariaDB
 - MySQL
-    - MariaDB
-    - MySQL
-- PostgreSQL
-  - Citus
-  - PostgreSQL
-- Amazon Redshift
-- Snowflake
-- SQLite
-- Trino
 
 ## Instructions
 
