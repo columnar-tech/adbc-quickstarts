@@ -119,7 +119,7 @@ This example uses [StarRocks](https://www.starrocks.io/), an open query engine f
 
    ```sh
    cargo run
-   `````
+   ```
 
 ### Clean up
 
