@@ -40,23 +40,66 @@ This example uses [StarRocks](https://www.starrocks.io/), an open query engine f
     --name quickstart starrocks/allin1-ubuntu
     ```
 
-3. Configure StarRocks for Arrow Flight SQL:
-    1. Specify the FE configuration item `JAVA_OPTS` in `fe.conf`:
-        ```sh
-        JAVA_OPTS="--add-opens=java.base/java.nio=org.apache.arrow.memory.core,ALL-UNNAMED ..."
-        ```
-    2. In both FE configuration file `fe.conf` and BE configuration file `be.conf`, set `arrow_flight_port` to an available port:
-        ```
-        // fe.conf
-        arrow_flight_port = 9408
+3. Configure StarRocks for Arrow Flight SQL using one of the following options:
 
-        // be.conf
-        arrow_flight_port = 9419
-        ```
-    3. Restart the FE and BE services:
+    #### Option A: Quick setup (automated)
+
+    Run these commands from your terminal:
+
+    ```sh
+    docker exec quickstart sed -i 's/JAVA_OPTS="-Dlog4j2/JAVA_OPTS="--add-opens=java.base\/java.nio=org.apache.arrow.memory.core,ALL-UNNAMED -Dlog4j2/' /data/deploy/starrocks/fe/conf/fe.conf
+    docker exec quickstart bash -c 'echo "arrow_flight_port = 9408" >> /data/deploy/starrocks/fe/conf/fe.conf'
+    docker exec quickstart bash -c 'echo "arrow_flight_port = 9419" >> /data/deploy/starrocks/be/conf/be.conf'
+    docker restart quickstart
+    ```
+
+    #### Option B: Manual setup
+
+    If you prefer to understand and apply the changes yourself:
+
+    1. Open a shell inside the container:
         ```sh
+        docker exec -it quickstart bash
+        ```
+
+    2. Edit the FE (frontend) configuration:
+        ```sh
+        vi /data/deploy/starrocks/fe/conf/fe.conf
+        ```
+
+        - Find the `JAVA_OPTS` line and add the Arrow memory module at the beginning:
+            ```
+            JAVA_OPTS="--add-opens=java.base/java.nio=org.apache.arrow.memory.core,ALL-UNNAMED ..."
+            ```
+
+        - Add this line at the end of the file:
+            ```
+            arrow_flight_port = 9408
+            ```
+
+    3. Edit the BE (backend) configuration:
+        ```sh
+        vi /data/deploy/starrocks/be/conf/be.conf
+        ```
+
+        - Add this line at the end of the file:
+            ```
+            arrow_flight_port = 9419
+            ```
+
+    4. Exit the container and restart it:
+        ```sh
+        exit
         docker restart quickstart
         ```
+
+4. Verify the container is ready. Wait for the container to become healthy:
+
+    ```sh
+    docker ps --filter "name=quickstart"
+    ```
+
+    You should see `(healthy)` in the status before proceeding.
 
 ### Connect to StarRocks
 
