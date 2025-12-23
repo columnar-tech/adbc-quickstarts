@@ -37,6 +37,7 @@ Simple Go examples showing how to use ADBC to connect, run a query, and return t
 - PostgreSQL
   - Citus
   - PostgreSQL
+  - YugabyteDB
 - Amazon Redshift
 - Snowflake
 - SQLite
