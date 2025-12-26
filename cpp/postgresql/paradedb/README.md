@@ -46,7 +46,7 @@ limitations under the License.
 2. Start a ParadeDB instance:
 
     ```sh
-    docker run --name paradedb -e POSTGRES_PASSWORD=password -p 5432:5432 paradedb/paradedb
+    docker run -d --name paradedb -e POSTGRES_PASSWORD=password -p 5432:5432 paradedb/paradedb
     ```
 
 ### Connect to ParadeDB
