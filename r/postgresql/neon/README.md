@@ -49,7 +49,7 @@ limitations under the License.
 4. Start a Neon instance:
 
     ```sh
-    docker compose -p neon up
+    docker compose -p neon up -d
     ```
 
 ### Connect to Neon
