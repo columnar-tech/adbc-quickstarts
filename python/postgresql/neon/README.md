@@ -56,7 +56,7 @@ limitations under the License.
 
 2. Customize the Python script `main.py` as needed
     - Change the connection arguments in `db_kwargs`
-        - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is
+        - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is. For cloud-hosted Neon, the connection string can be found at Project dashboard > Connect > Connection string
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `cursor.execute()`
 
 3. Run the Python script:

@@ -56,7 +56,7 @@ limitations under the License.
 
 1. Customize the `main` method in `Example.java`
     - Change the connection arguments in the `params.put()` calls
-        - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is
+        - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is. For cloud-hosted Neon, the connection string can be found at Project dashboard > Connect > Connection string
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.setSqlQuery()`
 
 1. Run the Java program:
