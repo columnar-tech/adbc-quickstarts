@@ -104,3 +104,9 @@ limitations under the License.
     ```sh
     docker compose -p neon down
     ```
+
+3. Remove the Neon repository:
+
+    ```sh
+    rm -rf neon
+    ```

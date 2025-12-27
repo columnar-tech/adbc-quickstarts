@@ -72,8 +72,14 @@ limitations under the License.
 
 ### Clean up
 
-Stop the Docker project running Neon:
+1. Stop the Docker project running Neon:
 
-```sh
-docker compose -p neon down
-```
+    ```sh
+    docker compose -p neon down
+    ```
+
+2. Remove the Neon repository:
+
+    ```sh
+    rm -rf neon
+    ```
