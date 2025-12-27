@@ -16,80 +16,15 @@ limitations under the License.
 
 # Connecting C++ and MySQL with ADBC
 
+This directory contains examples showing how to use ADBC to connect C++ applications to MySQL-compatible database systems.
+
+## Source systems covered
+
+Any open source tool or vendor product that implements the MySQL protocol should work with the ADBC driver for MySQL. The examples included here focus on the following systems:
+
+- MariaDB
+- MySQL
+
 ## Instructions
 
-> [!TIP]
-> If you already have a MySQL instance running, skip the steps to install MySQL, start it, load data, and stop it.
-
-### Prerequisites
-
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
-
-1. [Install MySQL](https://dev.mysql.com/downloads/installer/)
-   - On macOS, if you have Homebrew installed, run `brew install mysql`
-
-1. [Install miniforge](https://github.com/conda-forge/miniforge)
-
-1. Create and activate a new environment with the required C++ libraries:
-
-   ```sh
-   mamba create -n adbc-cpp -c conda-forge cmake compilers libadbc-driver-manager libarrow
-
-   # Initialize mamba in your shell if not already done
-   eval "$(mamba shell hook --shell zsh)"
-   mamba activate adbc-cpp
-   ```
-
-   (`cmake` is only needed if you use CMake to build the C++ program below.)
-
-### Set up MySQL
-
-1. Start MySQL
-   - If you installed it with Homebrew, run `brew services start mysql`
-
-1. Create a table in MySQL and load data into it by running `mysql -u root < games.sql`
-
-### Connect to MySQL
-
-1. Install the MySQL ADBC driver:
-
-   ```sh
-   dbc install --level user mysql
-   ```
-
-1. Customize the C++ program `main.cpp` as needed
-   - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
-     - Format `uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#section-readme), or keep it as is to use the data included with this example
-   - If you changed which database you're connecting to, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`
-
-1. Build and run the C++ program:
-
-   Using Make:
-   ```sh
-   make
-   ./mysql_demo
-   ```
-
-   Or using CMake:
-   ```sh
-   cmake -B build
-   cmake --build build
-   ./build/mysql_demo
-   ```
-
-### Clean up
-
-1. Clean build artifacts:
-
-   Using Make:
-   ```sh
-   make clean
-   ```
-
-   Using CMake:
-   ```sh
-   rm -rf build
-   ```
-
-1. Stop MySQL
-   - If you installed it with Homebrew, run `brew services stop mysql`
+Each subdirectory contains its own README with specific instructions.
