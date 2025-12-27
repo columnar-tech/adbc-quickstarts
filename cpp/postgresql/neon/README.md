@@ -45,17 +45,16 @@ limitations under the License.
 
 2. [Install git](https://git-scm.com/install/)
 
-3. Clone the [Neon repository](https://github.com/neondatabase/neon) and change directories:
+3. Clone the [Neon repository](https://github.com/neondatabase/neon):
 
     ```sh
     git clone https://github.com/neondatabase/neon.git
-    cd neon/docker-compose
     ```
 
 4. Start a Neon instance:
 
     ```sh
-    docker compose -p neon up -d
+    docker compose --project-directory neon/docker-compose -p neon up -d
     ```
 
 ### Connect to Neon
