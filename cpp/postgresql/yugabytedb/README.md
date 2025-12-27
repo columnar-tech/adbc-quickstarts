@@ -46,9 +46,9 @@ limitations under the License.
 2. Start a YugabyteDB instance:
 
     ```sh
-    docker run -d --name yugabyte \
-        -p 7000:7000 -p 9000:9000 -p 15433:15433 -p 5433:5433 -p 9042:9042 \
-        yugabytedb/yugabyte:2025.2.0.0-b131 bin/yugabyted start \
+    docker run -d --rm --name yugabyte \
+        -p 9999:9999 -p 9000:9000 -p 15433:15433 -p 5433:5433 -p 9042:9042 \
+        yugabytedb/yugabyte:2025.2.0.0-b131 bin/yugabyted start --master_webserver_port=9999 \
         --background=false
     ```
 
