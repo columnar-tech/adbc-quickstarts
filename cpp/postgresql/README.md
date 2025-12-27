@@ -24,7 +24,9 @@ Any open source tool or vendor product that implements PostgreSQL frontend/backe
 
 - Citus
 - Neon
+- ParadeDB
 - PostgreSQL
+- YugabyteDB
 
 ## Instructions
 

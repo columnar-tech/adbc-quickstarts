@@ -37,7 +37,9 @@ Simple Python examples showing how to use ADBC to connect, run a query, and retu
 - PostgreSQL
   - Citus
   - Neon
+  - ParadeDB
   - PostgreSQL
+  - YugabyteDB
 - Amazon Redshift
 - Snowflake
 - SQLite
