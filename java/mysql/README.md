@@ -16,47 +16,15 @@ limitations under the License.
 
 # Connecting Java and MySQL with ADBC
 
+This directory contains examples showing how to use ADBC to connect Java applications to MySQL-compatible database systems.
+
+## Source systems covered
+
+Any open source tool or vendor product that implements the MySQL protocol should work with the ADBC driver for MySQL. The examples included here focus on the following systems:
+
+- MariaDB
+- MySQL
+
 ## Instructions
 
-> [!TIP]
-> If you already have a MySQL instance running, skip the steps to install MySQL, start it, load data, and stop it.
-
-### Prerequisites
-
-1. [Install Maven](https://maven.apache.org/install.html)
-
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
-
-1. [Install MySQL](https://dev.mysql.com/downloads/installer/)
-   - On macOS, if you have Homebrew installed, run `brew install mysql`
-
-### Set up MySQL
-
-1. Start MySQL
-   - If you installed it with Homebrew, run `brew services start mysql`
-
-1. Create a table in MySQL and load data into it by running `mysql -u root < games.sql`
-
-### Connect to MySQL
-
-1. Install the MySQL ADBC driver:
-
-   ```sh
-   dbc install mysql
-   ```
-
-1. Customize the `main` method in `Example.java`
-   - Change the connection arguments in the `params.put()` calls
-     - Format `uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#section-readme), or keep it as is to use the data included with this example
-   - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.setSqlQuery()`
-
-1. Run the Java program:
-
-   ```sh
-   mvn compile exec:exec
-   ```
-
-### Clean up
-
-1. Stop MySQL
-   - If you installed it with Homebrew, run `brew services stop mysql`
+Each subdirectory contains its own README with specific instructions.
