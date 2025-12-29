@@ -48,7 +48,7 @@ This example uses [StarRocks](https://www.starrocks.io/), an open query engine f
 2. Start a StarRocks instance:
 
     ```sh
-    docker run -p 9030:9030 -p 8030:8030 -p 8040:8040 -p 9408:9408 -p 9419:9419 -itd \
+    docker run --rm -p 9030:9030 -p 8030:8030 -p 8040:8040 -p 9408:9408 -p 9419:9419 -itd \
     --name quickstart starrocks/allin1-ubuntu
     ```
 
