@@ -43,10 +43,19 @@ limitations under the License.
 
 1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
+> [!WARNING]
+> On Apple Silicon Macs, Yellowbrick Community Edition works with [OrbStack](https://orbstack.dev/) but not with Docker Desktop.
+
 2. Start a Yellowbrick Community Edition instance:
 
     ```sh
-    docker run -it --privileged --name yellowbrick -p 443:443 -p 5432:5432 yellowbrickdata/yb-community-edition:latest
+    docker run -d --rm --privileged --name yellowbrick -p 443:443 -p 5432:5432 yellowbrickdata/yb-community-edition:latest
+    ```
+
+3. Wait for the service to be ready (it should print `localhost:5432 - accepting connections`):
+
+    ```sh
+    docker exec yellowbrick pg_isready -h localhost -p 5432
     ```
 
 ### Connect to Yellowbrick
