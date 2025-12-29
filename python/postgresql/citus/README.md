@@ -34,7 +34,7 @@ limitations under the License.
 2. Start a Citus instance:
 
     ```sh
-    docker run --name citus_standalone -p 5432:5432 -e POSTGRES_PASSWORD=password citusdata/citus
+    docker run -d --rm --name citus_standalone -p 5432:5432 -e POSTGRES_PASSWORD=password citusdata/citus
     ```
 
 ### Connect to Citus
