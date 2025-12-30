@@ -54,7 +54,7 @@ int main() {
 
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "driver", "postgresql", &error));
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
-                                   "postgresql://localhost:5432/demo", &error));
+                                   "postgresql://postgres:mysecretpassword@localhost:5432/demo", &error));
   CHECK_ADBC(AdbcDriverManagerDatabaseSetLoadFlags(
       &database, ADBC_LOAD_FLAG_DEFAULT, &error));
   CHECK_ADBC(AdbcDatabaseInit(&database, &error));

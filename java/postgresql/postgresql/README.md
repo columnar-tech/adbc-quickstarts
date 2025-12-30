@@ -25,37 +25,47 @@ limitations under the License.
 
 1. [Install Maven](https://maven.apache.org/install.html)
 
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
-
-1. [Install PostgreSQL](https://www.postgresql.org/download/)
-   - On macOS, if you have Homebrew installed, run `brew install postgresql@17`
+2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 ### Set up PostgreSQL
 
-1. Start PostgreSQL
-   - If you installed it with Homebrew, run `brew services start postgresql@17`
-1. Create a table in PostgreSQL and load data into it by running `psql -d postgres -f games.sql`
+1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
+
+2. Start a PostgreSQL instance:
+
+    ```sh
+    docker run -d --rm --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 postgres
+    ```
+
+3. Create a table in PostgreSQL and load data into it:
+
+    ```sh
+    cat games.sql | docker exec -i some-postgres psql -d postgres -U postgres -W mysecretpassword
+    ```
 
 ### Connect to PostgreSQL
 
 1. Install the PostgreSQL ADBC driver:
 
-   ```sh
-   dbc install postgresql
-   ```
+    ```sh
+    dbc install postgresql
+    ```
 
-1. Customize the `main` method in `Example.java`
-   - Change the connection arguments in the `params.put()` calls
-     - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is to use the data included with this example
-   - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.setSqlQuery()`
+2. Customize the `main` method in `Example.java`
+    - Change the connection arguments in the `params.put()` calls
+        - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is to use the data included with this example
+    - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.setSqlQuery()`
 
-1. Run the Java program:
+3. Run the Java program:
 
-   ```sh
-   mvn compile exec:exec
-   ```
+    ```sh
+    mvn compile exec:exec
+    ```
 
 ### Clean up
 
-1. Stop PostgreSQL
-   - If you installed it with Homebrew, run `brew services stop postgresql@17`
+Stop the Docker container running PostgreSQL:
+
+```sh
+docker stop some-postgres
+```
