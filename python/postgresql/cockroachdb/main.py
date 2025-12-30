@@ -12,26 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "duckdb",
-    "flightsql/dremio",
-    "flightsql/gizmosql",
-    "flightsql/starrocks",
-    "mssql",
-    "mysql/mariadb",
-    "mysql/mysql",
-    "postgresql/citus",
-    "postgresql/cockroachdb",
-    "postgresql/neon",
-    "postgresql/paradedb",
-    "postgresql/postgresql",
-    "postgresql/yellowbrick",
-    "postgresql/yugabytedb",
-    "redshift",
-    "snowflake",
-    "sqlite",
-    "trino",
-]
+# /// script
+# requires-python = ">=3.9"
+# dependencies = ["adbc-driver-manager>=1.8.0", "pyarrow>=20.0.0"]
+# ///
+
+from adbc_driver_manager import dbapi
+
+with (
+    dbapi.connect(
+        driver="postgresql",
+        db_kwargs={
+            "uri": "postgresql://username:password@localhost:26257/db",
+        },
+    ) as connection,
+    connection.cursor(adbc_stmt_kwargs={"adbc.postgresql.use_copy": False}) as cursor,
+):
+    cursor.execute("SELECT version()")
+    table = cursor.fetch_arrow_table()
+
+print(table)
