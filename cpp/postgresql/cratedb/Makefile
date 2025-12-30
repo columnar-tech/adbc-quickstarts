@@ -12,26 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "duckdb",
-    "flightsql/dremio",
-    "flightsql/gizmosql",
-    "flightsql/starrocks",
-    "mssql",
-    "mysql/mariadb",
-    "mysql/mysql",
-    "postgresql/citus",
-    "postgresql/cratedb",
-    "postgresql/neon",
-    "postgresql/paradedb",
-    "postgresql/postgresql",
-    "postgresql/yellowbrick",
-    "postgresql/yugabytedb",
-    "redshift",
-    "snowflake",
-    "sqlite",
-    "trino",
-]
+CXXFLAGS = -std=c++17 -Wall -Werror -I$(CONDA_PREFIX)/include
+LIBS = -L$(CONDA_PREFIX)/lib -ladbc_driver_manager -larrow -Wl,-rpath,$(CONDA_PREFIX)/lib
+
+cratedb_demo: main.cpp
+	$(CXX) $(CXXFLAGS) -o cratedb_demo main.cpp $(LIBS)
+
+clean:
+	rm -f cratedb_demo
+
+.PHONY: clean

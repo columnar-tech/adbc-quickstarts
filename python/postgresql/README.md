@@ -23,6 +23,7 @@ This directory contains examples showing how to use ADBC to connect Python appli
 Any open source tool or vendor product that implements PostgreSQL frontend/backend protocol should work with the ADBC driver for PostgreSQL. The examples included here focus on the following systems:
 
 - Citus
+- CrateDB
 - Neon
 - ParadeDB
 - PostgreSQL

@@ -38,6 +38,7 @@ Simple Python examples showing how to use ADBC to connect, run a query, and retu
   - MySQL
 - PostgreSQL
   - Citus
+  - CrateDB
   - Neon
   - ParadeDB
   - PostgreSQL
