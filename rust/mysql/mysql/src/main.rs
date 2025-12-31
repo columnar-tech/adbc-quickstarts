@@ -28,7 +28,7 @@ fn main() {
     )
     .expect("Failed to load driver");
 
-    let opts = [(OptionDatabase::Uri, "root@tcp(localhost:3306)/demo".into())];
+    let opts = [(OptionDatabase::Uri, "root:my-secret-pw@tcp(localhost:3306)/demo".into())];
     let db = driver
         .new_database_with_opts(opts)
         .expect("Failed to create database handle");

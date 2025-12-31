@@ -54,7 +54,7 @@ int main() {
 
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "driver", "mysql", &error));
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
-                                   "root@tcp(localhost:3306)/demo", &error));
+                                   "root:my-secret-pw@tcp(localhost:3306)/demo", &error));
   CHECK_ADBC(AdbcDriverManagerDatabaseSetLoadFlags(
       &database, ADBC_LOAD_FLAG_DEFAULT, &error));
   CHECK_ADBC(AdbcDatabaseInit(&database, &error));

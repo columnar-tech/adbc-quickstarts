@@ -22,7 +22,7 @@ from adbc_driver_manager import dbapi
 with dbapi.connect(
     driver="mysql",
     db_kwargs={
-        "uri": "root@tcp(localhost:3306)/demo"
+        "uri": "root:my-secret-pw@tcp(localhost:3306)/demo"
     }
 ) as con, con.cursor() as cursor:
     cursor.execute("SELECT * FROM games;")
