@@ -40,7 +40,7 @@ limitations under the License.
 3. Create a table in PostgreSQL and load data into it:
 
     ```sh
-    cat games.sql | docker exec -i some-postgres psql -d postgres -U postgres -W mysecretpassword
+    cat games.sql | docker exec -i -e PGPASSWORD=mysecretpassword some-postgres psql -d postgres -U postgres
     ```
 
 ### Connect to PostgreSQL
