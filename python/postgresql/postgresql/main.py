@@ -22,7 +22,7 @@ from adbc_driver_manager import dbapi
 with dbapi.connect(
     driver="postgresql",
     db_kwargs={
-        "uri": "postgresql://localhost:5432/demo"
+        "uri": "postgresql://postgres:mysecretpassword@localhost:5432/demo"
     }
 ) as con, con.cursor() as cursor:
     cursor.execute("SELECT * FROM games;")

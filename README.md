@@ -40,9 +40,15 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
   - StarRocks
 - Microsoft SQL Server
 - MySQL
+  - MariaDB
+  - MySQL
 - PostgreSQL
   - Citus
+  - Neon
+  - ParadeDB
   - PostgreSQL
+  - Yellowbrick
+  - YugabyteDB
 - Amazon Redshift
 - Snowflake
 - SQLite

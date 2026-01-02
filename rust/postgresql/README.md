@@ -23,7 +23,11 @@ This directory contains examples showing how to use ADBC to connect Rust applica
 Any open source tool or vendor product that implements PostgreSQL frontend/backend protocol should work with the ADBC driver for PostgreSQL. The examples included here focus on the following systems:
 
 - Citus
+- Neon
+- ParadeDB
 - PostgreSQL
+- Yellowbrick
+- YugabyteDB
 
 ## Instructions
 

@@ -26,8 +26,8 @@ func main() {
 	var drv drivermgr.Driver
 
 	db, err := drv.NewDatabase(map[string]string{
-		"driver":  "postgresql",
-		"uri":     "postgresql://localhost:5432/demo",
+		"driver": "postgresql",
+		"uri":    "postgresql://postgres:mysecretpassword@localhost:5432/demo",
 	})
 	if err != nil {
 		log.Fatal(err)
