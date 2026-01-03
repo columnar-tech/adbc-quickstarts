@@ -12,26 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "duckdb",
-    "flightsql/dremio",
-    "flightsql/gizmosql",
-    "flightsql/starrocks",
-    "mssql",
-    "mysql/mariadb",
-    "mysql/mysql",
-    "mysql/vitess",
-    "postgresql/citus",
-    "postgresql/neon",
-    "postgresql/paradedb",
-    "postgresql/postgresql",
-    "postgresql/yellowbrick",
-    "postgresql/yugabytedb",
-    "redshift",
-    "snowflake",
-    "sqlite",
-    "trino",
-]
+# /// script
+# requires-python = ">=3.9"
+# dependencies = ["adbc-driver-manager>=1.8.0", "pyarrow>=20.0.0"]
+# ///
+
+from adbc_driver_manager import dbapi
+
+with (
+    dbapi.connect(
+        driver="mysql", db_kwargs={"uri": "root@tcp(localhost:33577)/test"}
+    ) as connection,
+    connection.cursor() as cursor,
+):
+    cursor.execute("SELECT VERSION()")
+    table = cursor.fetch_arrow_table()
+
+print(table)
