@@ -25,43 +25,53 @@ limitations under the License.
 
 1. [Install R](https://www.r-project.org/)
 
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
-1. [Install PostgreSQL](https://www.postgresql.org/download/)
-   - On macOS, if you have Homebrew installed, run `brew install postgresql@17`
+3. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
 
-1. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
-
-   ```r
-   install.packages(c("adbcdrivermanager", "arrow", "tibble"))
-   ```
+    ```r
+    install.packages(c("adbcdrivermanager", "arrow", "tibble"))
+    ```
 
 ### Set up PostgreSQL
 
-1. Start PostgreSQL
-   - If you installed it with Homebrew, run `brew services start postgresql@17`
-1. Create a table in PostgreSQL and load data into it by running `psql -d postgres -f games.sql`
+1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
+
+2. Start a PostgreSQL instance:
+
+    ```sh
+    docker run -d --rm --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 postgres
+    ```
+
+3. Create a table in PostgreSQL and load data into it:
+
+    ```sh
+    cat games.sql | docker exec -i -e PGPASSWORD=mysecretpassword some-postgres psql -d postgres -U postgres
+    ```
 
 ### Connect to PostgreSQL
 
 1. Install the PostgreSQL ADBC driver:
 
-   ```sh
-   dbc install postgresql
-   ```
+    ```sh
+    dbc install postgresql
+    ```
 
-1. Customize the R script `main.R` as needed
-   - Change the connection arguments in `adbc_database_init()`
-     - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is to use the data included with this example
-   - If you changed which database you're connecting to, also change the SQL SELECT statement in `read_adbc()`
+2. Customize the R script `main.R` as needed
+    - Change the connection arguments in `adbc_database_init()`
+        - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is to use the data included with this example
+    - If you changed which database you're connecting to, also change the SQL SELECT statement in `read_adbc()`
 
-1. Run the R script:
+3. Run the R script:
 
-   ```sh
-   Rscript main.R
-   ```
+    ```sh
+    Rscript main.R
+    ```
 
 ### Clean up
 
-1. Stop PostgreSQL
-   - If you installed it with Homebrew, run `brew services stop postgresql@17`
+Stop the Docker container running PostgreSQL:
+
+```sh
+docker stop some-postgres
+```

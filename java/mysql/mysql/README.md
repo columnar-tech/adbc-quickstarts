@@ -25,38 +25,47 @@ limitations under the License.
 
 1. [Install Maven](https://maven.apache.org/install.html)
 
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
-
-1. [Install MySQL](https://dev.mysql.com/downloads/installer/)
-   - On macOS, if you have Homebrew installed, run `brew install mysql`
+2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 ### Set up MySQL
 
-1. Start MySQL
-   - If you installed it with Homebrew, run `brew services start mysql`
+1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
-1. Create a table in MySQL and load data into it by running `mysql -u root < games.sql`
+2. Start a MySQL instance:
+
+    ```sh
+    docker run -d --rm --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 mysql
+    ```
+
+3. Create a table in MySQL and load data into it:
+
+    ```sh
+    cat games.sql | docker exec -i some-mysql mysql --user=root --password=my-secret-pw
+    ```
 
 ### Connect to MySQL
 
 1. Install the MySQL ADBC driver:
 
-   ```sh
-   dbc install mysql
-   ```
+    ```sh
+    dbc install mysql
+    ```
 
-1. Customize the `main` method in `Example.java`
-   - Change the connection arguments in the `params.put()` calls
-     - Format `uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#section-readme), or keep it as is to use the data included with this example
-   - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.setSqlQuery()`
+2. Customize the `main` method in `Example.java`
+    - Change the connection arguments in the `params.put()` calls
+        - Format `uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#section-readme), or keep it as is to use the data included with this example
+    - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.setSqlQuery()`
 
-1. Run the Java program:
+3. Run the Java program:
 
-   ```sh
-   mvn compile exec:exec
-   ```
+    ```sh
+    mvn compile exec:exec
+    ```
 
 ### Clean up
 
-1. Stop MySQL
-   - If you installed it with Homebrew, run `brew services stop mysql`
+Stop the Docker container running MySQL:
+
+```sh
+docker stop some-mysql
+```

@@ -34,7 +34,7 @@ public class Example {
     public static void main(String[] args) throws Exception {
         Map<String, Object> params = new HashMap<>();
         JniDriver.PARAM_DRIVER.set(params, "mysql");
-        params.put("uri", "root@tcp(localhost:3306)/demo");
+        params.put("uri", "root:my-secret-pw@tcp(localhost:3306)/demo");
 
         try (BufferAllocator allocator = new RootAllocator();
              AdbcDatabase db = AdbcDriverManager.getInstance().connect(DRIVER_FACTORY, allocator, params);
