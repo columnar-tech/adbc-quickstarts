@@ -24,6 +24,7 @@ Any open source tool or vendor product that implements the MySQL protocol should
 
 - MariaDB
 - MySQL
+- TiDB
 
 ## Instructions
 
