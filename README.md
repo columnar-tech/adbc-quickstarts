@@ -49,6 +49,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
   - Neon
   - ParadeDB
   - PostgreSQL
+  - TimescaleDB
   - Yellowbrick
   - YugabyteDB
 - Amazon Redshift
