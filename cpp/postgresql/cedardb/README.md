@@ -46,7 +46,7 @@ limitations under the License.
 2. Start a CedarDB instance:
 
     ```sh
-    docker run --rm --name cedardb -p 5432:5432 -e CEDAR_PASSWORD=test cedardb/cedardb
+    docker run -d --rm --name cedardb -p 5432:5432 -e CEDAR_PASSWORD=test cedardb/cedardb
     ```
 
 ### Connect to CedarDB
