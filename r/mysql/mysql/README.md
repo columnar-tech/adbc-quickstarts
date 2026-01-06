@@ -25,44 +25,53 @@ limitations under the License.
 
 1. [Install R](https://www.r-project.org/)
 
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
-1. [Install MySQL](https://dev.mysql.com/downloads/installer/)
-   - On macOS, if you have Homebrew installed, run `brew install mysql`
+3. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
 
-1. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
-
-   ```r
-   install.packages(c("adbcdrivermanager", "arrow", "tibble"))
-   ```
+    ```r
+    install.packages(c("adbcdrivermanager", "arrow", "tibble"))
+    ```
 
 ### Set up MySQL
 
-1. Start MySQL
-   - If you installed it with Homebrew, run `brew services start mysql`
+1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
-1. Create a table in MySQL and load data into it by running `mysql -u root < games.sql`
+2. Start a MySQL instance:
+
+    ```sh
+    docker run -d --rm --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 mysql
+    ```
+
+3. Create a table in MySQL and load data into it:
+
+    ```sh
+    cat games.sql | docker exec -i some-mysql mysql --user=root --password=my-secret-pw
+    ```
 
 ### Connect to MySQL
 
 1. Install the MySQL ADBC driver:
 
-   ```sh
-   dbc install mysql
-   ```
+    ```sh
+    dbc install mysql
+    ```
 
-1. Customize the R script `main.R` as needed
-   - Change the connection arguments in `adbc_database_init()`
-     - Format `uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#section-readme), or keep it as is to use the data included with this example
-   - If you changed which database you're connecting to, also change the SQL SELECT statement in `read_adbc()`
+2. Customize the R script `main.R` as needed
+    - Change the connection arguments in `adbc_database_init()`
+        - Format `uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#section-readme), or keep it as is to use the data included with this example
+    - If you changed which database you're connecting to, also change the SQL SELECT statement in `read_adbc()`
 
-1. Run the R script:
+3. Run the R script:
 
-   ```sh
-   Rscript main.R
-   ```
+    ```sh
+    Rscript main.R
+    ```
 
 ### Clean up
 
-1. Stop MySQL
-   - If you installed it with Homebrew, run `brew services stop mysql`
+Stop the Docker container running MySQL:
+
+```sh
+docker stop some-mysql
+```

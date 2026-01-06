@@ -23,6 +23,8 @@ members = [
     "mssql",
     "mysql/mariadb",
     "mysql/mysql",
+    "mysql/tidb",
+    "mysql/vitess",
     "postgresql/citus",
     "postgresql/cockroachdb",
     "postgresql/neon",
