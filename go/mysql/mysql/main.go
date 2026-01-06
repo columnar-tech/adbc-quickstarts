@@ -27,7 +27,7 @@ func main() {
 
 	db, err := drv.NewDatabase(map[string]string{
 		"driver": "mysql",
-		"uri":    "root@tcp(localhost:3306)/demo",
+		"uri":    "root:my-secret-pw@tcp(localhost:3306)/demo",
 	})
 	if err != nil {
 		log.Fatal(err)
