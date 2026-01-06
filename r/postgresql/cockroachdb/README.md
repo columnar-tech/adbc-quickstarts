@@ -41,13 +41,13 @@ limitations under the License.
 
     ```sh
     docker run -d --rm \
-    --env COCKROACH_DATABASE=db \
-    --env COCKROACH_USER=username \
-    --env COCKROACH_PASSWORD=password \
-    --name=roach-single \
-    -p 26257:26257 \
-    -p 8080:8080 \
-    cockroachdb/cockroach:v25.4.2 start-single-node
+        --env COCKROACH_DATABASE=db \
+        --env COCKROACH_USER=username \
+        --env COCKROACH_PASSWORD=password \
+        --name=roach-single \
+        -p 26257:26257 \
+        -p 8080:8080 \
+        cockroachdb/cockroach:v25.4.2 start-single-node
     ```
 
 ### Connect to CockroachDB
