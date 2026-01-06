@@ -12,27 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "duckdb",
-    "flightsql/dremio",
-    "flightsql/gizmosql",
-    "flightsql/starrocks",
-    "mssql",
-    "mysql/mariadb",
-    "mysql/mysql",
-    "mysql/tidb",
-    "mysql/vitess",
-    "postgresql/citus",
-    "postgresql/neon",
-    "postgresql/paradedb",
-    "postgresql/postgresql",
-    "postgresql/yellowbrick",
-    "postgresql/yugabytedb",
-    "redshift",
-    "snowflake",
-    "sqlite",
-    "trino",
-]
+CXXFLAGS = -std=c++17 -Wall -Werror -I$(CONDA_PREFIX)/include
+LIBS = -L$(CONDA_PREFIX)/lib -ladbc_driver_manager -larrow -Wl,-rpath,$(CONDA_PREFIX)/lib
+
+tidb_demo: main.cpp
+	$(CXX) $(CXXFLAGS) -o tidb_demo main.cpp $(LIBS)
+
+clean:
+	rm -f tidb_demo
+
+.PHONY: clean
