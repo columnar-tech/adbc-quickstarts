@@ -59,6 +59,8 @@ limitations under the License.
         vitess/vttestserver:mysql80
     ```
 
+    Wait a few moments before continuing to the next step to allow the Vitess container to fully initialize.
+
 ### Connect to Vitess
 
 1. Install the MySQL ADBC driver:
