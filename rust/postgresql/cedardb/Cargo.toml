@@ -12,30 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "duckdb",
-    "flightsql/dremio",
-    "flightsql/gizmosql",
-    "flightsql/starrocks",
-    "mssql",
-    "mysql/mariadb",
-    "mysql/mysql",
-    "mysql/tidb",
-    "mysql/vitess",
-    "postgresql/cedardb",
-    "postgresql/citus",
-    "postgresql/cratedb",
-    "postgresql/neon",
-    "postgresql/paradedb",
-    "postgresql/postgresql",
-    "postgresql/timescaledb",
-    "postgresql/yellowbrick",
-    "postgresql/yugabytedb",
-    "redshift",
-    "snowflake",
-    "sqlite",
-    "trino",
-]
+[package]
+name = "cedardb"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+adbc_core = "0.21.0"
+adbc_driver_manager = "0.21.0"
+arrow = { version = "57.0.0", features = ["prettyprint"] }
+arrow-array = "57.0.0"
