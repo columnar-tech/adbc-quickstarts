@@ -12,28 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "duckdb",
-    "flightsql/dremio",
-    "flightsql/gizmosql",
-    "flightsql/starrocks",
-    "mssql",
-    "mysql/mariadb",
-    "mysql/mysql",
-    "mysql/tidb",
-    "mysql/vitess",
-    "postgresql/cedardb",
-    "postgresql/citus",
-    "postgresql/neon",
-    "postgresql/paradedb",
-    "postgresql/postgresql",
-    "postgresql/yellowbrick",
-    "postgresql/yugabytedb",
-    "redshift",
-    "snowflake",
-    "sqlite",
-    "trino",
-]
+library(adbcdrivermanager)
+
+drv <- adbc_driver("mysql")
+
+db <- adbc_database_init(
+  drv,
+  uri = "root@tcp(localhost:33577)/test"
+)
+
+con <- adbc_connection_init(db)
+
+con |>
+  read_adbc("SELECT VERSION()") |>
+  tibble::as_tibble() # or:
+  # arrow::as_arrow_table() # to keep result in Arrow format
+  # arrow::as_record_batch_reader() # for larger results
