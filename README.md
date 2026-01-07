@@ -45,7 +45,9 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
   - TiDB
   - Vitess
 - PostgreSQL
+  - CedarDB
   - Citus
+  - CockroachDB
   - CrateDB
   - Neon
   - ParadeDB

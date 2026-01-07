@@ -39,7 +39,9 @@ Simple Go examples showing how to use ADBC to connect, run a query, and return t
     - TiDB
     - Vitess
 - PostgreSQL
+  - CedarDB
   - Citus
+  - CockroachDB
   - CrateDB
   - Neon
   - ParadeDB
