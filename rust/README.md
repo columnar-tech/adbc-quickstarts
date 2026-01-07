@@ -40,6 +40,7 @@ Simple Rust examples showing how to use ADBC to connect, run a query, and return
     - Vitess
 - PostgreSQL
   - Citus
+  - CrateDB
   - Neon
   - ParadeDB
   - PostgreSQL

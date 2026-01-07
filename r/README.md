@@ -40,6 +40,7 @@ Simple R examples showing how to use ADBC to connect, run a query, and return th
     - Vitess
 - PostgreSQL
   - Citus
+  - CrateDB
   - Neon
   - ParadeDB
   - PostgreSQL
