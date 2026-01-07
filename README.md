@@ -34,17 +34,17 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 ## Source systems covered
 - Google BigQuery
 - DuckDB
-- Apache Arrow Flight SQL
+- Apache Arrow Flight SQL-compatible systems
   - Dremio
   - GizmoSQL
   - StarRocks
 - Microsoft SQL Server
-- MySQL
+- MySQL-compatible systems
   - MariaDB
   - MySQL
   - TiDB
   - Vitess
-- PostgreSQL
+- PostgreSQL-compatible systems
   - CedarDB
   - Citus
   - CockroachDB
