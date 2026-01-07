@@ -12,17 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "duckdb",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "postgresql/*",
-    "redshift",
-    "snowflake",
-    "sqlite",
-    "trino",
-]
+library(adbcdrivermanager)
+
+drv <- adbc_driver("postgresql")
+
+db <- adbc_database_init(
+  drv,
+  uri = "postgresql://crate@localhost:5432/crate"
+)
+
+con <- adbc_connection_init(db)
+
+stmt <- adbc_statement_init(con)
+adbc_statement_set_options(
+  stmt,
+  list(
+    "adbc.postgresql.use_copy" = "false"
+  )
+)
+adbc_statement_set_sql_query(stmt, "SELECT version()")
+
+adbc_statement_execute_query(stmt) |>
+  tibble::as_tibble() # or:
+  # arrow::as_arrow_table() # to keep result in Arrow format
+  # arrow::as_record_batch_reader() # for larger results

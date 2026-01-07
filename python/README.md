@@ -39,11 +39,14 @@ Simple Python examples showing how to use ADBC to connect, run a query, and retu
   - TiDB
   - Vitess
 - PostgreSQL
+  - CedarDB
   - Citus
   - CockroachDB
+  - CrateDB
   - Neon
   - ParadeDB
   - PostgreSQL
+  - TimescaleDB
   - Yellowbrick
   - YugabyteDB
 - Amazon Redshift
