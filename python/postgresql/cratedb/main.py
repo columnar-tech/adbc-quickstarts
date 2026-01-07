@@ -22,11 +22,11 @@ from adbc_driver_manager import dbapi
 with (
     dbapi.connect(
         driver="postgresql",
-        db_kwargs={
-            "uri": "postgresql://crate@localhost:5432/crate",
-        },
+        db_kwargs={"uri": "postgresql://crate@localhost:5432/crate"},
     ) as connection,
-    connection.cursor(adbc_stmt_kwargs={"adbc.postgresql.use_copy": False}) as cursor,
+    connection.cursor(
+        adbc_stmt_kwargs={"adbc.postgresql.use_copy": False}
+    ) as cursor,
 ):
     cursor.execute("SELECT version()")
     table = cursor.fetch_arrow_table()
