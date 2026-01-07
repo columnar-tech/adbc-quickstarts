@@ -27,7 +27,7 @@ stmt <- adbc_statement_init(con)
 adbc_statement_set_options(
   stmt,
   list(
-    "adbc.postgresql.use_copy" = "false"
+    "adbc.postgresql.use_copy"="false"
   )
 )
 adbc_statement_set_sql_query(stmt, "SELECT version()")
