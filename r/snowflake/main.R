@@ -1,4 +1,4 @@
-# Copyright 2025 Columnar Technologies Inc.
+# Copyright 2026 Columnar Technologies Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ db <- adbc_database_init(
 
   adbc.snowflake.sql.account = "ACCOUNT-IDENT",
   adbc.snowflake.sql.warehouse = "MY_WAREHOUSE",
-  adbc.snowflake.sql.role = "MY_ROLE"
+  adbc.snowflake.sql.role = "MY_ROLE",
   adbc.snowflake.sql.db = "SNOWFLAKE_SAMPLE_DATA",
   adbc.snowflake.sql.schema = "TPCH_SF1",
 )
