@@ -29,7 +29,7 @@ db <- adbc_database_init(
 
   adbc.snowflake.sql.account="ACCOUNT-IDENT",
   adbc.snowflake.sql.warehouse="MY_WAREHOUSE",
-  adbc.snowflake.sql.role="MY_ROLE"
+  adbc.snowflake.sql.role="MY_ROLE",
   adbc.snowflake.sql.db="SNOWFLAKE_SAMPLE_DATA",
   adbc.snowflake.sql.schema="TPCH_SF1",
 )
