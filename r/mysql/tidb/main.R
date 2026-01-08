@@ -18,7 +18,7 @@ drv <- adbc_driver("mysql")
 
 db <- adbc_database_init(
   drv,
-  uri="root@tcp(localhost:4000)/test"
+  uri = "root@tcp(localhost:4000)/test"
 )
 
 con <- adbc_connection_init(db)

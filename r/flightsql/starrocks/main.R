@@ -18,9 +18,9 @@ drv <- adbc_driver("flightsql")
 
 db <- adbc_database_init(
   drv,
-  uri="grpc://localhost:9408",
-  username="root",
-  password=""
+  uri = "grpc://localhost:9408",
+  username = "root",
+  password = ""
 )
 
 con <- adbc_connection_init(db)

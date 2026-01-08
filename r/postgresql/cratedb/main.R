@@ -18,7 +18,7 @@ drv <- adbc_driver("postgresql")
 
 db <- adbc_database_init(
   drv,
-  uri="postgresql://crate@localhost:5432/crate"
+  uri = "postgresql://crate@localhost:5432/crate"
 )
 
 con <- adbc_connection_init(db)
@@ -27,7 +27,7 @@ stmt <- adbc_statement_init(con)
 adbc_statement_set_options(
   stmt,
   list(
-    "adbc.postgresql.use_copy"="false"
+    "adbc.postgresql.use_copy" = "false"
   )
 )
 adbc_statement_set_sql_query(stmt, "SELECT version()")

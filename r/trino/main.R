@@ -18,7 +18,7 @@ drv <- adbc_driver("trino")
 
 db <- adbc_database_init(
   drv,
-  uri="http://user@localhost:8080?catalog=tpch&schema=tiny"
+  uri = "http://user@localhost:8080?catalog=tpch&schema=tiny"
 )
 
 con <- adbc_connection_init(db)
