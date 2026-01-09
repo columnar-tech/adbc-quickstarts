@@ -19,12 +19,13 @@
 
 from adbc_driver_manager import dbapi
 
-with dbapi.connect(
-    driver="postgresql",
-    db_kwargs={
-        "uri": "postgresql://postgres:mysecretpassword@localhost:5432/demo"
-    }
-) as con, con.cursor() as cursor:
+with (
+    dbapi.connect(
+        driver="postgresql",
+        db_kwargs={"uri": "postgresql://postgres:mysecretpassword@localhost:5432/demo"},
+    ) as con,
+    con.cursor() as cursor,
+):
     cursor.execute("SELECT * FROM games;")
     table = cursor.fetch_arrow_table()
 

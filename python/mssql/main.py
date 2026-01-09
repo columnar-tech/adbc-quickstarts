@@ -19,12 +19,13 @@
 
 from adbc_driver_manager import dbapi
 
-with dbapi.connect(
-    driver="mssql",
-    db_kwargs={
-        "uri": "sqlserver://sa:Co1umn&r@localhost:1433?database=demo"
-    }
-) as con, con.cursor() as cursor:
+with (
+    dbapi.connect(
+        driver="mssql",
+        db_kwargs={"uri": "sqlserver://sa:Co1umn&r@localhost:1433?database=demo"},
+    ) as con,
+    con.cursor() as cursor,
+):
     cursor.execute("SELECT * FROM games;")
     table = cursor.fetch_arrow_table()
 
