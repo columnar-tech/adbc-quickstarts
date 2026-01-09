@@ -26,9 +26,9 @@ func main() {
 	var drv drivermgr.Driver
 
 	db, err := drv.NewDatabase(map[string]string{
-		"driver":                         "bigquery",
-		"adbc.bigquery.sql.project_id":   "my-gcp-project",
-		"adbc.bigquery.sql.dataset_id":   "bigquery-public-data",
+		"driver":                       "bigquery",
+		"adbc.bigquery.sql.project_id": "my-gcp-project",
+		"adbc.bigquery.sql.dataset_id": "bigquery-public-data",
 	})
 	if err != nil {
 		log.Fatal(err)
