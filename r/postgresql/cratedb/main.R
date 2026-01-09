@@ -34,5 +34,5 @@ adbc_statement_set_sql_query(stmt, "SELECT version()")
 
 adbc_statement_execute_query(stmt) |>
   tibble::as_tibble() # or:
-  # arrow::as_arrow_table() # to keep result in Arrow format
-  # arrow::as_record_batch_reader() # for larger results
+# arrow::as_arrow_table() # to keep result in Arrow format
+# arrow::as_record_batch_reader() # for larger results

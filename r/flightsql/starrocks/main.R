@@ -28,5 +28,5 @@ con <- adbc_connection_init(db)
 con |>
   read_adbc("SELECT version();") |>
   tibble::as_tibble() # or:
-  # arrow::as_arrow_table() # to keep result in Arrow format
-  # arrow::as_record_batch_reader() # for larger results
+# arrow::as_arrow_table() # to keep result in Arrow format
+# arrow::as_record_batch_reader() # for larger results
