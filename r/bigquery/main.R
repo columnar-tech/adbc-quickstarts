@@ -18,8 +18,8 @@ drv <- adbc_driver("bigquery")
 
 db <- adbc_database_init(
   drv,
-  adbc.bigquery.sql.project_id="my-gcp-project",
-  adbc.bigquery.sql.dataset_id="bigquery-public-data"
+  adbc.bigquery.sql.project_id = "my-gcp-project",
+  adbc.bigquery.sql.dataset_id = "bigquery-public-data"
 )
 
 con <- adbc_connection_init(db)

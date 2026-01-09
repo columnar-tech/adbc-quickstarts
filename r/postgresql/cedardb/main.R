@@ -18,7 +18,7 @@ drv <- adbc_driver("postgresql")
 
 db <- adbc_database_init(
   drv,
-  uri="postgresql://postgres:test@localhost:5432/postgres"
+  uri = "postgresql://postgres:test@localhost:5432/postgres"
 )
 
 con <- adbc_connection_init(db)

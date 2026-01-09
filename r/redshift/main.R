@@ -19,18 +19,18 @@ drv <- adbc_driver("redshift")
 db <- adbc_database_init(
   drv,
 
-  uri="postgresql://localhost:5439", # for Redshift Serverless with bastion host
-  #uri="postgresql://localhost:5440", # for Redshift Provisioned with bastion host
-  #uri="postgresql://<cluster hostname>:<cluster port>", # for direct connection
+  uri = "postgresql://localhost:5439", # for Redshift Serverless with bastion host
+  #uri = "postgresql://localhost:5440", # for Redshift Provisioned with bastion host
+  #uri = "postgresql://<cluster hostname>:<cluster port>", # for direct connection
 
-  redshift.cluster_type="redshift-serverless", # for Redshift Serverless
-  #redshift.cluster_type="redshift-iam", # for Redshift Provisioned with IAM auth
-  #redshift.cluster_type="redshift", # for Redshift Provisioned with user/password auth
+  redshift.cluster_type = "redshift-serverless", # for Redshift Serverless
+  #redshift.cluster_type = "redshift-iam", # for Redshift Provisioned with IAM auth
+  #redshift.cluster_type = "redshift", # for Redshift Provisioned with user/password auth
 
-  redshift.workgroup_name="<WORKGROUP_NAME>", # for Redshift Serverless
-  #redshift.cluster_identifier="<CLUSTER IDENTIFIER>", # for Redshift Provisioned
+  redshift.workgroup_name = "<WORKGROUP_NAME>", # for Redshift Serverless
+  #redshift.cluster_identifier = "<CLUSTER IDENTIFIER>", # for Redshift Provisioned
 
-  redshift.db_name="sample_data_dev"
+  redshift.db_name = "sample_data_dev"
 )
 
 con <- adbc_connection_init(db)

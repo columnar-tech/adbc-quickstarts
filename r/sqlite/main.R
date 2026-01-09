@@ -18,7 +18,7 @@ drv <- adbc_driver("sqlite")
 
 db <- adbc_database_init(
   drv,
-  uri="games.sqlite"
+  uri = "games.sqlite"
 )
 
 con <- adbc_connection_init(db)
