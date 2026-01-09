@@ -19,14 +19,17 @@
 
 from adbc_driver_manager import dbapi
 
-with dbapi.connect(
-    driver="flightsql",
-    db_kwargs={
-        "uri": "grpc+tcp://localhost:32010",
-        "username": "admin",
-        "password": "password1",
-    }
-) as con, con.cursor() as cursor:
+with (
+    dbapi.connect(
+        driver="flightsql",
+        db_kwargs={
+            "uri": "grpc+tcp://localhost:32010",
+            "username": "admin",
+            "password": "password1",
+        },
+    ) as con,
+    con.cursor() as cursor,
+):
     cursor.execute("""
       SELECT AVG(tip_amount)
       FROM Samples."samples.dremio.com"."NYC-taxi-trips-iceberg"

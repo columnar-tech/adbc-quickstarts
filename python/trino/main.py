@@ -19,12 +19,13 @@
 
 from adbc_driver_manager import dbapi
 
-with dbapi.connect(
-    driver="trino",
-    db_kwargs={
-        "uri": "http://user@localhost:8080?catalog=tcph&schema=tiny"
-    }
-) as con, con.cursor() as cursor:
+with (
+    dbapi.connect(
+        driver="trino",
+        db_kwargs={"uri": "http://user@localhost:8080?catalog=tcph&schema=tiny"},
+    ) as con,
+    con.cursor() as cursor,
+):
     cursor.execute("""
       SELECT nationkey, name, regionkey
       FROM tpch.tiny.nation
