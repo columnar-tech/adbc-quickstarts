@@ -27,7 +27,7 @@ func main() {
 
 	db, err := drv.NewDatabase(map[string]string{
 		"driver": "sqlite",
-		"uri":   "games.sqlite",
+		"uri":    "games.sqlite",
 	})
 	if err != nil {
 		log.Fatal(err)
