@@ -61,6 +61,14 @@ limitations under the License.
 1. Customize the Go program `main.go` as needed
    - Change the connection arguments in the `NewDatabase()` call
      - Change `uri` as needed, using query parameters to add more connection arguments, or keep it as is to use the data included with this example
+
+   > [!TIP]
+   > To use Microsoft Entra ID for authentication, [install the Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli), log in using the `az login` command, and add `fedauth=` to your connection URI. For example:
+   >
+   > ```
+   > sqlserver://my-database-endpoint.database.windows.net:1433?database=my-database-name&fedauth=ActiveDirectoryDefault
+   > ```
+
    - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.SetSqlQuery()`
 
 1. Run the Go program:
