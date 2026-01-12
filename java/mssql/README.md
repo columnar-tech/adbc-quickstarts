@@ -58,7 +58,7 @@ limitations under the License.
    dbc install mssql
    ```
 
-1. Customize the `main` method in `Example.java`
+2. Customize the `main` method in `Example.java`
    - Change the connection arguments in the `params.put()` calls
      - Change `uri` as needed, using query parameters to add more connection arguments, or keep it as is to use the data included with this example
    - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.setSqlQuery()`
@@ -70,7 +70,7 @@ limitations under the License.
 > sqlserver://my-database-endpoint.database.windows.net:1433?database=my-database-name&fedauth=ActiveDirectoryDefault
 > ```
 
-1. Run the Java program:
+3. Run the Java program:
 
    ```sh
    mvn compile exec:exec

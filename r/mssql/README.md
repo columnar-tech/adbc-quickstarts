@@ -64,7 +64,7 @@ limitations under the License.
    dbc install mssql
    ```
 
-1. Customize the R script `main.R` as needed
+2. Customize the R script `main.R` as needed
    - Change the connection arguments in `adbc_database_init()`
      - Change `uri` as needed, using query parameters to add more connection arguments, or keep it as is to use the data included with this example
    - If you changed which database you're connecting to, also change the SQL SELECT statement in `read_adbc()`
@@ -76,7 +76,7 @@ limitations under the License.
 > sqlserver://my-database-endpoint.database.windows.net:1433?database=my-database-name&fedauth=ActiveDirectoryDefault
 > ```
 
-1. Run the R script:
+3. Run the R script:
 
    ```sh
    Rscript main.R

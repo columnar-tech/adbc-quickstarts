@@ -70,7 +70,7 @@ limitations under the License.
    dbc install --level user mssql
    ```
 
-1. Customize the C++ program `main.cpp` as needed
+2. Customize the C++ program `main.cpp` as needed
    - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
      - Change `uri` as needed, using query parameters to add more connection arguments, or keep it as is to use the data included with this example
    - If you changed which database you're connecting to, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`
@@ -82,7 +82,7 @@ limitations under the License.
 > sqlserver://my-database-endpoint.database.windows.net:1433?database=my-database-name&fedauth=ActiveDirectoryDefault
 > ```
 
-1. Build and run the C++ program:
+3. Build and run the C++ program:
 
    Using Make:
    ```sh
