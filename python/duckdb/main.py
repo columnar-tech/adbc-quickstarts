@@ -19,12 +19,10 @@
 
 from adbc_driver_manager import dbapi
 
-with dbapi.connect(
-    driver="duckdb",
-    db_kwargs={
-        "path": "games.duckdb"
-    }
-) as con, con.cursor() as cursor:
+with (
+    dbapi.connect(driver="duckdb", db_kwargs={"path": "games.duckdb"}) as con,
+    con.cursor() as cursor,
+):
     cursor.execute("SELECT * FROM games;")
     table = cursor.fetch_arrow_table()
 
