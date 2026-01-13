@@ -37,6 +37,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 - Apache Arrow Flight SQL-compatible systems
   - Dremio
   - GizmoSQL
+  - InfluxDB
   - StarRocks
 - Microsoft SQL Server
 - MySQL-compatible systems

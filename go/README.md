@@ -31,6 +31,7 @@ Simple Go examples showing how to use ADBC to connect, run a query, and return t
 - Apache Arrow Flight SQL
   - Dremio
   - GizmoSQL
+  - InfluxDB
   - StarRocks
 - Microsoft SQL Server
 - MySQL
