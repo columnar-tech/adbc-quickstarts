@@ -29,6 +29,7 @@ This directory contains examples showing how to use ADBC to connect C++ applicat
 Any open source tool or vendor product that implements the MySQL protocol should work with the ADBC driver for MySQL. The examples included here focus on the following systems:
 
 - [MySQL](./mysql)
+- [OceanBase Database](./oceanbase)
 - [TiDB](./tidb)
 - [Vitess](./vitess)
 

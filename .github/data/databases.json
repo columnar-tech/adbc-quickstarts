@@ -97,6 +97,10 @@
     "name": "Neon",
     "parent": "postgresql"
   },
+  "oceanbase": {
+    "name": "OceanBase Database",
+    "parent": "mysql"
+  },
   "oracle": {
     "name": "Oracle Database",
     "parent": null
