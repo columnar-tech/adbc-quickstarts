@@ -36,9 +36,6 @@ limitations under the License.
    dbc install duckdb
    ```
 
-   > [!NOTE]
-   > If MotherDuck reports that you're not using a compatible DuckDB version, you can install the specific version it requires by running `dbc install "duckdb=X.Y.Z"`.
-
 1. Customize the Python script `main.py` as needed
    - Change the connection arguments in `db_kwargs`
      - Set `path` to a MotherDuck database path (prefixed with `md:`), or keep it set to `md:sample_data` to use MotherDuck's sample data
@@ -49,3 +46,9 @@ limitations under the License.
    ```sh
    uv run main.py
    ```
+
+> [!NOTE]
+> If MotherDuck reports that you are not using a compatible DuckDB version, you can install the specific version it requires by running:
+> ```sh
+> dbc install "duckdb=X.Y.Z"`
+> ```
