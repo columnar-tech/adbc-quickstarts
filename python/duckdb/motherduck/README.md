@@ -26,7 +26,7 @@ limitations under the License.
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
-1. (Optional) Create an access token in MotherDuck and save it as the environment variable `motherduck_token` as described at [Authenticating to MotherDuck](https://motherduck.com/docs/key-tasks/authenticating-and-connecting-to-motherduck/authenticating-to-motherduck/#authentication-using-an-access-token). If you skip this step, a browser window will open every time ADBC connects to MotherDuck, allowing you to authenticate via OAuth 2.0.
+1. (Optional) Create an access token in MotherDuck and save it as the environment variable `motherduck_token` as described at [Authenticating to MotherDuck](https://motherduck.com/docs/key-tasks/authenticating-and-connecting-to-motherduck/authenticating-to-motherduck/#authentication-using-an-access-token). If you skip this step, a browser window will open each time you connect, asking you to log in or confirm access.
 
 ### Connect to MotherDuck
 
