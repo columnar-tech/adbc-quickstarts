@@ -50,5 +50,5 @@ limitations under the License.
 > [!NOTE]
 > If MotherDuck reports that you are not using a compatible DuckDB version, you can install the specific version it requires by running:
 > ```sh
-> dbc install "duckdb=X.Y.Z"`
+> dbc install "duckdb=X.Y.Z"
 > ```
