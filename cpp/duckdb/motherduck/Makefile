@@ -12,17 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "duckdb/*",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "postgresql/*",
-    "redshift",
-    "snowflake",
-    "sqlite",
-    "trino",
-]
+CXXFLAGS = -std=c++17 -Wall -Werror -I$(CONDA_PREFIX)/include
+LIBS = -L$(CONDA_PREFIX)/lib -ladbc_driver_manager -larrow -Wl,-rpath,$(CONDA_PREFIX)/lib
+
+motherduck_demo: main.cpp
+	$(CXX) $(CXXFLAGS) -o motherduck_demo main.cpp $(LIBS)
+
+clean:
+	rm -f motherduck_demo
+
+.PHONY: clean

@@ -16,35 +16,10 @@ limitations under the License.
 
 # Connecting R and DuckDB with ADBC
 
+This directory contains examples showing how to use ADBC to connect R applications to DuckDB and MotherDuck.
+
+Both DuckDB and MotherDuck use the ADBC driver for DuckDB.
+
 ## Instructions
 
-### Prerequisites
-
-1. [Install R](https://www.r-project.org/)
-
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
-
-1. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
-
-   ```r
-   install.packages(c("adbcdrivermanager", "arrow", "tibble"))
-   ```
-
-### Connect to DuckDB
-
-1. Install the DuckDB ADBC driver:
-
-   ```sh
-   dbc install duckdb
-   ```
-
-1. Customize the R script `main.R` as needed
-   - Change the connection arguments in `adbc_database_init()`
-     - Set `path` to the location of the DuckDB database file you want to query, or keep it set to `games.duckdb` to use the database file included with this example
-   - If you changed the database file, also change the SQL SELECT statement in `read_adbc()`
-
-1. Run the R script:
-
-   ```sh
-   Rscript main.R
-   ```
+Each subdirectory contains its own README with specific instructions.

@@ -16,29 +16,10 @@ limitations under the License.
 
 # Connecting Java and DuckDB with ADBC
 
+This directory contains examples showing how to use ADBC to connect Java applications to DuckDB and MotherDuck.
+
+Both DuckDB and MotherDuck use the ADBC driver for DuckDB.
+
 ## Instructions
 
-### Prerequisites
-
-1. [Install Maven](https://maven.apache.org/install.html)
-
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
-
-### Connect to DuckDB
-
-1. Install the DuckDB ADBC driver:
-
-   ```sh
-   dbc install duckdb
-   ```
-
-1. Customize the `main` method in `Example.java`
-   - Change the connection arguments in the `params.put()` calls
-     - Set `path` to the location of the DuckDB database file you want to query, or keep it set to `games.duckdb` to use the database file included with this example
-   - If you changed the database file, also change the SQL SELECT statement in `stmt.setSqlQuery()`
-
-1. Run the Java program:
-
-   ```sh
-   mvn compile exec:exec
-   ```
+Each subdirectory contains its own README with specific instructions.
