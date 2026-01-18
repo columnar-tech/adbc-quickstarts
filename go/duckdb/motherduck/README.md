@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Python and MotherDuck with ADBC
+# Connecting Go and MotherDuck with ADBC
 
 ## Instructions
 
@@ -22,7 +22,7 @@ limitations under the License.
 
 1. [Create a MotherDuck account](https://motherduck.com/)
 
-1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+1. [Install Go](https://go.dev/doc/install)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
@@ -36,15 +36,16 @@ limitations under the License.
    dbc install duckdb
    ```
 
-1. Customize the Python script `main.py` as needed
-   - Change the connection arguments in `db_kwargs`
+1. Customize the Go program `main.go` as needed
+   - Change the connection arguments in the `NewDatabase()` call
      - Set `path` to the name of a MotherDuck database (prefixed with `md:`), or keep it set to `md:sample_data` to use MotherDuck's sample data
-   - Change the SQL SELECT statement in `cursor.execute()` to query the tables in your database
+   - Change the SQL SELECT statement in `stmt.SetSqlQuery()` to query the tables in your database
 
-1. Run the Python script:
+1. Run the Go program:
 
    ```sh
-   uv run main.py
+   go mod tidy
+   go run main.go
    ```
 
 > [!NOTE]
