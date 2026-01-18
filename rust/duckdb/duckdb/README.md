@@ -14,48 +14,31 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Rust ADBC Quickstarts
+# Connecting Rust and DuckDB with ADBC
 
-Simple Rust examples showing how to use ADBC to connect, run a query, and return the results.
+## Instructions
 
-## Prerequisites
+### Prerequisites
 
 1. [Install Rust](https://www.rust-lang.org/tools/install)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
-## Source systems covered
+### Connect to DuckDB
 
-- Google BigQuery
-- DuckDB-compatible systems
-  - DuckDB
-  - MotherDuck
-- Apache Arrow Flight SQL-compatible systems
-  - Dremio
-  - GizmoSQL
-  - StarRocks
-- Microsoft SQL Server
-- MySQL-compatible systems
-    - MariaDB
-    - MySQL
-    - TiDB
-    - Vitess
-- PostgreSQL-compatible systems
-  - CedarDB
-  - Citus
-  - CockroachDB
-  - CrateDB
-  - Neon
-  - ParadeDB
-  - PostgreSQL
-  - TimescaleDB
-  - Yellowbrick
-  - YugabyteDB
-- Amazon Redshift
-- Snowflake
-- SQLite
-- Trino
+1. Install the DuckDB ADBC driver:
 
-## Instructions
+   ```sh
+   dbc install duckdb
+   ```
 
-Each subdirectory contains its own README with specific instructions.
+1. Customize `src/main.rs` as needed
+   - Change the database arguments in `opts`
+     - Replace "games.duckdb" to the location of the DuckDB database file you want to query, or keep it set to `games.duckdb` to use the database file included with this example
+   - If you changed the database file, also change the SQL SELECT statement in `statement.set_sql_query()`
+
+1. Run the Rust program:
+
+   ```sh
+   cargo run
+   ```

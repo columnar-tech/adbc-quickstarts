@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Python and MotherDuck with ADBC
+# Connecting R and MotherDuck with ADBC
 
 ## Instructions
 
@@ -22,9 +22,15 @@ limitations under the License.
 
 1. [Create a MotherDuck account](https://motherduck.com/)
 
-1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+1. [Install R](https://www.r-project.org/)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+
+1. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
+
+   ```r
+   install.packages(c("adbcdrivermanager", "arrow", "tibble"))
+   ```
 
 1. (Optional) Create an access token in MotherDuck and save it as the environment variable `motherduck_token` as described at [Authenticating to MotherDuck](https://motherduck.com/docs/key-tasks/authenticating-and-connecting-to-motherduck/authenticating-to-motherduck/#authentication-using-an-access-token). If you skip this step, a browser window will open each time you connect, asking you to log in or confirm access.
 
@@ -36,15 +42,15 @@ limitations under the License.
    dbc install duckdb
    ```
 
-1. Customize the Python script `main.py` as needed
-   - Change the connection arguments in `db_kwargs`
+1. Customize the R script `main.R` as needed
+   - Change the connection arguments in `adbc_database_init()`
      - Set `path` to the name of a MotherDuck database (prefixed with `md:`), or keep it set to `md:sample_data` to use MotherDuck's sample data
-   - Change the SQL SELECT statement in `cursor.execute()` to query the tables in your database
+   - Change the SQL SELECT statement in `read_adbc()` to query the tables in your database
 
-1. Run the Python script:
+1. Run the R script:
 
    ```sh
-   uv run main.py
+   Rscript main.R
    ```
 
 > [!NOTE]

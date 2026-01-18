@@ -27,18 +27,20 @@ Simple Python examples showing how to use ADBC to connect, run a query, and retu
 ## Source systems covered
 
 - Google BigQuery
-- DuckDB
-- Apache Arrow Flight SQL
+- DuckDB-compatible systems
+  - DuckDB
+  - MotherDuck
+- Apache Arrow Flight SQL-compatible systems
   - Dremio
   - GizmoSQL
   - StarRocks
 - Microsoft SQL Server
-- MySQL
+- MySQL-compatible systems
   - MariaDB
   - MySQL
   - TiDB
   - Vitess
-- PostgreSQL
+- PostgreSQL-compatible systems
   - CedarDB
   - Citus
   - CockroachDB
