@@ -39,6 +39,7 @@ Simple Go examples showing how to use ADBC to connect, run a query, and return t
 - MySQL-compatible systems
     - MariaDB
     - MySQL
+    - OceanBase Database
     - TiDB
     - Vitess
 - PostgreSQL-compatible systems
