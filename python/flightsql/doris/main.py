@@ -13,11 +13,8 @@
 # limitations under the License.
 
 # /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "adbc-driver-manager>=1.10.0",
-#     "pyarrow>=22.0.0",
-# ]
+# requires-python = ">=3.10"
+# dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
 # ///
 
 from adbc_driver_manager import dbapi
