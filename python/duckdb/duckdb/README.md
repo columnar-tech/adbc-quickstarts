@@ -14,49 +14,31 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Python ADBC Quickstarts
+# Connecting Python and DuckDB with ADBC
 
-Simple Python examples showing how to use ADBC to connect, run a query, and return the results.
+## Instructions
 
-## Prerequisites
+### Prerequisites
 
 1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
-## Source systems covered
+### Connect to DuckDB
 
-- Google BigQuery
-- DuckDB-compatible systems
-  - DuckDB
-  - MotherDuck
-- Apache Arrow Flight SQL-compatible systems
-  - Dremio
-  - GizmoSQL
-  - InfluxDB
-  - StarRocks
-- Microsoft SQL Server
-- MySQL-compatible systems
-  - MariaDB
-  - MySQL
-  - TiDB
-  - Vitess
-- PostgreSQL-compatible systems
-  - CedarDB
-  - Citus
-  - CockroachDB
-  - CrateDB
-  - Neon
-  - ParadeDB
-  - PostgreSQL
-  - TimescaleDB
-  - Yellowbrick
-  - YugabyteDB
-- Amazon Redshift
-- Snowflake
-- SQLite
-- Trino
+1. Install the DuckDB ADBC driver:
 
-## Instructions
+   ```sh
+   dbc install duckdb
+   ```
 
-Each subdirectory contains its own README with specific instructions.
+1. Customize the Python script `main.py` as needed
+   - Change the connection arguments in `db_kwargs`
+     - Set `path` to the location of the DuckDB database file you want to query, or keep it set to `games.duckdb` to use the database file included with this example
+   - If you changed the database file, also change the SQL SELECT statement in `cursor.execute()`
+
+1. Run the Python script:
+
+   ```sh
+   uv run main.py
+   ```
