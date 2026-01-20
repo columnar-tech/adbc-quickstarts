@@ -34,6 +34,7 @@ Any open source tool or vendor product that implements PostgreSQL frontend/backe
 - [CrateDB](./cratedb)
 - [Neon](./neon)
 - [ParadeDB](./paradedb)
+- [PolarDB for PostgreSQL](./polardb-pg)
 - [PostgreSQL](./postgresql)
 - [Supabase](./supabase)
 - [TimescaleDB](./timescaledb)
