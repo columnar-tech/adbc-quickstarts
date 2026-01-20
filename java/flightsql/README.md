@@ -20,12 +20,14 @@ This directory contains examples showing how to use ADBC to connect Java applica
 
 ## Source systems covered
 
-Any open source tool or vendor product that implements Arrow Flight SQL should work with the ADBC driver for Flight SQL. The examples included here focus on three specific systems:
+Any open source tool or vendor product that implements Arrow Flight SQL should work with the ADBC driver for Flight SQL. The examples included here focus on the following systems:
+
 - Dremio
 - GizmoSQL
+- InfluxDB
 - StarRocks
 
-Other systems that support Arrow Flight SQL include Apache Doris, Deephaven, InfluxDB, and Spice. Examples for these are not yet included here. PRs are welcome if you'd like to contribute.
+Other systems that support Arrow Flight SQL include Apache Doris, Deephaven, and Spice. Examples for these are not yet included here. PRs are welcome if you'd like to contribute.
 
 ## Instructions
 
