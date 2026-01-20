@@ -30,8 +30,8 @@ with (
             "adbc.flight.sql.authorization_header": "Bearer YOUR_AUTH_TOKEN",
             "adbc.flight.sql.rpc.call_header.database": "_internal",
         },
-    ) as connection,
-    connection.cursor() as cursor,
+    ) as con,
+    con.cursor() as cursor,
 ):
     cursor.execute("SELECT * FROM information_schema.tables")
     table = cursor.fetch_arrow_table()

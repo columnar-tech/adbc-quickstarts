@@ -27,8 +27,8 @@ with (
             "username": "root",
             "password": "",
         },
-    ) as connection,
-    connection.cursor() as cursor,
+    ) as con,
+    con.cursor() as cursor,
 ):
     cursor.execute("SELECT version();")
     table = cursor.fetch_arrow_table()
