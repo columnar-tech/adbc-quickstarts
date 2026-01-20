@@ -38,6 +38,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
   - Apache Doris
   - Dremio
   - GizmoSQL
+  - InfluxDB
   - StarRocks
 - Microsoft SQL Server
 - MySQL-compatible systems

@@ -32,6 +32,7 @@ Simple Go examples showing how to use ADBC to connect, run a query, and return t
   - Apache Doris
   - Dremio
   - GizmoSQL
+  - InfluxDB
   - StarRocks
 - Microsoft SQL Server
 - MySQL

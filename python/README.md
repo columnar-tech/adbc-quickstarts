@@ -32,6 +32,7 @@ Simple Python examples showing how to use ADBC to connect, run a query, and retu
   - Apache Doris
   - Dremio
   - GizmoSQL
+  - InfluxDB
   - StarRocks
 - Microsoft SQL Server
 - MySQL

@@ -58,12 +58,19 @@ limitations under the License.
    dbc install mssql
    ```
 
-1. Customize the Python script `main.py` as needed
+2. Customize the Python script `main.py` as needed
    - Change the connection arguments in `db_kwargs`
      - Change `uri` as needed, using query parameters to add more connection arguments, or keep it as is to use the data included with this example
    - If you changed which database you're connecting to, also change the SQL SELECT statement in `cursor.execute()`
 
-1. Run the Python script:
+> [!TIP]
+> To use Microsoft Entra ID for authentication, [install the Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli), log in using the `az login` command, and add `fedauth=` to your connection URI. For example:
+>
+> ```
+> sqlserver://my-database-endpoint.database.windows.net:1433?database=my-database-name&fedauth=ActiveDirectoryDefault
+> ```
+
+3. Run the Python script:
 
    ```sh
    uv run main.py

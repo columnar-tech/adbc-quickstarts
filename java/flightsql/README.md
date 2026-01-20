@@ -25,6 +25,7 @@ Any open source tool or vendor product that implements Arrow Flight SQL should w
 - Apache Doris
 - Dremio
 - GizmoSQL
+- InfluxDB
 - StarRocks
 
 Other systems that support Arrow Flight SQL include Deephaven and Spice. Examples for these are not yet included here. PRs are welcome if you'd like to contribute.

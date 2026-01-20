@@ -32,6 +32,7 @@ Simple R examples showing how to use ADBC to connect, run a query, and return th
   - Apache Doris
   - Dremio
   - GizmoSQL
+  - InfluxDB
   - StarRocks
 - Microsoft SQL Server
 - MySQL
