@@ -18,6 +18,8 @@ limitations under the License.
 
 ## Instructions
 
+This example uses [InfluxDB](https://www.influxdata.com/), a time series database that supports Arrow Flight SQL.
+
 > [!TIP]
 > If you already have an InfluxDB instance running, skip the steps to set up and clean up InfluxDB.
 
