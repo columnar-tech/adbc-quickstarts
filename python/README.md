@@ -55,6 +55,7 @@ Simple Python examples showing how to use ADBC to connect, run a query, and retu
 - Amazon Redshift
 - Snowflake
 - SQLite
+- Teradata
 - Trino
 
 ## Instructions
