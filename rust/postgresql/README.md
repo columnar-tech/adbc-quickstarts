@@ -28,6 +28,7 @@ Any open source tool or vendor product that implements PostgreSQL frontend/backe
 - CrateDB
 - Neon
 - ParadeDB
+- PolarDB for PostgreSQL
 - PostgreSQL
 - TimescaleDB
 - Yellowbrick

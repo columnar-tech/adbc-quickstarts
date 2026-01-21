@@ -54,6 +54,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
   - CrateDB
   - Neon
   - ParadeDB
+  - PolarDB for PostgreSQL
   - PostgreSQL
   - TimescaleDB
   - Yellowbrick
@@ -62,3 +63,4 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 - Snowflake
 - SQLite
 - Trino
+ 
