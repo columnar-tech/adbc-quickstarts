@@ -12,18 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "databricks",
-    "duckdb/*",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "postgresql/*",
-    "redshift",
-    "snowflake",
-    "sqlite",
-    "trino",
-]
+library(adbcdrivermanager)
+
+drv <- adbc_driver("databricks")
+
+db <- adbc_database_init(
+  drv,
+  uri = "databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>"
+)
+
+con <- adbc_connection_init(db)
+
+con |>
+  read_adbc("SELECT version()") |>
+  tibble::as_tibble() # or:
+# arrow::as_arrow_table() # to keep result in Arrow format
+# arrow::as_record_batch_reader() # for larger results
