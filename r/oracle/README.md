@@ -1,0 +1,77 @@
+<!--
+Copyright 2026 Columnar Technologies Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+# Connecting R and Oracle Database with ADBC
+
+## Instructions
+
+> [!TIP]
+> If you already have a Oracle Database instance running, skip the steps to set up and clean up Oracle Database.
+
+### Prerequisites
+
+1. [Install R](https://www.r-project.org/)
+
+2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+
+3. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
+
+    ```r
+    install.packages(c("adbcdrivermanager", "arrow", "tibble"))
+    ```
+
+### Set up Oracle Database
+
+1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
+
+2. Start a Oracle Database instance:
+
+    ```sh
+    docker run -d --rm --name oracle-db -p 1521:1521 -e ORACLE_PWD=password container-registry.oracle.com/database/free:latest
+    ```
+
+### Connect to Oracle Database
+
+1. Install the Oracle ADBC driver:
+
+    ```sh
+    dbc install oracle
+    ```
+
+    Note: This driver is available from Columnar's private driver registry. Before installing it, create an account at https://cloud.columnar.tech and click to activate a 14-day free trial. Then authenticate to the registry: `dbc auth login`.
+
+2. Install the [Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client.html) libraries.
+
+3. Set `LD_LIBRARY_PATH` (Linux) or `DYLD_LIBRARY_PATH` (macOS) to make sure the Oracle Instant Client libraries are discoverable by your application.
+
+4. Customize the R script `main.R` as needed
+    - Change the connection arguments in `adbc_database_init()`
+        - Change `uri` as needed, using query parameters to add more connection arguments. Format `uri` according to the the following syntax: `oracle://[user[:password]@]host[:port][/serviceName][?param1=value1&param2=value2]`, or keep it as is.
+    - Change the SQL SELECT statement in `read_adbc()`, or keep it as is.
+
+5. Run the R script:
+
+    ```sh
+    Rscript main.R
+    ```
+
+### Clean up
+
+Stop the Docker container running Oracle Database:
+
+```sh
+docker stop oracle-db
+```
