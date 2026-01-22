@@ -18,6 +18,9 @@ limitations under the License.
 
 ## Instructions
 
+> [!TIP]
+> If you don't already have a Teradata instance running, we recommend signing up for a free [ClearScape Analytics trial](https://www.teradata.com/getting-started/demos/clearscape-analytics).
+
 ### Prerequisites
 
 1. [Install Go](https://go.dev/doc/install)
