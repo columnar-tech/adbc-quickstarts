@@ -19,7 +19,7 @@ limitations under the License.
 ## Instructions
 
 > [!TIP]
-> If you already have a Oracle Database instance running, skip the steps to set up and clean up Oracle Database.
+> If you already have an Oracle Database instance running, skip the steps to set up and clean up Oracle Database.
 
 ### Prerequisites
 
@@ -39,24 +39,28 @@ limitations under the License.
 
 ### Connect to Oracle Database
 
-1. Install the Oracle ADBC driver:
+1. The ADBC driver for Oracle is available from Columnar's private driver registry. Create a [Columnar Cloud](https://cloud.columnar.tech) account and activate a 14-day free trial. Then authenticate to the registry:
+
+    ```sh
+    dbc auth login
+    ```
+
+2. Install the ADBC driver for Oracle:
 
     ```sh
     dbc install oracle
     ```
 
-    Note: This driver is available from Columnar's private driver registry. Before installing it, create an account at https://cloud.columnar.tech and click to activate a 14-day free trial. Then authenticate to the registry: `dbc auth login`.
+3. Install the [Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client.html) libraries.
 
-2. Install the [Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client.html) libraries.
+4. Set `LD_LIBRARY_PATH` (Linux), `DYLD_LIBRARY_PATH` (macOS), or `PATH` (Windows) to make sure the Oracle Instant Client libraries are discoverable by your application.
 
-3. Set `LD_LIBRARY_PATH` (Linux) or `DYLD_LIBRARY_PATH` (macOS) to make sure the Oracle Instant Client libraries are discoverable by your application.
-
-4. Customize `src/main.rs` as needed
+5. Customize `src/main.rs` as needed
     - Change the connection arguments in `opts`
         - Change `OptionDatabase::Uri` as needed, using query parameters to add more connection arguments. Format `uri` according to the the following syntax: `oracle://[user[:password]@]host[:port][/serviceName][?param1=value1&param2=value2]`, or keep it as is.
     - Change the SQL SELECT statement in `statement.set_sql_query()`, or keep it as is.
 
-5. Run the Rust program:
+6. Run the Rust program:
 
     ```sh
     cargo run
