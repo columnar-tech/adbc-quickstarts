@@ -20,9 +20,9 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+1. [Install miniforge](https://github.com/conda-forge/miniforge)
 
-2. [Install miniforge](https://github.com/conda-forge/miniforge)
+2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 3. Create and activate a new environment with the required C++ libraries:
 
@@ -38,26 +38,30 @@ limitations under the License.
 
 ### Connect to Teradata
 
-1. Install the Teradata ADBC driver:
+1. The ADBC driver for Teradata is available from Columnar's private driver registry. Create a [Columnar Cloud](https://cloud.columnar.tech) account and activate a 14-day free trial. Then authenticate to the registry:
+
+    ```sh
+    dbc auth login
+    ```
+
+2. Install the ADBC driver for Teradata:
 
     ```sh
     dbc install --level user teradata
     ```
 
-    Note: This driver is available from Columnar's private driver registry. Before installing it, create an account at https://cloud.columnar.tech and click to activate a 14-day free trial. Then authenticate to the registry: `dbc auth login`.
-
-2. Download and install the Teradata Tools and Utilities (TTU) from https://downloads.teradata.com/. Select "Tools and Utilities" and choose the package for your platform. Install to the default location:
+3. Download and install the Teradata Tools and Utilities (TTU) from https://downloads.teradata.com/. Select "Tools and Utilities" and choose the package for your platform. Install to the default location:
     - Linux: `/opt/teradata`
     - macOS: `/Library/Application Support/teradata`
 
-3. Set `LD_LIBRARY_PATH` (Linux) or `DYLD_LIBRARY_PATH` (macOS) to make sure the TTU libraries are discoverable by your application.
+4. Set `LD_LIBRARY_PATH` (Linux) or `DYLD_LIBRARY_PATH` (macOS) to make sure the TTU libraries are discoverable by your application.
 
-4. Customize the C++ program `main.cpp`:
+5. Customize the C++ program `main.cpp`:
     - Change the connection arguments in the `AdbcDatabaseSetOption()` calls.
         - `uri` is the URI of your Teradata instance. The format is `host/username,password`.
     - Change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`.
 
-5. Build and run the C++ program:
+6. Build and run the C++ program:
 
     Using Make:
     ```sh
