@@ -57,7 +57,7 @@ limitations under the License.
     - Linux: `/opt/teradata`
     - macOS: `/Library/Application Support/teradata`
 
-4. Set `LD_LIBRARY_PATH` (Linux) or `DYLD_LIBRARY_PATH` (macOS) to make sure the TTU libraries are discoverable by your application.
+4. Set `LD_LIBRARY_PATH` (Linux), `DYLD_LIBRARY_PATH` (macOS), or `PATH` (Windows) to make sure the TTU libraries are discoverable by your application.
 
 5. Customize the C++ program `main.cpp`:
     - Change the connection arguments in the `AdbcDatabaseSetOption()` calls.
