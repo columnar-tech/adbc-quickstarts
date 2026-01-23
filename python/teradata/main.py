@@ -12,18 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "duckdb/*",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "postgresql/*",
-    "redshift",
-    "snowflake",
-    "sqlite",
-    "teradata",
-    "trino",
-]
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
+# ///
+
+from adbc_driver_manager import dbapi
+
+with (
+    dbapi.connect(
+        driver="teradata",
+        db_kwargs={
+            "uri": "teradata://YOUR_USERNAME:YOUR_PASSWORD@YOUR_HOST:1025"
+        },
+    ) as connection,
+    connection.cursor() as cursor,
+):
+    cursor.execute("SELECT * FROM DBC.DBCInfoV")
+    table = cursor.fetch_arrow_table()
+
+print(table)
