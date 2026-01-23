@@ -33,7 +33,7 @@ public class Example {
   public static void main(String[] args) throws Exception {
     Map<String, Object> params = new HashMap<>();
     JniDriver.PARAM_DRIVER.set(params, "teradata");
-    params.put("uri", "teradata://demo_user:password@test-jdnqefq43uix8226.env.clearscape.teradata.com");
+    params.put("uri", "teradata://YOUR_USERNAME:YOUR_PASSWORD@YOUR_HOST:1025");
 
     try (BufferAllocator allocator = new RootAllocator();
         AdbcDatabase db =

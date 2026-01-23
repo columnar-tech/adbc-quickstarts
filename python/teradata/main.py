@@ -23,7 +23,7 @@ with (
     dbapi.connect(
         driver="teradata",
         db_kwargs={
-            "uri": "teradata://demo_user:password@test-jdnqefq43uix8226.env.clearscape.teradata.com"
+            "uri": "teradata://YOUR_USERNAME:YOUR_PASSWORD@YOUR_HOST:1025"
         },
     ) as connection,
     connection.cursor() as cursor,

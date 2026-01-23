@@ -30,7 +30,7 @@ fn main() {
 
     let opts = [(
         OptionDatabase::Uri,
-        "teradata://demo_user:password@test-jdnqefq43uix8226.env.clearscape.teradata.com".into(),
+        "teradata://YOUR_USERNAME:YOUR_PASSWORD@YOUR_HOST:1025".into(),
     )];
     let db = driver
         .new_database_with_opts(opts)
