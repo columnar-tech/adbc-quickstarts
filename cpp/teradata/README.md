@@ -53,7 +53,7 @@ limitations under the License.
     dbc install --level user teradata
     ```
 
-3. Download and install the Teradata Tools and Utilities (TTU) from https://downloads.teradata.com/. Select "Tools and Utilities" and choose the package for your platform. Install to the default location:
+3. Download and install the [Teradata Tools and Utilities (TTU)](https://downloads.teradata.com/). Select "Tools and Utilities" and choose the package for your platform. Install to the default location:
     - Linux: `/opt/teradata`
     - macOS: `/Library/Application Support/teradata`
 
