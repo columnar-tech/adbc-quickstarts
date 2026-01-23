@@ -37,6 +37,8 @@ limitations under the License.
     docker run -d --rm --name oracle-db -p 1521:1521 -e ORACLE_PWD=password container-registry.oracle.com/database/free:latest
     ```
 
+3. Wait about a minute for the database to initialize.
+
 ### Connect to Oracle Database
 
 1. The ADBC driver for Oracle is available from Columnar's private driver registry. Create a [Columnar Cloud](https://cloud.columnar.tech) account and activate a 14-day free trial. Then authenticate to the registry:
