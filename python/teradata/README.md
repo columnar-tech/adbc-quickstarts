@@ -54,7 +54,7 @@ limitations under the License.
 
 5. Customize the Python script `main.py`:
     - Change the connection arguments in `db_kwargs`.
-        - `uri` is the URI of your Teradata instance. The format is `host/username,password`.
+        - `uri` is the URI of your Teradata instance. The format is `teradata://user:password@host[:port]`.
     - Change the SQL SELECT statement in `cursor.execute()`.
 
 6. Run the Python script:

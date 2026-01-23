@@ -66,7 +66,7 @@ limitations under the License.
 
 5. Customize the C++ program `main.cpp`:
     - Change the connection arguments in the `AdbcDatabaseSetOption()` calls.
-        - `uri` is the URI of your Teradata instance. The format is `host/username,password`.
+        - `uri` is the URI of your Teradata instance. The format is `teradata://user:password@host[:port]`.
     - Change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`.
 
 6. Build and run the C++ program:

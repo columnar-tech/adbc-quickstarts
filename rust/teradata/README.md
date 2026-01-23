@@ -54,7 +54,7 @@ limitations under the License.
 
 5. Customize `src/main.rs`:
     - Change the connection arguments in `opts`.
-        - `OptionDatabase::Uri` is the URI of your Teradata instance. The format is `host/username,password`.
+        - `OptionDatabase::Uri` is the URI of your Teradata instance. The format is `teradata://user:password@host[:port]`.
     - Change the SQL SELECT statement in `statement.set_sql_query()`.
 
 6. Run the Rust program:

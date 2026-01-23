@@ -54,7 +54,7 @@ limitations under the License.
 
 5. Customize the Go program `main.go`:
     - Change the connection arguments in the `NewDatabase()` call.
-        - `uri` is the URI of your Teradata instance. The format is `host/username,password`.
+        - `uri` is the URI of your Teradata instance. The format is `teradata://user:password@host[:port]`.
     - Change the SQL SELECT statement in `stmt.SetSqlQuery()`.
 
 6. Run the Go program:

@@ -18,7 +18,7 @@ drv <- adbc_driver("teradata")
 
 db <- adbc_database_init(
   drv,
-  uri = "YOUR_HOST/YOUR_USERNAME,YOUR_PASSWORD"
+  uri = "teradata://demo_user:password@test-jdnqefq43uix8226.env.clearscape.teradata.com"
 )
 
 con <- adbc_connection_init(db)

@@ -22,7 +22,9 @@ from adbc_driver_manager import dbapi
 with (
     dbapi.connect(
         driver="teradata",
-        db_kwargs={"uri": "YOUR_HOST/YOUR_USERNAME,YOUR_PASSWORD"},
+        db_kwargs={
+            "uri": "teradata://demo_user:password@test-jdnqefq43uix8226.env.clearscape.teradata.com"
+        },
     ) as connection,
     connection.cursor() as cursor,
 ):

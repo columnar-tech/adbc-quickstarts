@@ -54,7 +54,7 @@ int main() {
 
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "driver", "teradata", &error));
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
-                                   "YOUR_HOST/YOUR_USERNAME,YOUR_PASSWORD", &error));
+                                   "teradata://demo_user:password@test-jdnqefq43uix8226.env.clearscape.teradata.com", &error));
   CHECK_ADBC(AdbcDriverManagerDatabaseSetLoadFlags(
       &database, ADBC_LOAD_FLAG_DEFAULT, &error));
   CHECK_ADBC(AdbcDatabaseInit(&database, &error));

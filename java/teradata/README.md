@@ -54,7 +54,7 @@ limitations under the License.
 
 5. Customize the `main` method in `Example.java`:
     - Change the connection arguments in the `params.put()` calls.
-        - `uri` is the URI of your Teradata instance. The format is `host/username,password`.
+        - `uri` is the URI of your Teradata instance. The format is `teradata://user:password@host[:port]`.
     - Change the SQL SELECT statement in `stmt.setSqlQuery()`.
 
 6. Run the Java program:

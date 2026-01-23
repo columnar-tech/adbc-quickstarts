@@ -27,7 +27,7 @@ func main() {
 
 	db, err := drv.NewDatabase(map[string]string{
 		"driver": "teradata",
-		"uri":    "YOUR_HOST/YOUR_USERNAME,YOUR_PASSWORD",
+		"uri":    "teradata://demo_user:password@test-jdnqefq43uix8226.env.clearscape.teradata.com",
 	})
 	if err != nil {
 		log.Fatal(err)

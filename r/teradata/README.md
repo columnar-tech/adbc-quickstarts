@@ -60,7 +60,7 @@ limitations under the License.
 
 5. Customize the R script `main.R`:
     - Change the connection arguments in `adbc_database_init()`.
-        - `uri` is the URI of your Teradata instance. The format is `host/username,password`.
+        - `uri` is the URI of your Teradata instance. The format is `teradata://user:password@host[:port]`.
     - Change the SQL SELECT statement in `read_adbc()`.
 
 6. Run the R script:
