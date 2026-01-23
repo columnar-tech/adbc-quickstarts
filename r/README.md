@@ -41,6 +41,7 @@ Simple R examples showing how to use ADBC to connect, run a query, and return th
     - MySQL
     - TiDB
     - Vitess
+- Oracle Database
 - PostgreSQL-compatible systems
   - CedarDB
   - Citus
@@ -55,6 +56,7 @@ Simple R examples showing how to use ADBC to connect, run a query, and return th
 - Amazon Redshift
 - Snowflake
 - SQLite
+- Teradata
 - Trino
 
 ## Instructions
