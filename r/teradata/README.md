@@ -50,6 +50,11 @@ limitations under the License.
 3. Download and install the [Teradata Tools and Utilities (TTU)](https://downloads.teradata.com/). Select "Tools and Utilities" and choose the package for your platform. Install to the default location:
     - Linux: `/opt/teradata`
     - macOS: `/Library/Application Support/teradata`
+    - Windows: `C:\Program Files\Teradata\Client`
+
+    On Windows, you can do this with `winget install Teradata.TTUBase`
+
+    On macOS with Homebrew, you can do this with `brew tap Teradata/teradata && brew install ttubasesuite`
 
 4. Set `LD_LIBRARY_PATH` (Linux), `DYLD_LIBRARY_PATH` (macOS), or `PATH` (Windows) to make sure the TTU libraries are discoverable by your application.
 
