@@ -49,7 +49,8 @@ limitations under the License.
 2. Customize the R script `main.R`:
     - Change the connection arguments in `adbc_database_init()`:
         - `uri` is the URI for your Databricks instance. It uses the following syntax: `databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>`. See the Databricks documentation describing [how to get these connection details](https://docs.databricks.com/integrations/compute-details).
-    - Specify the catalog and schema by fully qualifying the table name as `catalog.schema.table` in `read_adbc()`.
+    - Change the SQL SELECT statement in `read_adbc()`, or keep it as is.
+        - Specify the catalog and schema by fully qualifying the table name as `catalog.schema.table`.
 
 3. Run the R script:
 

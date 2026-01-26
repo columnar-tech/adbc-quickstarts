@@ -43,7 +43,8 @@ limitations under the License.
 2. Customize the Python script `main.py`:
     - Change the connection arguments in `db_kwargs`:
         - `uri` is the URI for your Databricks instance. It uses the following syntax: `databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>`. See the Databricks documentation describing [how to get these connection details](https://docs.databricks.com/integrations/compute-details).
-    - Specify the catalog and schema by fully qualifying the table name as `catalog.schema.table` in `cursor.execute()`.
+    - Change the SQL SELECT statement in `cursor.execute()`, or keep it as is.
+        - Specify the catalog and schema by fully qualifying the table name as `catalog.schema.table`.
 
 3. Run the Python script:
 

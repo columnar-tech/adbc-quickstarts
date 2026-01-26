@@ -43,7 +43,8 @@ limitations under the License.
 2. Customize `src/main.rs` as needed:
     - Change the connection arguments in `opts`:
         - `OptionDatabase::Uri` is the URI for your Databricks instance. It uses the following syntax: `databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>`. See the Databricks documentation describing [how to get these connection details](https://docs.databricks.com/integrations/compute-details).
-    - Specify the catalog and schema by fully qualifying the table name as `catalog.schema.table` in `statement.set_sql_query()`.
+    - Change the SQL SELECT statement in `statement.set_sql_query()`, or keep it as is.
+        - Specify the catalog and schema by fully qualifying the table name as `catalog.schema.table`.
 
 3. Run the Rust program:
 
