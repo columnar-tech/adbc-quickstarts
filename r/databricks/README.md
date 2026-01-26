@@ -48,7 +48,7 @@ limitations under the License.
 
 2. Customize the R script `main.R`:
     - Change the connection arguments in `adbc_database_init()`:
-        - `uri` is the URI for your Databricks instance. It uses the following syntax: `databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>`.
+        - `uri` is the URI for your Databricks instance. It uses the following syntax: `databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>`. See the Databricks documentation describing [how to get these connection details](https://docs.databricks.com/integrations/compute-details).
     - Change the SQL SELECT statement in `read_adbc()`, or keep it as is.
 
 3. Run the R script:

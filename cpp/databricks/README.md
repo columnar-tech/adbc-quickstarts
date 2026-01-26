@@ -54,7 +54,7 @@ limitations under the License.
 
 2. Customize the C++ program `main.cpp`:
     - Change the connection arguments in the `AdbcDatabaseSetOption()` calls:
-        - `uri` is the URI for your Databricks instance. It uses the following syntax: `databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>`.
+        - `uri` is the URI for your Databricks instance. It uses the following syntax: `databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>`. See the Databricks documentation describing [how to get these connection details](https://docs.databricks.com/integrations/compute-details).
     - Change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`, or keep it as is.
 
 3. Build and run the C++ program:
