@@ -18,7 +18,15 @@ drv <- adbc_driver("databricks")
 
 db <- adbc_database_init(
   drv,
-  uri = "databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>"
+
+  # Authenticate using OAuth U2M (browser-based authentication)
+  uri = "databricks://<server-hostname>:<port-number>/<http-path>?authType=OauthU2M"
+
+  # Authenticate using OAuth M2M (client credentials authentication)
+  # uri = "databricks://<server-hostname>:<port-number>/<http-path>?authType=OAuthM2M&clientID=<client-id>&clientSecret=<client-secret>"
+
+  # Authenticate using a personal access token
+  # uri = "databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>"
 )
 
 con <- adbc_connection_init(db)

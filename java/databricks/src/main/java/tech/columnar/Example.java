@@ -33,7 +33,15 @@ public class Example {
   public static void main(String[] args) throws Exception {
     Map<String, Object> params = new HashMap<>();
     JniDriver.PARAM_DRIVER.set(params, "databricks");
-    params.put("uri", "databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>");
+
+    // Authenticate using OAuth U2M (browser-based authentication)
+    params.put("uri", "databricks://<server-hostname>:<port-number>/<http-path>?authType=OauthU2M");
+
+    // Authenticate using OAuth M2M (client credentials authentication)
+    // params.put("uri", "databricks://<server-hostname>:<port-number>/<http-path>?authType=OAuthM2M&clientID=<client-id>&clientSecret=<client-secret>");
+
+    // Authenticate using a personal access token
+    // params.put("uri", "databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>");
 
     try (BufferAllocator allocator = new RootAllocator();
         AdbcDatabase db =

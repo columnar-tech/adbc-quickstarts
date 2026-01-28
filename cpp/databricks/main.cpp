@@ -53,9 +53,20 @@ int main() {
   CHECK_ADBC(AdbcDatabaseNew(&database, &error));
 
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "driver", "databricks", &error));
+  // Authenticate using OAuth U2M (browser-based authentication)
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
-                                   "databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>",
+                                   "databricks://<server-hostname>:<port-number>/<http-path>?authType=OauthU2M",
                                    &error));
+
+  // Authenticate using OAuth M2M (client credentials authentication)
+  // CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
+  //                                  "databricks://<server-hostname>:<port-number>/<http-path>?authType=OAuthM2M&clientID=<client-id>&clientSecret=<client-secret>",
+  //                                  &error));
+
+  // Authenticate using a personal access token
+  // CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
+  //                                  "databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>",
+  //                                  &error));
 
   CHECK_ADBC(AdbcDriverManagerDatabaseSetLoadFlags(
       &database, ADBC_LOAD_FLAG_DEFAULT, &error));

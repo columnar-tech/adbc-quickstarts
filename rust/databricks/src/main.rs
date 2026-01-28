@@ -31,9 +31,18 @@ fn main() {
     let opts = [
         (
             OptionDatabase::Uri,
-            "databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>".into(),
+
+            // Authenticate using OAuth U2M (browser-based authentication)
+            "databricks://<server-hostname>:<port-number>/<http-path>?authType=OauthU2M".into(),
+
+            // Authenticate using OAuth M2M (client credentials authentication)
+            //"databricks://<server-hostname>:<port-number>/<http-path>?authType=OAuthM2M&clientID=<client-id>&clientSecret=<client-secret>".into(),
+
+            // Authenticate using a personal access token
+            //"databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>".into(),
         ),
     ];
+
     let db = driver
         .new_database_with_opts(opts)
         .expect("Failed to create database handle");

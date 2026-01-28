@@ -23,10 +23,18 @@ with (
     dbapi.connect(
         driver="databricks",
         db_kwargs={
-            "uri": "databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>"
+            # Authenticate using OAuth U2M (browser-based authentication)
+            "uri": "databricks://<server-hostname>:<port-number>/<http-path>?authType=OauthU2M",
+
+            # Authenticate using OAuth M2M (client credentials authentication)
+            # "uri": "databricks://<server-hostname>:<port-number>/<http-path>?authType=OAuthM2M&clientID=<client-id>&clientSecret=<client-secret>",
+            
+            # Authenticate using a personal access token
+            # "uri": "databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>",
         },
-    ) as connection,
-    connection.cursor() as cursor,
+        autocommit=True,
+    ) as con,
+    con.cursor() as cursor,
 ):
     cursor.execute("SELECT version()")
     table = cursor.fetch_arrow_table()

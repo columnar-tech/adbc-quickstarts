@@ -30,7 +30,7 @@ limitations under the License.
 
 1. Log into [Databricks](https://login.databricks.com/) and create or locate an existing SQL warehouse.
 
-2. Open the "Connection details" tab and record the server hostname and HTTP path. Then create and record a personal access token.
+2. Open the "Connection details" tab and record the server hostname and HTTP path. See the Databricks documentation describing [how to get these connection details](https://docs.databricks.com/integrations/compute-details).
 
 ### Connect to Databricks
 
@@ -42,7 +42,7 @@ limitations under the License.
 
 2. Customize the Python script `main.py`:
     - Change the connection arguments in `db_kwargs`:
-        - `uri` is the URI for your Databricks instance. It uses the following syntax: `databricks://token:<personal-access-token>@<server-hostname>:<port-number>/<http-path>`. See the Databricks documentation describing [how to get these connection details](https://docs.databricks.com/integrations/compute-details).
+        - `uri` is the URI for your Databricks instance. The script includes several authentication options. See the [Databricks ADBC driver documentation](https://docs.adbc-drivers.org/drivers/databricks/) for details.
     - Change the SQL SELECT statement in `cursor.execute()`, or keep it as is.
         - Specify the catalog and schema by fully qualifying the table name as `catalog.schema.table`.
 
