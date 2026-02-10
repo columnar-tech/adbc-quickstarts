@@ -50,6 +50,7 @@ Simple C++ examples showing how to use ADBC to connect, run a query, and return 
   - CrateDB
   - Neon
   - ParadeDB
+  - PolarDB for PostgreSQL
   - PostgreSQL
   - TimescaleDB
   - Yellowbrick
