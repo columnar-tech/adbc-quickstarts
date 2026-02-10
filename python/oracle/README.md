@@ -41,7 +41,7 @@ limitations under the License.
 
 ### Connect to Oracle Database
 
-1. The ADBC driver for Oracle is available from Columnar's private driver registry. Create a [Columnar Cloud](https://cloud.columnar.tech) account and activate a 14-day free trial. Then authenticate to the registry:
+1. The ADBC driver for Oracle is available from Columnar's private driver registry. Create a [Columnar Console](https://console.columnar.tech) account and activate a 14-day free trial. Then authenticate to the registry:
 
     ```sh
     dbc auth login

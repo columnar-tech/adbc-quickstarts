@@ -29,7 +29,7 @@ limitations under the License.
 
 ### Connect to Teradata
 
-1. The ADBC driver for Teradata is available from Columnar's private driver registry. Create a [Columnar Cloud](https://cloud.columnar.tech) account and activate a 14-day free trial. Then authenticate to the registry:
+1. The ADBC driver for Teradata is available from Columnar's private driver registry. Create a [Columnar Console](https://console.columnar.tech) account and activate a 14-day free trial. Then authenticate to the registry:
 
     ```sh
     dbc auth login
