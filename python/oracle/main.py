@@ -12,20 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "databricks",
-    "duckdb/*",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "oracle",
-    "postgresql/*",
-    "redshift",
-    "snowflake",
-    "sqlite",
-    "teradata",
-    "trino",
-]
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
+# ///
+
+from adbc_driver_manager import dbapi
+
+with (
+    dbapi.connect(
+        driver="oracle",
+        db_kwargs={"uri": "oracle://system:password@localhost:1521/FREEPDB1"},
+    ) as connection,
+    connection.cursor() as cursor,
+):
+    cursor.execute("SELECT version FROM v$instance;")
+    table = cursor.fetch_arrow_table()
+
+print(table)

@@ -42,6 +42,7 @@ Simple Rust examples showing how to use ADBC to connect, run a query, and return
     - MySQL
     - TiDB
     - Vitess
+- Oracle Database
 - PostgreSQL-compatible systems
   - CedarDB
   - Citus
@@ -56,6 +57,7 @@ Simple Rust examples showing how to use ADBC to connect, run a query, and return
 - Amazon Redshift
 - Snowflake
 - SQLite
+- Teradata
 - Trino
 
 ## Instructions

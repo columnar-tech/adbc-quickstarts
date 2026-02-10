@@ -42,6 +42,7 @@ Simple Go examples showing how to use ADBC to connect, run a query, and return t
     - MySQL
     - TiDB
     - Vitess
+- Oracle Database
 - PostgreSQL-compatible systems
   - CedarDB
   - Citus
@@ -56,6 +57,7 @@ Simple Go examples showing how to use ADBC to connect, run a query, and return t
 - Amazon Redshift
 - Snowflake
 - SQLite
+- Teradata
 - Trino
 
 ## Instructions
