@@ -46,6 +46,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 - MySQL-compatible systems
   - MariaDB
   - MySQL
+  - OceanBase Database
   - TiDB
   - Vitess
 - Oracle Database

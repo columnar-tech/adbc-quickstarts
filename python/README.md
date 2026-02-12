@@ -40,6 +40,7 @@ Simple Python examples showing how to use ADBC to connect, run a query, and retu
 - MySQL-compatible systems
   - MariaDB
   - MySQL
+  - OceanBase Database
   - TiDB
   - Vitess
 - Oracle Database
