@@ -26,6 +26,7 @@ Simple Python examples showing how to use ADBC to connect, run a query, and retu
 
 ## Source systems covered
 
+- ClickHouse
 - Google BigQuery
 - Databricks
 - DuckDB-compatible systems
