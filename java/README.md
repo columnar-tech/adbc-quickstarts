@@ -32,6 +32,7 @@ Simple Java examples showing how to use ADBC to connect, run a query, and return
   - DuckDB
   - MotherDuck
 - Apache Arrow Flight SQL-compatible systems
+  - Apache Doris
   - Dremio
   - GizmoSQL
   - InfluxDB
