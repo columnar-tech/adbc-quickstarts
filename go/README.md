@@ -26,8 +26,8 @@ Simple Go examples showing how to use ADBC to connect, run a query, and return t
 
 ## Source systems covered
 
-- ClickHouse
 - Google BigQuery
+- ClickHouse
 - Databricks
 - DuckDB-compatible systems
   - DuckDB
