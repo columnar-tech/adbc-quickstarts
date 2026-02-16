@@ -33,6 +33,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 
 ## Source systems covered
 - Google BigQuery
+- ClickHouse
 - Databricks
 - DuckDB-compatible systems
   - DuckDB
