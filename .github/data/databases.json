@@ -1,0 +1,122 @@
+{
+  "bigquery": {
+    "name": "Google BigQuery",
+    "parent": null
+  },
+  "cedardb": {
+    "name": "CedarDB",
+    "parent": "postgresql"
+  },
+  "citus": {
+    "name": "Citus",
+    "parent": "postgresql"
+  },
+  "clickhouse": {
+    "name": "ClickHouse",
+    "parent": null
+  },
+  "cockroachdb": {
+    "name": "CockroachDB",
+    "parent": "postgresql"
+  },
+  "cratedb": {
+    "name": "CrateDB",
+    "parent": "postgresql"
+  },
+  "databricks": {
+    "name": "Databricks",
+    "parent": null
+  },
+  "dremio": {
+    "name": "Dremio",
+    "parent": "flightsql"
+  },
+  "duckdb": {
+    "name": "DuckDB",
+    "parent": "duckdb"
+  },
+  "gizmosql": {
+    "name": "GizmoSQL",
+    "parent": "flightsql"
+  },
+  "influxdb": {
+    "name": "InfluxDB",
+    "parent": "flightsql"
+  },
+  "mariadb": {
+    "name": "MariaDB",
+    "parent": "mysql"
+  },
+  "motherduck": {
+    "name": "MotherDuck",
+    "parent": "duckdb"
+  },
+  "mssql": {
+    "name": "Microsoft SQL Server",
+    "parent": null
+  },
+  "mysql": {
+    "name": "MySQL",
+    "parent": "mysql"
+  },
+  "neon": {
+    "name": "Neon",
+    "parent": "postgresql"
+  },
+  "oracle": {
+    "name": "Oracle Database",
+    "parent": null
+  },
+  "paradedb": {
+    "name": "ParadeDB",
+    "parent": "postgresql"
+  },
+  "postgresql": {
+    "name": "PostgreSQL",
+    "parent": "postgresql"
+  },
+  "redshift": {
+    "name": "Amazon Redshift",
+    "parent": null
+  },
+  "snowflake": {
+    "name": "Snowflake",
+    "parent": null
+  },
+  "sqlite": {
+    "name": "SQLite",
+    "parent": null
+  },
+  "starrocks": {
+    "name": "StarRocks",
+    "parent": "flightsql"
+  },
+  "teradata": {
+    "name": "Teradata",
+    "parent": null
+  },
+  "tidb": {
+    "name": "TiDB",
+    "parent": "mysql"
+  },
+  "timescaledb": {
+    "name": "TimescaleDB",
+    "parent": "postgresql"
+  },
+  "trino": {
+    "name": "Trino",
+    "parent": null
+  },
+  "vitess": {
+    "name": "Vitess",
+    "parent": "mysql"
+  },
+  "yellowbrick": {
+    "name": "Yellowbrick",
+    "parent": "postgresql"
+  },
+  "yugabytedb": {
+    "name": "YugabyteDB",
+    "parent": "postgresql"
+  }
+}

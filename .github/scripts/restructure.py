@@ -21,6 +21,7 @@ Target structure:   <database>/<language>/
 """
 
 import argparse
+import json
 import shutil
 from pathlib import Path
 
@@ -130,6 +131,65 @@ def discover_databases(source_root: Path) -> dict[str, dict[str, Path]]:
     return databases
 
 
+def load_display_names() -> tuple[dict[str, str], dict[str, dict]]:
+    """
+    Load display name mappings from JSON files.
+
+    Returns:
+        Tuple of (language_display_names, database_info)
+        where database_info maps slug to {"name": str, "parent": str|None}
+    """
+    script_dir = Path(__file__).parent
+    data_dir = script_dir.parent / "data"
+
+    with open(data_dir / "languages.json") as f:
+        language_names = json.load(f)
+
+    with open(data_dir / "databases.json") as f:
+        database_info = json.load(f)
+
+    return language_names, database_info
+
+
+def generate_database_readme(
+    database: str,
+    languages: list[str],
+    language_display_names: dict[str, str],
+    database_info: dict[str, dict],
+) -> str:
+    """
+    Generate a README.md for a database directory.
+
+    Args:
+        database: Database slug (e.g., "duckdb")
+        languages: List of language slugs that have examples for this database
+        language_display_names: Mapping of language slugs to display names
+        database_info: Mapping of database slugs to {"name": str, "parent": str|None}
+
+    Returns:
+        README content as a string
+    """
+    # Load template
+    script_dir = Path(__file__).parent
+    template_path = script_dir.parent / "data" / "database-readme-template.md"
+    template = template_path.read_text()
+
+    # Prepare values
+    db_info = database_info.get(database, {})
+    db_display_name = db_info.get("name", database.title())
+    sorted_languages = sorted(languages)
+    language_bullets = "\n".join(
+        f"- {language_display_names.get(lang, lang.title())}"
+        for lang in sorted_languages
+    )
+
+    # Substitute placeholders
+    return template.format(
+        database_name=db_display_name,
+        languages_list=language_bullets,
+    )
+
+
 def generate_go_mod(database: str) -> str:
     """Generate a standalone go.mod file for a database example."""
     return GO_MOD_TEMPLATE.format(database=database)
@@ -143,6 +203,9 @@ def restructure(source_root: Path, output_root: Path) -> None:
         source_root: Path to the source repository root
         output_root: Path to the output directory
     """
+    # Load display name mappings
+    language_display_names, database_info = load_display_names()
+
     # Clean output directory if it exists
     if output_root.exists():
         shutil.rmtree(output_root)
@@ -175,6 +238,17 @@ def restructure(source_root: Path, output_root: Path) -> None:
             if lang == "go":
                 go_mod_path = lang_output / "go.mod"
                 go_mod_path.write_text(generate_go_mod(db_name))
+
+        # Generate README.md for this database
+        readme_content = generate_database_readme(
+            db_name,
+            list(lang_paths.keys()),
+            language_display_names,
+            database_info,
+        )
+        readme_path = db_output / "README.md"
+        readme_path.write_text(readme_content)
+        print(f"  Generated {readme_path}")
 
     print(f"\nRestructured repository written to: {output_root}")
 
