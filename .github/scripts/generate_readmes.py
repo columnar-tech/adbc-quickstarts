@@ -29,6 +29,9 @@ from pathlib import Path
 # Languages in the repository
 LANGUAGES = ["cpp", "go", "java", "python", "r", "rust"]
 
+# GitHub repository URL
+GITHUB_REPO_URL = "https://github.com/columnar-tech/adbc-quickstarts"
+
 
 def load_mappings() -> tuple[dict[str, str], dict[str, dict]]:
     """
@@ -93,7 +96,9 @@ def discover_databases_for_language(
 
 
 def format_databases_list(
-    database_slugs: list[str], database_info: dict[str, dict]
+    database_slugs: list[str],
+    database_info: dict[str, dict],
+    link_mode: str = "none"
 ) -> str:
     """
     Format the list of databases with proper grouping.
@@ -101,6 +106,8 @@ def format_databases_list(
     Args:
         database_slugs: List of database slugs
         database_info: Database information from JSON
+        link_mode: "github" for GitHub URLs to by-database branch,
+                   "relative" for relative links, "none" for no links
 
     Returns:
         Formatted markdown list
@@ -138,13 +145,25 @@ def format_databases_list(
     for slug, name, parent in entries:
         if parent is None:
             # Standalone database
-            lines.append(f"- {name}")
+            if link_mode == "github":
+                link = f"{GITHUB_REPO_URL}/tree/by-database/{slug}"
+                lines.append(f"- [{name}]({link})")
+            elif link_mode == "relative":
+                lines.append(f"- [{name}](./{slug})")
+            else:
+                lines.append(f"- {name}")
         else:
             # Parent group with children
             lines.append(f"- {name}")
             for child_slug in sorted(by_parent[parent]):
                 child_name = database_info[child_slug]["name"]
-                lines.append(f"  - {child_name}")
+                if link_mode == "github":
+                    link = f"{GITHUB_REPO_URL}/tree/by-database/{child_slug}"
+                    lines.append(f"  - [{child_name}]({link})")
+                elif link_mode == "relative":
+                    lines.append(f"  - [{child_name}](./{parent}/{child_slug})")
+                else:
+                    lines.append(f"  - {child_name}")
 
     return "\n".join(lines)
 
@@ -168,16 +187,16 @@ def generate_root_readme(
     template_path = script_dir.parent / "data" / "main-root-readme-template.md"
     template = template_path.read_text()
 
-    # Generate language list
+    # Generate language list with links
     languages_list = "\n".join(
-        f"- {language_names[lang]}" for lang in LANGUAGES if lang in language_names
+        f"- [{language_names[lang]}](./{lang})" for lang in LANGUAGES if lang in language_names
     )
 
     # Discover all databases (use cpp as authoritative source)
     cpp_databases = discover_databases_for_language(
         repo_root / "cpp", database_info
     )
-    databases_list = format_databases_list(cpp_databases, database_info)
+    databases_list = format_databases_list(cpp_databases, database_info, link_mode="github")
 
     return template.format(
         languages_list=languages_list,
@@ -214,7 +233,7 @@ def generate_language_readme(
     # Discover databases for this language
     language_dir = repo_root / language
     databases = discover_databases_for_language(language_dir, database_info)
-    databases_list = format_databases_list(databases, database_info)
+    databases_list = format_databases_list(databases, database_info, link_mode="relative")
 
     return template.format(
         language_name=language_name,
@@ -269,9 +288,9 @@ def generate_protocol_readme(
         if item.is_dir() and item.name in database_info:
             databases.append(item.name)
 
-    # Format database list (simple bulleted list, no grouping)
+    # Format database list with relative links (simple bulleted list, no grouping)
     databases_list = "\n".join(
-        f"- {database_info[slug]['name']}" for slug in sorted(databases)
+        f"- [{database_info[slug]['name']}](./{slug})" for slug in sorted(databases)
     )
 
     return template.format(

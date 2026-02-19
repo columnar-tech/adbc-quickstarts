@@ -28,6 +28,9 @@ from pathlib import Path
 # Languages in the repository
 LANGUAGES = ["python", "go", "java", "cpp", "r", "rust"]
 
+# GitHub repository URL
+GITHUB_REPO_URL = "https://github.com/columnar-tech/adbc-quickstarts"
+
 # Patterns to exclude from copying
 EXCLUDE_PATTERNS = {
     "target",  # Rust/Java build output
@@ -190,7 +193,7 @@ def generate_database_readme(
     db_display_name = db_info.get("name", database.title())
     sorted_languages = sorted(languages)
     language_bullets = "\n".join(
-        f"- {language_display_names.get(lang, lang.title())}"
+        f"- [{language_display_names.get(lang, lang.title())}](./{lang})"
         for lang in sorted_languages
     )
 
@@ -227,14 +230,14 @@ def generate_by_database_root_readme(
     template_path = script_dir.parent / "data" / "by-database-root-readme-template.md"
     template = template_path.read_text()
 
-    # Generate languages list
+    # Generate languages list with GitHub links to main branch
     # Determine which languages are present
     all_languages = set()
     for lang_paths in databases.values():
         all_languages.update(lang_paths.keys())
 
     languages_list = "\n".join(
-        f"- {language_display_names.get(lang, lang.title())}"
+        f"- [{language_display_names.get(lang, lang.title())}]({GITHUB_REPO_URL}/tree/main/{lang})"
         for lang in sorted(all_languages)
     )
 
@@ -270,19 +273,19 @@ def generate_by_database_root_readme(
     # Sort all entries alphabetically by slug
     entries.sort(key=lambda x: x[0])
 
-    # Build the markdown list
+    # Build the markdown list with relative links
     lines = []
     for slug, name, parent in entries:
         if parent is None:
             # Standalone database
-            lines.append(f"- {name}")
+            lines.append(f"- [{name}](./{slug})")
         else:
             # Parent group with children
             lines.append(f"- {name}")
             for child_slug in sorted(by_parent[parent]):
                 child_info = database_info.get(child_slug, {})
                 child_name = child_info.get("name", child_slug.title())
-                lines.append(f"  - {child_name}")
+                lines.append(f"  - [{child_name}](./{child_slug})")
 
     databases_list = "\n".join(lines)
 
