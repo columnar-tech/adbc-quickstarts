@@ -30,46 +30,46 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 
 ## Source systems covered
 
-- Google BigQuery
-- ClickHouse
-- Databricks
+- [Google BigQuery](./bigquery)
+- [ClickHouse](./clickhouse)
+- [Databricks](./databricks)
 - DuckDB-compatible systems
-  - DuckDB
-  - MotherDuck
+  - [DuckDB](./duckdb)
+  - [MotherDuck](./motherduck)
 - Apache Arrow Flight SQL-compatible systems
-  - Dremio
-  - GizmoSQL
-  - InfluxDB
-  - StarRocks
-- Microsoft SQL Server
+  - [Dremio](./dremio)
+  - [GizmoSQL](./gizmosql)
+  - [InfluxDB](./influxdb)
+  - [StarRocks](./starrocks)
+- [Microsoft SQL Server](./mssql)
 - MySQL-compatible systems
-  - MariaDB
-  - MySQL
-  - TiDB
-  - Vitess
-- Oracle Database
+  - [MariaDB](./mariadb)
+  - [MySQL](./mysql)
+  - [TiDB](./tidb)
+  - [Vitess](./vitess)
+- [Oracle Database](./oracle)
 - PostgreSQL-compatible systems
-  - CedarDB
-  - Citus
-  - CockroachDB
-  - CrateDB
-  - Neon
-  - ParadeDB
-  - PostgreSQL
-  - TimescaleDB
-  - Yellowbrick
-  - YugabyteDB
-- Amazon Redshift
-- Snowflake
-- SQLite
-- Teradata
-- Trino
+  - [CedarDB](./cedardb)
+  - [Citus](./citus)
+  - [CockroachDB](./cockroachdb)
+  - [CrateDB](./cratedb)
+  - [Neon](./neon)
+  - [ParadeDB](./paradedb)
+  - [PostgreSQL](./postgresql)
+  - [TimescaleDB](./timescaledb)
+  - [Yellowbrick](./yellowbrick)
+  - [YugabyteDB](./yugabytedb)
+- [Amazon Redshift](./redshift)
+- [Snowflake](./snowflake)
+- [SQLite](./sqlite)
+- [Teradata](./teradata)
+- [Trino](./trino)
 
 ## Client languages covered
 
-- C++
-- Go
-- Java
-- Python
-- R
-- Rust
+- [C++](https://github.com/columnar-tech/adbc-quickstarts/tree/main/cpp)
+- [Go](https://github.com/columnar-tech/adbc-quickstarts/tree/main/go)
+- [Java](https://github.com/columnar-tech/adbc-quickstarts/tree/main/java)
+- [Python](https://github.com/columnar-tech/adbc-quickstarts/tree/main/python)
+- [R](https://github.com/columnar-tech/adbc-quickstarts/tree/main/r)
+- [Rust](https://github.com/columnar-tech/adbc-quickstarts/tree/main/rust)

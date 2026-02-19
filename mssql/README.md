@@ -20,12 +20,12 @@ Simple examples showing how to use ADBC to connect to Microsoft SQL Server, run 
 
 ## Client languages covered
 
-- C++
-- Go
-- Java
-- Python
-- R
-- Rust
+- [C++](./cpp)
+- [Go](./go)
+- [Java](./java)
+- [Python](./python)
+- [R](./r)
+- [Rust](./rust)
 
 ## Instructions
 

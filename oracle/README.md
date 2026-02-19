@@ -20,12 +20,12 @@ Simple examples showing how to use ADBC to connect to Oracle Database, run a que
 
 ## Client languages covered
 
-- C++
-- Go
-- Java
-- Python
-- R
-- Rust
+- [C++](./cpp)
+- [Go](./go)
+- [Java](./java)
+- [Python](./python)
+- [R](./r)
+- [Rust](./rust)
 
 ## Instructions
 

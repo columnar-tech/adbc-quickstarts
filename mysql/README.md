@@ -20,12 +20,12 @@ Simple examples showing how to use ADBC to connect to MySQL, run a query, and re
 
 ## Client languages covered
 
-- C++
-- Go
-- Java
-- Python
-- R
-- Rust
+- [C++](./cpp)
+- [Go](./go)
+- [Java](./java)
+- [Python](./python)
+- [R](./r)
+- [Rust](./rust)
 
 ## Instructions
 

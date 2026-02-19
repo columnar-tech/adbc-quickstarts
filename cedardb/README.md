@@ -20,11 +20,11 @@ Simple examples showing how to use ADBC to connect to CedarDB, run a query, and 
 
 ## Client languages covered
 
-- C++
-- Go
-- Python
-- R
-- Rust
+- [C++](./cpp)
+- [Go](./go)
+- [Python](./python)
+- [R](./r)
+- [Rust](./rust)
 
 ## Instructions
 

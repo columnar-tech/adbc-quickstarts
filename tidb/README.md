@@ -20,12 +20,12 @@ Simple examples showing how to use ADBC to connect to TiDB, run a query, and ret
 
 ## Client languages covered
 
-- C++
-- Go
-- Java
-- Python
-- R
-- Rust
+- [C++](./cpp)
+- [Go](./go)
+- [Java](./java)
+- [Python](./python)
+- [R](./r)
+- [Rust](./rust)
 
 ## Instructions
 
