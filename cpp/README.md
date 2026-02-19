@@ -29,22 +29,22 @@ Simple C++ examples showing how to use ADBC to connect, run a query, and return 
 - [Google BigQuery](./bigquery)
 - [ClickHouse](./clickhouse)
 - [Databricks](./databricks)
-- DuckDB-compatible systems
+- [DuckDB-compatible systems](./duckdb)
   - [DuckDB](./duckdb/duckdb)
   - [MotherDuck](./duckdb/motherduck)
-- Apache Arrow Flight SQL-compatible systems
+- [Apache Arrow Flight SQL-compatible systems](./flightsql)
   - [Dremio](./flightsql/dremio)
   - [GizmoSQL](./flightsql/gizmosql)
   - [InfluxDB](./flightsql/influxdb)
   - [StarRocks](./flightsql/starrocks)
 - [Microsoft SQL Server](./mssql)
-- MySQL-compatible systems
+- [MySQL-compatible systems](./mysql)
   - [MariaDB](./mysql/mariadb)
   - [MySQL](./mysql/mysql)
   - [TiDB](./mysql/tidb)
   - [Vitess](./mysql/vitess)
 - [Oracle Database](./oracle)
-- PostgreSQL-compatible systems
+- [PostgreSQL-compatible systems](./postgresql)
   - [CedarDB](./postgresql/cedardb)
   - [Citus](./postgresql/citus)
   - [CockroachDB](./postgresql/cockroachdb)

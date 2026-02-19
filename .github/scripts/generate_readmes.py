@@ -154,7 +154,13 @@ def format_databases_list(
                 lines.append(f"- {name}")
         else:
             # Parent group with children
-            lines.append(f"- {name}")
+            if link_mode == "relative":
+                # Link to protocol directory (for language READMEs)
+                lines.append(f"- [{name}](./{parent})")
+            else:
+                # No link for parent groups in root README
+                lines.append(f"- {name}")
+
             for child_slug in sorted(by_parent[parent]):
                 child_name = database_info[child_slug]["name"]
                 if link_mode == "github":
