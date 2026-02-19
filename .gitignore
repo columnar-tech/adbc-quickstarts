@@ -1,6 +1,0 @@
-.venv
-.DS_Store
-*.egg-info
-target
-go.sum
-Cargo.lock
