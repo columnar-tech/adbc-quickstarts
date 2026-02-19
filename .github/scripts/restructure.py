@@ -28,9 +28,6 @@ from pathlib import Path
 # Languages in the repository
 LANGUAGES = ["python", "go", "java", "cpp", "r", "rust"]
 
-# Protocol directories that contain nested database subdirectories
-PROTOCOL_DIRS = {"flightsql", "duckdb", "postgresql", "mysql"}
-
 # Patterns to exclude from copying
 EXCLUDE_PATTERNS = {
     "target",  # Rust/Java build output
@@ -95,13 +92,27 @@ def copy_directory_contents(src: Path, dst: Path) -> None:
             shutil.copy2(item, dst_item)
 
 
-def discover_databases(source_root: Path) -> dict[str, dict[str, Path]]:
+def discover_databases(
+    source_root: Path, database_info: dict[str, dict]
+) -> dict[str, dict[str, Path]]:
     """
     Discover all databases and their locations per language.
+
+    Args:
+        source_root: Path to the source repository root
+        database_info: Database information from JSON
 
     Returns:
         Dict mapping database names to dict of {language: source_path}
     """
+    # Determine which directories are protocol/parent directories
+    # (those with non-null display_name_when_parent)
+    protocol_dirs = {
+        slug
+        for slug, info in database_info.items()
+        if info.get("display_name_when_parent") is not None
+    }
+
     databases: dict[str, dict[str, Path]] = {}
 
     for lang in LANGUAGES:
@@ -113,7 +124,7 @@ def discover_databases(source_root: Path) -> dict[str, dict[str, Path]]:
             if not item.is_dir() or item.name in LANGUAGE_ROOT_EXCLUDE:
                 continue
 
-            if item.name in PROTOCOL_DIRS:
+            if item.name in protocol_dirs:
                 # This is a protocol directory - look for nested databases
                 for db_dir in item.iterdir():
                     if db_dir.is_dir() and not should_exclude(db_dir):
@@ -195,6 +206,92 @@ def generate_go_mod(database: str) -> str:
     return GO_MOD_TEMPLATE.format(database=database)
 
 
+def generate_by_database_root_readme(
+    databases: dict[str, dict[str, Path]],
+    language_display_names: dict[str, str],
+    database_info: dict[str, dict],
+) -> str:
+    """
+    Generate the root README.md for the by-database branch.
+
+    Args:
+        databases: Dict mapping database names to dict of {language: source_path}
+        language_display_names: Mapping of language slugs to display names
+        database_info: Database information from JSON
+
+    Returns:
+        README content as a string
+    """
+    # Load template
+    script_dir = Path(__file__).parent
+    template_path = script_dir.parent / "data" / "by-database-root-readme-template.md"
+    template = template_path.read_text()
+
+    # Generate languages list
+    # Determine which languages are present
+    all_languages = set()
+    for lang_paths in databases.values():
+        all_languages.update(lang_paths.keys())
+
+    languages_list = "\n".join(
+        f"- {language_display_names.get(lang, lang.title())}"
+        for lang in sorted(all_languages)
+    )
+
+    # Generate databases list (only databases in database_info)
+    database_slugs = [slug for slug in databases.keys() if slug in database_info]
+
+    # Group databases by parent
+    by_parent: dict[str | None, list[str]] = {}
+    for slug in database_slugs:
+        info = database_info.get(slug, {})
+        parent = info.get("parent")
+        if parent not in by_parent:
+            by_parent[parent] = []
+        by_parent[parent].append(slug)
+
+    # Create list of entries with slugs and display names
+    entries: list[tuple[str, str, str | None]] = []
+
+    # Add standalone databases (parent is None)
+    if None in by_parent:
+        for slug in by_parent[None]:
+            info = database_info.get(slug, {})
+            name = info.get("name", slug.title())
+            entries.append((slug, name, None))
+
+    # Add parent groups
+    for parent in by_parent.keys():
+        if parent is not None:
+            parent_info = database_info.get(parent, {})
+            parent_name = parent_info.get("display_name_when_parent", parent)
+            entries.append((parent, parent_name, parent))
+
+    # Sort all entries alphabetically by slug
+    entries.sort(key=lambda x: x[0])
+
+    # Build the markdown list
+    lines = []
+    for slug, name, parent in entries:
+        if parent is None:
+            # Standalone database
+            lines.append(f"- {name}")
+        else:
+            # Parent group with children
+            lines.append(f"- {name}")
+            for child_slug in sorted(by_parent[parent]):
+                child_info = database_info.get(child_slug, {})
+                child_name = child_info.get("name", child_slug.title())
+                lines.append(f"  - {child_name}")
+
+    databases_list = "\n".join(lines)
+
+    return template.format(
+        databases_list=databases_list,
+        languages_list=languages_list,
+    )
+
+
 def restructure(source_root: Path, output_root: Path) -> None:
     """
     Restructure the repository from language-first to database-first.
@@ -211,19 +308,26 @@ def restructure(source_root: Path, output_root: Path) -> None:
         shutil.rmtree(output_root)
     output_root.mkdir(parents=True)
 
-    # Copy root-level files
-    for root_file in ["LICENSE", "README.md"]:
-        src_file = source_root / root_file
-        if src_file.exists():
-            shutil.copy2(src_file, output_root / root_file)
+    # Copy LICENSE file
+    license_file = source_root / "LICENSE"
+    if license_file.exists():
+        shutil.copy2(license_file, output_root / "LICENSE")
 
     # Discover all databases
-    databases = discover_databases(source_root)
+    databases = discover_databases(source_root, database_info)
 
     print(f"Discovered {len(databases)} databases:")
     for db_name in sorted(databases.keys()):
         langs = ", ".join(sorted(databases[db_name].keys()))
         print(f"  {db_name}: {langs}")
+
+    # Generate root README.md for by-database branch
+    root_readme = generate_by_database_root_readme(
+        databases, language_display_names, database_info
+    )
+    root_readme_path = output_root / "README.md"
+    root_readme_path.write_text(root_readme)
+    print(f"Generated {root_readme_path}")
 
     # Restructure each database
     for db_name, lang_paths in sorted(databases.items()):

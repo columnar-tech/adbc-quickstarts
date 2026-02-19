@@ -1,122 +1,157 @@
 {
   "bigquery": {
     "name": "Google BigQuery",
-    "parent": null
+    "parent": null,
+    "display_name_when_parent": null
   },
   "cedardb": {
     "name": "CedarDB",
-    "parent": "postgresql"
+    "parent": "postgresql",
+    "display_name_when_parent": null
   },
   "citus": {
     "name": "Citus",
-    "parent": "postgresql"
+    "parent": "postgresql",
+    "display_name_when_parent": null
   },
   "clickhouse": {
     "name": "ClickHouse",
-    "parent": null
+    "parent": null,
+    "display_name_when_parent": null
   },
   "cockroachdb": {
     "name": "CockroachDB",
-    "parent": "postgresql"
+    "parent": "postgresql",
+    "display_name_when_parent": null
   },
   "cratedb": {
     "name": "CrateDB",
-    "parent": "postgresql"
+    "parent": "postgresql",
+    "display_name_when_parent": null
   },
   "databricks": {
     "name": "Databricks",
-    "parent": null
+    "parent": null,
+    "display_name_when_parent": null
   },
   "dremio": {
     "name": "Dremio",
-    "parent": "flightsql"
+    "parent": "flightsql",
+    "display_name_when_parent": null
   },
   "duckdb": {
     "name": "DuckDB",
-    "parent": "duckdb"
+    "parent": "duckdb",
+    "display_name_when_parent": "DuckDB-compatible systems"
+  },
+  "flightsql": {
+    "name": "Flight SQL",
+    "parent": null,
+    "display_name_when_parent": "Apache Arrow Flight SQL-compatible systems"
   },
   "gizmosql": {
     "name": "GizmoSQL",
-    "parent": "flightsql"
+    "parent": "flightsql",
+    "display_name_when_parent": null
   },
   "influxdb": {
     "name": "InfluxDB",
-    "parent": "flightsql"
+    "parent": "flightsql",
+    "display_name_when_parent": null
   },
   "mariadb": {
     "name": "MariaDB",
-    "parent": "mysql"
+    "parent": "mysql",
+    "display_name_when_parent": null
   },
   "motherduck": {
     "name": "MotherDuck",
-    "parent": "duckdb"
+    "parent": "duckdb",
+    "display_name_when_parent": null
   },
   "mssql": {
     "name": "Microsoft SQL Server",
-    "parent": null
+    "parent": null,
+    "display_name_when_parent": null
   },
   "mysql": {
     "name": "MySQL",
-    "parent": "mysql"
+    "parent": "mysql",
+    "display_name_when_parent": "MySQL-compatible systems"
   },
   "neon": {
     "name": "Neon",
-    "parent": "postgresql"
+    "parent": "postgresql",
+    "display_name_when_parent": null
   },
   "oracle": {
     "name": "Oracle Database",
-    "parent": null
+    "parent": null,
+    "display_name_when_parent": null
   },
   "paradedb": {
     "name": "ParadeDB",
-    "parent": "postgresql"
+    "parent": "postgresql",
+    "display_name_when_parent": null
   },
   "postgresql": {
     "name": "PostgreSQL",
-    "parent": "postgresql"
+    "parent": "postgresql",
+    "display_name_when_parent": "PostgreSQL-compatible systems"
   },
   "redshift": {
     "name": "Amazon Redshift",
-    "parent": null
+    "parent": null,
+    "display_name_when_parent": null
   },
   "snowflake": {
     "name": "Snowflake",
-    "parent": null
+    "parent": null,
+    "display_name_when_parent": null
   },
   "sqlite": {
     "name": "SQLite",
-    "parent": null
+    "parent": null,
+    "display_name_when_parent": null
   },
   "starrocks": {
     "name": "StarRocks",
-    "parent": "flightsql"
+    "parent": "flightsql",
+    "display_name_when_parent": null
   },
   "teradata": {
     "name": "Teradata",
-    "parent": null
+    "parent": null,
+    "display_name_when_parent": null
   },
   "tidb": {
     "name": "TiDB",
-    "parent": "mysql"
+    "parent": "mysql",
+    "display_name_when_parent": null
   },
   "timescaledb": {
     "name": "TimescaleDB",
-    "parent": "postgresql"
+    "parent": "postgresql",
+    "display_name_when_parent": null
   },
   "trino": {
     "name": "Trino",
-    "parent": null
+    "parent": null,
+    "display_name_when_parent": null
   },
   "vitess": {
     "name": "Vitess",
-    "parent": "mysql"
+    "parent": "mysql",
+    "display_name_when_parent": null
   },
   "yellowbrick": {
     "name": "Yellowbrick",
-    "parent": "postgresql"
+    "parent": "postgresql",
+    "display_name_when_parent": null
   },
   "yugabytedb": {
     "name": "YugabyteDB",
-    "parent": "postgresql"
+    "parent": "postgresql",
+    "display_name_when_parent": null
   }
 }
