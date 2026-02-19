@@ -222,6 +222,67 @@ def generate_language_readme(
     )
 
 
+def generate_protocol_readme(
+    repo_root: Path,
+    language: str,
+    protocol: str,
+    language_names: dict[str, str],
+    database_info: dict[str, dict],
+) -> str:
+    """
+    Generate a protocol-specific README.md content.
+
+    Args:
+        repo_root: Path to repository root
+        language: Language slug (e.g., "cpp")
+        protocol: Protocol slug (e.g., "postgresql")
+        language_names: Language display names
+        database_info: Database information
+
+    Returns:
+        README content
+    """
+    # Load template
+    script_dir = Path(__file__).parent
+    template_path = script_dir.parent / "data" / "protocol-readme-template.md"
+    template = template_path.read_text()
+
+    # Get protocol info
+    protocol_info = database_info.get(protocol, {})
+    protocol_name = protocol_info.get("name", protocol.title())
+    language_name = language_names.get(language, language.upper())
+
+    # Get protocol description with language substitution
+    protocol_description = protocol_info.get("protocol_description", "")
+    protocol_description = protocol_description.replace("{language}", language_name)
+
+    # Get source systems intro
+    source_systems_intro = protocol_info.get("source_systems_intro", "")
+
+    # Discover databases in this protocol directory
+    protocol_dir = repo_root / language / protocol
+    if not protocol_dir.is_dir():
+        return ""
+
+    databases = []
+    for item in protocol_dir.iterdir():
+        if item.is_dir() and item.name in database_info:
+            databases.append(item.name)
+
+    # Format database list (simple bulleted list, no grouping)
+    databases_list = "\n".join(
+        f"- {database_info[slug]['name']}" for slug in sorted(databases)
+    )
+
+    return template.format(
+        language_name=language_name,
+        protocol_name=protocol_name,
+        protocol_description=protocol_description,
+        source_systems_intro=source_systems_intro,
+        databases_list=databases_list,
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Generate README files for ADBC quickstarts"
@@ -262,6 +323,28 @@ def main():
         language_readme_path = language_dir / "README.md"
         language_readme_path.write_text(language_readme)
         print(f"  Written to {language_readme_path}")
+
+        # Generate protocol READMEs for this language
+        # Determine which directories are protocol directories
+        protocol_dirs = [
+            slug
+            for slug, info in database_info.items()
+            if info.get("display_name_when_parent") is not None
+        ]
+
+        for protocol in protocol_dirs:
+            protocol_dir = language_dir / protocol
+            if not protocol_dir.is_dir():
+                continue
+
+            print(f"Generating {language}/{protocol}/README.md...")
+            protocol_readme = generate_protocol_readme(
+                args.repo_root, language, protocol, language_names, database_info
+            )
+            if protocol_readme:
+                protocol_readme_path = protocol_dir / "README.md"
+                protocol_readme_path.write_text(protocol_readme)
+                print(f"  Written to {protocol_readme_path}")
 
     print("\nAll README files generated successfully!")
 

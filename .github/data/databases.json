@@ -1,157 +1,138 @@
 {
   "bigquery": {
     "name": "Google BigQuery",
-    "parent": null,
-    "display_name_when_parent": null
+    "parent": null
   },
   "cedardb": {
     "name": "CedarDB",
-    "parent": "postgresql",
-    "display_name_when_parent": null
+    "parent": "postgresql"
   },
   "citus": {
     "name": "Citus",
-    "parent": "postgresql",
-    "display_name_when_parent": null
+    "parent": "postgresql"
   },
   "clickhouse": {
     "name": "ClickHouse",
-    "parent": null,
-    "display_name_when_parent": null
+    "parent": null
   },
   "cockroachdb": {
     "name": "CockroachDB",
-    "parent": "postgresql",
-    "display_name_when_parent": null
+    "parent": "postgresql"
   },
   "cratedb": {
     "name": "CrateDB",
-    "parent": "postgresql",
-    "display_name_when_parent": null
+    "parent": "postgresql"
   },
   "databricks": {
     "name": "Databricks",
-    "parent": null,
-    "display_name_when_parent": null
+    "parent": null
   },
   "dremio": {
     "name": "Dremio",
-    "parent": "flightsql",
-    "display_name_when_parent": null
+    "parent": "flightsql"
   },
   "duckdb": {
     "name": "DuckDB",
     "parent": "duckdb",
-    "display_name_when_parent": "DuckDB-compatible systems"
+    "display_name_when_parent": "DuckDB-compatible systems",
+    "protocol_description": "This directory contains examples showing how to use ADBC to connect {language} applications to DuckDB-compatible systems.",
+    "source_systems_intro": "The examples included here cover the following systems:"
   },
   "flightsql": {
-    "name": "Flight SQL",
+    "name": "Arrow Flight SQL",
     "parent": null,
-    "display_name_when_parent": "Apache Arrow Flight SQL-compatible systems"
+    "display_name_when_parent": "Apache Arrow Flight SQL-compatible systems",
+    "protocol_description": "This directory contains examples showing how to use ADBC to connect {language} applications to systems that support [Arrow Flight SQL](https://arrow.apache.org/docs/format/FlightSql.html).",
+    "source_systems_intro": "Any open source tool or vendor product that implements Arrow Flight SQL should work with the ADBC driver for Flight SQL. The examples included here focus on the following systems:"
   },
   "gizmosql": {
     "name": "GizmoSQL",
-    "parent": "flightsql",
-    "display_name_when_parent": null
+    "parent": "flightsql"
   },
   "influxdb": {
     "name": "InfluxDB",
-    "parent": "flightsql",
-    "display_name_when_parent": null
+    "parent": "flightsql"
   },
   "mariadb": {
     "name": "MariaDB",
-    "parent": "mysql",
-    "display_name_when_parent": null
+    "parent": "mysql"
   },
   "motherduck": {
     "name": "MotherDuck",
-    "parent": "duckdb",
-    "display_name_when_parent": null
+    "parent": "duckdb"
   },
   "mssql": {
     "name": "Microsoft SQL Server",
-    "parent": null,
-    "display_name_when_parent": null
+    "parent": null
   },
   "mysql": {
     "name": "MySQL",
     "parent": "mysql",
-    "display_name_when_parent": "MySQL-compatible systems"
+    "display_name_when_parent": "MySQL-compatible systems",
+    "protocol_description": "This directory contains examples showing how to use ADBC to connect {language} applications to MySQL-compatible database systems.",
+    "source_systems_intro": "Any open source tool or vendor product that implements the MySQL protocol should work with the ADBC driver for MySQL. The examples included here focus on the following systems:"
   },
   "neon": {
     "name": "Neon",
-    "parent": "postgresql",
-    "display_name_when_parent": null
+    "parent": "postgresql"
   },
   "oracle": {
     "name": "Oracle Database",
-    "parent": null,
-    "display_name_when_parent": null
+    "parent": null
   },
   "paradedb": {
     "name": "ParadeDB",
-    "parent": "postgresql",
-    "display_name_when_parent": null
+    "parent": "postgresql"
   },
   "postgresql": {
     "name": "PostgreSQL",
     "parent": "postgresql",
-    "display_name_when_parent": "PostgreSQL-compatible systems"
+    "display_name_when_parent": "PostgreSQL-compatible systems",
+    "protocol_description": "This directory contains examples showing how to use ADBC to connect {language} applications to systems that support [PostgreSQL frontend/backend (wire) protocol](https://www.postgresql.org/docs/current/protocol.html).",
+    "source_systems_intro": "Any open source tool or vendor product that implements PostgreSQL frontend/backend protocol should work with the ADBC driver for PostgreSQL. The examples included here focus on the following systems:"
   },
   "redshift": {
     "name": "Amazon Redshift",
-    "parent": null,
-    "display_name_when_parent": null
+    "parent": null
   },
   "snowflake": {
     "name": "Snowflake",
-    "parent": null,
-    "display_name_when_parent": null
+    "parent": null
   },
   "sqlite": {
     "name": "SQLite",
-    "parent": null,
-    "display_name_when_parent": null
+    "parent": null
   },
   "starrocks": {
     "name": "StarRocks",
-    "parent": "flightsql",
-    "display_name_when_parent": null
+    "parent": "flightsql"
   },
   "teradata": {
     "name": "Teradata",
-    "parent": null,
-    "display_name_when_parent": null
+    "parent": null
   },
   "tidb": {
     "name": "TiDB",
-    "parent": "mysql",
-    "display_name_when_parent": null
+    "parent": "mysql"
   },
   "timescaledb": {
     "name": "TimescaleDB",
-    "parent": "postgresql",
-    "display_name_when_parent": null
+    "parent": "postgresql"
   },
   "trino": {
     "name": "Trino",
-    "parent": null,
-    "display_name_when_parent": null
+    "parent": null
   },
   "vitess": {
     "name": "Vitess",
-    "parent": "mysql",
-    "display_name_when_parent": null
+    "parent": "mysql"
   },
   "yellowbrick": {
     "name": "Yellowbrick",
-    "parent": "postgresql",
-    "display_name_when_parent": null
+    "parent": "postgresql"
   },
   "yugabytedb": {
     "name": "YugabyteDB",
-    "parent": "postgresql",
-    "display_name_when_parent": null
+    "parent": "postgresql"
   }
 }
