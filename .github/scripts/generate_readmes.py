@@ -249,7 +249,7 @@ def generate_protocol_readme(
 
     # Get protocol info
     protocol_info = database_info.get(protocol, {})
-    protocol_name = protocol_info.get("name", protocol.title())
+    protocol_name = protocol_info.get("display_name_when_parent", protocol_info.get("name", protocol.title()))
     language_name = language_names.get(language, language.upper())
 
     # Get protocol description with language substitution
