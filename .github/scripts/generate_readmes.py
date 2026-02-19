@@ -18,16 +18,13 @@ Generate README files for the ADBC quickstarts repository.
 
 Generates:
 - Root README.md
-- Per-language README.md files (cpp, go, java, python, r, rust)
+- Per-language README.md files (loaded from .github/data/languages.json)
 """
 
 import argparse
 import json
 from pathlib import Path
 
-
-# Languages in the repository
-LANGUAGES = ["cpp", "go", "java", "python", "r", "rust"]
 
 # GitHub repository URL
 GITHUB_REPO_URL = "https://github.com/columnar-tech/adbc-quickstarts"
@@ -195,7 +192,7 @@ def generate_root_readme(
 
     # Generate language list with links
     languages_list = "\n".join(
-        f"- [{language_names[lang]}](./{lang})" for lang in LANGUAGES if lang in language_names
+        f"- [{language_names[lang]}](./{lang})" for lang in sorted(language_names.keys())
     )
 
     # Discover all databases (use cpp as authoritative source)
@@ -335,7 +332,7 @@ def main():
     print(f"  Written to {root_readme_path}")
 
     # Generate language READMEs
-    for language in LANGUAGES:
+    for language in sorted(language_names.keys()):
         language_dir = args.repo_root / language
         if not language_dir.is_dir():
             print(f"Skipping {language} (directory not found)")
