@@ -41,7 +41,7 @@ jobs:
       
       - name: Run restructure script
         run: |
-          python source/scripts/restructure.py \
+          python source/.github/scripts/restructure.py \
             --source source \
             --output restructured
       
