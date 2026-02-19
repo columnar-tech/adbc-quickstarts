@@ -18,15 +18,14 @@ Restructure the ADBC quickstarts repository from language-first to database-firs
 
 Current structure:  <language>/<protocol>/<database>/ or <language>/<database>/
 Target structure:   <database>/<language>/
+
+Languages, databases, and configuration are loaded from .github/data/ JSON files.
 """
 
 import argparse
 import json
 import shutil
 from pathlib import Path
-
-# Languages in the repository
-LANGUAGES = ["python", "go", "java", "cpp", "r", "rust"]
 
 # GitHub repository URL
 GITHUB_REPO_URL = "https://github.com/columnar-tech/adbc-quickstarts"
@@ -68,9 +67,9 @@ GO_MOD_TEMPLATE = """// Copyright 2026 Columnar Technologies Inc.
 
 module github.com/columnar/adbc-quickstarts/{database}/go
 
-go 1.24.0
+go {go_version}
 
-require github.com/apache/arrow-adbc/go/adbc v1.8.0
+require github.com/apache/arrow-adbc/go/adbc {adbc_go_version}
 """
 
 
@@ -96,13 +95,14 @@ def copy_directory_contents(src: Path, dst: Path) -> None:
 
 
 def discover_databases(
-    source_root: Path, database_info: dict[str, dict]
+    source_root: Path, language_names: dict[str, str], database_info: dict[str, dict]
 ) -> dict[str, dict[str, Path]]:
     """
     Discover all databases and their locations per language.
 
     Args:
         source_root: Path to the source repository root
+        language_names: Language display names
         database_info: Database information from JSON
 
     Returns:
@@ -118,7 +118,7 @@ def discover_databases(
 
     databases: dict[str, dict[str, Path]] = {}
 
-    for lang in LANGUAGES:
+    for lang in sorted(language_names.keys()):
         lang_dir = source_root / lang
         if not lang_dir.is_dir():
             continue
@@ -145,13 +145,12 @@ def discover_databases(
     return databases
 
 
-def load_display_names() -> tuple[dict[str, str], dict[str, dict]]:
+def load_data() -> tuple[dict[str, str], dict[str, dict], dict[str, str]]:
     """
-    Load display name mappings from JSON files.
+    Load configuration and mappings from JSON files.
 
     Returns:
-        Tuple of (language_display_names, database_info)
-        where database_info maps slug to {"name": str, "parent": str|None}
+        Tuple of (language_display_names, database_info, config)
     """
     script_dir = Path(__file__).parent
     data_dir = script_dir.parent / "data"
@@ -162,7 +161,10 @@ def load_display_names() -> tuple[dict[str, str], dict[str, dict]]:
     with open(data_dir / "databases.json") as f:
         database_info = json.load(f)
 
-    return language_names, database_info
+    with open(data_dir / "config.json") as f:
+        config = json.load(f)
+
+    return language_names, database_info, config
 
 
 def generate_database_readme(
@@ -204,9 +206,13 @@ def generate_database_readme(
     )
 
 
-def generate_go_mod(database: str) -> str:
+def generate_go_mod(database: str, config: dict[str, str]) -> str:
     """Generate a standalone go.mod file for a database example."""
-    return GO_MOD_TEMPLATE.format(database=database)
+    return GO_MOD_TEMPLATE.format(
+        database=database,
+        go_version=config["go_version"],
+        adbc_go_version=config["adbc_go_version"],
+    )
 
 
 def generate_by_database_root_readme(
@@ -303,8 +309,8 @@ def restructure(source_root: Path, output_root: Path) -> None:
         source_root: Path to the source repository root
         output_root: Path to the output directory
     """
-    # Load display name mappings
-    language_display_names, database_info = load_display_names()
+    # Load configuration and mappings
+    language_display_names, database_info, config = load_data()
 
     # Clean output directory if it exists
     if output_root.exists():
@@ -317,7 +323,7 @@ def restructure(source_root: Path, output_root: Path) -> None:
         shutil.copy2(license_file, output_root / "LICENSE")
 
     # Discover all databases
-    databases = discover_databases(source_root, database_info)
+    databases = discover_databases(source_root, language_display_names, database_info)
 
     print(f"Discovered {len(databases)} databases:")
     for db_name in sorted(databases.keys()):
@@ -344,7 +350,7 @@ def restructure(source_root: Path, output_root: Path) -> None:
             # Generate standalone go.mod for Go examples
             if lang == "go":
                 go_mod_path = lang_output / "go.mod"
-                go_mod_path.write_text(generate_go_mod(db_name))
+                go_mod_path.write_text(generate_go_mod(db_name, config))
 
         # Generate README.md for this database
         readme_content = generate_database_readme(
