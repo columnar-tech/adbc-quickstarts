@@ -32,6 +32,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 - [C++](./cpp)
 - [Go](./go)
 - [Java](./java)
+- [JavaScript](./javascript)
 - [Python](./python)
 - [R](./r)
 - [Rust](./rust)

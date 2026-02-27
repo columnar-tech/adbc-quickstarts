@@ -1,0 +1,10 @@
+{
+  "name": "adbc-quickstarts-javascript",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@apache-arrow/adbc-driver-manager": "*",
+    "apache-arrow": "^21.1.0"
+  }
+}
