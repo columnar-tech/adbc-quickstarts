@@ -42,6 +42,8 @@ limitations under the License.
       exasol/docker-db:latest-2025.1
    ```
 
+   Note: this container may not work with Docker for Windows or Docker for macOS. On macOS, we have found that [Colima](https://colima.run/)'s x86_64 emulation may work better. Alternatively, consider [Exasol Personal](https://www.exasol.com/campaigns/exasol-personal/) running in the cloud.
+
 1. Create a table in Exasol and load data into it:
 
    ```sh
