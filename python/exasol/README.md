@@ -49,8 +49,18 @@ limitations under the License.
 
    # The Exasol CLI doesn't have an easy flag to trust a self-signed TLS
    # certificate, so try to extract the fingerprint from the error message.
-   HOST=$(docker exec exasol /opt/exasol/db-2025.1.9/bin/Console/exaplus -u sys -p exasol -c localhost:8563 2>&1 | tail -n1 | awk '{print $NF}')
-   HOST=${HOST%.}
+   # Also, wait for Exasol to be available.
+   while true; do
+     export HOST=$(docker exec exasol /opt/exasol/db-2025.1.9/bin/Console/exaplus -u sys -p exasol -c localhost:8563 2>&1 | tail -n1 | awk '{print $NF}')
+     if [[ "${HOST}" == "refused" ]]; then
+       echo Waiting for Exasol...
+       sleep 2
+       continue
+     fi
+     echo Exasol available at ${HOST}
+     break
+   done
+   export HOST=${HOST%.}
 
    docker exec exasol /opt/exasol/db-2025.1.9/bin/Console/exaplus \
      -u sys -p exasol -c $HOST -f /tmp/games.sql
