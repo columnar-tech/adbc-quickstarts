@@ -41,6 +41,9 @@ limitations under the License.
 
 ### Set up Apache Doris
 
+> [!WARNING]
+> This setup process has not been tested on Windows and might not work without modification. Windows users should run it under WSL.
+
 1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
 2. Download the Apache Doris quick-start script:
