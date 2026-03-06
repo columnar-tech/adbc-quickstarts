@@ -18,8 +18,10 @@ limitations under the License.
 
 ## Instructions
 
+This example uses [Apache Doris](https://doris.apache.org/), a high-performance, real-time analytical database.
+
 > [!TIP]
-> If you already have an Apache Doris instance running, skip the steps to set up and clean up Apache Doris.
+> If you already have an Apache Doris instance running, skip the steps to set up Apache Doris.
 
 ### Prerequisites
 
@@ -74,10 +76,10 @@ limitations under the License.
     dbc install flightsql
     ```
 
-2. Customize the Rust program `main.rs` as needed.
-    - Change the connection arguments in the `opts` array.
-        - `uri` is the URI of your Apache Doris instance. The host and FE Arrow Flight SQL port will depend on your installation.
-        - `username` and `password` are the username and password of your Apache Doris user.
+2. Customize `src/main.rs` as needed.
+    - Change the connection arguments in `opts`.
+        - `OptionDatabase::Uri` is the URI of your Apache Doris instance. The host and FE Arrow Flight SQL port will depend on your installation.
+        - `OptionDatabase::Username` and `OptionDatabase::Password` are the username and password of your Apache Doris user.
     - Change the SQL `SELECT` statement in `statement.set_sql_query()` if desired.
 
 3. Run the Rust program:

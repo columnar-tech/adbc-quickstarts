@@ -18,14 +18,16 @@ limitations under the License.
 
 ## Instructions
 
+This example uses [Apache Doris](https://doris.apache.org/), a high-performance, real-time analytical database.
+
 > [!TIP]
-> If you already have an Apache Doris instance running, skip the steps to set up and clean up Apache Doris.
+> If you already have an Apache Doris instance running, skip the steps to set up Apache Doris.
 
 ### Prerequisites
 
 1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
 
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 ### Set up Apache Doris
 
