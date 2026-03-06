@@ -57,7 +57,7 @@ This example uses [Apache Doris](https://doris.apache.org/), a high-performance,
 3. Add Flight SQL ports to the script:
 
     ```sh
-    sed -i.bak 's/^\([[:space:]]*\)\(- 9010:9010\)/\1\2\n\1- 8070:8070/' start-doris.sh                                                                       
+    sed -i.bak 's/^\([[:space:]]*\)\(- 9010:9010\)/\1\2\n\1- 8070:8070/' start-doris.sh
     sed -i.bak 's/^\([[:space:]]*\)\(- 9050:9050\)/\1\2\n\1- 8050:8050/' start-doris.sh
     ```
 
@@ -122,5 +122,5 @@ This example uses [Apache Doris](https://doris.apache.org/), a high-performance,
 2. Stop the Docker project running Apache Doris:
 
     ```sh
-    docker compose -f docker-compose-doris.yaml stop
+    docker compose -f docker-compose-doris.yaml down
     ```
