@@ -1,0 +1,14 @@
+{
+  "name": "adbc-quickstart-sqlite",
+  "version": "1.0.0",
+  "description": "ADBC quickstart example for SQLite with Node.js",
+  "main": "main.js",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "adbc-driver-manager": "^0.0.1",
+    "apache-arrow": "^21.1.0"
+  }
+}
