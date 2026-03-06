@@ -13,17 +13,24 @@
 # limitations under the License.
 
 # /// script
-# requires-python = ">=3.9"
-# dependencies = ["adbc-driver-manager>=1.8.0", "pyarrow>=20.0.0"]
+# requires-python = ">=3.10"
+# dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
 # ///
 
 from adbc_driver_manager import dbapi
 
 with (
-    dbapi.connect(driver="duckdb", db_kwargs={"path": "games.duckdb"}) as con,
+    dbapi.connect(
+        driver="flightsql",
+        db_kwargs={
+            "uri": "grpc+tcp://localhost:8181",
+            "adbc.flight.sql.authorization_header": "Bearer YOUR_AUTH_TOKEN",
+            "adbc.flight.sql.rpc.call_header.database": "_internal",
+        },
+    ) as con,
     con.cursor() as cursor,
 ):
-    cursor.execute("SELECT * FROM games;")
+    cursor.execute("SELECT * FROM information_schema.tables")
     table = cursor.fetch_arrow_table()
 
 print(table)

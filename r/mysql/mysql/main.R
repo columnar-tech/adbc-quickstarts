@@ -13,6 +13,7 @@
 # limitations under the License.
 
 library(adbcdrivermanager)
+options(nanoarrow.warn_unregistered_extension = FALSE)
 
 drv <- adbc_driver("mysql")
 
