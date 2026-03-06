@@ -59,9 +59,9 @@ This example uses [Apache Doris](https://doris.apache.org/), a high-performance,
 5. Configure Flight SQL ports and restart the cluster:
 
     ```sh
-    docker exec doris-fe-1 bash -c "sed -i 's/arrow_flight_sql_port = -1/arrow_flight_sql_port = 8070/' /opt/apache-doris/fe/conf/fe.conf"
-    docker exec doris-be-1 bash -c "sed -i 's/arrow_flight_sql_port = -1/arrow_flight_sql_port = 8050/' /opt/apache-doris/be/conf/be.conf"
-    docker compose -p doris restart
+    docker compose -f docker-compose-doris.yaml exec fe bash -c "sed -i 's/arrow_flight_sql_port = -1/arrow_flight_sql_port = 8070/' /opt/apache-doris/fe/conf/fe.conf"
+    docker compose -f docker-compose-doris.yaml exec be bash -c "sed -i 's/arrow_flight_sql_port = -1/arrow_flight_sql_port = 8050/' /opt/apache-doris/be/conf/be.conf"
+    docker compose -f docker-compose-doris.yaml restart
     ```
 
 ### Connect to Apache Doris
@@ -90,5 +90,5 @@ This example uses [Apache Doris](https://doris.apache.org/), a high-performance,
 Stop the Docker project running Apache Doris:
 
 ```sh
-docker compose -p doris stop
+docker compose -f docker-compose-doris.yaml stop
 ```
