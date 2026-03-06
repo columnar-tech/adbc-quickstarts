@@ -1,0 +1,8 @@
+{
+  "python": "Python",
+  "go": "Go",
+  "java": "Java",
+  "cpp": "C++",
+  "r": "R",
+  "rust": "Rust"
+}

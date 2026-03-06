@@ -16,13 +16,17 @@
 resolver = "3"
 members = [
     "bigquery",
-    "duckdb",
+    "clickhouse",
+    "databricks",
+    "duckdb/*",
     "flightsql/*",
     "mssql",
     "mysql/*",
+    "oracle",
     "postgresql/*",
     "redshift",
     "snowflake",
     "sqlite",
+    "teradata",
     "trino",
 ]
