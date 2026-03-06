@@ -40,11 +40,12 @@ limitations under the License.
    > **Note:** Until this package is published to npm, build and install it from source:
    >
    > ```sh
-   > pushd /path/to/arrow-adbc/javascript
+   > git clone --branch gh-3734 https://github.com/kentkwu/arrow-adbc.git
+   > pushd arrow-adbc/javascript
    > npm install
    > npm run build
    > popd
-   > npm install /path/to/arrow-adbc/javascript apache-arrow
+   > npm install arrow-adbc/javascript apache-arrow
    > ```
    >
    > Once published, this will simply be:
