@@ -38,7 +38,7 @@ limitations under the License.
 
 1. Customize `src/main.rs` as needed
    - Change the database arguments in `opts`
-     - Set the path to the name of a MotherDuck database (prefixed with `md:`), or keep it set to `md:sample_data` to use MotherDuck's sample data
+     - Set the uri to the name of a MotherDuck database (prefixed with `md:`), or keep it set to `md:sample_data` to use MotherDuck's sample data
    - Change the SQL SELECT statement in `statement.set_sql_query()` to query the tables in your database
 
 1. Run the Rust program:
