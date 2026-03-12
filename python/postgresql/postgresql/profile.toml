@@ -1,0 +1,5 @@
+version = 1
+driver = "postgresql"
+
+[options]
+uri = "postgresql://postgres:mysecretpassword@localhost:5432/demo"
