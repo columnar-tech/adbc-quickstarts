@@ -20,10 +20,11 @@
 from adbc_driver_manager import dbapi
 
 with (
-    dbapi.connect(
-        driver="postgresql",
-        db_kwargs={"uri": "postgresql://postgres:mysecretpassword@localhost:5432/demo"},
-    ) as con,
+    dbapi.connect(profile="./profile.toml") as con,
+    # or: dbapi.connect(uri="profile://./profile.toml")
+    # or: move `profile.toml` to the profile search location as documented at
+    #     https://arrow.apache.org/adbc/main/format/connection_profiles.html#profile-search-locations
+    #     and specify `profile="profile"` or `uri="profile://profile"`
     con.cursor() as cursor,
 ):
     cursor.execute("SELECT * FROM games;")
