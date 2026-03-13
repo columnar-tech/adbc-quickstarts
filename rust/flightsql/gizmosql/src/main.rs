@@ -30,7 +30,7 @@ fn main() {
 
     let opts = [
         (OptionDatabase::Uri, "grpc+tcp://localhost:31337".into()),
-        (OptionDatabase::Username, "gizmosql_username".into()),
+        (OptionDatabase::Username, "gizmosql_user".into()),
         (OptionDatabase::Password, "gizmosql_password".into()),
     ];
     let db = driver
