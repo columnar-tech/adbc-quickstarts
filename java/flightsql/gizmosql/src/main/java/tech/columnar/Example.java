@@ -34,7 +34,7 @@ public class Example {
     Map<String, Object> params = new HashMap<>();
     JniDriver.PARAM_DRIVER.set(params, "flightsql");
     params.put("uri", "grpc+tcp://localhost:31337");
-    params.put("username", "gizmosql_username");
+    params.put("username", "gizmosql_user");
     params.put("password", "gizmosql_password");
 
     try (BufferAllocator allocator = new RootAllocator();

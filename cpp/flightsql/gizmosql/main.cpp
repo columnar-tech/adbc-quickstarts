@@ -56,7 +56,7 @@ int main() {
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
                                    "grpc+tcp://localhost:31337", &error));
   CHECK_ADBC(
-      AdbcDatabaseSetOption(&database, "username", "gizmosql_username", &error));
+      AdbcDatabaseSetOption(&database, "username", "gizmosql_user", &error));
   CHECK_ADBC(
       AdbcDatabaseSetOption(&database, "password", "gizmosql_password", &error));
   CHECK_ADBC(AdbcDriverManagerDatabaseSetLoadFlags(

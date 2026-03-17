@@ -24,7 +24,7 @@ with (
         driver="flightsql",
         db_kwargs={
             "uri": "grpc+tcp://localhost:31337",
-            "username": "gizmosql_username",
+            "username": "gizmosql_user",
             "password": "gizmosql_password",
         },
     ) as con,
