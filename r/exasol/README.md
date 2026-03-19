@@ -37,8 +37,8 @@ limitations under the License.
 
 1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
-> [!WARNING]
-> The Exasol Docker image may not work with Docker for Windows or Docker for macOS. On macOS, we have found that [Colima](https://colima.run/)'s x86_64 emulation may work better. Alternatively, consider [Exasol Personal](https://www.exasol.com/campaigns/exasol-personal/) running in the cloud.
+   > [!WARNING]
+   > The Exasol Docker image may not work with Docker for Windows or Docker for macOS. On macOS, we have found that [Colima](https://colima.run/)'s x86_64 emulation may work better. Alternatively, consider [Exasol Personal](https://www.exasol.com/campaigns/exasol-personal/) running in the cloud.
 
 1. Start Exasol in a Docker container ([documentation](https://github.com/exasol/docker-db)):
 
