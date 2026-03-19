@@ -25,21 +25,9 @@ This example uses [StarRocks](https://www.starrocks.io/), an open query engine f
 
 ### Prerequisites
 
-1. [Install miniforge](https://github.com/conda-forge/miniforge)
+1. [Install Pixi](https://pixi.prefix.dev/latest/)
 
 2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
-
-3. Create and activate a new environment with the required C++ libraries:
-
-   ```sh
-   mamba create -n adbc-cpp -c conda-forge cmake compilers libadbc-driver-manager libarrow
-
-   # Initialize mamba in your shell if not already done
-   eval "$(mamba shell hook --shell zsh)"
-   mamba activate adbc-cpp
-   ```
-
-   (`cmake` is only needed if you use CMake to build the C++ program below.)
 
 ### Set up StarRocks
 
@@ -131,14 +119,14 @@ This example uses [StarRocks](https://www.starrocks.io/), an open query engine f
 
    Using Make:
    ```sh
-   make
+   pixi run make
    ./starrocks_demo
    ```
 
    Or using CMake:
    ```sh
-   cmake -B build
-   cmake --build build
+   pixi run cmake -B build
+   pixi run cmake --build build
    ./build/starrocks_demo
    ```
 
@@ -148,7 +136,7 @@ This example uses [StarRocks](https://www.starrocks.io/), an open query engine f
 
    Using Make:
    ```sh
-   make clean
+   pixi run make clean
    ```
 
    Using CMake:
