@@ -12,23 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# /// script
-# requires-python = ">=3.10"
-# dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
-# ///
+[package]
+name = "exasol"
+version = "0.1.0"
+edition = "2024"
 
-from adbc_driver_manager import dbapi
-
-with (
-    dbapi.connect(
-        driver="exasol",
-        db_kwargs={
-            "uri": "exasol://sys:exasol@localhost:9563/?tls=true&validateservercertificate=0"
-        },
-    ) as connection,
-    connection.cursor() as cursor,
-):
-    cursor.execute("SELECT * FROM DEMO.GAMES")
-    table = cursor.fetch_arrow_table()
-
-print(table)
+[dependencies]
+adbc_core = "0.21.0"
+adbc_driver_manager = "0.21.0"
+arrow = { version = "57.0.0", features = ["prettyprint"] }
+arrow-array = "57.0.0"

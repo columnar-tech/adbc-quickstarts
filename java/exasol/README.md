@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Python and Exasol with ADBC
+# Connecting Java and Exasol with ADBC
 
 ## Instructions
 
@@ -23,7 +23,7 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+1. [Install Maven](https://maven.apache.org/install.html)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
@@ -76,15 +76,15 @@ limitations under the License.
     dbc install exasol
     ```
 
-2. Customize the Python script `main.py` as needed
-    - Change the connection arguments in `db_kwargs`
-        - Change `uri` as needed, using query parameters to add more connection arguments, or keep it as is to use the data included with this example
-    - If you changed which schema you're opening, also change the SQL SELECT statement in `cursor.execute()`
+2. Customize the `main` method in `Example.java`
+    - Change the connection arguments in the `params.put()` calls
+        - Change `uri` as needed, using query parameters to add more connection arguments. Format `uri` according to the the following syntax: `exasol://[user[:password]@]host[:port][?param1=value1&param2=value2]`, or keep it as is.
+    - Change the SQL SELECT statement in `stmt.setSqlQuery()`, or keep it as is.
 
-3. Run the Python script:
+3. Run the Java program:
 
     ```sh
-    uv run main.py
+    mvn compile exec:exec
     ```
 
 ### Clean up

@@ -38,6 +38,10 @@
     "protocol_description": "This directory contains examples showing how to use ADBC to connect {language} applications to DuckDB-compatible systems.",
     "source_systems_intro": "The examples included here cover the following systems:"
   },
+  "exasol": {
+    "name": "Exasol",
+    "parent": null
+  },
   "flightsql": {
     "name": "Arrow Flight SQL",
     "parent": null,

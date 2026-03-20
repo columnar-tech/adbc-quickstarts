@@ -12,23 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# /// script
-# requires-python = ">=3.10"
-# dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
-# ///
+CXXFLAGS = -std=c++17 -Wall -Werror -I$(CONDA_PREFIX)/include
+LIBS = -L$(CONDA_PREFIX)/lib -ladbc_driver_manager -larrow -Wl,-rpath,$(CONDA_PREFIX)/lib
 
-from adbc_driver_manager import dbapi
+exasol_demo: main.cpp
+	$(CXX) $(CXXFLAGS) -o exasol_demo main.cpp $(LIBS)
 
-with (
-    dbapi.connect(
-        driver="exasol",
-        db_kwargs={
-            "uri": "exasol://sys:exasol@localhost:9563/?tls=true&validateservercertificate=0"
-        },
-    ) as connection,
-    connection.cursor() as cursor,
-):
-    cursor.execute("SELECT * FROM DEMO.GAMES")
-    table = cursor.fetch_arrow_table()
+clean:
+	rm -f exasol_demo
 
-print(table)
+.PHONY: clean

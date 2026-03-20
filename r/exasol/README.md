@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Python and Exasol with ADBC
+# Connecting R and Exasol with ADBC
 
 ## Instructions
 
@@ -23,11 +23,17 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+1. [Install R](https://www.r-project.org/)
 
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
-1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
+3. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
+
+    ```r
+    install.packages(c("adbcdrivermanager", "arrow", "tibble"))
+    ```
+
+4. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
 ### Set up Exasol
 
@@ -76,15 +82,15 @@ limitations under the License.
     dbc install exasol
     ```
 
-2. Customize the Python script `main.py` as needed
-    - Change the connection arguments in `db_kwargs`
-        - Change `uri` as needed, using query parameters to add more connection arguments, or keep it as is to use the data included with this example
-    - If you changed which schema you're opening, also change the SQL SELECT statement in `cursor.execute()`
+2. Customize the R script `main.R` as needed
+    - Change the connection arguments in `adbc_database_init()`
+        - Change `uri` as needed, using query parameters to add more connection arguments. Format `uri` according to the the following syntax: `exasol://[user[:password]@]host[:port][?param1=value1&param2=value2]`, or keep it as is.
+    - Change the SQL SELECT statement in `read_adbc()`, or keep it as is.
 
-3. Run the Python script:
+3. Run the R script:
 
     ```sh
-    uv run main.py
+    Rscript main.R
     ```
 
 ### Clean up

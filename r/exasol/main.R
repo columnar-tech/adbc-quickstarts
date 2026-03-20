@@ -12,23 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# /// script
-# requires-python = ">=3.10"
-# dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
-# ///
+library(adbcdrivermanager)
 
-from adbc_driver_manager import dbapi
+drv <- adbc_driver("exasol")
 
-with (
-    dbapi.connect(
-        driver="exasol",
-        db_kwargs={
-            "uri": "exasol://sys:exasol@localhost:9563/?tls=true&validateservercertificate=0"
-        },
-    ) as connection,
-    connection.cursor() as cursor,
-):
-    cursor.execute("SELECT * FROM DEMO.GAMES")
-    table = cursor.fetch_arrow_table()
+db <- adbc_database_init(
+  drv,
+  uri = "exasol://sys:exasol@localhost:9563/?tls=true&validateservercertificate=0"
+)
 
-print(table)
+con <- adbc_connection_init(db)
+
+con |>
+  read_adbc("SELECT * FROM DEMO.GAMES") |>
+  tibble::as_tibble() # or:
+# arrow::as_arrow_table() # to keep result in Arrow format
+# arrow::as_record_batch_reader() # for larger results
