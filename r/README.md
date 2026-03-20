@@ -32,6 +32,7 @@ Simple R examples showing how to use ADBC to connect, run a query, and return th
 - [DuckDB-compatible systems](./duckdb)
   - [DuckDB](./duckdb/duckdb)
   - [MotherDuck](./duckdb/motherduck)
+- [Exasol](./exasol)
 - [Apache Arrow Flight SQL-compatible systems](./flightsql)
   - [Dremio](./flightsql/dremio)
   - [GizmoSQL](./flightsql/gizmosql)
