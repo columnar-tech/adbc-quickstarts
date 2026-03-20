@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Python and Exasol with ADBC
+# Connecting C++ and Exasol with ADBC
 
 ## Instructions
 
@@ -23,9 +23,21 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+1. [Install miniforge](https://github.com/conda-forge/miniforge)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+
+1. Create and activate a new environment with the required C++ libraries:
+
+   ```sh
+   mamba create -n adbc-cpp -c conda-forge cmake compilers libadbc-driver-manager libarrow
+
+   # Initialize mamba in your shell if not already done
+   eval "$(mamba shell hook --shell zsh)"
+   mamba activate adbc-cpp
+   ```
+
+   (`cmake` is only needed if you use CMake to build the C++ program below.)
 
 ### Set up Exasol
 
@@ -58,21 +70,42 @@ limitations under the License.
 1. Install the Exasol ADBC driver:
 
    ```sh
-   dbc install exasol
+   dbc install --level user exasol
    ```
 
-2. Customize the Python script `main.py` as needed
-   - Change the connection arguments in `db_kwargs`
+2. Customize the C++ program `main.cpp` as needed
+   - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
      - Change `uri` as needed, using query parameters to add more connection arguments, or keep it as is to use the data included with this example
-   - If you changed which schema you're opening, also change the SQL SELECT statement in `cursor.execute()`
+   - If you changed which schema you're opening, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`
 
-3. Run the Python script:
+3. Build and run the C++ program:
 
+   Using Make:
    ```sh
-   uv run main.py
+   make
+   ./exasol_demo
+   ```
+
+   Or using CMake:
+   ```sh
+   cmake -B build
+   cmake --build build
+   ./build/exasol_demo
    ```
 
 ### Clean up
+
+1. Clean build artifacts:
+
+   Using Make:
+   ```sh
+   make clean
+   ```
+
+   Using CMake:
+   ```sh
+   rm -rf build
+   ```
 
 1. Stop the Docker container running Exasol:
 

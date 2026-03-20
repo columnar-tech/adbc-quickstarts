@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Python and Exasol with ADBC
+# Connecting Go and Exasol with ADBC
 
 ## Instructions
 
@@ -23,7 +23,7 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+1. [Install Go](https://go.dev/doc/install)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
@@ -61,15 +61,16 @@ limitations under the License.
    dbc install exasol
    ```
 
-2. Customize the Python script `main.py` as needed
-   - Change the connection arguments in `db_kwargs`
+2. Customize the Go program `main.go` as needed
+   - Change the connection arguments in the `NewDatabase()` call
      - Change `uri` as needed, using query parameters to add more connection arguments, or keep it as is to use the data included with this example
-   - If you changed which schema you're opening, also change the SQL SELECT statement in `cursor.execute()`
+   - If you changed which schema you're opening, also change the SQL SELECT statement in `stmt.SetSqlQuery()`
 
-3. Run the Python script:
+3. Run the Go program:
 
    ```sh
-   uv run main.py
+   go mod tidy
+   go run main.go
    ```
 
 ### Clean up

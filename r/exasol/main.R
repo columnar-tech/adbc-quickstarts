@@ -12,22 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "clickhouse",
-    "databricks",
-    "duckdb/*",
-    "exasol",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "oracle",
-    "postgresql/*",
-    "redshift",
-    "snowflake",
-    "sqlite",
-    "teradata",
-    "trino",
-]
+library(adbcdrivermanager)
+
+drv <- adbc_driver("exasol")
+
+db <- adbc_database_init(
+  drv,
+  uri = "exasol://sys:exasol@localhost:9563/?tls=true&validateservercertificate=0"
+)
+
+con <- adbc_connection_init(db)
+
+con |>
+  read_adbc("SELECT * FROM DEMO.GAMES") |>
+  tibble::as_tibble() # or:
+# arrow::as_arrow_table() # to keep result in Arrow format
+# arrow::as_record_batch_reader() # for larger results
