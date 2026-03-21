@@ -46,6 +46,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
   - [MotherDuck](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/motherduck)
 - [Exasol](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/exasol)
 - Apache Arrow Flight SQL-compatible systems
+  - [Apache Doris](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/doris)
   - [Dremio](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/dremio)
   - [GizmoSQL](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/gizmosql)
   - [InfluxDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/influxdb)
