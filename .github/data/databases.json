@@ -27,6 +27,10 @@
     "name": "Databricks",
     "parent": null
   },
+  "doris": {
+    "name": "Apache Doris",
+    "parent": "flightsql"
+  },
   "dremio": {
     "name": "Dremio",
     "parent": "flightsql"
