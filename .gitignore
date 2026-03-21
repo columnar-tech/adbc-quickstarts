@@ -4,3 +4,4 @@
 target
 go.sum
 Cargo.lock
+.pixi

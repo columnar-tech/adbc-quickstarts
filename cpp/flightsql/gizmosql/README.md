@@ -25,21 +25,9 @@ This example uses [GizmoSQL](https://gizmodata.com/gizmosql), a lightweight, hig
 
 ### Prerequisites
 
-1. [Install miniforge](https://github.com/conda-forge/miniforge)
+1. [Install Pixi](https://pixi.prefix.dev/latest/)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
-
-1. Create and activate a new environment with the required C++ libraries:
-
-   ```sh
-   mamba create -n adbc-cpp -c conda-forge cmake compilers libadbc-driver-manager libarrow
-
-   # Initialize mamba in your shell if not already done
-   eval "$(mamba shell hook --shell zsh)"
-   mamba activate adbc-cpp
-   ```
-
-   (`cmake` is only needed if you use CMake to build the C++ program below.)
 
 ### Set up GizmoSQL server (if you don't already have one)
 
@@ -70,14 +58,14 @@ This example uses [GizmoSQL](https://gizmodata.com/gizmosql), a lightweight, hig
 
    Using Make:
    ```sh
-   make
+   pixi run make
    ./gizmosql_demo
    ```
 
    Or using CMake:
    ```sh
-   cmake -B build
-   cmake --build build
+   pixi run cmake -B build
+   pixi run cmake --build build
    ./build/gizmosql_demo
    ```
 
@@ -87,7 +75,7 @@ This example uses [GizmoSQL](https://gizmodata.com/gizmosql), a lightweight, hig
 
    Using Make:
    ```sh
-   make clean
+   pixi run make clean
    ```
 
    Using CMake:
