@@ -42,11 +42,10 @@ This example uses [Apache Doris](https://doris.apache.org/), a high-performance,
     curl -O https://doris.apache.org/files/start-doris.sh
     ```
 
-3. Add Flight SQL ports to the script:
+3. Add Flight SQL ports and configure the backend to advertise `localhost`:
 
     ```sh
-    sed -i.bak 's/^\([[:space:]]*\)\(- 9010:9010\)/\1\2\n\1- 8070:8070/' start-doris.sh
-    sed -i.bak 's/^\([[:space:]]*\)\(- 9050:9050\)/\1\2\n\1- 8050:8050/' start-doris.sh
+    sed -i.bak -f patch-doris.sed start-doris.sh
     ```
 
 4. Start an Apache Doris cluster:
@@ -54,14 +53,6 @@ This example uses [Apache Doris](https://doris.apache.org/), a high-performance,
     ```sh
     chmod 755 start-doris.sh
     ./start-doris.sh
-    ```
-
-5. Configure Flight SQL ports and restart the cluster:
-
-    ```sh
-    docker compose -f docker-compose-doris.yaml exec fe bash -c "sed -i 's/arrow_flight_sql_port = -1/arrow_flight_sql_port = 8070/' /opt/apache-doris/fe/conf/fe.conf"
-    docker compose -f docker-compose-doris.yaml exec be bash -c "sed -i 's/arrow_flight_sql_port = -1/arrow_flight_sql_port = 8050/' /opt/apache-doris/be/conf/be.conf"
-    docker compose -f docker-compose-doris.yaml restart
     ```
 
 ### Connect to Apache Doris
