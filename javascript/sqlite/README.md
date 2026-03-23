@@ -36,12 +36,10 @@ limitations under the License.
    dbc install sqlite
    ```
 
-1. Install dependencies from the `javascript/` directory:
+1. Install dependencies:
 
    ```sh
-   cd ..
-   npm install
-   cd sqlite
+   npm --prefix .. install
    ```
 
 1. Customize the script `main.js` as needed
