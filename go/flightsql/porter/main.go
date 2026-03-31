@@ -57,11 +57,7 @@ func main() {
 	}
 	defer stmt.Close()
 
-	if err := stmt.SetSqlQuery(`
-		SELECT 1 AS id, 'porter' AS name
-		UNION ALL
-		SELECT 2, 'flight'
-	`); err != nil {
+	if err := stmt.SetSqlQuery(`SELECT 42 AS answer`); err != nil {
 		log.Fatal(err)
 	}
 

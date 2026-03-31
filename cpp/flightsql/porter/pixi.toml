@@ -1,0 +1,13 @@
+[project]
+name = "adbc-quickstart-flightsql"
+version = "1.0.0"
+description = "ADBC FlightSQL Quickstart for Porter"
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "linux-arm64", "osx-64", "linux-64"]
+
+[dependencies]
+adbcdrivermanager = ">=1.0.0"
+adbcfloatsql = ">=1.0.0"
+arrow = ">=17.0.0"
+cmake = ">=3.16"
+make = ">=4.0"

@@ -1,0 +1,10 @@
+[package]
+name = "adbc-quickstart-flightsql"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+adbc-core = { version = "0.21.0", features = ["driver-floatsql"] }
+adbc-driver-manager = "0.21.0"
+arrow = ">= 17"
+arrow-array = ">= 17"

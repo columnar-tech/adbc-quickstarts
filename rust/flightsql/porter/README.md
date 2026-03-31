@@ -1,6 +1,6 @@
-# Connecting Go and Porter with ADBC
+# Connecting Rust and Porter with ADBC
 
-This guide shows how to connect Go to [Porter](https://github.com/TFMV/porter), a lightweight streaming SQL engine built on DuckDB with Arrow Flight SQL support.
+This guide shows how to connect Rust to [Porter](https://github.com/TFMV/porter), a lightweight streaming SQL engine built on DuckDB with Arrow Flight SQL support.
 
 Porter is intentionally minimal:
 
@@ -8,15 +8,14 @@ Porter is intentionally minimal:
 
 ---
 
-## 💡 Quick Start (if Porter is already running)
+## Quick Start (if Porter is already running)
 
-If you already have a Porter instance running, skip setup and go straight to the Go client section.
+If you already have a Porter instance running, skip setup and go straight to the Rust client section.
 
 ---
 
 ## Prerequisites
 
-* Go installed (1.20+ recommended)
 * [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 * A running Porter server (optional if you are testing locally)
 
@@ -68,9 +67,7 @@ dbc install flightsql
 
 ---
 
-## Connect Go to Porter
-
-Edit `main.go` in this example directory.
+## Connect Rust to Porter
 
 ### Connection settings
 
@@ -79,11 +76,13 @@ Edit `main.go` in this example directory.
   * default: `grpc+tcp://localhost:32010`
 * `driver`: must be `flightsql`
 
-```go
-db, err := drv.NewDatabase(map[string]string{
-	"driver": "flightsql",
-	"uri":    "grpc+tcp://localhost:32010",
-})
+Porter does not require authentication.
+
+```rust
+let opts = [(OptionDatabase::Uri, "grpc+tcp://localhost:32010".into())];
+let db = driver
+    .new_database_with_opts(opts)
+    .expect("Failed to create database handle");
 ```
 
 ---
@@ -91,8 +90,7 @@ db, err := drv.NewDatabase(map[string]string{
 ## Run the example
 
 ```bash
-go mod tidy
-go run main.go
+cargo run
 ```
 
 ---
@@ -100,9 +98,11 @@ go run main.go
 ## Expected output
 
 ```
-answer: int64
-----
-answer: [42]
++------------+
+| answer     |
++------------+
+| 42         |
++------------+
 ```
 
 ---
@@ -120,11 +120,5 @@ CTRL + C
 Porter is designed to be simple and hackable:
 
 * No heavy orchestration layer
-* No external dependencies beyond Arrow + FlightSQL
+* No external dependencies beyond Arrow + Flight SQL
 * Built for experimentation and embedding
-
-### Local development install
-
-```bash
-go install ./cmd/porter
-```
