@@ -45,12 +45,6 @@ jobs:
             --source source \
             --output restructured
       
-      - name: Delete target branch
-        run: |
-          git push origin --delete by-database || true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Create and push orphan branch
         run: |
           mkdir target
@@ -73,7 +67,7 @@ jobs:
           Triggered by: ${{ github.event_name }}"
 
           git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          git push origin by-database
+          git push --force origin by-database
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
