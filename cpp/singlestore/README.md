@@ -14,12 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting C++ and MariaDB with ADBC
+# Connecting C++ and SingleStore with ADBC
 
 ## Instructions
 
 > [!TIP]
-> If you already have a MariaDB instance running, skip the steps to set up and clean up MariaDB.
+> If you already have a SingleStore instance running, skip the steps to set up and clean up SingleStore.
 
 ### Prerequisites
 
@@ -27,27 +27,34 @@ limitations under the License.
 
 2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
-### Set up MariaDB
+### Set up SingleStore
 
 1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
-2. Start a MariaDB instance:
+2. Start a SingleStore instance:
 
     ```sh
-    docker run --detach --name some-mariadb -p 3306:3306 --env MARIADB_ROOT_PASSWORD=my-secret-pw mariadb:latest
+    docker run \
+        -d --rm --name singlestoredb-dev \
+        -e ROOT_PASSWORD="YOUR_ROOT_PASSWORD" \
+        -p 3306:3306 -p 8080:8080 -p 9000:9000 \
+        ghcr.io/singlestore-labs/singlestoredb-dev:latest
     ```
 
-### Connect to MariaDB
+> [!IMPORTANT]  
+> To run the container on Apple Silicon, add the `--platform linux/amd64` option.
 
-1. Install the MySQL ADBC driver:
+### Connect to SingleStore
+
+1. Install the SingleStore ADBC driver:
 
     ```sh
-    dbc install --level user mysql
+    dbc install --level user --pre singlestore
     ```
 
-2. Customize the C++ program `main.cpp` as needed
+2. Customize the C++ program `main.cpp`
     - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
-        - Format `uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name), or keep it as is
+        - Format the URI according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name)
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`
 
 3. Build and run the C++ program:
@@ -55,19 +62,25 @@ limitations under the License.
     Using Make:
     ```sh
     pixi run make
-    ./mariadb_demo
+    ./singlestore_demo
     ```
 
     Or using CMake:
     ```sh
     pixi run cmake -B build
     pixi run cmake --build build
-    ./build/mariadb_demo
+    ./build/singlestore_demo
     ```
 
 ### Clean up
 
-1. Clean build artifacts:
+1. Stop the Docker container running SingleStore:
+
+    ```sh
+    docker stop singlestoredb-dev
+    ```
+
+2. Clean build artifacts:
 
     Using Make:
     ```sh
@@ -77,10 +90,4 @@ limitations under the License.
     Using CMake:
     ```sh
     rm -rf build
-    ```
-
-2. Stop the Docker container running MariaDB:
-
-    ```sh
-    docker stop some-mariadb
     ```

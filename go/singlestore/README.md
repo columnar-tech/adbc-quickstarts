@@ -14,12 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Go and MySQL with ADBC
+# Connecting Go and SingleStore with ADBC
 
 ## Instructions
 
 > [!TIP]
-> If you already have a MySQL instance running, skip the steps to install MySQL, start it, load data, and stop it.
+> If you already have a SingleStore instance running, skip the steps to set up and clean up SingleStore.
 
 ### Prerequisites
 
@@ -27,33 +27,34 @@ limitations under the License.
 
 2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
-### Set up MySQL
+### Set up SingleStore
 
 1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
-2. Start a MySQL instance:
+2. Start a SingleStore instance:
 
     ```sh
-    docker run -d --rm --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 mysql
+    docker run \
+        -d --rm --name singlestoredb-dev \
+        -e ROOT_PASSWORD="YOUR_ROOT_PASSWORD" \
+        -p 3306:3306 -p 8080:8080 -p 9000:9000 \
+        ghcr.io/singlestore-labs/singlestoredb-dev:latest
     ```
 
-3. Create a table in MySQL and load data into it:
+> [!IMPORTANT]  
+> To run the container on Apple Silicon, add the `--platform linux/amd64` option.
+
+### Connect to SingleStore
+
+1. Install the SingleStore ADBC driver:
 
     ```sh
-    cat games.sql | docker exec -i some-mysql mysql --user=root --password=my-secret-pw
+    dbc install --pre singlestore
     ```
 
-### Connect to MySQL
-
-1. Install the MySQL ADBC driver:
-
-    ```sh
-    dbc install mysql
-    ```
-
-2. Customize the Go program `main.go` as needed
+2. Customize the Go program `main.go`
     - Change the connection arguments in the `NewDatabase()` call
-        - Format `uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name), or keep it as is to use the data included with this example
+        - Format `uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name)
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.SetSqlQuery()`
 
 3. Run the Go program:
@@ -65,8 +66,8 @@ limitations under the License.
 
 ### Clean up
 
-Stop the Docker container running MySQL:
+Stop the Docker container running SingleStore:
 
 ```sh
-docker stop some-mysql
+docker stop singlestoredb-dev
 ```

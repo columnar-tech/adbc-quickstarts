@@ -12,23 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "clickhouse",
-    "databricks",
-    "duckdb/*",
-    "exasol",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "oracle",
-    "postgresql/*",
-    "redshift",
-    "singlestore",
-    "snowflake",
-    "sqlite",
-    "teradata",
-    "trino",
-]
+library(adbcdrivermanager)
+
+drv <- adbc_driver("singlestore")
+
+db <- adbc_database_init(
+  drv,
+  uri = "root:YOUR_ROOT_PASSWORD@tcp(localhost:3306)/memsql"
+)
+
+con <- adbc_connection_init(db)
+
+con |>
+  read_adbc("SELECT version()") |>
+  tibble::as_tibble() # or:
+# arrow::as_arrow_table() # to keep result in Arrow format
+# arrow::as_record_batch_reader() # for larger results

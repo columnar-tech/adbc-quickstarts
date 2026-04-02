@@ -14,12 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Rust and Vitess with ADBC
+# Connecting Rust and SingleStore with ADBC
 
 ## Instructions
 
 > [!TIP]
-> If you already have a Vitess instance running, skip the steps to set up and clean up Vitess.
+> If you already have a SingleStore instance running, skip the steps to set up and clean up SingleStore.
 
 ### Prerequisites
 
@@ -27,39 +27,34 @@ limitations under the License.
 
 2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
-### Set up Vitess
+### Set up SingleStore
 
 1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
-2. Start a Vitess instance:
+2. Start a SingleStore instance:
 
     ```sh
-    docker run -d --rm --name=vttestserver \
-        -p 33574:33574 \
-        -p 33575:33575 \
-        -p 33577:33577 \
-        -e PORT=33574 \
-        -e KEYSPACES=test,unsharded \
-        -e NUM_SHARDS=2,1 \
-        -e MYSQL_MAX_CONNECTIONS=70000 \
-        -e MYSQL_BIND_HOST=0.0.0.0 \
-        -e VTCOMBO_BIND_HOST=0.0.0.0 \
-        vitess/vttestserver:mysql80
+    docker run \
+        -d --rm --name singlestoredb-dev \
+        -e ROOT_PASSWORD="YOUR_ROOT_PASSWORD" \
+        -p 3306:3306 -p 8080:8080 -p 9000:9000 \
+        ghcr.io/singlestore-labs/singlestoredb-dev:latest
     ```
 
-    Wait a few moments before continuing to the next step to allow the Vitess container to fully initialize.
+> [!IMPORTANT]  
+> To run the container on Apple Silicon, add the `--platform linux/amd64` option.
 
-### Connect to Vitess
+### Connect to SingleStore
 
-1. Install the MySQL ADBC driver:
+1. Install the SingleStore ADBC driver:
 
     ```sh
-    dbc install mysql
+    dbc install --pre singlestore
     ```
 
 2. Customize `src/main.rs` as needed
     - Change the connection arguments in `opts`
-        - Format `OptionDatabase::Uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name), or keep it as is
+        - Format the URI according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name)
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `statement.set_sql_query()`
 
 3. Run the Rust program:
@@ -70,8 +65,8 @@ limitations under the License.
 
 ### Clean up
 
-Stop the Docker container running Vitess:
+Stop the Docker container running SingleStore:
 
 ```sh
-docker stop vttestserver
+docker stop singlestoredb-dev
 ```

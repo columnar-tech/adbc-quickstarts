@@ -14,12 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting R and MariaDB with ADBC
+# Connecting R and SingleStore with ADBC
 
 ## Instructions
 
 > [!TIP]
-> If you already have a MariaDB instance running, skip the steps to set up and clean up MariaDB.
+> If you already have a SingleStore instance running, skip the steps to set up and clean up SingleStore.
 
 ### Prerequisites
 
@@ -33,27 +33,34 @@ limitations under the License.
     install.packages(c("adbcdrivermanager", "arrow", "tibble"))
     ```
 
-### Set up MariaDB
+### Set up SingleStore
 
 1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
-2. Start a MariaDB instance:
+2. Start a SingleStore instance:
 
     ```sh
-    docker run --detach --name some-mariadb -p 3306:3306 --env MARIADB_ROOT_PASSWORD=my-secret-pw mariadb:latest
+    docker run \
+        -d --rm --name singlestoredb-dev \
+        -e ROOT_PASSWORD="YOUR_ROOT_PASSWORD" \
+        -p 3306:3306 -p 8080:8080 -p 9000:9000 \
+        ghcr.io/singlestore-labs/singlestoredb-dev:latest
     ```
 
-### Connect to MariaDB
+> [!IMPORTANT]  
+> To run the container on Apple Silicon, add the `--platform linux/amd64` option.
 
-1. Install the MySQL ADBC driver:
+### Connect to SingleStore
+
+1. Install the SingleStore ADBC driver:
 
     ```sh
-    dbc install mysql
+    dbc install --pre singlestore
     ```
 
-2. Customize the R script `main.R` as needed
+2. Customize the R script `main.R`
     - Change the connection arguments in `adbc_database_init()`
-        - Format `uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name), or keep it as is
+        - Format the URI according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name)
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `read_adbc()`
 
 3. Run the R script:
@@ -64,8 +71,8 @@ limitations under the License.
 
 ### Clean up
 
-Stop the Docker container running MariaDB:
+Stop the Docker container running SingleStore:
 
 ```sh
-docker stop some-mariadb
+docker stop singlestoredb-dev
 ```

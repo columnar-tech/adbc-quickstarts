@@ -47,7 +47,7 @@ limitations under the License.
 
 2. Customize the Rust program `src/main.rs` as needed
     - Change the connection arguments in `opts`
-        - Format the URI according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#section-readme), or keep it as is
+        - Format the URI according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name), or keep it as is
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `statement.set_sql_query()`
 
 3. Compile and run the Rust program:
