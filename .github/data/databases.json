@@ -103,6 +103,10 @@
     "name": "Amazon Redshift",
     "parent": null
   },
+  "singlestore": {
+    "name": "SingleStore",
+    "parent": null
+  },
   "snowflake": {
     "name": "Snowflake",
     "parent": null
