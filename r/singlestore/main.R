@@ -18,7 +18,7 @@ drv <- adbc_driver("singlestore")
 
 db <- adbc_database_init(
   drv,
-  uri = "root:YOUR_ROOT_PASSWORD@tcp(localhost:3306)/memsql",
+  uri = "root:YOUR_ROOT_PASSWORD@tcp(localhost:3306)/memsql"
 )
 
 con <- adbc_connection_init(db)
