@@ -47,7 +47,8 @@ limitations under the License.
         ghcr.io/singlestore-labs/singlestoredb-dev:latest
     ```
 
-    To run the image on Apple Silicon, add the `--platform linux/amd64` option.
+> [!IMPORTANT]  
+> To run the container on Apple Silicon, add the `--platform linux/amd64` option.
 
 ### Connect to SingleStore
 
