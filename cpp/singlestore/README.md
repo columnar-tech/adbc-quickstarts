@@ -54,7 +54,7 @@ limitations under the License.
 
 2. Customize the C++ program `main.cpp`
     - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
-        - Format the URI according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#section-readme)
+        - Format the URI according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name)
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`
 
 3. Build and run the C++ program:

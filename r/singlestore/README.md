@@ -60,7 +60,7 @@ limitations under the License.
 
 2. Customize the R script `main.R`
     - Change the connection arguments in `adbc_database_init()`
-        - Format the URI according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#section-readme)
+        - Format the URI according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name)
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `read_adbc()`
 
 3. Run the R script:

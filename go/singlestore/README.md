@@ -54,7 +54,7 @@ limitations under the License.
 
 2. Customize the Go program `main.go`
     - Change the connection arguments in the `NewDatabase()` call
-        - Format `uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#section-readme)
+        - Format `uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name)
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.SetSqlQuery()`
 
 3. Run the Go program:
