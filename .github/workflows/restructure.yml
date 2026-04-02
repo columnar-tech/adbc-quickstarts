@@ -45,49 +45,35 @@ jobs:
             --source source \
             --output restructured
       
-      - name: Checkout target branch
-        uses: actions/checkout@v6
-        with:
-          ref: by-database
-          path: target
-          fetch-depth: 0
-        continue-on-error: true
-      
-      - name: Create orphan branch if needed
+      - name: Delete target branch
         run: |
-          if [ ! -d "target/.git" ]; then
-            mkdir -p target
-            cd target
-            git init
-            git checkout --orphan by-database
-          fi
-      
-      - name: Update target branch
+          git push origin --delete by-database || true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create and push orphan branch
         run: |
-          # Clear target directory (except .git)
+          mkdir target
           cd target
-          find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
-          
+          git init
+          git checkout --orphan by-database
+
           # Copy restructured content
           cp -r ../restructured/* .
-          
+
           # Configure git
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
+
           # Commit and push
           git add -A
-          
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Restructure repository (by-database view)
+          git commit -m "Restructure repository (by-database view)
 
           Source commit: ${{ github.sha }}
           Triggered by: ${{ github.event_name }}"
-            
-            git push origin by-database --force
-          fi
+
+          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git push origin by-database
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
