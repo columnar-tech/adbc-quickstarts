@@ -58,6 +58,7 @@ Simple Python examples showing how to use ADBC to connect, run a query, and retu
   - [Yellowbrick](./postgresql/yellowbrick)
   - [YugabyteDB](./postgresql/yugabytedb)
 - [Amazon Redshift](./redshift)
+- [SingleStore](./singlestore)
 - [Snowflake](./snowflake)
 - [SQLite](./sqlite)
 - [Teradata](./teradata)
