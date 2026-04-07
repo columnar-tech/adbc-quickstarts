@@ -28,6 +28,7 @@ This directory contains examples showing how to use ADBC to connect Rust applica
 
 Any open source tool or vendor product that implements Arrow Flight SQL should work with the ADBC driver for Flight SQL. The examples included here focus on the following systems:
 
+- [Apache Doris](./doris)
 - [Dremio](./dremio)
 - [GizmoSQL](./gizmosql)
 - [InfluxDB](./influxdb)

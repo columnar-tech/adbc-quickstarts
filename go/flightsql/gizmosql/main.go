@@ -28,7 +28,7 @@ func main() {
 	db, err := drv.NewDatabase(map[string]string{
 		"driver":   "flightsql",
 		"uri":      "grpc+tcp://localhost:31337",
-		"username": "gizmosql_username",
+		"username": "gizmosql_user",
 		"password": "gizmosql_password",
 	})
 	if err != nil {
