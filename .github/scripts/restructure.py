@@ -40,6 +40,7 @@ EXCLUDE_PATTERNS = {
     ".settings",  # Eclipse IDE
     "__pycache__",  # Python cache
     ".DS_Store",  # macOS
+    "node_modules",  # JavaScript dependencies
 }
 
 # Files to exclude at language root level
@@ -48,6 +49,7 @@ LANGUAGE_ROOT_EXCLUDE = {
     "Cargo.toml",  # Rust workspace config
     "go.mod",  # Go shared module (replaced with per-example)
     "go.sum",  # Go lockfile
+    "package.json",  # JavaScript shared config (copied into per-example)
 }
 
 # Template for standalone Go modules
@@ -351,6 +353,19 @@ def restructure(source_root: Path, output_root: Path) -> None:
             if lang == "go":
                 go_mod_path = lang_output / "go.mod"
                 go_mod_path.write_text(generate_go_mod(db_name, config))
+
+            # Copy package.json and fix npm prefix in README for JavaScript examples
+            if lang == "javascript":
+                package_json_src = source_root / "javascript" / "package.json"
+                if package_json_src.exists():
+                    shutil.copy2(package_json_src, lang_output / "package.json")
+                readme_path = lang_output / "README.md"
+                if readme_path.exists():
+                    text = readme_path.read_text()
+                    text = text.replace(
+                        "npm --prefix ../.. install", "npm install"
+                    ).replace("npm --prefix .. install", "npm install")
+                    readme_path.write_text(text)
 
         # Generate README.md for this database
         readme_content = generate_database_readme(
