@@ -29,6 +29,15 @@ from pathlib import Path
 # GitHub repository URL
 GITHUB_REPO_URL = "https://github.com/columnar-tech/adbc-quickstarts"
 
+# Per-language notes inserted into language README files
+LANGUAGE_NOTES = {
+    "javascript": (
+        "> [!NOTE]\n"
+        "> These examples require a server-side JS/TS runtime"
+        " (like Node.js or Bun) and do not run in the browser."
+    ),
+}
+
 
 def load_mappings() -> tuple[dict[str, str], dict[str, dict]]:
     """
@@ -233,6 +242,11 @@ def generate_language_readme(
     # Get language display name
     language_name = language_names.get(language, language.upper())
 
+    # Per-language notes
+    language_notes = LANGUAGE_NOTES.get(language, "")
+    if language_notes:
+        language_notes = f"\n{language_notes}\n"
+
     # Discover databases for this language
     language_dir = repo_root / language
     databases = discover_databases_for_language(language_dir, database_info)
@@ -240,6 +254,7 @@ def generate_language_readme(
 
     return template.format(
         language_name=language_name,
+        language_notes=language_notes,
         databases_list=databases_list,
     )
 

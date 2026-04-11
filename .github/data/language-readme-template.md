@@ -23,7 +23,7 @@ To update, modify .github/data/databases.json or .github/data/languages.json
 # {language_name} ADBC Quickstarts
 
 Simple {language_name} examples showing how to use ADBC to connect, run a query, and return the results.
-
+{language_notes}
 ## Source systems covered
 
 {databases_list}
