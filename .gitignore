@@ -4,4 +4,7 @@
 target
 go.sum
 Cargo.lock
+node_modules
+package-lock.json
+javascript/node-packages/
 .pixi

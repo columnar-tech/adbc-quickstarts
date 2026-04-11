@@ -2,6 +2,7 @@
   "python": "Python",
   "go": "Go",
   "java": "Java",
+  "javascript": "JavaScript",
   "cpp": "C++",
   "r": "R",
   "rust": "Rust"
