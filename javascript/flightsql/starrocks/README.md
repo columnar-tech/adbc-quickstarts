@@ -26,7 +26,7 @@ This example uses [StarRocks](https://www.starrocks.io/), an open query engine f
 ### Prerequisites
 
 1. [Install Node.js](https://nodejs.org/) (version 22 or later)
-   - Alternatively, you can use [Bun](https://bun.sh/)
+   - Alternatively, you can use [Bun](https://bun.sh/) or [Deno](https://deno.com/)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
@@ -88,6 +88,12 @@ This example uses [StarRocks](https://www.starrocks.io/), an open query engine f
 
    ```sh
    bun run main.js
+   ```
+
+   **Deno:**
+
+   ```sh
+   deno run --allow-ffi --allow-env main.js
    ```
 
 ### Clean up
