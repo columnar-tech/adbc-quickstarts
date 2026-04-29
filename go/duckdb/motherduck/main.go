@@ -27,7 +27,7 @@ func main() {
 
 	db, err := drv.NewDatabase(map[string]string{
 		"driver": "duckdb",
-		"path":   "md:sample_data",
+		"uri":   "md:sample_data",
 	})
 	if err != nil {
 		log.Fatal(err)

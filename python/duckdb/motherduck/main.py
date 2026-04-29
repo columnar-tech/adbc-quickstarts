@@ -21,7 +21,7 @@ from adbc_driver_manager import dbapi
 
 with (
     dbapi.connect(
-        driver="duckdb", db_kwargs={"path": "md:sample_data"}
+        driver="duckdb", db_kwargs={"uri": "md:sample_data"}
     ) as con,
     con.cursor() as cursor,
 ):
