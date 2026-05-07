@@ -3,6 +3,7 @@
   "go": "Go",
   "java": "Java",
   "javascript": "JavaScript",
+  "kotlin": "Kotlin",
   "cpp": "C++",
   "r": "R",
   "rust": "Rust"

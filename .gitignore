@@ -8,3 +8,6 @@ node_modules
 package-lock.json
 javascript/node-packages/
 .pixi
+.gradle
+.kotlin
+build
