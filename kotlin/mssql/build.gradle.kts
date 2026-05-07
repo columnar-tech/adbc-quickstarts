@@ -25,5 +25,7 @@ application {
     applicationDefaultJvmArgs =
         listOf(
             "--add-opens=java.base/java.nio=ALL-UNNAMED",
+            "--enable-native-access=ALL-UNNAMED",
+            "--sun-misc-unsafe-memory-access=allow",
         )
 }

@@ -63,7 +63,7 @@ This example uses [InfluxDB](https://www.influxdata.com/), a time series databas
 1.  Run the Kotlin program:
 
     ```sh
-    ./gradlew run
+    gradle run
     ```
 
 ### Clean up

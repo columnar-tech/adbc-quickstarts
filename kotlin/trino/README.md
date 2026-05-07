@@ -53,7 +53,7 @@ docker run -d --rm --name trino -p 8080:8080 trinodb/trino
 1. Run the Kotlin program:
 
    ```sh
-   ./gradlew run
+   gradle run
    ```
 
 ### Clean up

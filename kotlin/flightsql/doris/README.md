@@ -72,7 +72,7 @@ This example uses [Apache Doris](https://doris.apache.org/), a high-performance,
 1.  Run the Kotlin program:
 
     ```sh
-    ./gradlew run
+    gradle run
     ```
 
 ### Clean up

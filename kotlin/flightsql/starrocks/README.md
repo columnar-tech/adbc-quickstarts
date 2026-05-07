@@ -118,7 +118,7 @@ This example uses [StarRocks](https://www.starrocks.io/), an open query engine f
 1.  Run the Kotlin program:
 
     ```sh
-    ./gradlew run
+    gradle run
     ```
 
 ### Clean up

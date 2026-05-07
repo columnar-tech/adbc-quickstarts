@@ -56,7 +56,7 @@ This example uses [Dremio](https://www.dremio.com/), a data lakehouse platform t
 1.  Run the Kotlin program:
 
     ```sh
-    ./gradlew run
+    gradle run
     ```
 
     The output will look something like this:

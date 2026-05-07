@@ -83,5 +83,5 @@ limitations under the License.
 1.  Run the Kotlin program:
 
     ```sh
-    ./gradlew run
+    gradle run
     ```

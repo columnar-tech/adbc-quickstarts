@@ -56,7 +56,7 @@ This example uses [GizmoSQL](https://gizmodata.com/gizmosql), a lightweight, hig
 1.  Run the Kotlin program:
 
     ```sh
-    ./gradlew run
+    gradle run
     ```
 
     The output will look something like this:
