@@ -55,6 +55,8 @@ limitations under the License.
     CALL quack_serve('quack:localhost');
     ```
 
+    Note the `auth_token` value that DuckDB prints.
+
 ### Connect to DuckDB via Quack protocol
 
 1. Install the Quack ADBC driver:
@@ -65,7 +67,7 @@ limitations under the License.
 
 1. Customize the R script `main.R` as needed
     - Change the `uri` connection argument in `adbc_database_init()`
-        - Replace `YOUR_AUTH_TOKEN` with the auth token for your DuckDB server
+        - Replace `YOUR_AUTH_TOKEN` with the `auth_token` printed by DuckDB
         - Change the host and port if applicable
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `read_adbc()`
 
