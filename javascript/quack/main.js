@@ -17,7 +17,7 @@ import { AdbcDatabase } from '@apache-arrow/adbc-driver-manager';
 const db = new AdbcDatabase({
   driver: 'quack',
   databaseOptions: {
-    uri: 'quack://localhost:9494/?token=AEF05A3B9398D20B0F4F8F41552937F4',
+    uri: 'quack://localhost:9494/?token=YOUR_AUTH_TOKEN',
   },
 });
 
