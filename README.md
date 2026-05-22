@@ -70,6 +70,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
   - [TimescaleDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/timescaledb)
   - [Yellowbrick](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/yellowbrick)
   - [YugabyteDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/yugabytedb)
+- [Quack](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/quack)
 - [Amazon Redshift](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/redshift)
 - [SingleStore](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/singlestore)
 - [Snowflake](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/snowflake)

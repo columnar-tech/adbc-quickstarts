@@ -99,6 +99,10 @@
     "protocol_description": "This directory contains examples showing how to use ADBC to connect {language} applications to systems that support [PostgreSQL frontend/backend (wire) protocol](https://www.postgresql.org/docs/current/protocol.html).",
     "source_systems_intro": "Any open source tool or vendor product that implements PostgreSQL frontend/backend protocol should work with the ADBC driver for PostgreSQL. The examples included here focus on the following systems:"
   },
+  "quack": {
+    "name": "Quack",
+    "parent": null
+  },
   "redshift": {
     "name": "Amazon Redshift",
     "parent": null
