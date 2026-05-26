@@ -31,11 +31,11 @@ limitations under the License.
 
 ### Set up Trino
 
-Start Trino in a Docker container:
+1. Start Trino in a Docker container:
 
-```sh
-docker run -d --rm --name trino -p 8080:8080 trinodb/trino
-```
+   ```sh
+   docker run -d --name trino -p 8080:8080 trinodb/trino
+   ```
 
 ### Connect to Trino
 
@@ -58,8 +58,9 @@ docker run -d --rm --name trino -p 8080:8080 trinodb/trino
 
 ### Clean up
 
-Stop and remove the Docker container running Trino:
+1. Stop and remove the Docker container running Trino:
 
-```sh
-docker stop trino
-```
+   ```sh
+   docker stop trino
+   docker rm trino
+   ```
