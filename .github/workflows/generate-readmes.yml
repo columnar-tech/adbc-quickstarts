@@ -29,6 +29,7 @@ on:
       - 'cpp/**'
       - 'go/**'
       - 'java/**'
+      - 'kotlin/**'
       - 'python/**'
       - 'r/**'
       - 'rust/**'
