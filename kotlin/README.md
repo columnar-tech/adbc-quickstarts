@@ -56,6 +56,7 @@ Simple Kotlin examples showing how to use ADBC to connect, run a query, and retu
   - [TimescaleDB](./postgresql/timescaledb)
   - [Yellowbrick](./postgresql/yellowbrick)
   - [YugabyteDB](./postgresql/yugabytedb)
+- [Quack](./quack)
 - [Amazon Redshift](./redshift)
 - [SingleStore](./singlestore)
 - [Snowflake](./snowflake)
