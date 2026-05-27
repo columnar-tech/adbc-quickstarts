@@ -61,6 +61,10 @@
     "name": "InfluxDB",
     "parent": "flightsql"
   },
+  "sail": {
+    "name": "Sail",
+    "parent": "flightsql"
+  },
   "mariadb": {
     "name": "MariaDB",
     "parent": "mysql"

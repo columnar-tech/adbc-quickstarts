@@ -32,6 +32,7 @@ Any open source tool or vendor product that implements Arrow Flight SQL should w
 - [Dremio](./dremio)
 - [GizmoSQL](./gizmosql)
 - [InfluxDB](./influxdb)
+- [Sail](./sail)
 - [StarRocks](./starrocks)
 
 ## Instructions

@@ -38,6 +38,7 @@ Simple Rust examples showing how to use ADBC to connect, run a query, and return
   - [Dremio](./flightsql/dremio)
   - [GizmoSQL](./flightsql/gizmosql)
   - [InfluxDB](./flightsql/influxdb)
+  - [Sail](./flightsql/sail)
   - [StarRocks](./flightsql/starrocks)
 - [Microsoft SQL Server](./mssql)
 - [MySQL-compatible systems](./mysql)
