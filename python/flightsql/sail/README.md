@@ -43,7 +43,13 @@ This example uses [Sail](https://docs.lakesail.com/), a fast query engine that s
    sail flight server --ip 127.0.0.1 --port 32010
    ```
 
-   Alternatively, you can start the server programmatically using the Sail Python API:
+   Alternatively, you can start the server programmatically using the Sail Python API. Install `pysail` into your environment:
+
+   ```sh
+   uv pip install pysail
+   ```
+
+   Then start the server:
 
    ```python
    from pysail.flight import FlightSqlServer

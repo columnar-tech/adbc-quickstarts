@@ -45,15 +45,6 @@ This example uses [Sail](https://docs.lakesail.com/), a fast query engine that s
    sail flight server --ip 127.0.0.1 --port 32010
    ```
 
-   Alternatively, you can start the server programmatically using the Sail Python API:
-
-   ```python
-   from pysail.flight import FlightSqlServer
-
-   server = FlightSqlServer(ip="127.0.0.1", port=32010)
-   server.start(background=False)
-   ```
-
 ### Connect to Sail
 
 1. Install the Flight SQL ADBC driver:
