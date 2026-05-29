@@ -52,6 +52,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
   - [Dremio](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/dremio)
   - [GizmoSQL](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/gizmosql)
   - [InfluxDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/influxdb)
+  - [Sail](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/sail)
   - [StarRocks](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/starrocks)
 - [Microsoft SQL Server](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/mssql)
 - MySQL-compatible systems
