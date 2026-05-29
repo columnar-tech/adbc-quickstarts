@@ -34,7 +34,7 @@ This example uses [Sail](https://docs.lakesail.com/), a fast query engine that s
 1. Install Sail:
 
    ```sh
-   pip install pysail
+   uv tool install pysail
    ```
 
 1. Start the Sail Flight SQL server:
@@ -79,3 +79,7 @@ This example uses [Sail](https://docs.lakesail.com/), a fast query engine that s
    ----
    result: [[2]]
    ```
+
+### Clean up
+
+Stop the Sail Flight SQL server by pressing `Ctrl-C` in the terminal where it is running.

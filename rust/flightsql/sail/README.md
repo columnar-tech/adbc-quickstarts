@@ -27,6 +27,8 @@ This example uses [Sail](https://docs.lakesail.com/), a fast query engine that s
 
 1. [Install Rust](https://www.rust-lang.org/tools/install)
 
+1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 ### Set up Sail
@@ -34,7 +36,7 @@ This example uses [Sail](https://docs.lakesail.com/), a fast query engine that s
 1. Install Sail:
 
    ```sh
-   pip install pysail
+   uv tool install pysail
    ```
 
 1. Start the Sail Flight SQL server:
@@ -70,3 +72,7 @@ This example uses [Sail](https://docs.lakesail.com/), a fast query engine that s
    ```sh
    cargo run
    ```
+
+### Clean up
+
+Stop the Sail Flight SQL server by pressing `Ctrl-C` in the terminal where it is running.
