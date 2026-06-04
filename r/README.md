@@ -62,6 +62,7 @@ Simple R examples showing how to use ADBC to connect, run a query, and return th
 - [Amazon Redshift](./redshift)
 - [SingleStore](./singlestore)
 - [Snowflake](./snowflake)
+- [Apache Spark](./spark)
 - [SQLite](./sqlite)
 - [Teradata](./teradata)
 - [Trino](./trino)

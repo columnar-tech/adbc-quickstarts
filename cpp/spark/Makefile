@@ -12,25 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "clickhouse",
-    "databricks",
-    "duckdb/*",
-    "exasol",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "oracle",
-    "postgresql/*",
-    "quack",
-    "redshift",
-    "singlestore",
-    "snowflake",
-    "spark",
-    "sqlite",
-    "teradata",
-    "trino",
-]
+CXXFLAGS = -std=c++17 -Wall -Werror -I$(CONDA_PREFIX)/include
+LIBS = -L$(CONDA_PREFIX)/lib -ladbc_driver_manager -larrow -Wl,-rpath,$(CONDA_PREFIX)/lib
+
+spark_demo: main.cpp
+	$(CXX) $(CXXFLAGS) -o spark_demo main.cpp $(LIBS)
+
+clean:
+	rm -f spark_demo
+
+.PHONY: clean
