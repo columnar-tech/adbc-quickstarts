@@ -12,25 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "clickhouse",
-    "databricks",
-    "duckdb/*",
-    "exasol",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "oracle",
-    "postgresql/*",
-    "quack",
-    "redshift",
-    "singlestore",
-    "snowflake",
-    "spark",
-    "sqlite",
-    "teradata",
-    "trino",
-]
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
+# ///
+
+from adbc_driver_manager import dbapi
+
+with (
+    dbapi.connect(
+        driver="spark",
+        db_kwargs={"uri": "spark://admin@localhost:15002?auth_type=none&api=connect"},
+    ) as connection,
+    connection.cursor() as cursor,
+):
+    cursor.execute("SELECT version()")
+    table = cursor.fetch_arrow_table()
+
+print(table)

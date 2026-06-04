@@ -119,6 +119,10 @@
     "name": "Snowflake",
     "parent": null
   },
+  "spark": {
+    "name": "Apache Spark",
+    "parent": null
+  },
   "sqlite": {
     "name": "SQLite",
     "parent": null
