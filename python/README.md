@@ -29,6 +29,7 @@ Simple Python examples showing how to use ADBC to connect, run a query, and retu
 - [Google BigQuery](./bigquery)
 - [ClickHouse](./clickhouse)
 - [Databricks](./databricks)
+- [DataFusion](./datafusion)
 - [DuckDB-compatible systems](./duckdb)
   - [DuckDB](./duckdb/duckdb)
   - [MotherDuck](./duckdb/motherduck)

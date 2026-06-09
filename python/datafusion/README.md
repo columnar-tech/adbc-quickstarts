@@ -33,7 +33,7 @@ limitations under the License.
    ```
 
 1. Customize the Python script `main.py` as needed
-   - Change the SQL SELECT statement in `cursor.execute()`, or keep it set to `games.parquet` to query the Parquet file included with this example
+   - Change the SQL SELECT statement in `cursor.execute()`, or keep it set to `SELECT * FROM 'games.parquet';` to query the Parquet file included with this example
 
 1. Run the Python script:
 
