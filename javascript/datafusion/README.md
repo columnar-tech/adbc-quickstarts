@@ -41,7 +41,8 @@ limitations under the License.
 
 1. Customize the script `main.js` as needed
    - Change the SQL SELECT statement in `conn.query()`, or keep it set to `SELECT * FROM 'games.parquet';` to query the Parquet file included with this example
-   - The `conn.execute()` call disables DataFusion's Arrow StringView output so that the results can be decoded by the `apache-arrow` JavaScript library; keep it as is
+   - The `conn.execute()` call disables DataFusion's Arrow StringView output for Parquet scans so that the results can be decoded by the `apache-arrow` JavaScript library; keep it as is
+     - If you change the query to produce string columns another way (for example, casting to `VARCHAR`), you may also need to set `datafusion.sql_parser.map_string_types_to_utf8view = false`
 
 1. Run the script:
 

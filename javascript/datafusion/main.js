@@ -24,6 +24,8 @@ try {
   // By default DataFusion reads string columns from Parquet as the Arrow
   // StringView type, which the apache-arrow JavaScript library cannot yet
   // decode. Disable view types so the results use the plain String type.
+  // (Queries that produce strings another way, such as a CAST to VARCHAR,
+  // may also need datafusion.sql_parser.map_string_types_to_utf8view = false.)
   await conn.execute(
     'SET datafusion.execution.parquet.schema_force_view_types = false',
   );
