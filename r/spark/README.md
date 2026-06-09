@@ -25,42 +25,42 @@ limitations under the License.
 
 1. [Install R](https://www.r-project.org/)
 
-2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
-3. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
+1. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
 
-    ```r
-    install.packages(c("adbcdrivermanager", "arrow", "tibble"))
-    ```
+   ```r
+   install.packages(c("adbcdrivermanager", "arrow", "tibble"))
+   ```
 
 ### Set up Spark
 
 1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
-2. Start a Spark instance:
+1. Start a Spark instance:
 
-    ```sh
-    docker run -d --rm --name spark-connect -p 15002:15002 apache/spark:4.1.2 bash -c "/opt/spark/sbin/start-connect-server.sh && tail -f /dev/null"
-    ```
+   ```sh
+   docker run -d --rm --name spark-connect -p 15002:15002 apache/spark:4.1.2 bash -c "/opt/spark/sbin/start-connect-server.sh && tail -f /dev/null"
+   ```
 
 ### Connect to Spark
 
 1. Install the Spark ADBC driver:
 
-    ```sh
-    dbc install spark --pre
-    ```
+   ```sh
+   dbc install spark --pre
+   ```
 
-2. Customize the R script `main.R`
-    - Change the connection arguments in `adbc_database_init()`
-        - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/spark/index.html#connecting), or keep it as is
-    - If you changed which database you're connecting to, also change the SQL SELECT statement in `read_adbc()`
+1. Customize the R script `main.R`
+   - Change the connection arguments in `adbc_database_init()`
+     - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/spark/index.html#connecting), or keep it as is
+   - If you changed which database you're connecting to, also change the SQL SELECT statement in `read_adbc()`
 
-3. Run the R script:
+1. Run the R script:
 
-    ```sh
-    Rscript main.R
-    ```
+   ```sh
+   Rscript main.R
+   ```
 
 ### Clean up
 

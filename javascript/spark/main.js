@@ -12,19 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { AdbcDatabase } from "@apache-arrow/adbc-driver-manager";
+import { AdbcDatabase } from '@apache-arrow/adbc-driver-manager';
 
 const db = new AdbcDatabase({
-  driver: "spark",
+  driver: 'spark',
   databaseOptions: {
-    uri: "spark://admin@localhost:15002?auth_type=none&api=connect",
+    uri: 'spark://admin@localhost:15002?auth_type=none&api=connect',
   },
 });
 
 let conn;
 try {
   conn = await db.connect();
-  const table = await conn.query("SELECT version()");
+  const table = await conn.query('SELECT version()');
   console.log(table.toString());
 } finally {
   await conn?.close();

@@ -25,36 +25,36 @@ limitations under the License.
 
 1. [Install Rust](https://www.rust-lang.org/tools/install)
 
-2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 ### Set up Spark
 
 1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
-2. Start a Spark instance:
+1. Start a Spark instance:
 
-    ```sh
-    docker run -d --rm --name spark-connect -p 15002:15002 apache/spark:4.1.2 bash -c "/opt/spark/sbin/start-connect-server.sh && tail -f /dev/null"
-    ```
+   ```sh
+   docker run -d --rm --name spark-connect -p 15002:15002 apache/spark:4.1.2 bash -c "/opt/spark/sbin/start-connect-server.sh && tail -f /dev/null"
+   ```
 
 ### Connect to Spark
 
 1. Install the Spark ADBC driver:
 
-    ```sh
-    dbc install spark --pre
-    ```
+   ```sh
+   dbc install spark --pre
+   ```
 
-2. Customize `src/main.rs` as needed
-    - Change the connection arguments in `opts`
-        - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/spark/index.html#connecting), or keep it as is
-    - If you changed which database you're connecting to, also change the SQL SELECT statement in `statement.set_sql_query()`
+1. Customize `src/main.rs` as needed
+   - Change the connection arguments in `opts`
+     - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/spark/index.html#connecting), or keep it as is
+   - If you changed which database you're connecting to, also change the SQL SELECT statement in `statement.set_sql_query()`
 
-3. Run the Rust program:
+1. Run the Rust program:
 
-    ```sh
-    cargo run
-    ```
+   ```sh
+   cargo run
+   ```
 
 ### Clean up
 

@@ -24,7 +24,7 @@ limitations under the License.
 ### Prerequisites
 
 1. [Install Node.js](https://nodejs.org/) (version 22 or later)
-    - Alternatively, you can use [Bun](https://bun.sh/) or [Deno](https://deno.com/)
+   - Alternatively, you can use [Bun](https://bun.sh/) or [Deno](https://deno.com/)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
@@ -34,48 +34,48 @@ limitations under the License.
 
 1. Start a Spark instance:
 
-    ```sh
-    docker run -d --rm --name spark-connect -p 15002:15002 apache/spark:4.1.2 bash -c "/opt/spark/sbin/start-connect-server.sh && tail -f /dev/null"
-    ```
+   ```sh
+   docker run -d --rm --name spark-connect -p 15002:15002 apache/spark:4.1.2 bash -c "/opt/spark/sbin/start-connect-server.sh && tail -f /dev/null"
+   ```
 
 ### Connect to Spark
 
 1. Install the Spark ADBC driver:
 
-    ```sh
-    dbc install spark --pre
-    ```
+   ```sh
+   dbc install spark --pre
+   ```
 
 1. Install dependencies:
 
-    ```sh
-    npm --prefix .. install
-    ```
+   ```sh
+   npm --prefix .. install
+   ```
 
 1. Customize the script `main.js` as needed
-    - Change the connection arguments in `databaseOptions`
-        - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/spark/index.html#connecting), or keep it as is
-    - If you changed which database you're connecting to, also change the SQL SELECT statement in `conn.query()`
+   - Change the connection arguments in `databaseOptions`
+     - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/spark/index.html#connecting), or keep it as is
+   - If you changed which database you're connecting to, also change the SQL SELECT statement in `conn.query()`
 
 1. Run the script:
 
-    **Node.js:**
+   **Node.js:**
 
-    ```sh
-    node main.js
-    ```
+   ```sh
+   node main.js
+   ```
 
-    **Bun:**
+   **Bun:**
 
-    ```sh
-    bun run main.js
-    ```
+   ```sh
+   bun run main.js
+   ```
 
-    **Deno:**
+   **Deno:**
 
-    ```sh
-    deno run --allow-ffi --allow-env main.js
-    ```
+   ```sh
+   deno run --allow-ffi --allow-env main.js
+   ```
 
 ### Clean up
 

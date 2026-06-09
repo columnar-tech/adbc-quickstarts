@@ -25,62 +25,62 @@ limitations under the License.
 
 1. [Install Pixi](https://pixi.prefix.dev/latest/)
 
-2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 ### Set up Spark
 
 1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
-2. Start a Spark instance:
+1. Start a Spark instance:
 
-    ```sh
-    docker run -d --rm --name spark-connect -p 15002:15002 apache/spark:4.1.2 bash -c "/opt/spark/sbin/start-connect-server.sh && tail -f /dev/null"
-    ```
+   ```sh
+   docker run -d --rm --name spark-connect -p 15002:15002 apache/spark:4.1.2 bash -c "/opt/spark/sbin/start-connect-server.sh && tail -f /dev/null"
+   ```
 
 ### Connect to Spark
 
 1. Install the Spark ADBC driver:
 
-    ```sh
-    dbc install --level user spark --pre
-    ```
+   ```sh
+   dbc install --level user spark --pre
+   ```
 
-2. Customize the C++ program `main.cpp`
-    - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
-        - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/spark/index.html#connecting), or keep it as is
-    - If you changed which database you're connecting to, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`
+1. Customize the C++ program `main.cpp`
+   - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
+     - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/spark/index.html#connecting), or keep it as is
+   - If you changed which database you're connecting to, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`
 
-3. Build and run the C++ program:
+1. Build and run the C++ program:
 
-    Using Make:
-    ```sh
-    pixi run make
-    ./spark_demo
-    ```
+   Using Make:
+   ```sh
+   pixi run make
+   ./spark_demo
+   ```
 
-    Or using CMake:
-    ```sh
-    pixi run cmake -B build
-    pixi run cmake --build build
-    ./build/spark_demo
-    ```
+   Or using CMake:
+   ```sh
+   pixi run cmake -B build
+   pixi run cmake --build build
+   ./build/spark_demo
+   ```
 
 ### Clean up
 
 1. Stop the Docker container running Spark:
 
-    ```sh
-    docker stop spark-connect
-    ```
+   ```sh
+   docker stop spark-connect
+   ```
 
-2. Clean build artifacts:
+1. Clean build artifacts:
 
-    Using Make:
-    ```sh
-    pixi run make clean
-    ```
+   Using Make:
+   ```sh
+   pixi run make clean
+   ```
 
-    Using CMake:
-    ```sh
-    rm -rf build
-    ```
+   Using CMake:
+   ```sh
+   rm -rf build
+   ```

@@ -25,37 +25,37 @@ limitations under the License.
 
 1. [Install Go](https://go.dev/doc/install)
 
-2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 ### Set up Spark
 
 1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
-2. Start a Spark instance:
+1. Start a Spark instance:
 
-    ```sh
-    docker run -d --rm --name spark-connect -p 15002:15002 apache/spark:4.1.2 bash -c "/opt/spark/sbin/start-connect-server.sh && tail -f /dev/null"
-    ```
+   ```sh
+   docker run -d --rm --name spark-connect -p 15002:15002 apache/spark:4.1.2 bash -c "/opt/spark/sbin/start-connect-server.sh && tail -f /dev/null"
+   ```
 
 ### Connect to Spark
 
 1. Install the Spark ADBC driver:
 
-    ```sh
-    dbc install spark --pre
-    ```
+   ```sh
+   dbc install spark --pre
+   ```
 
-2. Customize the Go program `main.go`
-    - Change the connection arguments in the `NewDatabase()` call
-        - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/spark/index.html#connecting), or keep it as is
-    - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.SetSqlQuery()`
+1. Customize the Go program `main.go`
+   - Change the connection arguments in the `NewDatabase()` call
+     - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/spark/index.html#connecting), or keep it as is
+   - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.SetSqlQuery()`
 
-3. Run the Go program:
+1. Run the Go program:
 
-    ```sh
-    go mod tidy
-    go run main.go
-    ```
+   ```sh
+   go mod tidy
+   go run main.go
+   ```
 
 ### Clean up
 
