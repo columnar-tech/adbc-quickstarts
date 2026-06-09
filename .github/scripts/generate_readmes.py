@@ -34,7 +34,7 @@ LANGUAGE_NOTES = {
     "javascript": (
         "> [!NOTE]\n"
         "> These examples require a server-side JS/TS runtime"
-        " (like Node.js or Bun) and do not run in the browser."
+        " (like Node.js, Bun, or Deno) and do not run in the browser."
     ),
 }
 
