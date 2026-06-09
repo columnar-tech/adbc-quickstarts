@@ -27,6 +27,10 @@
     "name": "Databricks",
     "parent": null
   },
+  "datafusion": {
+    "name": "DataFusion",
+    "parent": null
+  },
   "doris": {
     "name": "Apache Doris",
     "parent": "flightsql"
