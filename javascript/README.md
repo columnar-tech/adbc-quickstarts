@@ -25,7 +25,7 @@ To update, modify .github/data/databases.json or .github/data/languages.json
 Simple JavaScript examples showing how to use ADBC to connect, run a query, and return the results.
 
 > [!NOTE]
-> These examples require a server-side JS/TS runtime (like Node.js or Bun) and do not run in the browser.
+> These examples require a server-side JS/TS runtime (like Node.js, Bun, or Deno) and do not run in the browser.
 
 ## Source systems covered
 
