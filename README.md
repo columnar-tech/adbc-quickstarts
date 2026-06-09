@@ -43,6 +43,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 - [Google BigQuery](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/bigquery)
 - [ClickHouse](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/clickhouse)
 - [Databricks](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/databricks)
+- [DataFusion](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/datafusion)
 - DuckDB-compatible systems
   - [DuckDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/duckdb)
   - [MotherDuck](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/motherduck)
