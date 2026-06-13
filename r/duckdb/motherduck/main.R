@@ -18,7 +18,7 @@ drv <- adbc_driver("duckdb")
 
 db <- adbc_database_init(
   drv,
-  path = "md:sample_data"
+  uri = "md:sample_data"
 )
 
 con <- adbc_connection_init(db)

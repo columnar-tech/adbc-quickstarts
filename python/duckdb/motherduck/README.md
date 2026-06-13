@@ -38,7 +38,7 @@ limitations under the License.
 
 1. Customize the Python script `main.py` as needed
    - Change the connection arguments in `db_kwargs`
-     - Set `path` to the name of a MotherDuck database (prefixed with `md:`), or keep it set to `md:sample_data` to use MotherDuck's sample data
+     - Set `uri` to the name of a MotherDuck database (prefixed with `md:`), or keep it set to `md:sample_data` to use MotherDuck's sample data
    - Change the SQL SELECT statement in `cursor.execute()` to query the tables in your database
 
 1. Run the Python script:
