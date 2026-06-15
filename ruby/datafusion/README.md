@@ -26,6 +26,9 @@ limitations under the License.
 
 1. Install the native Arrow GLib and ADBC GLib libraries required by `red-adbc`.
 
+   <details>
+   <summary>Platform-specific install commands</summary>
+
    macOS with Homebrew:
 
    ```sh
@@ -52,6 +55,8 @@ limitations under the License.
 
    If you use a different MSYS2 environment, adjust the package prefix to match
    it; for example, use `mingw-w64-x86_64-*` from the MINGW64 shell.
+
+   </details>
 
 1. Install Ruby dependencies:
 
