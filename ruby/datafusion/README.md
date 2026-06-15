@@ -27,27 +27,34 @@ limitations under the License.
 1. Install the native Arrow GLib and ADBC GLib libraries required by `red-adbc`.
 
    <details>
-   <summary>Platform-specific install commands</summary>
-
-   macOS with Homebrew:
+   <summary>macOS with Homebrew</summary>
 
    ```sh
    brew install apache-arrow-glib apache-arrow-adbc-glib
    ```
 
-   Debian/Ubuntu:
+   </details>
+
+   <details>
+   <summary>Debian/Ubuntu</summary>
 
    ```sh
    sudo apt install libarrow-glib-dev libadbc-glib-dev
    ```
 
-   RHEL-compatible distributions:
+   </details>
+
+   <details>
+   <summary>RHEL-compatible distributions</summary>
 
    ```sh
    sudo dnf install arrow-glib-devel adbc-glib-devel
    ```
 
-   Windows with RubyInstaller/MSYS2 UCRT64:
+   </details>
+
+   <details>
+   <summary>Windows with RubyInstaller/MSYS2 UCRT64</summary>
 
    ```sh
    pacman -S --needed mingw-w64-ucrt-x86_64-arrow mingw-w64-ucrt-x86_64-arrow-adbc-glib
