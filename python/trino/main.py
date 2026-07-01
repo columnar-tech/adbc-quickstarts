@@ -22,7 +22,7 @@ from adbc_driver_manager import dbapi
 with (
     dbapi.connect(
         driver="trino",
-        db_kwargs={"uri": "http://user@localhost:8080?catalog=tcph&schema=tiny"},
+        db_kwargs={"uri": "http://user@localhost:8080?catalog=tpch&schema=tiny"},
     ) as con,
     con.cursor() as cursor,
 ):

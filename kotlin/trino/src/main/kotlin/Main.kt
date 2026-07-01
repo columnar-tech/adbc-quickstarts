@@ -23,7 +23,7 @@ private const val DRIVER_FACTORY = "org.apache.arrow.adbc.driver.jni.JniDriverFa
 fun main() {
     val params = mutableMapOf<String, Any>()
     JniDriver.PARAM_DRIVER.set(params, "trino")
-    params["uri"] = "http://user@localhost:8080?catalog=tcph&schema=tiny"
+    params["uri"] = "http://user@localhost:8080?catalog=tpch&schema=tiny"
 
     RootAllocator().use { allocator ->
         AdbcDriverManager.getInstance().connect(DRIVER_FACTORY, allocator, params).use { db ->

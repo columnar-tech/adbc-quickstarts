@@ -33,7 +33,7 @@ public class Example {
   public static void main(String[] args) throws Exception {
     Map<String, Object> params = new HashMap<>();
     JniDriver.PARAM_DRIVER.set(params, "trino");
-    params.put("uri", "http://user@localhost:8080?catalog=tcph&schema=tiny");
+    params.put("uri", "http://user@localhost:8080?catalog=tpch&schema=tiny");
 
     try (BufferAllocator allocator = new RootAllocator();
         AdbcDatabase db =

@@ -42,7 +42,7 @@ limitations under the License.
 1. Install the Trino ADBC driver:
 
    ```sh
-   dbc install trino
+   dbc install trino --level user
    ```
 
 1. Customize the Python script `main.py` as needed
