@@ -24,7 +24,9 @@ limitations under the License.
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
-1. Install the native Arrow GLib and ADBC GLib libraries required by `red-adbc`.
+1. Ensure the native Arrow GLib and ADBC GLib libraries required by `red-adbc`
+   are installed and discoverable. If `bundle install` reports missing `arrow`,
+   `arrow-glib`, or `adbc-glib`, use the platform-specific commands below.
 
    <details>
    <summary>macOS with Homebrew</summary>
