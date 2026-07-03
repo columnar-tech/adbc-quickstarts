@@ -117,12 +117,7 @@ This example uses [Dremio](https://www.dremio.com/), a data lakehouse platform t
    The output will look something like this:
 
    ```
-   […]/python3.13/site-packages/adbc_driver_manager/dbapi.py:329: Warning: Cannot   disable autocommit; conn will not be DB-API 2.0 compliant
-     warnings.warn(
-   pyarrow.Table
-   EXPR$0: double
-   ----
-   EXPR$0: [[1.43624642310197]]
+   	    EXPR$0
+   	  (double)
+   0	  1.436246
    ```
-
-   Note that the warning is expected (this is because Ruby's DB-API specifies that connections should not use autocommit, but there is no way to disable this with Dremio).

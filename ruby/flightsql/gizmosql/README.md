@@ -115,14 +115,13 @@ This example uses [GizmoSQL](https://gizmodata.com/gizmosql), a lightweight, hig
    The output will look something like this:
 
    ```
-   pyarrow.Table
-   r_regionkey: int32
-   r_name: string
-   r_comment: string
-   ----
-   r_regionkey: [[0,1,2,3,4]]
-   r_name: [["AFRICA","AMERICA","ASIA","EUROPE","MIDDLE EAST"]]
-   r_comment: [["ar packages. regular excuses among the ironic requests cajole fluffily blithely final requests. fu (... 17 chars omitted)","s are. furiously even pinto bea","c, special dependencies around ","e dolphins are furiously about the carefully "," foxes boost furiously along the carefully dogged tithes. slyly regular orbits according to the sp (... 10 chars omitted)"]]
+   	r_regionkey	r_name	r_comment
+   	    (int32)	(utf8)	   (utf8)
+   0	          0	AFRICA	ar packages. regular excuses among the ironic requests cajole fluffily blithely final requests. fu
+   1	          1	AMERICA	s are. furiously even pinto bea
+   2	          2	ASIA  	c, special dependencies around 
+   3	          3	EUROPE	e dolphins are furiously about the carefully 
+   4	          4	MIDDLE EAST	 foxes boost furiously along the carefully dogged tithes. slyly regular orbits according to the sp
    ```
 
 ### Clean up

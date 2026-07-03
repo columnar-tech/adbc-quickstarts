@@ -132,10 +132,9 @@ This example uses [Sail](https://docs.lakesail.com/), a fast query engine that s
    The output will look something like this:
 
    ```
-   pyarrow.Table
-   result: int64
-   ----
-   result: [[2]]
+   	 result
+   	(int64)
+   0	      2
    ```
 
 ### Clean up
