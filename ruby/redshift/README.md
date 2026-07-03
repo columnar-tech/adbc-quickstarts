@@ -124,7 +124,7 @@ limitations under the License.
    - Change the connection arguments in `database.set_option()`
      - Change the value of `uri` to match the hostname and port you recorded in the earlier step, or your SSH tunnel if necessary
      - Change the value of `redshift.cluster_type` to match your Redshift cluster type
-     - Change the value of `redshift.workgroup_name` or `redshift.cluster_identifier` to match the workgroup name or you recorded in the earlier step
+     - Change the value of `redshift.workgroup_name` or `redshift.cluster_identifier` to match the workgroup name or cluster identifier you recorded in the earlier step
      - Change the value of `redshift.db_name` to match the database name you recorded in the earlier step (or leave it as `sample_data_dev` to use the built-in sample database)
    - If you changed the database name, also change the SQL SELECT statement in `connection.query()`
 
