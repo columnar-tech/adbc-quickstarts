@@ -42,7 +42,7 @@ limitations under the License.
 1. Install the ClickHouse ADBC driver:
 
     ```sh
-    dbc install --level user clickhouse --pre
+    dbc install --level user clickhouse
     ```
 
 2. Customize the C++ program `main.cpp`

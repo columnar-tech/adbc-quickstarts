@@ -42,7 +42,7 @@ limitations under the License.
 1.  Install the ClickHouse ADBC driver:
 
     ```sh
-    dbc install clickhouse --pre
+    dbc install clickhouse
     ```
 
 1.  Customize the `main` function in `Main.kt`
