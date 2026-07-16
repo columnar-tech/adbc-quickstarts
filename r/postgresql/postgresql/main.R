@@ -19,7 +19,7 @@ library(adbcdrivermanager)
 
 db <- adbc_database_init(
   uri = "profile://./profile.toml"
-  # or: profile = "profile"
+  # or: profile = "./profile.toml"
 )
 
 con <- adbc_connection_init(db)

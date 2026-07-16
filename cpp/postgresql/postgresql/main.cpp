@@ -54,8 +54,8 @@ int main() {
 
   CHECK_ADBC(AdbcDatabaseSetOption(
       &database, "uri", "profile://./profile.toml", &error));
-  // or: CHECK_ADBC(
-  //     AdbcDatabaseSetOption(&database, "profile", "profile", &error));
+  // or: CHECK_ADBC(AdbcDatabaseSetOption(
+  //     &database, "profile", "./profile.toml", &error));
   CHECK_ADBC(AdbcDriverManagerDatabaseSetLoadFlags(
       &database, ADBC_LOAD_FLAG_DEFAULT, &error));
   CHECK_ADBC(AdbcDatabaseInit(&database, &error));
