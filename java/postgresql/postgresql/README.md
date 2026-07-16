@@ -54,7 +54,7 @@ limitations under the License.
 2. Customize the connection profile `profile.toml` and the `main` method in `Example.java` as needed
     - Change the connection arguments in `profile.toml`
         - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is to use the data included with this example
-    - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.setSqlQuery()`
+    - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.setSqlQuery()` in `Example.java`
 
 3. Run the Java program:
 

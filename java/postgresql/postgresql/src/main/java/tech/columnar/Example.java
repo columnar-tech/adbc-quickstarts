@@ -33,6 +33,7 @@ public class Example {
   public static void main(String[] args) throws Exception {
     Map<String, Object> params = new HashMap<>();
     JniDriver.PARAM_URI.set(params, "profile://./profile.toml");
+    // or: JniDriver.PARAM_PROFILE.set(params, "foo");
 
     try (BufferAllocator allocator = new RootAllocator();
         AdbcDatabase db =
