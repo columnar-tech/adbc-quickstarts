@@ -14,11 +14,12 @@
 
 library(adbcdrivermanager)
 
-drv <- adbc_driver("postgresql")
+# TODO: This does not currently work
+# See https://github.com/apache/arrow-adbc/issues/4532
 
 db <- adbc_database_init(
-  drv,
-  uri = "postgresql://postgres:mysecretpassword@localhost:5432/demo"
+  uri = "profile://./profile.toml"
+  # or: profile = "profile"
 )
 
 con <- adbc_connection_init(db)
