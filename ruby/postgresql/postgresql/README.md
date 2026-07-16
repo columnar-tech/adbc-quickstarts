@@ -103,10 +103,10 @@ limitations under the License.
     dbc install --level user postgresql
     ```
 
-2. Customize the Ruby script `main.rb` as needed
-    - Change the connection arguments in `database.set_option()`
+2. Customize the connection profile `profile.toml` and the Ruby script `main.rb` as needed
+    - Change the connection arguments in `profile.toml`
         - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is to use the data included with this example
-    - If you changed which database you're connecting to, also change the SQL SELECT statement in `connection.query()`
+    - If you changed which database you're connecting to, also change the SQL SELECT statement in `connection.query()` in `main.rb`
 
 3. Run the Ruby script:
 
