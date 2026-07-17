@@ -14,9 +14,6 @@
 
 library(adbcdrivermanager)
 
-# TODO: This does not currently work
-# See https://github.com/apache/arrow-adbc/issues/4532
-
 db <- adbc_database_init(
   uri = "profile://./profile.toml"
   # or: profile = "./profile.toml"

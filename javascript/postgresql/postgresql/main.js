@@ -15,7 +15,8 @@
 import { AdbcDatabase } from '@apache-arrow/adbc-driver-manager';
 
 const db = new AdbcDatabase({
-  driver: 'profile://./profile.toml',
+  databaseOptions: { uri: 'profile://./profile.toml' },
+  // or: databaseOptions: { profile: './profile.toml' },
 });
 
 let conn;
