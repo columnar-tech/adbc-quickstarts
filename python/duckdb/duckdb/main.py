@@ -20,7 +20,7 @@
 from adbc_driver_manager import dbapi
 
 with (
-    dbapi.connect(driver="duckdb", db_kwargs={"path": "games.duckdb"}) as con,
+    dbapi.connect(driver="duckdb", db_kwargs={"uri": "games.duckdb"}) as con,
     con.cursor() as cursor,
 ):
     cursor.execute("SELECT * FROM games;")

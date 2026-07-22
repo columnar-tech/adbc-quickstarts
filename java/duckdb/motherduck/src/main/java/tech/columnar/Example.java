@@ -33,7 +33,7 @@ public class Example {
   public static void main(String[] args) throws Exception {
     Map<String, Object> params = new HashMap<>();
     JniDriver.PARAM_DRIVER.set(params, "duckdb");
-    params.put("path", "md:sample_data");
+    params.put("uri", "md:sample_data");
 
     try (BufferAllocator allocator = new RootAllocator();
         AdbcDatabase db =

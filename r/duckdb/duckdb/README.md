@@ -40,7 +40,7 @@ limitations under the License.
 
 1. Customize the R script `main.R` as needed
    - Change the connection arguments in `adbc_database_init()`
-     - Set `path` to the location of the DuckDB database file you want to query, or keep it set to `games.duckdb` to use the database file included with this example
+     - Set `uri` to the location of the DuckDB database file you want to query, or keep it set to `games.duckdb` to use the database file included with this example
    - If you changed the database file, also change the SQL SELECT statement in `read_adbc()`
 
 1. Run the R script:
