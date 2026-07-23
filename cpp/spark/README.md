@@ -42,7 +42,7 @@ limitations under the License.
 1. Install the Spark ADBC driver:
 
    ```sh
-   dbc install --level user spark --pre
+   dbc install --level user spark
    ```
 
 1. Customize the C++ program `main.cpp`

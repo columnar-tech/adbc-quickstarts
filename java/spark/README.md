@@ -42,7 +42,7 @@ limitations under the License.
 1. Install the Spark ADBC driver:
 
    ```sh
-   dbc install spark --pre
+   dbc install spark
    ```
 
 1. Customize the `main` method in `Example.java`
