@@ -27,6 +27,7 @@ on:
       - '.github/data/language-readme-template.md'
       - '.github/scripts/generate_readmes.py'
       - 'cpp/**'
+      - 'csharp/**'
       - 'go/**'
       - 'java/**'
       - 'kotlin/**'

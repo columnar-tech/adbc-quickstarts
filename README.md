@@ -30,6 +30,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 ## Client languages covered
 
 - [C++](./cpp)
+- [C#](./csharp)
 - [Go](./go)
 - [Java](./java)
 - [JavaScript](./javascript)
