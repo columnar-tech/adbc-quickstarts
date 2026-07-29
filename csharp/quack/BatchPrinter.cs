@@ -38,6 +38,8 @@ static class BatchPrinter
     {
         Decimal128Array decimals => string.Join(", ",
             Enumerable.Range(0, decimals.Length).Select(decimals.GetString)),
+        Decimal256Array decimals => string.Join(", ",
+            Enumerable.Range(0, decimals.Length).Select(decimals.GetString)),
         DictionaryArray dictionary => string.Join(", ",
             dictionary.EnumeratePhysicalIndices().Select(i => i < 0 ? "" : DictValues(dictionary)[i])),
         IEnumerable values => string.Join(", ", values.Cast<object?>()),
