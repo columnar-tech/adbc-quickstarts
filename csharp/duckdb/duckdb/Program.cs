@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using Apache.Arrow;
 using Apache.Arrow.Adbc;
 using Apache.Arrow.Adbc.DriverManager;
 using Apache.Arrow.Ipc;
@@ -38,38 +37,6 @@ while (await stream.ReadNextRecordBatchAsync() is { } batch)
 {
     using (batch)
     {
-        PrintBatch(batch);
+        BatchPrinter.Print(batch);
     }
 }
-
-// Apache Arrow for C# has no built-in printer for record batches, so print the
-// column names followed by each row as tab-separated values.
-static void PrintBatch(RecordBatch batch)
-{
-    Console.WriteLine(string.Join("\t", batch.Schema.FieldsList.Select(field => field.Name)));
-
-    for (int row = 0; row < batch.Length; row++)
-    {
-        var cells = new string[batch.ColumnCount];
-        for (int col = 0; col < batch.ColumnCount; col++)
-        {
-            cells[col] = FormatValue(batch.Column(col), row);
-        }
-        Console.WriteLine(string.Join("\t", cells));
-    }
-}
-
-static string FormatValue(IArrowArray array, int index) => array switch
-{
-    StringArray a => a.GetString(index) ?? "",
-    Int8Array a => a.GetValue(index)?.ToString() ?? "",
-    Int16Array a => a.GetValue(index)?.ToString() ?? "",
-    Int32Array a => a.GetValue(index)?.ToString() ?? "",
-    Int64Array a => a.GetValue(index)?.ToString() ?? "",
-    FloatArray a => a.GetValue(index)?.ToString() ?? "",
-    DoubleArray a => a.GetValue(index)?.ToString() ?? "",
-    BooleanArray a => a.GetValue(index)?.ToString() ?? "",
-    Decimal128Array a => a.GetString(index) ?? "",
-    Decimal256Array a => a.GetString(index) ?? "",
-    _ => array.ToString() ?? "",
-};
