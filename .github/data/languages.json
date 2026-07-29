@@ -5,6 +5,7 @@
   "javascript": "JavaScript",
   "kotlin": "Kotlin",
   "cpp": "C++",
+  "csharp": "C#",
   "r": "R",
   "ruby": "Ruby",
   "rust": "Rust"
