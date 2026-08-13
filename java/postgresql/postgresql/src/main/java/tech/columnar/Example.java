@@ -32,8 +32,8 @@ public class Example {
 
   public static void main(String[] args) throws Exception {
     Map<String, Object> params = new HashMap<>();
-    JniDriver.PARAM_DRIVER.set(params, "postgresql");
-    params.put("uri", "postgresql://postgres:mysecretpassword@localhost:5432/demo");
+    JniDriver.PARAM_URI.set(params, "profile://./profile.toml");
+    // or: JniDriver.PARAM_PROFILE.set(params, "./profile.toml");
 
     try (BufferAllocator allocator = new RootAllocator();
         AdbcDatabase db =

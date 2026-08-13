@@ -15,10 +15,8 @@
 import { AdbcDatabase } from '@apache-arrow/adbc-driver-manager';
 
 const db = new AdbcDatabase({
-  driver: 'postgresql',
-  databaseOptions: {
-    uri: 'postgresql://postgres:mysecretpassword@localhost:5432/demo',
-  },
+  databaseOptions: { uri: 'profile://./profile.toml' },
+  // or: databaseOptions: { profile: './profile.toml' },
 });
 
 let conn;

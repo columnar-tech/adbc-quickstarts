@@ -17,13 +17,13 @@ require "adbc"
 database = ADBC::Database.new
 
 begin
-  database.set_option("driver", "postgresql")
-  database.set_option("uri", "postgresql://postgres:mysecretpassword@localhost:5432/demo")
+  database.set_option("uri", "profile://./profile.toml")
+  # or: database.set_option("profile", "./profile.toml")
   database.set_load_flags(ADBC::LoadFlags::DEFAULT)
   database.init
 
   database.connect do |connection|
-    table, = connection.query("SELECT * FROM games;")
+    table, = connection.query("SELECT name, inventor, year FROM games;")
     puts(table)
   end
 ensure
