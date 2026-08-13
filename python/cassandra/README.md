@@ -19,7 +19,7 @@ limitations under the License.
 ## Instructions
 
 > [!TIP]
-> If you already have a Cassandra instance running, skip the steps to set up and clean up Cassandra.
+> If you already have a Cassandra instance running, skip the steps to run Cassandra in a Docker container.
 
 ### Prerequisites
 
@@ -34,7 +34,7 @@ limitations under the License.
 1. Start a Cassandra instance:
 
    ```sh
-   docker run -d --rm --name cassandra -p 9042:9042 cassandra:5.0
+   docker run -d --rm --name cassandra -p 9042:9042 cassandra:latest
    ```
 
 1. Wait for Cassandra to accept connections. This can take a minute or two:
@@ -56,7 +56,6 @@ limitations under the License.
 1. Customize the Python script `main.py` as needed
    - Change the connection arguments in `db_kwargs`
      - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/cassandra/index.html#connecting), or keep it as is
-   - If you changed which Cassandra instance you're connecting to, also change the CQL SELECT statement in `cursor.execute()`
 
 1. Run the Python script:
 

@@ -23,7 +23,6 @@ with (
     dbapi.connect(
         driver="cassandra",
         db_kwargs={"uri": "cassandra://localhost:9042"},
-        autocommit=True,
     ) as connection,
     connection.cursor() as cursor,
 ):
