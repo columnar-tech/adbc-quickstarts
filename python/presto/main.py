@@ -23,7 +23,6 @@ with (
     dbapi.connect(
         driver="presto",
         db_kwargs={"uri": "presto://user@localhost:8080/tpch/tiny"},
-        autocommit=True,
     ) as connection,
     connection.cursor() as cursor,
 ):

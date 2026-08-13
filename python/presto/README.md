@@ -19,7 +19,7 @@ limitations under the License.
 ## Instructions
 
 > [!TIP]
-> If you already have a Presto instance running, skip the steps to set up and clean up Presto.
+> If you already have a Presto instance running, skip the steps to run Presto in a Docker container.
 
 ### Prerequisites
 
@@ -48,7 +48,6 @@ limitations under the License.
 1. Customize the Python script `main.py` as needed
    - Change the connection arguments in `db_kwargs`
      - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/presto/index.html#connecting), or keep it as is to use the TPC-H data included in the Presto Docker container image
-   - If you changed which Presto instance you're connecting to, also change the SQL SELECT statement in `cursor.execute()`
 
 1. Run the Python script:
 
