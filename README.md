@@ -43,6 +43,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 ## Source systems covered
 
 - [Google BigQuery](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/bigquery)
+- [chDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/chdb)
 - [ClickHouse](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/clickhouse)
 - [Databricks](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/databricks)
 - [DataFusion](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/datafusion)

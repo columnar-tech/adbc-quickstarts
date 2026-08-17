@@ -27,6 +27,7 @@ Simple Go examples showing how to use ADBC to connect, run a query, and return t
 ## Source systems covered
 
 - [Google BigQuery](./bigquery)
+- [chDB](./chdb)
 - [ClickHouse](./clickhouse)
 - [Databricks](./databricks)
 - [DataFusion](./datafusion)
