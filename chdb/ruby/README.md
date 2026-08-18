@@ -35,7 +35,8 @@ limitations under the License.
    <summary>macOS with Homebrew</summary>
 
    ```sh
-   brew install apache-arrow-glib apache-arrow-adbc-glib
+   brew install ruby apache-arrow-glib apache-arrow-adbc-glib
+   export PATH="$(brew --prefix ruby)/bin:$PATH"
    ```
 
    </details>
@@ -44,6 +45,10 @@ limitations under the License.
    <summary>Debian/Ubuntu</summary>
 
    ```sh
+   sudo apt install -y ca-certificates lsb-release wget
+   wget https://packages.apache.org/artifactory/arrow/$(lsb_release --id --short | tr "A-Z" "a-z")/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb
+   sudo apt install -y ./apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb
+   sudo apt update
    sudo apt install libarrow-glib-dev libadbc-glib-dev
    ```
 
@@ -66,6 +71,8 @@ limitations under the License.
 
    If you have multiple Ruby installations, ensure `ruby` and `bundle` resolve
    to the same installation before running this command.
+   On macOS, prefer Homebrew Ruby or another current Ruby distribution over the
+   system Ruby.
 
 ### Connect to chDB
 
