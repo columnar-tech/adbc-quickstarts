@@ -12,27 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "chdb",
-    "clickhouse",
-    "databricks",
-    "datafusion",
-    "duckdb/*",
-    "exasol",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "oracle",
-    "postgresql/*",
-    "quack",
-    "redshift",
-    "singlestore",
-    "snowflake",
-    "spark",
-    "sqlite",
-    "teradata",
-    "trino",
-]
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
+# ///
+
+from adbc_driver_manager import dbapi
+
+with (
+    dbapi.connect(driver="chdb", autocommit=True) as connection,
+    connection.cursor() as cursor,
+):
+    cursor.execute("SELECT * FROM 'games.parquet';")
+    table = cursor.fetch_arrow_table()
+
+print(table)
