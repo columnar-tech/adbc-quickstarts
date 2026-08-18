@@ -18,6 +18,9 @@ limitations under the License.
 
 ## Instructions
 
+> [!NOTE]
+> The chDB ADBC driver supports Linux and macOS. Windows is not currently supported.
+
 ### Prerequisites
 
 1. [Install Pixi](https://pixi.prefix.dev/latest/)

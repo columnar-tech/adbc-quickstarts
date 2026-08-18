@@ -18,6 +18,9 @@ limitations under the License.
 
 ## Instructions
 
+> [!NOTE]
+> The chDB ADBC driver supports Linux and macOS. Windows is not currently supported.
+
 ### Prerequisites
 
 1. [Install Ruby](https://www.ruby-lang.org/)
@@ -52,18 +55,6 @@ limitations under the License.
    ```sh
    sudo dnf install arrow-glib-devel adbc-glib-devel
    ```
-
-   </details>
-
-   <details>
-   <summary>Windows with RubyInstaller/MSYS2 UCRT64</summary>
-
-   ```sh
-   pacman -S --needed mingw-w64-ucrt-x86_64-arrow mingw-w64-ucrt-x86_64-arrow-adbc-glib
-   ```
-
-   If you use a different MSYS2 environment, adjust the package prefix to match
-   it; for example, use `mingw-w64-x86_64-*` from the MINGW64 shell.
 
    </details>
 
