@@ -124,7 +124,8 @@ limitations under the License.
                 <configuration>
                     <executable>java</executable>
                     <arguments>
-                        <argument>--add-opens=java.base/java.nio=org.apache.arrow.memory.core,ALL-UNNAMED</argument>
+                        <argument>--add-opens=java.base/java.nio=ALL-UNNAMED</argument>
+                        <argument>--enable-native-access=ALL-UNNAMED</argument>
                         <argument>-classpath</argument>
                         <classpath />
                         <argument>tech.columnar.Example</argument>
