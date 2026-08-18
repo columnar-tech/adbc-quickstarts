@@ -20,7 +20,7 @@
 from adbc_driver_manager import dbapi
 
 with (
-    dbapi.connect(driver="chdb") as connection,
+    dbapi.connect(driver="chdb", autocommit=True) as connection,
     connection.cursor() as cursor,
 ):
     cursor.execute("SELECT * FROM 'games.parquet';")
