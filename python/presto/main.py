@@ -12,28 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "chdb",
-    "clickhouse",
-    "databricks",
-    "datafusion",
-    "duckdb/*",
-    "exasol",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "oracle",
-    "postgresql/*",
-    "presto",
-    "quack",
-    "redshift",
-    "singlestore",
-    "snowflake",
-    "spark",
-    "sqlite",
-    "teradata",
-    "trino",
-]
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
+# ///
+
+from adbc_driver_manager import dbapi
+
+with (
+    dbapi.connect(
+        driver="presto",
+        db_kwargs={"uri": "presto://user@localhost:8080/tpch/tiny"},
+    ) as connection,
+    connection.cursor() as cursor,
+):
+    cursor.execute("""
+      SELECT nationkey, name, regionkey
+      FROM tpch.tiny.nation
+      LIMIT 5
+    """)
+    table = cursor.fetch_arrow_table()
+
+print(table)

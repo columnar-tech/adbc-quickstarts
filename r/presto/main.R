@@ -12,28 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "chdb",
-    "clickhouse",
-    "databricks",
-    "datafusion",
-    "duckdb/*",
-    "exasol",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "oracle",
-    "postgresql/*",
-    "presto",
-    "quack",
-    "redshift",
-    "singlestore",
-    "snowflake",
-    "spark",
-    "sqlite",
-    "teradata",
-    "trino",
-]
+library(adbcdrivermanager)
+
+drv <- adbc_driver("presto")
+
+db <- adbc_database_init(
+  drv,
+  uri = "presto://user@localhost:8080/tpch/tiny"
+)
+
+con <- adbc_connection_init(db)
+
+con |>
+  read_adbc(
+    "
+    SELECT nationkey, name, regionkey
+    FROM tpch.tiny.nation
+    LIMIT 5
+  "
+  ) |>
+  tibble::as_tibble() # or:
+# arrow::as_arrow_table() # to keep result in Arrow format
+# arrow::as_record_batch_reader() # for larger results

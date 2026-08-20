@@ -60,6 +60,7 @@ Simple R examples showing how to use ADBC to connect, run a query, and return th
   - [TimescaleDB](./postgresql/timescaledb)
   - [Yellowbrick](./postgresql/yellowbrick)
   - [YugabyteDB](./postgresql/yugabytedb)
+- [Presto](./presto)
 - [Quack](./quack)
 - [Amazon Redshift](./redshift)
 - [SingleStore](./singlestore)

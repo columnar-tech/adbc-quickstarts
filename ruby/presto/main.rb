@@ -12,28 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "chdb",
-    "clickhouse",
-    "databricks",
-    "datafusion",
-    "duckdb/*",
-    "exasol",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "oracle",
-    "postgresql/*",
-    "presto",
-    "quack",
-    "redshift",
-    "singlestore",
-    "snowflake",
-    "spark",
-    "sqlite",
-    "teradata",
-    "trino",
-]
+require "adbc"
+
+database = ADBC::Database.new
+
+begin
+  database.set_option("driver", "presto")
+  database.set_option("uri", "presto://user@localhost:8080/tpch/tiny")
+  database.set_load_flags(ADBC::LoadFlags::DEFAULT)
+  database.init
+
+  database.connect do |connection|
+    table, = connection.query(<<~SQL)
+      SELECT nationkey, name, regionkey
+      FROM tpch.tiny.nation
+      LIMIT 5
+    SQL
+    puts(table)
+  end
+ensure
+  database.release
+end
