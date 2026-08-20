@@ -12,27 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "chdb",
-    "clickhouse",
-    "databricks",
-    "datafusion",
-    "duckdb/*",
-    "exasol",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "oracle",
-    "postgresql/*",
-    "quack",
-    "redshift",
-    "singlestore",
-    "snowflake",
-    "spark",
-    "sqlite",
-    "teradata",
-    "trino",
-]
+require "adbc"
+
+database = ADBC::Database.new
+
+begin
+  database.set_option("driver", "chdb")
+  database.set_load_flags(ADBC::LoadFlags::DEFAULT)
+  database.init
+
+  database.connect do |connection|
+    table, = connection.query("SELECT * FROM 'games.parquet';")
+    puts(table)
+  end
+ensure
+  database.release
+end

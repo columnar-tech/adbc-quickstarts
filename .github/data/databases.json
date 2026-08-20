@@ -11,6 +11,10 @@
     "name": "CedarDB",
     "parent": "postgresql"
   },
+  "chdb": {
+    "name": "chDB",
+    "parent": null
+  },
   "citus": {
     "name": "Citus",
     "parent": "postgresql"

@@ -19,10 +19,10 @@ limitations under the License.
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>tech.columnar</groupId>
-    <artifactId>adbc-quickstart-clickhouse</artifactId>
+    <artifactId>adbc-quickstart-chdb</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>adbc-quickstart-java-clickhouse</name>
+    <name>adbc-quickstart-java-chdb</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
