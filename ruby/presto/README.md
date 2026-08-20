@@ -94,7 +94,7 @@ limitations under the License.
 1. Install the Presto ADBC driver:
 
    ```sh
-   dbc install --pre presto
+   dbc install --level user --pre presto
    ```
 
 1. Customize the Ruby script `main.rb` as needed

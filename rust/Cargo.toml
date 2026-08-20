@@ -26,6 +26,7 @@ members = [
     "mysql/*",
     "oracle",
     "postgresql/*",
+    "presto",
     "quack",
     "redshift",
     "singlestore",

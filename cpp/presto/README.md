@@ -42,7 +42,7 @@ limitations under the License.
 1. Install the Presto ADBC driver:
 
    ```sh
-   dbc install --pre presto
+   dbc install --level user --pre presto
    ```
 
 1. Customize the C++ program `main.cpp` as needed,
