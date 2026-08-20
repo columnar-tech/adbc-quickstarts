@@ -3,6 +3,10 @@
     "name": "Google BigQuery",
     "parent": null
   },
+  "cassandra": {
+    "name": "Apache Cassandra",
+    "parent": null
+  },
   "cedardb": {
     "name": "CedarDB",
     "parent": "postgresql"
