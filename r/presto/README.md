@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Python and Presto with ADBC
+# Connecting R and Presto with ADBC
 
 ## Instructions
 
@@ -23,9 +23,15 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+1. [Install R](https://www.r-project.org/)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+
+1. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
+
+   ```r
+   install.packages(c("adbcdrivermanager", "arrow", "tibble"))
+   ```
 
 ### Set up Presto
 
@@ -45,20 +51,20 @@ limitations under the License.
    dbc install --pre presto
    ```
 
-1. Customize the Python script `main.py` as needed
-   - Change the connection arguments in `db_kwargs`
+1. Customize the R script `main.R` as needed
+   - Change the connection arguments in `adbc_database_init()`
      - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/presto/index.html#connecting), or keep it as is to use the TPC-H data included in the Presto Docker container image
 
-1. Run the Python script:
+1. Run the R script:
 
    ```sh
-   uv run main.py
+   Rscript main.R
    ```
 
 ### Clean up
 
-Stop the Docker container running Presto:
+1. Stop the Docker container running Presto:
 
-```sh
-docker stop presto
-```
+   ```sh
+   docker stop presto
+   ```

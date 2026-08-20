@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Python and Presto with ADBC
+# Connecting Go and Presto with ADBC
 
 ## Instructions
 
@@ -23,7 +23,7 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+1. [Install Go](https://go.dev/doc/install)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
@@ -45,20 +45,21 @@ limitations under the License.
    dbc install --pre presto
    ```
 
-1. Customize the Python script `main.py` as needed
-   - Change the connection arguments in `db_kwargs`
+1. Customize the Go program `main.go` as needed
+   - Change the connection arguments in the `NewDatabase()` call
      - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/presto/index.html#connecting), or keep it as is to use the TPC-H data included in the Presto Docker container image
 
-1. Run the Python script:
+1. Run the Go program:
 
    ```sh
-   uv run main.py
+   go mod tidy
+   go run main.go
    ```
 
 ### Clean up
 
-Stop the Docker container running Presto:
+1. Stop the Docker container running Presto:
 
-```sh
-docker stop presto
-```
+   ```sh
+   docker stop presto
+   ```

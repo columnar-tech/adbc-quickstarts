@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Python and Presto with ADBC
+# Connecting C++ and Presto with ADBC
 
 ## Instructions
 
@@ -23,7 +23,7 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+1. [Install Pixi](https://pixi.prefix.dev/latest/)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
@@ -45,20 +45,42 @@ limitations under the License.
    dbc install --pre presto
    ```
 
-1. Customize the Python script `main.py` as needed
-   - Change the connection arguments in `db_kwargs`
-     - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/presto/index.html#connecting), or keep it as is to use the TPC-H data included in the Presto Docker container image
+1. Customize the C++ program `main.cpp` as needed,
+   - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
+     - Format the URI according to the [driver documentation](https://docs.adbc-drivers.org/drivers/presto/index.html#connecting), or keep it as is to use the TPC-H data included in the Presto Docker container image
 
-1. Run the Python script:
+1. Build and run the C++ program:
 
+   Using Make:
    ```sh
-   uv run main.py
+   pixi run make
+   ./presto_demo
    ```
+
+   Or using CMake:
+   ```sh
+   pixi run cmake -B build
+   pixi run cmake --build build
+   ./build/presto_demo
+   ```
+
 
 ### Clean up
 
-Stop the Docker container running Presto:
+1. Clean build artifacts:
 
-```sh
-docker stop presto
-```
+   Using Make:
+   ```sh
+   pixi run make clean
+   ```
+
+   Using CMake:
+   ```sh
+   rm -rf build
+   ```
+
+1. Stop the Docker container running Presto:
+
+   ```sh
+   docker stop presto
+   ```
