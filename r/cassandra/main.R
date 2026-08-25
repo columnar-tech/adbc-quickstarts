@@ -12,25 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# /// script
-# requires-python = ">=3.10"
-# dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
-# ///
+library(adbcdrivermanager)
 
-from adbc_driver_manager import dbapi
+drv <- adbc_driver("cassandra")
 
-with (
-    dbapi.connect(
-        driver="cassandra",
-        db_kwargs={"uri": "cassandra://localhost:9042"},
-        autocommit=True,
-    ) as connection,
-    connection.cursor() as cursor,
-):
-    cursor.execute("""
-      SELECT cluster_name, release_version
-      FROM system.local
-    """)
-    table = cursor.fetch_arrow_table()
+db <- adbc_database_init(
+  drv,
+  uri = "cassandra://localhost:9042"
+)
 
-print(table)
+con <- adbc_connection_init(db)
+
+con |>
+  read_adbc(
+    "
+    SELECT cluster_name, release_version
+    FROM system.local
+  "
+  ) |>
+  tibble::as_tibble() # or:
+# arrow::as_arrow_table() # to keep result in Arrow format
+# arrow::as_record_batch_reader() # for larger results

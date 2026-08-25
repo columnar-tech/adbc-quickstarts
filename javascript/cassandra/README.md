@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Python and Apache Cassandra with ADBC
+# Connecting JavaScript and Apache Cassandra with ADBC
 
 ## Instructions
 
@@ -23,7 +23,8 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+1. [Install Node.js](https://nodejs.org/) (version 22 or later)
+   - Alternatively, you can use [Bun](https://bun.sh/) or [Deno](https://deno.com/)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
@@ -53,14 +54,34 @@ limitations under the License.
    dbc install --pre cassandra
    ```
 
-1. Customize the Python script `main.py` as needed
-   - Change the connection arguments in `db_kwargs`
-     - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/cassandra/index.html#connecting), or keep it as is
-
-1. Run the Python script:
+1. Install dependencies:
 
    ```sh
-   uv run main.py
+   npm --prefix .. install
+   ```
+
+1. Customize the script `main.js` as needed
+   - Change the connection arguments in `databaseOptions`
+     - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/cassandra/index.html#connecting), or keep it as is
+
+1. Run the script:
+
+   **Node.js:**
+
+   ```sh
+   node main.js
+   ```
+
+   **Bun:**
+
+   ```sh
+   bun run main.js
+   ```
+
+   **Deno:**
+
+   ```sh
+   deno run --allow-ffi --allow-env main.js
    ```
 
 ### Clean up

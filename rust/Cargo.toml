@@ -16,6 +16,7 @@
 resolver = "3"
 members = [
     "bigquery",
+    "cassandra",
     "chdb",
     "clickhouse",
     "databricks",

@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Connecting Python and Apache Cassandra with ADBC
+# Connecting Go and Apache Cassandra with ADBC
 
 ## Instructions
 
@@ -23,7 +23,7 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+1. [Install Go](https://go.dev/doc/install)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
@@ -53,20 +53,21 @@ limitations under the License.
    dbc install --pre cassandra
    ```
 
-1. Customize the Python script `main.py` as needed
-   - Change the connection arguments in `db_kwargs`
+1. Customize the Go program `main.go` as needed
+   - Change the connection arguments in the `NewDatabase()` call
      - Format `uri` according to the [driver documentation](https://docs.adbc-drivers.org/drivers/cassandra/index.html#connecting), or keep it as is
 
-1. Run the Python script:
+1. Run the Go program:
 
    ```sh
-   uv run main.py
+   go mod tidy
+   go run main.go
    ```
 
 ### Clean up
 
-Stop the Docker container running Cassandra:
+1. Stop the Docker container running Cassandra:
 
-```sh
-docker stop cassandra
-```
+   ```sh
+   docker stop cassandra
+   ```

@@ -12,25 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# /// script
-# requires-python = ">=3.10"
-# dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
-# ///
+CXXFLAGS = -std=c++17 -Wall -Werror -I$(CONDA_PREFIX)/include
+LIBS = -L$(CONDA_PREFIX)/lib -ladbc_driver_manager -larrow -Wl,-rpath,$(CONDA_PREFIX)/lib
 
-from adbc_driver_manager import dbapi
+cassandra_demo: main.cpp
+	$(CXX) $(CXXFLAGS) -o cassandra_demo main.cpp $(LIBS)
 
-with (
-    dbapi.connect(
-        driver="cassandra",
-        db_kwargs={"uri": "cassandra://localhost:9042"},
-        autocommit=True,
-    ) as connection,
-    connection.cursor() as cursor,
-):
-    cursor.execute("""
-      SELECT cluster_name, release_version
-      FROM system.local
-    """)
-    table = cursor.fetch_arrow_table()
+clean:
+	rm -f cassandra_demo
 
-print(table)
+.PHONY: clean

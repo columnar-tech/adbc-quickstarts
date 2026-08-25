@@ -12,25 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# /// script
-# requires-python = ">=3.10"
-# dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
-# ///
+[package]
+name = "cassandra"
+version = "0.1.0"
+edition = "2024"
 
-from adbc_driver_manager import dbapi
-
-with (
-    dbapi.connect(
-        driver="cassandra",
-        db_kwargs={"uri": "cassandra://localhost:9042"},
-        autocommit=True,
-    ) as connection,
-    connection.cursor() as cursor,
-):
-    cursor.execute("""
-      SELECT cluster_name, release_version
-      FROM system.local
-    """)
-    table = cursor.fetch_arrow_table()
-
-print(table)
+[dependencies]
+adbc_core = "0.21.0"
+adbc_driver_manager = "0.21.0"
+arrow = { version = "57.0.0", features = ["prettyprint"] }
+arrow-array = "57.0.0"

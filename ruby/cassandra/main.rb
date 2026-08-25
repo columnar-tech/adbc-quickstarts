@@ -12,25 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# /// script
-# requires-python = ">=3.10"
-# dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
-# ///
+require "adbc"
 
-from adbc_driver_manager import dbapi
+database = ADBC::Database.new
 
-with (
-    dbapi.connect(
-        driver="cassandra",
-        db_kwargs={"uri": "cassandra://localhost:9042"},
-        autocommit=True,
-    ) as connection,
-    connection.cursor() as cursor,
-):
-    cursor.execute("""
+begin
+  database.set_option("driver", "cassandra")
+  database.set_option("uri", "cassandra://localhost:9042")
+  database.set_load_flags(ADBC::LoadFlags::DEFAULT)
+  database.init
+
+  database.connect do |connection|
+    table, = connection.query(<<~SQL)
       SELECT cluster_name, release_version
       FROM system.local
-    """)
-    table = cursor.fetch_arrow_table()
-
-print(table)
+    SQL
+    puts(table)
+  end
+ensure
+  database.release
+end
