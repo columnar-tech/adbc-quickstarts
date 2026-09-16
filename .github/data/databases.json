@@ -39,6 +39,10 @@
     "name": "DataFusion",
     "parent": null
   },
+  "druid": {
+    "name": "Apache Druid",
+    "parent": null
+  },
   "doris": {
     "name": "Apache Doris",
     "parent": "flightsql"

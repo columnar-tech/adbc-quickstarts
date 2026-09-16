@@ -12,30 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "cassandra",
-    "chdb",
-    "clickhouse",
-    "databricks",
-    "datafusion",
-    "druid",
-    "duckdb/*",
-    "exasol",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "oracle",
-    "postgresql/*",
-    "presto",
-    "quack",
-    "redshift",
-    "singlestore",
-    "snowflake",
-    "spark",
-    "sqlite",
-    "teradata",
-    "trino",
-]
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
+# ///
+
+from adbc_driver_manager import dbapi
+
+with (
+    dbapi.connect(
+        driver="druid",
+        db_kwargs={"uri": "druid://localhost:8888?tls=false"},
+        autocommit=True,
+    ) as connection,
+    connection.cursor() as cursor,
+):
+    cursor.execute("""
+      SELECT "server", server_type, tier, curr_size, max_size
+      FROM sys.servers
+      ORDER BY server_type, "server"
+      LIMIT 10
+    """)
+    table = cursor.fetch_arrow_table()
+
+print(table)

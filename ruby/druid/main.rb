@@ -12,30 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[workspace]
-resolver = "3"
-members = [
-    "bigquery",
-    "cassandra",
-    "chdb",
-    "clickhouse",
-    "databricks",
-    "datafusion",
-    "druid",
-    "duckdb/*",
-    "exasol",
-    "flightsql/*",
-    "mssql",
-    "mysql/*",
-    "oracle",
-    "postgresql/*",
-    "presto",
-    "quack",
-    "redshift",
-    "singlestore",
-    "snowflake",
-    "spark",
-    "sqlite",
-    "teradata",
-    "trino",
-]
+require "adbc"
+
+database = ADBC::Database.new
+
+begin
+  database.set_option("driver", "druid")
+  database.set_option("uri", "druid://localhost:8888?tls=false")
+  database.set_load_flags(ADBC::LoadFlags::DEFAULT)
+  database.init
+
+  database.connect do |connection|
+    table, = connection.query(<<~SQL)
+      SELECT "server", server_type, tier, curr_size, max_size
+      FROM sys.servers
+      ORDER BY server_type, "server"
+      LIMIT 10
+    SQL
+    puts(table)
+  end
+ensure
+  database.release
+end
