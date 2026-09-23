@@ -11,6 +11,7 @@ javascript/node-packages/
 pixi.lock
 .gradle
 .kotlin
+.bsp
 build
 bin
 obj
