@@ -53,7 +53,7 @@ int main() {
   CHECK_ADBC(AdbcDatabaseNew(&database, &error));
 
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "driver", "duckdb", &error));
-  CHECK_ADBC(AdbcDatabaseSetOption(&database, "path", "md:sample_data", &error));
+  CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri", "md:sample_data", &error));
   CHECK_ADBC(AdbcDriverManagerDatabaseSetLoadFlags(
       &database, ADBC_LOAD_FLAG_DEFAULT, &error));
   CHECK_ADBC(AdbcDatabaseInit(&database, &error));

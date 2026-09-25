@@ -29,7 +29,7 @@ fn main() {
     .expect("Failed to load driver");
 
     let opts = [(
-        OptionDatabase::Other("path".to_string()),
+        OptionDatabase::Other("uri".to_string()),
         "games.duckdb".into(),
     )];
     let db = driver

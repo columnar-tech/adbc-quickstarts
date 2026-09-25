@@ -38,7 +38,7 @@ limitations under the License.
 
 1. Customize the Go program `main.go` as needed
    - Change the connection arguments in the `NewDatabase()` call
-     - Set `path` to the name of a MotherDuck database (prefixed with `md:`), or keep it set to `md:sample_data` to use MotherDuck's sample data
+     - Set `uri` to the name of a MotherDuck database (prefixed with `md:`), or keep it set to `md:sample_data` to use MotherDuck's sample data
    - Change the SQL SELECT statement in `stmt.SetSqlQuery()` to query the tables in your database
 
 1. Run the Go program:
