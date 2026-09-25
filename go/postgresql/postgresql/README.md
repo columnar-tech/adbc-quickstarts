@@ -51,10 +51,10 @@ limitations under the License.
     dbc install postgresql
     ```
 
-2. Customize the Go program `main.go` as needed
-    - Change the connection arguments in the `NewDatabase()` call
+2. Customize the connection profile `profile.toml` and the Go program `main.go` as needed
+    - Change the connection arguments in `profile.toml`
         - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is to use the data included with this example
-    - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.SetSqlQuery()`
+    - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.SetSqlQuery()` in `main.go`
 
 3. Run the Go program:
 

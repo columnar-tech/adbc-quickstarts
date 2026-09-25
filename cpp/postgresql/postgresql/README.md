@@ -51,10 +51,10 @@ limitations under the License.
     dbc install --level user postgresql
     ```
 
-2. Customize the C++ program `main.cpp` as needed
-    - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
+2. Customize the connection profile `profile.toml` and the C++ program `main.cpp` as needed
+    - Change the connection arguments in `profile.toml`
         - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is to use the data included with this example
-    - If you changed which database you're connecting to, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`
+    - If you changed which database you're connecting to, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()` in `main.cpp`
 
 3. Build and run the C++ program:
 

@@ -29,7 +29,7 @@ limitations under the License.
         <maven.compiler.release>17</maven.compiler.release>
         <exec.mainClass>tech.columnar.Example</exec.mainClass>
         <arrow.version>18.3.0</arrow.version>
-        <adbc.version>0.21.0</adbc.version>
+        <adbc.version>0.24.0</adbc.version>
     </properties>
 
     <dependencyManagement>

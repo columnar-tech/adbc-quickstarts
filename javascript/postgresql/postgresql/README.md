@@ -58,10 +58,10 @@ limitations under the License.
    npm --prefix ../.. install
    ```
 
-1. Customize the script `main.js` as needed
-   - Change the connection arguments in `databaseOptions`
+1. Customize the connection profile `profile.toml` and the script `main.js` as needed
+   - Change the connection arguments in `profile.toml`
      - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is to use the data included with this example
-   - If you changed which database you're connecting to, also change the SQL SELECT statement in `conn.query()`
+   - If you changed which database you're connecting to, also change the SQL SELECT statement in `conn.query()` in `main.js`
 
 1. Run the script:
 
