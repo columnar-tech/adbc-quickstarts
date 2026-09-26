@@ -39,6 +39,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 - [R](./r)
 - [Ruby](./ruby)
 - [Rust](./rust)
+- [Scala](./scala)
 
 ## Source systems covered
 

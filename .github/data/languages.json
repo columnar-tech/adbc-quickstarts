@@ -8,5 +8,6 @@
   "csharp": "C#",
   "r": "R",
   "ruby": "Ruby",
-  "rust": "Rust"
+  "rust": "Rust",
+  "scala": "Scala"
 }
