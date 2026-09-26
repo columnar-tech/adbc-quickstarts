@@ -20,6 +20,7 @@ val arrowVersion = "18.3.0"
 val adbcVersion = "0.21.0"
 
 libraryDependencies ++= Seq(
+  "org.apache.arrow" % "arrow-c-data" % arrowVersion,
   "org.apache.arrow" % "arrow-memory-core" % arrowVersion,
   "org.apache.arrow" % "arrow-memory-netty" % arrowVersion,
   "org.apache.arrow" % "arrow-vector" % arrowVersion,
