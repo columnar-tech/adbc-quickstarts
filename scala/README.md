@@ -27,9 +27,12 @@ Simple Scala examples showing how to use ADBC to connect, run a query, and retur
 ## Source systems covered
 
 - [Google BigQuery](./bigquery)
+- [Apache Cassandra](./cassandra)
+- [chDB](./chdb)
 - [ClickHouse](./clickhouse)
 - [Databricks](./databricks)
 - [DataFusion](./datafusion)
+- [Apache Druid](./druid)
 - [DuckDB-compatible systems](./duckdb)
   - [DuckDB](./duckdb/duckdb)
   - [MotherDuck](./duckdb/motherduck)
@@ -58,6 +61,7 @@ Simple Scala examples showing how to use ADBC to connect, run a query, and retur
   - [TimescaleDB](./postgresql/timescaledb)
   - [Yellowbrick](./postgresql/yellowbrick)
   - [YugabyteDB](./postgresql/yugabytedb)
+- [Presto](./presto)
 - [Quack](./quack)
 - [Amazon Redshift](./redshift)
 - [SingleStore](./singlestore)
