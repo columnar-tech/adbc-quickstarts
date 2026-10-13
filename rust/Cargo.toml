@@ -24,6 +24,7 @@ members = [
     "druid",
     "duckdb/*",
     "exasol",
+    "firebolt",
     "flightsql/*",
     "mssql",
     "mysql/*",

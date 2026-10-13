@@ -37,6 +37,7 @@ Simple Scala examples showing how to use ADBC to connect, run a query, and retur
   - [DuckDB](./duckdb/duckdb)
   - [MotherDuck](./duckdb/motherduck)
 - [Exasol](./exasol)
+- [Firebolt](./firebolt)
 - [Apache Arrow Flight SQL-compatible systems](./flightsql)
   - [Apache Doris](./flightsql/doris)
   - [Dremio](./flightsql/dremio)

@@ -62,6 +62,10 @@
     "name": "Exasol",
     "parent": null
   },
+  "firebolt": {
+    "name": "Firebolt",
+    "parent": null
+  },
   "flightsql": {
     "name": "Arrow Flight SQL",
     "parent": null,
