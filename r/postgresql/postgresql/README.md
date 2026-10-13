@@ -57,10 +57,10 @@ limitations under the License.
     dbc install postgresql
     ```
 
-2. Customize the R script `main.R` as needed
-    - Change the connection arguments in `adbc_database_init()`
+2. Customize the connection profile `profile.toml` and the R script `main.R` as needed
+    - Change the connection arguments in `profile.toml`
         - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is to use the data included with this example
-    - If you changed which database you're connecting to, also change the SQL SELECT statement in `read_adbc()`
+    - If you changed which database you're connecting to, also change the SQL SELECT statement in `read_adbc()` in `main.R`
 
 3. Run the R script:
 

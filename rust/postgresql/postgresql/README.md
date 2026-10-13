@@ -51,10 +51,10 @@ limitations under the License.
     dbc install postgresql
     ```
 
-2. Customize `src/main.rs` as needed
-    - Change the connection arguments in `opts`
-        - Format `OptionDatabase::Uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is to use the data included with this example
-    - If you changed which database you're connecting to, also change the SQL SELECT statement in `statement.set_sql_query()`
+2. Customize the connection profile `profile.toml` and the Rust program `src/main.rs` as needed
+    - Change the connection arguments in `profile.toml`
+        - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is to use the data included with this example
+    - If you changed which database you're connecting to, also change the SQL SELECT statement in `statement.set_sql_query()` in `main.rs`
 
 3. Run the Rust program:
 

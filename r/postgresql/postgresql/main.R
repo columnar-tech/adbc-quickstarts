@@ -14,11 +14,9 @@
 
 library(adbcdrivermanager)
 
-drv <- adbc_driver("postgresql")
-
 db <- adbc_database_init(
-  drv,
-  uri = "postgresql://postgres:mysecretpassword@localhost:5432/demo"
+  uri = "profile://./profile.toml"
+  # or: profile = "./profile.toml"
 )
 
 con <- adbc_connection_init(db)

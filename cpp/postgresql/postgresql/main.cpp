@@ -52,9 +52,10 @@ int main() {
   AdbcDatabase database = {};
   CHECK_ADBC(AdbcDatabaseNew(&database, &error));
 
-  CHECK_ADBC(AdbcDatabaseSetOption(&database, "driver", "postgresql", &error));
-  CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
-                                   "postgresql://postgres:mysecretpassword@localhost:5432/demo", &error));
+  CHECK_ADBC(AdbcDatabaseSetOption(
+      &database, "uri", "profile://./profile.toml", &error));
+  // or: CHECK_ADBC(AdbcDatabaseSetOption(
+  //     &database, "profile", "./profile.toml", &error));
   CHECK_ADBC(AdbcDriverManagerDatabaseSetLoadFlags(
       &database, ADBC_LOAD_FLAG_DEFAULT, &error));
   CHECK_ADBC(AdbcDatabaseInit(&database, &error));
