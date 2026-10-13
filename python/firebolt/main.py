@@ -23,8 +23,8 @@ with (
     dbapi.connect(
         driver="firebolt",
         db_kwargs={"uri": "firebolt://localhost:3473?ssl_mode=disable"},
-    ) as con,
-    con.cursor() as cursor,
+    ) as connection,
+    connection.cursor() as cursor,
 ):
     cursor.execute("""
       SELECT table_catalog, table_schema, table_name, table_type
