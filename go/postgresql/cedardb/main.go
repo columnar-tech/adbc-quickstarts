@@ -46,11 +46,6 @@ func main() {
 	}
 	defer stmt.Close()
 
-	err = stmt.SetOption("adbc.postgresql.use_copy", "false")
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	err = stmt.SetSqlQuery("SELECT version()")
 	if err != nil {
 		log.Fatal(err)
