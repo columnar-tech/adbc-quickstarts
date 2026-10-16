@@ -23,13 +23,8 @@ begin
   database.init
 
   database.connect do |connection|
-    connection.open_statement do |statement|
-      # CedarDB does not support the COPY protocol used by the PostgreSQL ADBC driver.
-      statement.set_option("adbc.postgresql.use_copy", "false")
-      statement.sql_query = "SELECT version()"
-      table, = statement.execute
-      puts(table)
-    end
+    table, = connection.query("SELECT version()")
+    puts(table)
   end
 ensure
   database.release

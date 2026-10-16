@@ -26,7 +26,7 @@ with (
             "uri": "postgresql://postgres:test@localhost:5432/postgres",
         },
     ) as connection,
-    connection.cursor(adbc_stmt_kwargs={"adbc.postgresql.use_copy": False}) as cursor,
+    connection.cursor() as cursor,
 ):
     cursor.execute("SELECT version()")
     table = cursor.fetch_arrow_table()

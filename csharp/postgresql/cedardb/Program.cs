@@ -28,8 +28,6 @@ using AdbcDatabase db = driver.Open(new Dictionary<string, string>
 using AdbcConnection conn = db.Connect(null);
 using AdbcStatement stmt = conn.CreateStatement();
 
-stmt.SetOption("adbc.postgresql.use_copy", "false");
-
 stmt.SqlQuery = "SELECT version()";
 
 QueryResult result = stmt.ExecuteQuery();
