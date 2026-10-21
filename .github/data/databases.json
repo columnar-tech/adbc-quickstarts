@@ -171,6 +171,10 @@
     "name": "Vitess",
     "parent": "mysql"
   },
+  "xtdb": {
+    "name": "XTDB",
+    "parent": "flightsql"
+  },
   "yellowbrick": {
     "name": "Yellowbrick",
     "parent": "postgresql"
