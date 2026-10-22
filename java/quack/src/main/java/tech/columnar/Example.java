@@ -33,7 +33,8 @@ public class Example {
   public static void main(String[] args) throws Exception {
     Map<String, Object> params = new HashMap<>();
     JniDriver.PARAM_DRIVER.set(params, "quack");
-    params.put("uri", "quack://localhost:9494/?token=YOUR_AUTH_TOKEN");
+    // Uses plain HTTP for local testing. Set tls=true in a real environment.
+    params.put("uri", "quack://localhost:9494/?token=YOUR_AUTH_TOKEN&tls=false");
 
     try (BufferAllocator allocator = new RootAllocator();
         AdbcDatabase db =

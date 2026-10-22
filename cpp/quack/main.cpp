@@ -53,8 +53,9 @@ int main() {
   CHECK_ADBC(AdbcDatabaseNew(&database, &error));
 
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "driver", "quack", &error));
+  // Uses plain HTTP for local testing. Set tls=true in a real environment.
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
-                                   "quack://localhost:9494/?token=YOUR_AUTH_TOKEN",
+                                   "quack://localhost:9494/?token=YOUR_AUTH_TOKEN&tls=false",
                                    &error));
   CHECK_ADBC(AdbcDriverManagerDatabaseSetLoadFlags(
       &database, ADBC_LOAD_FLAG_DEFAULT, &error));

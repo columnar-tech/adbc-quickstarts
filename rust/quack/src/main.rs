@@ -30,7 +30,8 @@ fn main() {
 
     let opts = [(
         OptionDatabase::Uri,
-        "quack://localhost:9494/?token=YOUR_AUTH_TOKEN".into(),
+        // Uses plain HTTP for local testing. Set tls=true in a real environment.
+        "quack://localhost:9494/?token=YOUR_AUTH_TOKEN&tls=false".into(),
     )];
     let db = driver
         .new_database_with_opts(opts)

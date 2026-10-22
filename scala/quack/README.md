@@ -63,6 +63,7 @@ limitations under the License.
     - Change the `uri` connection argument in `params`
         - Replace `YOUR_AUTH_TOKEN` with the `auth_token` printed by DuckDB
         - Change the host and port if applicable
+        - `tls=false` connects over unencrypted HTTP, which is fine for a local server. In a real environment, change it to `tls=true` so the driver uses verified TLS
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.setSqlQuery`
 
 1. Run the Scala program:

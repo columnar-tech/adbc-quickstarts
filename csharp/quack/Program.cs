@@ -22,7 +22,8 @@ using AdbcDriver driver = AdbcDriverManager.FindLoadDriver(
 
 using AdbcDatabase db = driver.Open(new Dictionary<string, string>
 {
-    ["uri"] = "quack://localhost:9494/?token=YOUR_AUTH_TOKEN",
+    // Uses plain HTTP for local testing. Set tls=true in a real environment.
+    ["uri"] = "quack://localhost:9494/?token=YOUR_AUTH_TOKEN&tls=false",
 });
 
 using AdbcConnection conn = db.Connect(null);
