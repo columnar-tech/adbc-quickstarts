@@ -47,6 +47,7 @@ Simple JavaScript examples showing how to use ADBC to connect, run a query, and 
   - [InfluxDB](./flightsql/influxdb)
   - [Sail](./flightsql/sail)
   - [StarRocks](./flightsql/starrocks)
+  - [XTDB](./flightsql/xtdb)
 - [Microsoft SQL Server](./mssql)
 - [MySQL-compatible systems](./mysql)
   - [MariaDB](./mysql/mariadb)
