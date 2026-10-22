@@ -56,7 +56,7 @@ limitations under the License.
 1. Install the Quack ADBC driver:
 
     ```sh
-    dbc install --pre quack
+    dbc install --level user quack
     ```
 
 1. Customize the C++ program `main.cpp` as needed

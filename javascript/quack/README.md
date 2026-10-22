@@ -57,7 +57,7 @@ limitations under the License.
 1. Install the Quack ADBC driver:
 
     ```sh
-    dbc install --pre quack
+    dbc install quack
     ```
 
 1. Install dependencies:

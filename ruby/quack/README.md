@@ -108,7 +108,7 @@ limitations under the License.
 1. Install the Quack ADBC driver:
 
     ```sh
-    dbc install --level user --pre quack
+    dbc install --level user quack
     ```
 
 1. Customize the Ruby script `main.rb` as needed
