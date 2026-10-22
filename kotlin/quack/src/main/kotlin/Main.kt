@@ -23,7 +23,8 @@ private const val DRIVER_FACTORY = "org.apache.arrow.adbc.driver.jni.JniDriverFa
 fun main() {
     val params = mutableMapOf<String, Any>()
     JniDriver.PARAM_DRIVER.set(params, "quack")
-    params["uri"] = "quack://localhost:9494/?token=YOUR_AUTH_TOKEN"
+    // Uses plain HTTP for local testing. Set tls=true in a real environment.
+    params["uri"] = "quack://localhost:9494/?token=YOUR_AUTH_TOKEN&tls=false"
 
     RootAllocator().use { allocator ->
         AdbcDriverManager.getInstance().connect(DRIVER_FACTORY, allocator, params).use { db ->

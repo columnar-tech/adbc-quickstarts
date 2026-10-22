@@ -27,7 +27,8 @@ func main() {
 
 	db, err := drv.NewDatabase(map[string]string{
 		"driver": "quack",
-		"uri":    "quack://localhost:9494/?token=YOUR_AUTH_TOKEN",
+		// Uses plain HTTP for local testing. Set tls=true in a real environment.
+		"uri":    "quack://localhost:9494/?token=YOUR_AUTH_TOKEN&tls=false",
 	})
 	if err != nil {
 		log.Fatal(err)
