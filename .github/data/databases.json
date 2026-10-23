@@ -69,10 +69,6 @@
     "protocol_description": "This directory contains examples showing how to use ADBC to connect {language} applications to systems that support [Arrow Flight SQL](https://arrow.apache.org/docs/format/FlightSql.html).",
     "source_systems_intro": "Any open source tool or vendor product that implements Arrow Flight SQL should work with the ADBC driver for Flight SQL. The examples included here focus on the following systems:"
   },
-  "gizmosql": {
-    "name": "GizmoSQL",
-    "parent": "flightsql"
-  },
   "influxdb": {
     "name": "InfluxDB",
     "parent": "flightsql"

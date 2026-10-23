@@ -43,7 +43,6 @@ Simple JavaScript examples showing how to use ADBC to connect, run a query, and 
 - [Apache Arrow Flight SQL-compatible systems](./flightsql)
   - [Apache Doris](./flightsql/doris)
   - [Dremio](./flightsql/dremio)
-  - [GizmoSQL](./flightsql/gizmosql)
   - [InfluxDB](./flightsql/influxdb)
   - [Sail](./flightsql/sail)
   - [StarRocks](./flightsql/starrocks)
