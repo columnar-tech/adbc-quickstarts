@@ -1,0 +1,12 @@
+[workspace]
+channels = ["conda-forge"]
+name = "yellowbrick"
+platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
+
+[tasks]
+
+[dependencies]
+cmake = ">=4.3.0,<5"
+compilers = ">=1.11.0,<2"
+libadbc-driver-manager = ">=1.10.0,<2"
+libarrow = ">=23.0.1,<24"
