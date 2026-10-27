@@ -44,7 +44,7 @@ limitations under the License.
 
 1. Customize the R script `main.R` as needed
    - Change the connection arguments in `adbc_database_init()`
-     - Set `path` to the name of a MotherDuck database (prefixed with `md:`), or keep it set to `md:sample_data` to use MotherDuck's sample data
+     - Set `uri` to the name of a MotherDuck database (prefixed with `md:`), or keep it set to `md:sample_data` to use MotherDuck's sample data
    - Change the SQL SELECT statement in `read_adbc()` to query the tables in your database
 
 1. Run the R script:

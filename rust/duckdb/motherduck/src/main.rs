@@ -29,7 +29,7 @@ fn main() {
     .expect("Failed to load driver");
 
     let opts = [(
-        OptionDatabase::Other("path".to_string()),
+        OptionDatabase::Other("uri".to_string()),
         "md:sample_data".into(),
     )];
     let db = driver
