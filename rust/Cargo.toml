@@ -25,6 +25,7 @@ members = [
     "duckdb/*",
     "exasol",
     "flightsql/*",
+    "mariadb",
     "mssql",
     "mysql/*",
     "oracle",
