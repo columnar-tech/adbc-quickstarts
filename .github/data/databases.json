@@ -55,7 +55,7 @@
     "name": "DuckDB",
     "parent": "duckdb",
     "display_name_when_parent": "DuckDB-compatible systems",
-    "protocol_description": "This directory contains examples showing how to use ADBC to connect {language} applications to DuckDB-compatible systems.",
+    "protocol_description": "This directory contains examples showing how to use ADBC to connect {language} applications to DuckDB-compatible systems. For MotherDuck, see the dedicated [MotherDuck example](../motherduck), which uses the MotherDuck ADBC driver.",
     "source_systems_intro": "The examples included here cover the following systems:"
   },
   "exasol": {
@@ -83,7 +83,7 @@
   },
   "motherduck": {
     "name": "MotherDuck",
-    "parent": "duckdb"
+    "parent": null
   },
   "mssql": {
     "name": "Microsoft SQL Server",

@@ -22,14 +22,13 @@ To update, modify .github/data/databases.json or .github/data/languages.json
 
 # Connecting Go to DuckDB-compatible systems with ADBC
 
-This directory contains examples showing how to use ADBC to connect Go applications to DuckDB-compatible systems.
+This directory contains examples showing how to use ADBC to connect Go applications to DuckDB-compatible systems. For MotherDuck, see the dedicated [MotherDuck example](../motherduck), which uses the MotherDuck ADBC driver.
 
 ## Source systems covered
 
 The examples included here cover the following systems:
 
 - [DuckDB](./duckdb)
-- [MotherDuck](./motherduck)
 
 ## Instructions
 
