@@ -22,7 +22,7 @@ members = [
     "databricks",
     "datafusion",
     "druid",
-    "duckdb/*",
+    "duckdb",
     "exasol",
     "flightsql/*",
     "mariadb",

@@ -50,8 +50,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 - [Databricks](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/databricks)
 - [DataFusion](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/datafusion)
 - [Apache Druid](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/druid)
-- DuckDB-compatible systems
-  - [DuckDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/duckdb)
+- [DuckDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/duckdb)
 - [Exasol](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/exasol)
 - Apache Arrow Flight SQL-compatible systems
   - [Apache Doris](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/doris)
