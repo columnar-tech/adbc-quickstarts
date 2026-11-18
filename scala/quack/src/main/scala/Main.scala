@@ -27,7 +27,8 @@ private val DriverFactory = "org.apache.arrow.adbc.driver.jni.JniDriverFactory"
 @main def main(): Unit =
   val params = new HashMap[String, Object]()
   JniDriver.PARAM_DRIVER.set(params, "quack")
-  params.put("uri", "quack://localhost:9494/?token=YOUR_AUTH_TOKEN")
+  // Uses plain HTTP for local testing. Set tls=true in a real environment.
+  params.put("uri", "quack://localhost:9494/?token=YOUR_AUTH_TOKEN&tls=false")
 
   Using.resource(new RootAllocator()) { allocator =>
     Using.resource(AdbcDriverManager.getInstance().connect(DriverFactory, allocator, params)) { db =>

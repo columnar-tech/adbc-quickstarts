@@ -53,10 +53,7 @@
   },
   "duckdb": {
     "name": "DuckDB",
-    "parent": "duckdb",
-    "display_name_when_parent": "DuckDB-compatible systems",
-    "protocol_description": "This directory contains examples showing how to use ADBC to connect {language} applications to DuckDB-compatible systems.",
-    "source_systems_intro": "The examples included here cover the following systems:"
+    "parent": null
   },
   "exasol": {
     "name": "Exasol",
@@ -69,10 +66,6 @@
     "protocol_description": "This directory contains examples showing how to use ADBC to connect {language} applications to systems that support [Arrow Flight SQL](https://arrow.apache.org/docs/format/FlightSql.html).",
     "source_systems_intro": "Any open source tool or vendor product that implements Arrow Flight SQL should work with the ADBC driver for Flight SQL. The examples included here focus on the following systems:"
   },
-  "gizmosql": {
-    "name": "GizmoSQL",
-    "parent": "flightsql"
-  },
   "influxdb": {
     "name": "InfluxDB",
     "parent": "flightsql"
@@ -83,11 +76,11 @@
   },
   "mariadb": {
     "name": "MariaDB",
-    "parent": "mysql"
+    "parent": null
   },
   "motherduck": {
     "name": "MotherDuck",
-    "parent": "duckdb"
+    "parent": null
   },
   "mssql": {
     "name": "Microsoft SQL Server",
@@ -97,7 +90,7 @@
     "name": "MySQL",
     "parent": "mysql",
     "display_name_when_parent": "MySQL-compatible systems",
-    "protocol_description": "This directory contains examples showing how to use ADBC to connect {language} applications to MySQL-compatible database systems.",
+    "protocol_description": "This directory contains examples showing how to use ADBC to connect {language} applications to MySQL-compatible database systems. For MariaDB, see the dedicated [MariaDB example](../mariadb), which uses the MariaDB ADBC driver.",
     "source_systems_intro": "Any open source tool or vendor product that implements the MySQL protocol should work with the ADBC driver for MySQL. The examples included here focus on the following systems:"
   },
   "neon": {

@@ -22,13 +22,12 @@ To update, modify .github/data/databases.json or .github/data/languages.json
 
 # Connecting Java to MySQL-compatible systems with ADBC
 
-This directory contains examples showing how to use ADBC to connect Java applications to MySQL-compatible database systems.
+This directory contains examples showing how to use ADBC to connect Java applications to MySQL-compatible database systems. For MariaDB, see the dedicated [MariaDB example](../mariadb), which uses the MariaDB ADBC driver.
 
 ## Source systems covered
 
 Any open source tool or vendor product that implements the MySQL protocol should work with the ADBC driver for MySQL. The examples included here focus on the following systems:
 
-- [MariaDB](./mariadb)
 - [MySQL](./mysql)
 - [TiDB](./tidb)
 - [Vitess](./vitess)

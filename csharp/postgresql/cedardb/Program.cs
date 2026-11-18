@@ -22,13 +22,11 @@ using AdbcDriver driver = AdbcDriverManager.FindLoadDriver(
 
 using AdbcDatabase db = driver.Open(new Dictionary<string, string>
 {
-    ["uri"] = "postgresql://postgres:test@localhost:5432/postgres",
+    ["uri"] = "postgresql://postgres:CedarDB-test-2026!@localhost:5432/postgres",
 });
 
 using AdbcConnection conn = db.Connect(null);
 using AdbcStatement stmt = conn.CreateStatement();
-
-stmt.SetOption("adbc.postgresql.use_copy", "false");
 
 stmt.SqlQuery = "SELECT version()";
 

@@ -16,8 +16,57 @@ limitations under the License.
 
 # Connecting Java and CockroachDB with ADBC
 
-## Not Yet Implemented
+## Instructions
 
-A Java example for CockroachDB is not yet available due to an unimplemented feature in the ADBC Java driver manager.
+> [!TIP]
+> If you already have a CockroachDB instance running, skip the steps to set up and clean up CockroachDB.
 
-See [apache/arrow-adbc#3868](https://github.com/apache/arrow-adbc/issues/3868) for details and progress on this issue.
+### Prerequisites
+
+1. [Install Maven](https://maven.apache.org/install.html)
+
+2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+
+### Set up CockroachDB
+
+1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
+
+2. Start a CockroachDB instance:
+
+    ```sh
+    docker run -d --rm \
+        --env COCKROACH_DATABASE=db \
+        --env COCKROACH_USER=username \
+        --env COCKROACH_PASSWORD=password \
+        --name=roach-single \
+        -p 26257:26257 \
+        -p 8080:8080 \
+        cockroachdb/cockroach:v25.4.2 start-single-node
+    ```
+
+### Connect to CockroachDB
+
+1. Install the PostgreSQL ADBC driver:
+
+    ```sh
+    dbc install postgresql
+    ```
+
+1. Customize the `main` method in `Example.java`
+    - Change the connection arguments in the `params.put()` calls
+        - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is
+    - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.setSqlQuery()`
+
+1. Run the Java program:
+
+    ```sh
+    mvn compile exec:exec
+    ```
+
+### Clean up
+
+Stop the Docker container running CockroachDB:
+
+```sh
+docker stop roach-single
+```

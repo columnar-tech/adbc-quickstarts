@@ -17,23 +17,16 @@ import { AdbcDatabase } from '@apache-arrow/adbc-driver-manager';
 const db = new AdbcDatabase({
   driver: 'postgresql',
   databaseOptions: {
-    uri: 'postgresql://postgres:test@localhost:5432/postgres',
+    uri: 'postgresql://postgres:CedarDB-test-2026!@localhost:5432/postgres',
   },
 });
 
-let conn, stmt;
+let conn;
 try {
   conn = await db.connect();
-  stmt = await conn.createStatement();
-  // CedarDB does not support the COPY protocol used by the PostgreSQL ADBC driver
-  stmt.setOption('adbc.postgresql.use_copy', 'false');
-  await stmt.setSqlQuery('SELECT version()');
-  const reader = await stmt.executeQuery();
-  for await (const batch of reader) {
-    console.log(batch.toArray());
-  }
+  const table = await conn.query('SELECT version()');
+  console.log(table.toString());
 } finally {
-  await stmt?.close();
   await conn?.close();
   await db.close();
 }

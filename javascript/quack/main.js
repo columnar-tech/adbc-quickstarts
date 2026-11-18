@@ -17,7 +17,8 @@ import { AdbcDatabase } from '@apache-arrow/adbc-driver-manager';
 const db = new AdbcDatabase({
   driver: 'quack',
   databaseOptions: {
-    uri: 'quack://localhost:9494/?token=YOUR_AUTH_TOKEN',
+    // Uses plain HTTP for local testing. Set tls=true in a real environment.
+    uri: 'quack://localhost:9494/?token=YOUR_AUTH_TOKEN&tls=false',
   },
 });
 

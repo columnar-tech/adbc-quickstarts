@@ -18,18 +18,13 @@ database = ADBC::Database.new
 
 begin
   database.set_option("driver", "postgresql")
-  database.set_option("uri", "postgresql://postgres:test@localhost:5432/postgres")
+  database.set_option("uri", "postgresql://postgres:CedarDB-test-2026!@localhost:5432/postgres")
   database.set_load_flags(ADBC::LoadFlags::DEFAULT)
   database.init
 
   database.connect do |connection|
-    connection.open_statement do |statement|
-      # CedarDB does not support the COPY protocol used by the PostgreSQL ADBC driver.
-      statement.set_option("adbc.postgresql.use_copy", "false")
-      statement.sql_query = "SELECT version()"
-      table, = statement.execute
-      puts(table)
-    end
+    table, = connection.query("SELECT version()")
+    puts(table)
   end
 ensure
   database.release

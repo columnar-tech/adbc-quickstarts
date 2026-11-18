@@ -27,7 +27,7 @@ func main() {
 
 	db, err := drv.NewDatabase(map[string]string{
 		"driver": "postgresql",
-		"uri":    "postgresql://postgres:test@localhost:5432/postgres",
+		"uri":    "postgresql://postgres:CedarDB-test-2026!@localhost:5432/postgres",
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -45,11 +45,6 @@ func main() {
 		log.Fatal(err)
 	}
 	defer stmt.Close()
-
-	err = stmt.SetOption("adbc.postgresql.use_copy", "false")
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	err = stmt.SetSqlQuery("SELECT version()")
 	if err != nil {

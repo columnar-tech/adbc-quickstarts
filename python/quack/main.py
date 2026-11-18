@@ -20,7 +20,10 @@
 from adbc_driver_manager import dbapi
 
 with (
-    dbapi.connect(uri="quack://localhost:9494/?token=YOUR_AUTH_TOKEN") as connection,
+    # Uses plain HTTP for local testing. Set tls=true in a real environment.
+    dbapi.connect(
+        uri="quack://localhost:9494/?token=YOUR_AUTH_TOKEN&tls=false"
+    ) as connection,
     connection.cursor() as cursor,
 ):
     cursor.execute("SELECT * FROM penguins LIMIT 10")

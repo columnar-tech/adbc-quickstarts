@@ -56,13 +56,14 @@ limitations under the License.
 1. Install the Quack ADBC driver:
 
     ```sh
-    dbc install --pre quack
+    dbc install --level user quack
     ```
 
 1. Customize the C++ program `main.cpp` as needed
     - Change the `uri` connection argument in the `AdbcDatabaseSetOption()` call
         - Replace `YOUR_AUTH_TOKEN` with the `auth_token` printed by DuckDB
         - Change the host and port if applicable
+        - `tls=false` connects over unencrypted HTTP, which is fine for a local server. In a real environment, change it to `tls=true` so the driver uses verified TLS
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`
 
 1. Build and run the C++ program:
