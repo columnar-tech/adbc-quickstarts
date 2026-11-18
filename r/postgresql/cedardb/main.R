@@ -18,21 +18,13 @@ drv <- adbc_driver("postgresql")
 
 db <- adbc_database_init(
   drv,
-  uri = "postgresql://postgres:test@localhost:5432/postgres"
+  uri = "postgresql://postgres:CedarDB-test-2026!@localhost:5432/postgres"
 )
 
 con <- adbc_connection_init(db)
 
-stmt <- adbc_statement_init(con)
-adbc_statement_set_options(
-  stmt,
-  list(
-    "adbc.postgresql.use_copy" = "false"
-  )
-)
-adbc_statement_set_sql_query(stmt, "SELECT version()")
-
-adbc_statement_execute_query(stmt) |>
+con |>
+  read_adbc("SELECT version()") |>
   tibble::as_tibble() # or:
 # arrow::as_arrow_table() # to keep result in Arrow format
 # arrow::as_record_batch_reader() # for larger results

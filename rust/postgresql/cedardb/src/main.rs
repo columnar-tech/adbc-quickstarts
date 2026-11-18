@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use adbc_core::options::{AdbcVersion, OptionDatabase, OptionStatement, OptionValue};
-use adbc_core::{Connection, Database, Driver, LOAD_FLAG_DEFAULT, Optionable, Statement};
+use adbc_core::options::{AdbcVersion, OptionDatabase};
+use adbc_core::{Connection, Database, Driver, LOAD_FLAG_DEFAULT, Statement};
 use adbc_driver_manager::ManagedDriver;
 use arrow::util::pretty;
 use arrow_array::RecordBatch;
@@ -30,7 +30,7 @@ fn main() {
 
     let opts = [(
         OptionDatabase::Uri,
-        "postgresql://postgres:test@localhost:5432/postgres".into(),
+        "postgresql://postgres:CedarDB-test-2026!@localhost:5432/postgres".into(),
     )];
     let db = driver
         .new_database_with_opts(opts)
@@ -39,12 +39,6 @@ fn main() {
     let mut conn = db.new_connection().expect("Failed to create connection");
 
     let mut statement: adbc_driver_manager::ManagedStatement = conn.new_statement().unwrap();
-    statement
-        .set_option(
-            OptionStatement::Other("adbc.postgresql.use_copy".into()),
-            OptionValue::String("false".into()),
-        )
-        .unwrap();
     statement.set_sql_query("SELECT version()").unwrap();
     let reader = statement.execute().unwrap();
     let batches: Vec<RecordBatch> = reader.collect::<Result<_, _>>().unwrap();
