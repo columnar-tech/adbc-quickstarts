@@ -33,6 +33,7 @@ Any open source tool or vendor product that implements Arrow Flight SQL should w
 - [InfluxDB](./influxdb)
 - [Sail](./sail)
 - [StarRocks](./starrocks)
+- [XTDB](./xtdb)
 
 ## Instructions
 

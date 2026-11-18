@@ -58,6 +58,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
   - [InfluxDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/influxdb)
   - [Sail](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/sail)
   - [StarRocks](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/starrocks)
+  - [XTDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/xtdb)
 - [MariaDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/mariadb)
 - [MotherDuck](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/motherduck)
 - [Microsoft SQL Server](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/mssql)
