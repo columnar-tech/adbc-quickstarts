@@ -23,7 +23,7 @@ with (
     dbapi.connect(
         driver="postgresql",
         db_kwargs={
-            "uri": "postgresql://postgres:test@localhost:5432/postgres",
+            "uri": "postgresql://postgres:CedarDB-test-2026!@localhost:5432/postgres",
         },
     ) as connection,
     connection.cursor() as cursor,

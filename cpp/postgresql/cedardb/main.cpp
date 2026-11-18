@@ -54,7 +54,7 @@ int main() {
 
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "driver", "postgresql", &error));
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri",
-                                   "postgresql://postgres:test@localhost:5432/postgres", &error));
+                                   "postgresql://postgres:CedarDB-test-2026!@localhost:5432/postgres", &error));
   CHECK_ADBC(AdbcDriverManagerDatabaseSetLoadFlags(
       &database, ADBC_LOAD_FLAG_DEFAULT, &error));
   CHECK_ADBC(AdbcDatabaseInit(&database, &error));

@@ -17,7 +17,7 @@ import { AdbcDatabase } from '@apache-arrow/adbc-driver-manager';
 const db = new AdbcDatabase({
   driver: 'postgresql',
   databaseOptions: {
-    uri: 'postgresql://postgres:test@localhost:5432/postgres',
+    uri: 'postgresql://postgres:CedarDB-test-2026!@localhost:5432/postgres',
   },
 });
 

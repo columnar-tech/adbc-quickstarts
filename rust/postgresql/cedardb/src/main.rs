@@ -30,7 +30,7 @@ fn main() {
 
     let opts = [(
         OptionDatabase::Uri,
-        "postgresql://postgres:test@localhost:5432/postgres".into(),
+        "postgresql://postgres:CedarDB-test-2026!@localhost:5432/postgres".into(),
     )];
     let db = driver
         .new_database_with_opts(opts)

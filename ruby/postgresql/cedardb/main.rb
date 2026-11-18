@@ -18,7 +18,7 @@ database = ADBC::Database.new
 
 begin
   database.set_option("driver", "postgresql")
-  database.set_option("uri", "postgresql://postgres:test@localhost:5432/postgres")
+  database.set_option("uri", "postgresql://postgres:CedarDB-test-2026!@localhost:5432/postgres")
   database.set_load_flags(ADBC::LoadFlags::DEFAULT)
   database.init
 
