@@ -16,8 +16,50 @@ limitations under the License.
 
 # Connecting Scala and CrateDB with ADBC
 
-## Not Yet Implemented
+## Instructions
 
-A Scala example for CrateDB is not yet available due to an unimplemented feature in the ADBC Java driver manager.
+> [!TIP]
+> If you already have a CrateDB instance running, skip the steps to set up and clean up CrateDB.
 
-See [apache/arrow-adbc#3868](https://github.com/apache/arrow-adbc/issues/3868) for details and progress on this issue.
+### Prerequisites
+
+1.  [Install sbt](https://www.scala-sbt.org/download/)
+
+2.  [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+
+### Set up CrateDB
+
+1.  [Install Docker](https://docs.docker.com/get-started/get-docker/)
+
+2.  Start a CrateDB instance:
+
+    ```sh
+    docker run -d --rm --name cratedb -p 4200:4200 -p 5432:5432 crate -Cdiscovery.type=single-node
+    ```
+
+### Connect to CrateDB
+
+1.  Install the PostgreSQL ADBC driver:
+
+    ```sh
+    dbc install postgresql
+    ```
+
+1.  Customize the `main` function in `Main.scala`
+    -   Change the connection arguments in `params`
+        -   Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is
+    -   If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.setSqlQuery`
+
+1.  Run the Scala program:
+
+    ```sh
+    sbt run
+    ```
+
+### Clean up
+
+Stop the Docker container running CrateDB:
+
+```sh
+docker stop cratedb
+```
