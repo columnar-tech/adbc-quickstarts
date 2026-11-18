@@ -134,4 +134,31 @@ limitations under the License.
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>java-23-and-later</id>
+            <activation>
+                <jdk>[23,)</jdk>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <configuration>
+                            <!-- Arrow needs Unsafe memory access on recent JDKs. -->
+                            <arguments combine.self="override">
+                                <argument>--add-opens=java.base/java.nio=ALL-UNNAMED</argument>
+                                <argument>--enable-native-access=ALL-UNNAMED</argument>
+                                <argument>--sun-misc-unsafe-memory-access=allow</argument>
+                                <argument>-classpath</argument>
+                                <classpath />
+                                <argument>tech.columnar.Example</argument>
+                            </arguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
