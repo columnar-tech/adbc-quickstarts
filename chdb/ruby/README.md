@@ -1,0 +1,92 @@
+<!--
+Copyright 2026 Columnar Technologies Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+# Connecting Ruby and chDB with ADBC
+
+## Instructions
+
+> [!NOTE]
+> The chDB ADBC driver supports Linux and macOS. Windows is not currently supported.
+
+### Prerequisites
+
+1. [Install Ruby](https://www.ruby-lang.org/)
+
+1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+
+1. Ensure the native Arrow GLib and ADBC GLib libraries required by `red-adbc`
+   are installed and discoverable. If `bundle install` reports missing `arrow`,
+   `arrow-glib`, or `adbc-glib`, use the platform-specific commands below.
+
+   <details>
+   <summary>macOS with Homebrew</summary>
+
+   ```sh
+   brew install ruby apache-arrow-glib apache-arrow-adbc-glib
+   export PATH="$(brew --prefix ruby)/bin:$PATH"
+   ```
+
+   </details>
+
+   <details>
+   <summary>Debian/Ubuntu</summary>
+
+   ```sh
+   sudo apt install -y ca-certificates lsb-release wget
+   wget https://packages.apache.org/artifactory/arrow/$(lsb_release --id --short | tr "A-Z" "a-z")/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb
+   sudo apt install -y ./apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb
+   sudo apt update
+   sudo apt install libarrow-glib-dev libadbc-glib-dev
+   ```
+
+   </details>
+
+   <details>
+   <summary>RHEL-compatible distributions</summary>
+
+   ```sh
+   sudo dnf install arrow-glib-devel adbc-glib-devel
+   ```
+
+   </details>
+
+1. Install Ruby dependencies:
+
+   ```sh
+   bundle install
+   ```
+
+   If you have multiple Ruby installations, ensure `ruby` and `bundle` resolve
+   to the same installation before running this command.
+   On macOS, prefer Homebrew Ruby or another current Ruby distribution over the
+   system Ruby.
+
+### Connect to chDB
+
+1. Install the chDB ADBC driver:
+
+   ```sh
+   dbc install --level user chdb
+   ```
+
+1. Customize the Ruby script `main.rb` as needed
+   - Change the SQL SELECT statement in `connection.query()`, or keep it set to `SELECT * FROM 'games.parquet';` to query the Parquet file included with this example
+
+1. Run the Ruby script:
+
+   ```sh
+   bundle exec ruby main.rb
+   ```
