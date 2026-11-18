@@ -20,8 +20,6 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Create a MotherDuck account](https://motherduck.com/)
-
 1. [Install Ruby](https://www.ruby-lang.org/)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
@@ -78,7 +76,9 @@ limitations under the License.
    If you have multiple Ruby installations, ensure `ruby` and `bundle` resolve
    to the same installation before running this command.
 
-1. Create an access token in MotherDuck as described in [Authenticating to MotherDuck](https://motherduck.com/docs/key-tasks/authenticating-and-connecting-to-motherduck/authenticating-to-motherduck/#authentication-using-an-access-token), then set the `MOTHERDUCK_TOKEN` environment variable:
+1. [Create a MotherDuck account](https://motherduck.com/)
+
+1. Create an access token in MotherDuck as described in [Authenticating to MotherDuck](https://motherduck.com/docs/key-tasks/authenticating-and-connecting-to-motherduck/authenticating-to-motherduck/#authentication-using-an-access-token), then set the `MOTHERDUCK_TOKEN` environment variable, which the MotherDuck ADBC driver reads when connecting:
 
    ```sh
    export MOTHERDUCK_TOKEN="YOUR_MOTHERDUCK_TOKEN"
@@ -89,12 +89,15 @@ limitations under the License.
 1. Install the MotherDuck ADBC driver:
 
    ```sh
-   dbc install --pre motherduck
+   dbc install --level user --pre motherduck
    ```
 
-1. Customize the Ruby script `main.rb` as needed:
-   - Set `motherduck.region` to your account's region, which you can find by running `SELECT md_user_info();` in MotherDuck. The example uses `us-east-1`.
-   - Replace `my_db` in the `uri` with your database name. See the [driver documentation](https://adbc-drivers.org/drivers/motherduck/#connecting).
+1. Customize the Ruby script `main.rb` as needed
+   - Change the connection arguments in `database.set_option()`
+     - Set `motherduck.region` to your account's region, which you can find by running `SELECT * FROM md_user_info();` in MotherDuck
+     - Replace `my_db` in `uri` with the name of your MotherDuck database
+     - See the [driver documentation](https://adbc-drivers.org/drivers/motherduck/#connecting) for the full list of available options
+   - Change the SQL SELECT statement in `connection.query()` to query the tables in your database
 
 1. Run the Ruby script:
 

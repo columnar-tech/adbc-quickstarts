@@ -19,12 +19,13 @@ drv <- adbc_driver("motherduck")
 db <- adbc_database_init(
   drv,
   uri = "motherduck:///my_db",
-  motherduck.region = "us-east-1",
-  motherduck.token = Sys.getenv("MOTHERDUCK_TOKEN")
+  motherduck.region = "us-east-1"
 )
 
 con <- adbc_connection_init(db)
 
 con |>
   read_adbc("SELECT current_database() AS database, 42 AS answer") |>
-  tibble::as_tibble()
+  tibble::as_tibble() # or:
+# arrow::as_arrow_table() # to keep result in Arrow format
+# arrow::as_record_batch_reader() # for larger results

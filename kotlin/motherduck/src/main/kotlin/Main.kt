@@ -25,8 +25,6 @@ fun main() {
     JniDriver.PARAM_DRIVER.set(params, "motherduck")
     params["uri"] = "motherduck:///my_db"
     params["motherduck.region"] = "us-east-1"
-    params["motherduck.token"] = System.getenv("MOTHERDUCK_TOKEN")
-        ?: error("Set MOTHERDUCK_TOKEN before running this example.")
 
     RootAllocator().use { allocator ->
         AdbcDriverManager.getInstance().connect(DRIVER_FACTORY, allocator, params).use { db ->

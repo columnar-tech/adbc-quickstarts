@@ -24,8 +24,6 @@ using AdbcDatabase db = driver.Open(new Dictionary<string, string>
 {
     ["uri"] = "motherduck:///my_db",
     ["motherduck.region"] = "us-east-1",
-    ["motherduck.token"] = Environment.GetEnvironmentVariable("MOTHERDUCK_TOKEN")
-        ?? throw new InvalidOperationException("Set MOTHERDUCK_TOKEN before running this example."),
 });
 
 using AdbcConnection conn = db.Connect(null);

@@ -55,8 +55,6 @@ int main() {
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "driver", "motherduck", &error));
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "uri", "motherduck:///my_db", &error));
   CHECK_ADBC(AdbcDatabaseSetOption(&database, "motherduck.region", "us-east-1", &error));
-  CHECK_ADBC(AdbcDatabaseSetOption(
-      &database, "motherduck.token", std::getenv("MOTHERDUCK_TOKEN"), &error));
   CHECK_ADBC(AdbcDriverManagerDatabaseSetLoadFlags(
       &database, ADBC_LOAD_FLAG_DEFAULT, &error));
   CHECK_ADBC(AdbcDatabaseInit(&database, &error));

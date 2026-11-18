@@ -19,7 +19,6 @@ const db = new AdbcDatabase({
   databaseOptions: {
     uri: 'motherduck:///my_db',
     'motherduck.region': 'us-east-1',
-    'motherduck.token': process.env.MOTHERDUCK_TOKEN,
   },
 });
 

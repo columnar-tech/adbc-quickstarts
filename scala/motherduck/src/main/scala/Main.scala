@@ -29,7 +29,6 @@ private val DriverFactory = "org.apache.arrow.adbc.driver.jni.JniDriverFactory"
   JniDriver.PARAM_DRIVER.set(params, "motherduck")
   params.put("uri", "motherduck:///my_db")
   params.put("motherduck.region", "us-east-1")
-  params.put("motherduck.token", sys.env("MOTHERDUCK_TOKEN"))
 
   Using.resource(new RootAllocator()) { allocator =>
     Using.resource(AdbcDriverManager.getInstance().connect(DriverFactory, allocator, params)) { db =>

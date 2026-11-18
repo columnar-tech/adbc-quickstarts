@@ -18,7 +18,6 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"os"
 
 	"github.com/apache/arrow-adbc/go/adbc/drivermgr"
 )
@@ -30,7 +29,6 @@ func main() {
 		"driver":            "motherduck",
 		"uri":               "motherduck:///my_db",
 		"motherduck.region": "us-east-1",
-		"motherduck.token":  os.Getenv("MOTHERDUCK_TOKEN"),
 	})
 	if err != nil {
 		log.Fatal(err)

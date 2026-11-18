@@ -23,10 +23,9 @@ dependencies {
 application {
     mainClass.set("MainKt")
     applicationDefaultJvmArgs =
-        buildList {
-            add("--add-opens=java.base/java.nio=ALL-UNNAMED")
-            val jdkVersion = JavaVersion.current().majorVersion.toInt()
-            if (jdkVersion >= 22) add("--enable-native-access=ALL-UNNAMED")
-            if (jdkVersion >= 23) add("--sun-misc-unsafe-memory-access=allow")
-        }
+        listOf(
+            "--add-opens=java.base/java.nio=ALL-UNNAMED",
+            "--enable-native-access=ALL-UNNAMED",
+            "--sun-misc-unsafe-memory-access=allow",
+        )
 }

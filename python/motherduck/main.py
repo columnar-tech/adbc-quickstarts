@@ -17,8 +17,6 @@
 # dependencies = ["adbc-driver-manager>=1.9.0", "pyarrow>=20.0.0"]
 # ///
 
-import os
-
 from adbc_driver_manager import dbapi
 
 with (
@@ -27,7 +25,6 @@ with (
         db_kwargs={
             "uri": "motherduck:///my_db",
             "motherduck.region": "us-east-1",
-            "motherduck.token": os.environ["MOTHERDUCK_TOKEN"],
         },
     ) as con,
     con.cursor() as cursor,

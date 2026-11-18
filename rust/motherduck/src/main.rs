@@ -31,14 +31,8 @@ fn main() {
     let opts = [
         (OptionDatabase::Uri, "motherduck:///my_db".into()),
         (
-            OptionDatabase::Other("motherduck.region".into()),
+            OptionDatabase::Other("motherduck.region".to_string()),
             "us-east-1".into(),
-        ),
-        (
-            OptionDatabase::Other("motherduck.token".into()),
-            std::env::var("MOTHERDUCK_TOKEN")
-                .expect("Set MOTHERDUCK_TOKEN before running this example.")
-                .into(),
         ),
     ];
     let db = driver

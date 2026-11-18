@@ -35,7 +35,6 @@ public class Example {
     JniDriver.PARAM_DRIVER.set(params, "motherduck");
     params.put("uri", "motherduck:///my_db");
     params.put("motherduck.region", "us-east-1");
-    params.put("motherduck.token", System.getenv("MOTHERDUCK_TOKEN"));
 
     try (BufferAllocator allocator = new RootAllocator();
         AdbcDatabase db =

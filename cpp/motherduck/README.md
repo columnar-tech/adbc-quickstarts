@@ -20,13 +20,13 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Create a MotherDuck account](https://motherduck.com/)
-
 1. [Install Pixi](https://pixi.prefix.dev/latest/)
 
 1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
-1. Create an access token in MotherDuck as described in [Authenticating to MotherDuck](https://motherduck.com/docs/key-tasks/authenticating-and-connecting-to-motherduck/authenticating-to-motherduck/#authentication-using-an-access-token), then set the `MOTHERDUCK_TOKEN` environment variable:
+1. [Create a MotherDuck account](https://motherduck.com/)
+
+1. Create an access token in MotherDuck as described in [Authenticating to MotherDuck](https://motherduck.com/docs/key-tasks/authenticating-and-connecting-to-motherduck/authenticating-to-motherduck/#authentication-using-an-access-token), then set the `MOTHERDUCK_TOKEN` environment variable, which the MotherDuck ADBC driver reads when connecting:
 
    ```sh
    export MOTHERDUCK_TOKEN="YOUR_MOTHERDUCK_TOKEN"
@@ -37,12 +37,15 @@ limitations under the License.
 1. Install the MotherDuck ADBC driver:
 
    ```sh
-   dbc install --pre motherduck
+   dbc install --level user --pre motherduck
    ```
 
-1. Customize the C++ program `main.cpp` as needed:
-   - Set `motherduck.region` to your account's region, which you can find by running `SELECT md_user_info();` in MotherDuck. The example uses `us-east-1`.
-   - Replace `my_db` in the `uri` with your database name. See the [driver documentation](https://adbc-drivers.org/drivers/motherduck/#connecting).
+1. Customize the C++ program `main.cpp` as needed
+   - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
+     - Set `motherduck.region` to your account's region, which you can find by running `SELECT * FROM md_user_info();` in MotherDuck
+     - Replace `my_db` in `uri` with the name of your MotherDuck database
+     - See the [driver documentation](https://adbc-drivers.org/drivers/motherduck/#connecting) for the full list of available options
+   - Change the SQL SELECT statement in `AdbcStatementSetSqlQuery()` to query the tables in your database
 
 1. Build and run the C++ program:
 

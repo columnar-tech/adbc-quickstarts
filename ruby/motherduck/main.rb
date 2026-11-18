@@ -20,7 +20,6 @@ begin
   database.set_option("driver", "motherduck")
   database.set_option("uri", "motherduck:///my_db")
   database.set_option("motherduck.region", "us-east-1")
-  database.set_option("motherduck.token", ENV.fetch("MOTHERDUCK_TOKEN"))
   database.set_load_flags(ADBC::LoadFlags::DEFAULT)
   database.init
 
