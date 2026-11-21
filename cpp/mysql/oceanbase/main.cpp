@@ -70,7 +70,7 @@ int main() {
   int64_t rows_affected = -1;
 
   CHECK_ADBC(
-      AdbcStatementSetSqlQuery(&statement, "SELECT version();", &error));
+      AdbcStatementSetSqlQuery(&statement, "SELECT version()", &error));
   CHECK_ADBC(
       AdbcStatementExecuteQuery(&statement, &stream, &rows_affected, &error));
 

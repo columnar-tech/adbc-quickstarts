@@ -21,7 +21,9 @@ from adbc_driver_manager import dbapi
 
 with (
     dbapi.connect(
-        driver="mysql", db_kwargs={"uri": "root@tcp(localhost:2881)/oceanbase"}
+        driver="mysql",
+        db_kwargs={"uri": "root@tcp(localhost:2881)/oceanbase"},
+        autocommit=True,
     ) as connection,
     connection.cursor() as cursor,
 ):

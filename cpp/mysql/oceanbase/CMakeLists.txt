@@ -13,7 +13,7 @@
 # limitations under the License.
 
 cmake_minimum_required(VERSION 3.15)
-project(mysql_demo CXX)
+project(oceanbase_demo CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -25,19 +25,19 @@ endif()
 
 find_package(Arrow REQUIRED)
 
-add_executable(mysql_demo main.cpp)
+add_executable(oceanbase_demo main.cpp)
 
 if(DEFINED ENV{CONDA_PREFIX})
-    target_include_directories(mysql_demo PRIVATE $ENV{CONDA_PREFIX}/include)
-    target_link_directories(mysql_demo PRIVATE $ENV{CONDA_PREFIX}/lib)
+    target_include_directories(oceanbase_demo PRIVATE $ENV{CONDA_PREFIX}/include)
+    target_link_directories(oceanbase_demo PRIVATE $ENV{CONDA_PREFIX}/lib)
 endif()
 
-target_link_libraries(mysql_demo
+target_link_libraries(oceanbase_demo
     adbc_driver_manager
     Arrow::arrow_shared
 )
 
-target_compile_options(mysql_demo PRIVATE
+target_compile_options(oceanbase_demo PRIVATE
     -Wall
     -Werror
 )

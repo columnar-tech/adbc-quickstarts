@@ -40,7 +40,7 @@ public class Example {
             AdbcDriverManager.getInstance().connect(DRIVER_FACTORY, allocator, params);
         AdbcConnection conn = db.connect();
         AdbcStatement stmt = conn.createStatement()) {
-      stmt.setSqlQuery("SELECT version();");
+      stmt.setSqlQuery("SELECT version()");
       try (AdbcStatement.QueryResult result = stmt.executeQuery()) {
         ArrowReader reader = result.getReader();
         while (reader.loadNextBatch()) {

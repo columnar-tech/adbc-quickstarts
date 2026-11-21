@@ -23,21 +23,9 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+1. [Install Pixi](https://pixi.prefix.dev/latest/)
 
-2. [Install miniforge](https://github.com/conda-forge/miniforge)
-
-3. Create and activate a new environment with the required C++ libraries:
-
-    ```sh
-    mamba create -n adbc-cpp -c conda-forge cmake compilers libadbc-driver-manager libarrow
-
-    # Initialize mamba in your shell if not already done
-    eval "$(mamba shell hook --shell zsh)"
-    mamba activate adbc-cpp
-    ```
-
-    (`cmake` is only needed if you use CMake to build the C++ program below.)
+2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 ### Set up OceanBase Database
 
@@ -46,7 +34,14 @@ limitations under the License.
 2. Start an OceanBase Database instance:
 
     ```sh
-    docker run -d --rm -p 2881:2881 --name obstandalone -e MODE=MINI -d quay.io/oceanbase/oceanbase-ce
+    docker run -d --rm --name obstandalone -p 127.0.0.1:2881:2881 \
+        -e MODE=MINI quay.io/oceanbase/oceanbase-ce
+    ```
+
+3. Wait until the container logs show `boot success!`.
+
+    ```sh
+    docker logs --tail 10 obstandalone
     ```
 
 ### Connect to OceanBase Database
@@ -59,22 +54,22 @@ limitations under the License.
 
 2. Customize the C++ program `main.cpp` as needed
     - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
-        - Format `uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#section-readme), or keep it as is
+        - Format `uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name), or keep it as is
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`
 
 3. Build and run the C++ program:
 
     Using Make:
     ```sh
-    make
-    ./mysql_demo
+    pixi run make
+    ./oceanbase_demo
     ```
 
     Or using CMake:
     ```sh
-    cmake -B build
-    cmake --build build
-    ./build/mysql_demo
+    pixi run cmake -B build
+    pixi run cmake --build build
+    ./build/oceanbase_demo
     ```
 
 ### Clean up
@@ -83,7 +78,7 @@ limitations under the License.
 
     Using Make:
     ```sh
-    make clean
+    pixi run make clean
     ```
 
     Using CMake:

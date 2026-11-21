@@ -15,10 +15,10 @@
 CXXFLAGS = -std=c++17 -Wall -Werror -I$(CONDA_PREFIX)/include
 LIBS = -L$(CONDA_PREFIX)/lib -ladbc_driver_manager -larrow -Wl,-rpath,$(CONDA_PREFIX)/lib
 
-mysql_demo: main.cpp
-	$(CXX) $(CXXFLAGS) -o mysql_demo main.cpp $(LIBS)
+oceanbase_demo: main.cpp
+	$(CXX) $(CXXFLAGS) -o oceanbase_demo main.cpp $(LIBS)
 
 clean:
-	rm -f mysql_demo
+	rm -f oceanbase_demo
 
 .PHONY: clean

@@ -34,7 +34,14 @@ limitations under the License.
 2. Start an OceanBase Database instance:
 
     ```sh
-    docker run -d --rm -p 2881:2881 --name obstandalone -e MODE=MINI -d quay.io/oceanbase/oceanbase-ce
+    docker run -d --rm --name obstandalone -p 127.0.0.1:2881:2881 \
+        -e MODE=MINI quay.io/oceanbase/oceanbase-ce
+    ```
+
+3. Wait until the container logs show `boot success!`.
+
+    ```sh
+    docker logs --tail 10 obstandalone
     ```
 
 ### Connect to OceanBase Database
@@ -45,12 +52,12 @@ limitations under the License.
     dbc install mysql
     ```
 
-2. Customize `src/main.rs` as needed
+1. Customize `src/main.rs` as needed
     - Change the connection arguments in `opts`
-        - Format `OptionDatabase::Uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#section-readme), or keep it as is
+        - Format `OptionDatabase::Uri` according to the [DSN (Data Source Name) format used by Go-MySQL-Driver](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name), or keep it as is
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `statement.set_sql_query()`
 
-3. Run the Rust program:
+1. Run the Rust program:
 
     ```sh
     cargo run

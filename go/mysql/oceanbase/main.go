@@ -46,7 +46,7 @@ func main() {
 	}
 	defer stmt.Close()
 
-	err = stmt.SetSqlQuery("SELECT version();")
+	err = stmt.SetSqlQuery("SELECT version()")
 	if err != nil {
 		log.Fatal(err)
 	}
