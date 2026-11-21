@@ -63,6 +63,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
 - [Microsoft SQL Server](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/mssql)
 - MySQL-compatible systems
   - [MySQL](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/mysql)
+  - [OceanBase Database](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/oceanbase)
   - [TiDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/tidb)
   - [Vitess](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/vitess)
 - [Oracle Database](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/oracle)
