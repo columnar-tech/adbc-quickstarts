@@ -73,6 +73,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
   - [CrateDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/cratedb)
   - [Neon](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/neon)
   - [ParadeDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/paradedb)
+  - [PolarDB for PostgreSQL](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/polardb-pg)
   - [PostgreSQL](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/postgresql)
   - [Supabase](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/supabase)
   - [TimescaleDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/timescaledb)

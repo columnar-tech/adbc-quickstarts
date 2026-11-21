@@ -55,6 +55,7 @@ Simple Kotlin examples showing how to use ADBC to connect, run a query, and retu
   - [CrateDB](./postgresql/cratedb)
   - [Neon](./postgresql/neon)
   - [ParadeDB](./postgresql/paradedb)
+  - [PolarDB for PostgreSQL](./postgresql/polardb-pg)
   - [PostgreSQL](./postgresql/postgresql)
   - [Supabase](./postgresql/supabase)
   - [TimescaleDB](./postgresql/timescaledb)

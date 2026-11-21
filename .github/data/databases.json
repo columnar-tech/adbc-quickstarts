@@ -105,6 +105,10 @@
     "name": "ParadeDB",
     "parent": "postgresql"
   },
+  "polardb-pg": {
+    "name": "PolarDB for PostgreSQL",
+    "parent": "postgresql"
+  },
   "postgresql": {
     "name": "PostgreSQL",
     "parent": "postgresql",
