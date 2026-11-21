@@ -35,6 +35,7 @@ Any open source tool or vendor product that implements PostgreSQL frontend/backe
 - [Neon](./neon)
 - [ParadeDB](./paradedb)
 - [PostgreSQL](./postgresql)
+- [Supabase](./supabase)
 - [TimescaleDB](./timescaledb)
 - [Yellowbrick](./yellowbrick)
 - [YugabyteDB](./yugabytedb)

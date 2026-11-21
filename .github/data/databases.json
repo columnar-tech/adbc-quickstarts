@@ -144,6 +144,10 @@
     "name": "StarRocks",
     "parent": "flightsql"
   },
+  "supabase": {
+    "name": "Supabase",
+    "parent": "postgresql"
+  },
   "teradata": {
     "name": "Teradata",
     "parent": null

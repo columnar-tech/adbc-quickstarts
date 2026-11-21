@@ -74,6 +74,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
   - [Neon](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/neon)
   - [ParadeDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/paradedb)
   - [PostgreSQL](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/postgresql)
+  - [Supabase](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/supabase)
   - [TimescaleDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/timescaledb)
   - [Yellowbrick](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/yellowbrick)
   - [YugabyteDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/yugabytedb)
