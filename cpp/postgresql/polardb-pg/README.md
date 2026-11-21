@@ -23,21 +23,9 @@ limitations under the License.
 
 ### Prerequisites
 
-1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+1. [Install Pixi](https://pixi.prefix.dev/latest/)
 
-2. [Install miniforge](https://github.com/conda-forge/miniforge)
-
-3. Create and activate a new environment with the required C++ libraries:
-
-    ```sh
-    mamba create -n adbc-cpp -c conda-forge cmake compilers libadbc-driver-manager libarrow
-
-    # Initialize mamba in your shell if not already done
-    eval "$(mamba shell hook --shell zsh)"
-    mamba activate adbc-cpp
-    ```
-
-    (`cmake` is only needed if you use CMake to build the C++ program below.)
+2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 ### Set up PolarDB for PostgreSQL
 
@@ -46,12 +34,15 @@ limitations under the License.
 2. Start a PolarDB for PostgreSQL instance:
 
     ```sh
-    docker run -d --rm --name polardb \
-        --cap-add=SYS_PTRACE --privileged=true \
-        -p 5432:5432 \
-        -e POLARDB_USER=username \
-        -e POLARDB_PASSWORD=password \
+    docker run -d --rm --name polardb -p 127.0.0.1:5432:5432 \
+        -e POLARDB_USER=username -e POLARDB_PASSWORD=password \
         polardb/polardb_pg_local_instance:15
+    ```
+
+3. The primary and replica restart during setup. Wait for two `server started` lines after the `server stopped` lines.
+
+    ```sh
+    docker logs polardb 2>&1 | grep -E '^server (started|stopped)$'
     ```
 
 ### Connect to PolarDB for PostgreSQL
@@ -71,14 +62,14 @@ limitations under the License.
 
     Using Make:
     ```sh
-    make
+    pixi run make
     ./polardb_pg_demo
     ```
 
     Or using CMake:
     ```sh
-    cmake -B build
-    cmake --build build
+    pixi run cmake -B build
+    pixi run cmake --build build
     ./build/polardb_pg_demo
     ```
 
@@ -88,7 +79,7 @@ limitations under the License.
 
     Using Make:
     ```sh
-    make clean
+    pixi run make clean
     ```
 
     Using CMake:

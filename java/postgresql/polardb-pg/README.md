@@ -34,12 +34,15 @@ limitations under the License.
 2. Start a PolarDB for PostgreSQL instance:
 
     ```sh
-    docker run -d --rm --name polardb \
-        --cap-add=SYS_PTRACE --privileged=true \
-        -p 5432:5432 \
-        -e POLARDB_USER=username \
-        -e POLARDB_PASSWORD=password \
+    docker run -d --rm --name polardb -p 127.0.0.1:5432:5432 \
+        -e POLARDB_USER=username -e POLARDB_PASSWORD=password \
         polardb/polardb_pg_local_instance:15
+    ```
+
+3. The primary and replica restart during setup. Wait for two `server started` lines after the `server stopped` lines.
+
+    ```sh
+    docker logs polardb 2>&1 | grep -E '^server (started|stopped)$'
     ```
 
 ### Connect to PolarDB for PostgreSQL
@@ -50,12 +53,12 @@ limitations under the License.
     dbc install postgresql
     ```
 
-2. Customize the `main` method in `Example.java`
+1. Customize the `main` method in `Example.java`
     - Change the connection arguments in the `params.put()` calls
-    - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is
+        - Format `uri` according to the [connection URI format used by PostgreSQL](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS), or keep it as is
     - If you changed which database you're connecting to, also change the SQL SELECT statement in `stmt.setSqlQuery()`
 
-3. Run the Java program:
+1. Run the Java program:
 
     ```sh
     mvn compile exec:exec
