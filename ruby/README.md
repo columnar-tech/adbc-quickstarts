@@ -57,6 +57,7 @@ Simple Ruby examples showing how to use ADBC to connect, run a query, and return
   - [Neon](./postgresql/neon)
   - [ParadeDB](./postgresql/paradedb)
   - [PostgreSQL](./postgresql/postgresql)
+  - [Supabase](./postgresql/supabase)
   - [TimescaleDB](./postgresql/timescaledb)
   - [Yellowbrick](./postgresql/yellowbrick)
   - [YugabyteDB](./postgresql/yugabytedb)
