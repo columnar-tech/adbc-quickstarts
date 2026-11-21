@@ -49,6 +49,7 @@ Simple JavaScript examples showing how to use ADBC to connect, run a query, and 
 - [Microsoft SQL Server](./mssql)
 - [MySQL-compatible systems](./mysql)
   - [MySQL](./mysql/mysql)
+  - [OceanBase Database](./mysql/oceanbase)
   - [TiDB](./mysql/tidb)
   - [Vitess](./mysql/vitess)
 - [Oracle Database](./oracle)
