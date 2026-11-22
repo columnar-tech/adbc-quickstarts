@@ -29,6 +29,8 @@ func main() {
 		"driver":                               "flightsql",
 		"uri":                                  "grpc://localhost:10000",
 		"adbc.flight.sql.authorization_header": "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler deephaven",
+		"adbc.flight.sql.rpc.with_cookie_middleware":                      "true",
+		"adbc.flight.sql.rpc.call_header.x-deephaven-auth-cookie-request": "true",
 	})
 	if err != nil {
 		log.Fatal(err)

@@ -34,6 +34,16 @@ fn main() {
             OptionDatabase::Other("adbc.flight.sql.authorization_header".to_string()),
             "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler deephaven".into(),
         ),
+        (
+            OptionDatabase::Other("adbc.flight.sql.rpc.with_cookie_middleware".to_string()),
+            "true".into(),
+        ),
+        (
+            OptionDatabase::Other(
+                "adbc.flight.sql.rpc.call_header.x-deephaven-auth-cookie-request".to_string(),
+            ),
+            "true".into(),
+        ),
     ];
     let db = driver
         .new_database_with_opts(opts)

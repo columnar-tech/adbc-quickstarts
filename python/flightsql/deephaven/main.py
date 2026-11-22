@@ -28,6 +28,8 @@ with (
                 "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler "
                 "deephaven"
             ),
+            "adbc.flight.sql.rpc.with_cookie_middleware": "true",
+            "adbc.flight.sql.rpc.call_header.x-deephaven-auth-cookie-request": "true",
         },
         autocommit=True,
     ) as con,

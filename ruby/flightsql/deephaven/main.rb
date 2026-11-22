@@ -20,6 +20,8 @@ begin
   database.set_option("driver", "flightsql")
   database.set_option("uri", "grpc://localhost:10000")
   database.set_option("adbc.flight.sql.authorization_header", "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler deephaven")
+  database.set_option("adbc.flight.sql.rpc.with_cookie_middleware", "true")
+  database.set_option("adbc.flight.sql.rpc.call_header.x-deephaven-auth-cookie-request", "true")
   database.set_load_flags(ADBC::LoadFlags::DEFAULT)
   database.init
 

@@ -37,6 +37,8 @@ public class Example {
     params.put(
         "adbc.flight.sql.authorization_header",
         "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler deephaven");
+    params.put("adbc.flight.sql.rpc.with_cookie_middleware", "true");
+    params.put("adbc.flight.sql.rpc.call_header.x-deephaven-auth-cookie-request", "true");
 
     try (BufferAllocator allocator = new RootAllocator();
         AdbcDatabase db =

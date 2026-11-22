@@ -107,10 +107,11 @@ This example queries Deephaven using [Arrow Flight SQL](https://deephaven.io/cor
     ```
 
 2. Customize the Ruby script `main.rb` as needed.
-    - Change the connection arguments in `database.set_option()`.
+    - Change the connection arguments in `database.set_option()`. For authentication and session options, see [Deephaven's ADBC examples](https://deephaven.io/core/docs/how-to-guides/flight-sql/#adbc).
         - `uri` is the Flight SQL endpoint of your Deephaven instance. Use `grpc+tls://` for an endpoint with TLS.
-        - `adbc.flight.sql.authorization_header` is the authorization header for your instance. If it uses a pre-shared key, replace the final `deephaven` with that key.
-    - To query a table in Deephaven's global query scope, change the SQL SELECT statement in `connection.query()`.
+        - For pre-shared key authentication, replace the final `deephaven` in `adbc.flight.sql.authorization_header` with your key. Deephaven prints generated keys in the server log. If your instance allows anonymous access, set the header to `Anonymous`.
+        - The `x-deephaven-auth-cookie-request` header asks Deephaven for a session cookie. The Flight SQL driver's cookie middleware sends it on subsequent requests.
+    - To query a table in Deephaven's global query scope, change the SQL SELECT statement in `connection.query()`. Deephaven's Flight SQL interface is read-only and returns a static snapshot, even for ticking tables.
 
 3. Run the Ruby script:
 

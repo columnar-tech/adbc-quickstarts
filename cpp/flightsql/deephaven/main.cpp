@@ -60,6 +60,11 @@ int main() {
       "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler "
       "deephaven",
       &error));
+  CHECK_ADBC(AdbcDatabaseSetOption(
+      &database, "adbc.flight.sql.rpc.with_cookie_middleware", "true", &error));
+  CHECK_ADBC(AdbcDatabaseSetOption(
+      &database, "adbc.flight.sql.rpc.call_header.x-deephaven-auth-cookie-request",
+      "true", &error));
   CHECK_ADBC(AdbcDriverManagerDatabaseSetLoadFlags(
       &database, ADBC_LOAD_FLAG_DEFAULT, &error));
   CHECK_ADBC(AdbcDatabaseInit(&database, &error));

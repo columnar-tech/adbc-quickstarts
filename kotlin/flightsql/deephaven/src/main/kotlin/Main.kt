@@ -26,6 +26,8 @@ fun main() {
     params["uri"] = "grpc://localhost:10000"
     params["adbc.flight.sql.authorization_header"] =
         "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler deephaven"
+    params["adbc.flight.sql.rpc.with_cookie_middleware"] = "true"
+    params["adbc.flight.sql.rpc.call_header.x-deephaven-auth-cookie-request"] = "true"
 
     RootAllocator().use { allocator ->
         AdbcDriverManager.getInstance().connect(DRIVER_FACTORY, allocator, params).use { db ->

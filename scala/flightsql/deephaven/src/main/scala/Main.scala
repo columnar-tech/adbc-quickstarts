@@ -32,6 +32,8 @@ private val DriverFactory = "org.apache.arrow.adbc.driver.jni.JniDriverFactory"
     "adbc.flight.sql.authorization_header",
     "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler deephaven"
   )
+  params.put("adbc.flight.sql.rpc.with_cookie_middleware", "true")
+  params.put("adbc.flight.sql.rpc.call_header.x-deephaven-auth-cookie-request", "true")
 
   Using.resource(new RootAllocator()) { allocator =>
     Using.resource(AdbcDriverManager.getInstance().connect(DriverFactory, allocator, params)) { db =>
