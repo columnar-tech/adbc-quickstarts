@@ -20,6 +20,8 @@ limitations under the License.
 
 This example queries Deephaven using [Arrow Flight SQL](https://deephaven.io/core/docs/how-to-guides/flight-sql/).
 
+Deephaven's Flight SQL interface is read-only. Each `SELECT` query returns a static snapshot, even for ticking tables. For authentication and session options, see [Deephaven's ADBC examples](https://deephaven.io/core/docs/how-to-guides/flight-sql/#adbc).
+
 > [!TIP]
 > If you already have a Deephaven instance running, skip the steps to set up and clean up Deephaven.
 
@@ -55,11 +57,11 @@ This example queries Deephaven using [Arrow Flight SQL](https://deephaven.io/cor
     ```
 
 2. Customize the C++ program `main.cpp` as needed.
-    - Change the connection arguments in the `AdbcDatabaseSetOption()` calls. For authentication and session options, see [Deephaven's ADBC examples](https://deephaven.io/core/docs/how-to-guides/flight-sql/#adbc).
+    - Change the connection arguments in the `AdbcDatabaseSetOption()` calls.
         - `uri` is the Flight SQL endpoint of your Deephaven instance. Use `grpc+tls://` for an endpoint with TLS.
         - For pre-shared key authentication, replace the final `deephaven` in `adbc.flight.sql.authorization_header` with your key. Deephaven prints generated keys in the server log. If your instance allows anonymous access, set the header to `Anonymous`.
         - The `x-deephaven-auth-cookie-request` header asks Deephaven for a session cookie. The Flight SQL driver's cookie middleware sends it on subsequent requests.
-    - To query a table in Deephaven's global query scope, change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`. Deephaven's Flight SQL interface is read-only and returns a static snapshot, even for ticking tables.
+    - To query a table in Deephaven's global query scope, change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`.
 
 3. Build and run the C++ program:
 
