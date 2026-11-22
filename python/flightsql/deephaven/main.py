@@ -24,10 +24,14 @@ with (
         driver="flightsql",
         db_kwargs={
             "uri": "grpc://localhost:10000",
-            "adbc.flight.sql.authorization_header": "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler YOUR_PASSWORD_HERE",
+            "adbc.flight.sql.authorization_header": (
+                "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler "
+                "deephaven"
+            ),
         },
-    ) as connection,
-    connection.cursor() as cursor,
+        autocommit=True,
+    ) as con,
+    con.cursor() as cursor,
 ):
     cursor.execute("SELECT 42 AS foo")
     table = cursor.fetch_arrow_table()

@@ -32,8 +32,7 @@ fn main() {
         (OptionDatabase::Uri, "grpc://localhost:10000".into()),
         (
             OptionDatabase::Other("adbc.flight.sql.authorization_header".to_string()),
-            "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler YOUR_PASSWORD_HERE"
-                .into(),
+            "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler deephaven".into(),
         ),
     ];
     let db = driver

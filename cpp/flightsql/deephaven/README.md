@@ -18,26 +18,16 @@ limitations under the License.
 
 ## Instructions
 
+This example queries Deephaven using [Arrow Flight SQL](https://deephaven.io/core/docs/how-to-guides/flight-sql/).
+
 > [!TIP]
 > If you already have a Deephaven instance running, skip the steps to set up and clean up Deephaven.
 
 ### Prerequisites
 
-1. [Install miniforge](https://github.com/conda-forge/miniforge)
+1. [Install Pixi](https://pixi.prefix.dev/latest/)
 
-2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
-
-3. Create and activate a new environment with the required C++ libraries:
-
-    ```sh
-    mamba create -n adbc-cpp -c conda-forge cmake compilers libadbc-driver-manager libarrow
-
-    # Initialize mamba in your shell if not already done
-    eval "$(mamba shell hook --shell zsh)"
-    mamba activate adbc-cpp
-    ```
-
-    (`cmake` is only needed if you use CMake to build the C++ program below.)
+1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
 ### Set up Deephaven
 
@@ -46,7 +36,14 @@ limitations under the License.
 2. Start a Deephaven instance:
 
     ```sh
-    docker run -d --rm --name deephaven -p 10000:10000 -e START_OPTS="-Dauthentication.psk=YOUR_PASSWORD_HERE" ghcr.io/deephaven/server:latest
+    docker run -d --rm --name deephaven -p 127.0.0.1:10000:10000 \
+        -e START_OPTS=-Dauthentication.psk=deephaven ghcr.io/deephaven/server:latest
+    ```
+
+3. Wait until Docker reports `healthy`.
+
+    ```sh
+    docker inspect --format '{{.State.Health.Status}}' deephaven
     ```
 
 ### Connect to Deephaven
@@ -57,43 +54,43 @@ limitations under the License.
     dbc install --level user flightsql
     ```
 
-2. Customize the C++ program `main.cpp` as needed
-    - Change the connection arguments in the `AdbcDatabaseSetOption()` calls
-        - `uri` is the URI of your Deephaven instance. The host and port will depend on your installation.
-        - `adbc.flight.sql.authorization_header` is the authorization header used for requests. Replace `YOUR_PASSWORD_HERE` with your Deephaven pre-shared key.
-    - If you changed which database you're connecting to, also change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`
+2. Customize the C++ program `main.cpp` as needed.
+    - Change the connection arguments in the `AdbcDatabaseSetOption()` calls.
+        - `uri` is the Flight SQL endpoint of your Deephaven instance. Use `grpc+tls://` for an endpoint with TLS.
+        - `adbc.flight.sql.authorization_header` is the authorization header for your instance. If it uses a pre-shared key, replace the final `deephaven` with that key.
+    - To query a table in Deephaven's global query scope, change the SQL SELECT statement in `AdbcStatementSetSqlQuery()`.
 
 3. Build and run the C++ program:
 
     Using Make:
     ```sh
-    make
+    pixi run make
     ./flightsql_demo
     ```
 
     Or using CMake:
     ```sh
-    cmake -B build
-    cmake --build build
+    pixi run cmake -B build
+    pixi run cmake --build build
     ./build/flightsql_demo
     ```
 
 ### Clean up
 
-1. Clean build artifacts:
+1. Stop the Docker container running Deephaven:
+
+    ```sh
+    docker stop deephaven
+    ```
+
+2. Clean build artifacts:
 
     Using Make:
     ```sh
-    make clean
+    pixi run make clean
     ```
 
     Using CMake:
     ```sh
     rm -rf build
-    ```
-
-2. Stop the Docker container running Deephaven:
-
-    ```sh
-    docker stop deephaven
     ```

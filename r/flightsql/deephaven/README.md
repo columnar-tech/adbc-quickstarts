@@ -18,6 +18,8 @@ limitations under the License.
 
 ## Instructions
 
+This example queries Deephaven using [Arrow Flight SQL](https://deephaven.io/core/docs/how-to-guides/flight-sql/).
+
 > [!TIP]
 > If you already have a Deephaven instance running, skip the steps to set up and clean up Deephaven.
 
@@ -25,9 +27,9 @@ limitations under the License.
 
 1. [Install R](https://www.r-project.org/)
 
-2. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
+1. [Install dbc](https://docs.columnar.tech/dbc/getting_started/installation/)
 
-3. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
+1. Install R packages `adbcdrivermanager`, `arrow`, and `tibble`:
 
     ```r
     install.packages(c("adbcdrivermanager", "arrow", "tibble"))
@@ -40,7 +42,14 @@ limitations under the License.
 2. Start a Deephaven instance:
 
     ```sh
-    docker run -d --rm --name deephaven -p 10000:10000 -e START_OPTS="-Dauthentication.psk=YOUR_PASSWORD_HERE" ghcr.io/deephaven/server:latest
+    docker run -d --rm --name deephaven -p 127.0.0.1:10000:10000 \
+        -e START_OPTS=-Dauthentication.psk=deephaven ghcr.io/deephaven/server:latest
+    ```
+
+3. Wait until Docker reports `healthy`.
+
+    ```sh
+    docker inspect --format '{{.State.Health.Status}}' deephaven
     ```
 
 ### Connect to Deephaven
@@ -51,11 +60,11 @@ limitations under the License.
     dbc install flightsql
     ```
 
-2. Customize the R script `main.R` as needed
-    - Change the connection arguments in `adbc_database_init()`
-        - `uri` is the URI of your Deephaven instance. The host and port will depend on your installation.
-        - `adbc.flight.sql.authorization_header` is the authorization header used for requests. Replace `YOUR_PASSWORD_HERE` with your Deephaven pre-shared key.
-    - If you changed which database you're connecting to, also change the SQL SELECT statement in `read_adbc()`
+2. Customize the R script `main.R` as needed.
+    - Change the connection arguments in `adbc_database_init()`.
+        - `uri` is the Flight SQL endpoint of your Deephaven instance. Use `grpc+tls://` for an endpoint with TLS.
+        - `adbc.flight.sql.authorization_header` is the authorization header for your instance. If it uses a pre-shared key, replace the final `deephaven` with that key.
+    - To query a table in Deephaven's global query scope, change the SQL SELECT statement in `read_adbc()`.
 
 3. Run the R script:
 

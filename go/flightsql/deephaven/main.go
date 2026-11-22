@@ -28,7 +28,7 @@ func main() {
 	db, err := drv.NewDatabase(map[string]string{
 		"driver":                               "flightsql",
 		"uri":                                  "grpc://localhost:10000",
-		"adbc.flight.sql.authorization_header": "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler YOUR_PASSWORD_HERE",
+		"adbc.flight.sql.authorization_header": "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler deephaven",
 	})
 	if err != nil {
 		log.Fatal(err)

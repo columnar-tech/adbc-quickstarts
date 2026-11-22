@@ -36,7 +36,7 @@ public class Example {
     params.put("uri", "grpc://localhost:10000");
     params.put(
         "adbc.flight.sql.authorization_header",
-        "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler YOUR_PASSWORD_HERE");
+        "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler deephaven");
 
     try (BufferAllocator allocator = new RootAllocator();
         AdbcDatabase db =

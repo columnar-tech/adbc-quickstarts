@@ -19,7 +19,7 @@ drv <- adbc_driver("flightsql")
 db <- adbc_database_init(
   drv,
   uri = "grpc://localhost:10000",
-  adbc.flight.sql.authorization_header = "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler YOUR_PASSWORD_HERE"
+  adbc.flight.sql.authorization_header = "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler deephaven"
 )
 
 con <- adbc_connection_init(db)

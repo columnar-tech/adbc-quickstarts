@@ -58,7 +58,7 @@ int main() {
   CHECK_ADBC(AdbcDatabaseSetOption(
       &database, "adbc.flight.sql.authorization_header",
       "Bearer io.deephaven.authentication.psk.PskAuthenticationHandler "
-      "YOUR_PASSWORD_HERE",
+      "deephaven",
       &error));
   CHECK_ADBC(AdbcDriverManagerDatabaseSetLoadFlags(
       &database, ADBC_LOAD_FLAG_DEFAULT, &error));
