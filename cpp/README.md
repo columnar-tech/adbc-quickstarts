@@ -36,6 +36,7 @@ Simple C++ examples showing how to use ADBC to connect, run a query, and return 
 - [DuckDB](./duckdb)
 - [Exasol](./exasol)
 - [Apache Arrow Flight SQL-compatible systems](./flightsql)
+  - [Deephaven](./flightsql/deephaven)
   - [Apache Doris](./flightsql/doris)
   - [Dremio](./flightsql/dremio)
   - [InfluxDB](./flightsql/influxdb)

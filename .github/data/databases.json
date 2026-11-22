@@ -39,6 +39,10 @@
     "name": "DataFusion",
     "parent": null
   },
+  "deephaven": {
+    "name": "Deephaven",
+    "parent": "flightsql"
+  },
   "druid": {
     "name": "Apache Druid",
     "parent": null
