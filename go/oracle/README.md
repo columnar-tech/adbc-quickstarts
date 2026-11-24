@@ -41,28 +41,17 @@ limitations under the License.
 
 ### Connect to Oracle Database
 
-1. The ADBC driver for Oracle is available from Columnar's private driver registry. Create a [Columnar Console](https://console.columnar.tech) account and activate a 14-day free trial. Then authenticate to the registry:
+1. Install the pre-release ADBC driver for Oracle from the public registry.
 
     ```sh
-    dbc auth login
+    dbc install --pre oracle
     ```
 
-2. Install the ADBC driver for Oracle:
-
-    ```sh
-    dbc install oracle
-    ```
-
-3. Install the [Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client.html) libraries.
-
-4. Set `LD_LIBRARY_PATH` (Linux), `DYLD_LIBRARY_PATH` (macOS), or `PATH` (Windows) to make sure the Oracle Instant Client libraries are discoverable by your application.
-
-5. Customize the Go program `main.go` as needed
-    - Change the connection arguments in the `NewDatabase()` call
-        - Change `uri` as needed, using query parameters to add more connection arguments. Format `uri` according to the the following syntax: `oracle://[user[:password]@]host[:port][/serviceName][?param1=value1&param2=value2]`, or keep it as is.
+2. Customize the Go program `main.go` as needed
+    - To connect to another database, set `uri` in the `NewDatabase()` call using the format `oracle://[user[:password]@]host[:port]/serviceName`.
     - Change the SQL SELECT statement in `stmt.SetSqlQuery()`, or keep it as is.
 
-6. Run the Go program:
+3. Run the Go program:
 
     ```sh
     go mod tidy

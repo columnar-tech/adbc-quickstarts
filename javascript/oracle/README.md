@@ -42,21 +42,11 @@ limitations under the License.
 
 ### Connect to Oracle Database
 
-1. The ADBC driver for Oracle is available from Columnar's private driver registry. Create a [Columnar Console](https://console.columnar.tech) account and activate a 14-day free trial. Then authenticate to the registry:
+1. Install the pre-release ADBC driver for Oracle from the public registry.
 
    ```sh
-   dbc auth login
+   dbc install --pre oracle
    ```
-
-1. Install the ADBC driver for Oracle:
-
-   ```sh
-   dbc install oracle
-   ```
-
-1. Install the [Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client.html) libraries.
-
-1. Set `LD_LIBRARY_PATH` (Linux), `DYLD_LIBRARY_PATH` (macOS), or `PATH` (Windows) to make sure the Oracle Instant Client libraries are discoverable by your application.
 
 1. Install dependencies:
 
@@ -65,8 +55,7 @@ limitations under the License.
    ```
 
 1. Customize the script `main.js` as needed:
-   - Change the connection arguments in `databaseOptions`
-     - Format `uri` according to the following syntax: `oracle://[user[:password]@]host[:port][/serviceName][?param1=value1&param2=value2]`, or keep it as is
+   - To connect to another database, set `uri` in `databaseOptions` using the format `oracle://[user[:password]@]host[:port]/serviceName`.
    - Change the SQL SELECT statement in `conn.query()`, or keep it as is
 
 1. Run the script:
