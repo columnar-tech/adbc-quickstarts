@@ -32,6 +32,7 @@ Simple Kotlin examples showing how to use ADBC to connect, run a query, and retu
 - [ClickHouse](./clickhouse)
 - [Databricks](./databricks)
 - [DataFusion](./datafusion)
+- [IBM Db2](./db2)
 - [Apache Druid](./druid)
 - [DuckDB](./duckdb)
 - [Exasol](./exasol)

@@ -39,6 +39,10 @@
     "name": "DataFusion",
     "parent": null
   },
+  "db2": {
+    "name": "IBM Db2",
+    "parent": null
+  },
   "deephaven": {
     "name": "Deephaven",
     "parent": "flightsql"
