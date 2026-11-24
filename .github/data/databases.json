@@ -82,6 +82,10 @@
     "name": "MariaDB",
     "parent": null
   },
+  "materialize": {
+    "name": "Materialize",
+    "parent": "postgresql"
+  },
   "motherduck": {
     "name": "MotherDuck",
     "parent": null

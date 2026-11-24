@@ -73,6 +73,7 @@ Simple examples showing how to use ADBC to connect, run a query, and return the 
   - [Citus](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/citus)
   - [CockroachDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/cockroachdb)
   - [CrateDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/cratedb)
+  - [Materialize](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/materialize)
   - [Neon](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/neon)
   - [ParadeDB](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/paradedb)
   - [PolarDB for PostgreSQL](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/polardb-pg)

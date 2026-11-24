@@ -56,6 +56,7 @@ Simple Rust examples showing how to use ADBC to connect, run a query, and return
   - [Citus](./postgresql/citus)
   - [CockroachDB](./postgresql/cockroachdb)
   - [CrateDB](./postgresql/cratedb)
+  - [Materialize](./postgresql/materialize)
   - [Neon](./postgresql/neon)
   - [ParadeDB](./postgresql/paradedb)
   - [PolarDB for PostgreSQL](./postgresql/polardb-pg)

@@ -32,6 +32,7 @@ Any open source tool or vendor product that implements PostgreSQL frontend/backe
 - [Citus](./citus)
 - [CockroachDB](./cockroachdb)
 - [CrateDB](./cratedb)
+- [Materialize](./materialize)
 - [Neon](./neon)
 - [ParadeDB](./paradedb)
 - [PolarDB for PostgreSQL](./polardb-pg)
