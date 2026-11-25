@@ -36,10 +36,14 @@ limitations under the License.
 ### Set up IBM Db2
 
 1. [Install Docker](https://docs.docker.com/get-started/get-docker/)
+
+> [!IMPORTANT]
+> To run the container on Apple Silicon, add the `--platform linux/amd64` option.
+
 2. Start a Db2 instance:
 
     ```sh
-    docker run --rm --name some-db2 \
+    docker run -d --rm --name db2server \
         --privileged \
         -p 127.0.0.1:50000:50000 \
         -e LICENSE=accept \
@@ -49,10 +53,16 @@ limitations under the License.
         icr.io/db2_community/db2
     ```
 
-3. Create a table in Db2 and load data into it:
+3. Wait until the container logs show `Setup has completed`.
 
     ```sh
-    cat games.sql | docker exec -i some-db2 su - db2inst1 -c 'db2 -st'
+    docker logs --tail 10 db2server
+    ```
+
+4. Create a table in Db2 and load data into it:
+
+    ```sh
+    cat games.sql | docker exec -i db2server su - db2inst1 -c 'db2 -st'
     ```
 
 ### Connect to IBM Db2
@@ -64,6 +74,7 @@ limitations under the License.
     ```
 
 2. Download the [IBM Data Server Driver for ODBC and CLI](https://www.ibm.com/support/pages/getting-started-ibm-data-server-drivers) for your platform and extract the `clidriver` directory.
+
 3. Set `LD_LIBRARY_PATH` (Linux), `DYLD_LIBRARY_PATH` (macOS), or `PATH` (Windows) to make sure the Db2 libraries are discoverable by your application.
 
     | Platform | Environment variable | Directory to add |
@@ -88,5 +99,5 @@ limitations under the License.
 Stop the Docker container running Db2:
 
 ```sh
-docker stop some-db2
+docker stop db2server
 ```
