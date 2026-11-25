@@ -119,7 +119,7 @@ limitations under the License.
     dbc install --level user --pre db2
     ```
 
-2. Download the [IBM Data Server Driver for ODBC and CLI](https://www.ibm.com/support/pages/getting-started-ibm-data-server-drivers) for your platform and extract the `clidriver` directory.
+2. Download the [IBM Data Server Driver for ODBC and CLI](https://public.dhe.ibm.com/ibmdl/export/pub/software/data/db2/drivers/odbc_cli/) for your platform and extract the `clidriver` directory.
 
 3. Set `LD_LIBRARY_PATH` (Linux), `DYLD_LIBRARY_PATH` (macOS), or `PATH` (Windows) to make sure the Db2 libraries are discoverable by your application.
 
