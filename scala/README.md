@@ -55,6 +55,7 @@ Simple Scala examples showing how to use ADBC to connect, run a query, and retur
   - [Citus](./postgresql/citus)
   - [CockroachDB](./postgresql/cockroachdb)
   - [CrateDB](./postgresql/cratedb)
+  - [Materialize](./postgresql/materialize)
   - [Neon](./postgresql/neon)
   - [ParadeDB](./postgresql/paradedb)
   - [PolarDB for PostgreSQL](./postgresql/polardb-pg)

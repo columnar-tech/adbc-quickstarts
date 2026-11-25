@@ -56,6 +56,7 @@ Simple R examples showing how to use ADBC to connect, run a query, and return th
   - [Citus](./postgresql/citus)
   - [CockroachDB](./postgresql/cockroachdb)
   - [CrateDB](./postgresql/cratedb)
+  - [Materialize](./postgresql/materialize)
   - [Neon](./postgresql/neon)
   - [ParadeDB](./postgresql/paradedb)
   - [PolarDB for PostgreSQL](./postgresql/polardb-pg)
