@@ -69,13 +69,10 @@ limitations under the License.
 
 2. Download the [IBM Data Server Driver for ODBC and CLI](https://public.dhe.ibm.com/ibmdl/export/pub/software/data/db2/drivers/odbc_cli/) for your platform and extract the `clidriver` directory.
 
-3. Set `LD_LIBRARY_PATH` (Linux), `DYLD_LIBRARY_PATH` (macOS), or `PATH` (Windows) to make sure the Db2 libraries are discoverable by your application.
-
-    | Platform | Environment variable | Directory to add |
-    | --- | --- | --- |
-    | Linux | `LD_LIBRARY_PATH` | `clidriver/lib` |
-    | macOS | `DYLD_LIBRARY_PATH` | `clidriver/lib` |
-    | Windows | `PATH` | `clidriver\bin` |
+3. Make sure the Db2 libraries are discoverable by your application:
+    - Linux: Add `clidriver/lib` to `LD_LIBRARY_PATH`
+    - macOS: Move the `clidriver` directory into the directory where dbc installed the driver (by default, `~/Library/Application Support/ADBC/Drivers`)
+    - Windows: Add `clidriver\bin` to `PATH`
 
 4. Customize `src/main.rs` as needed
     - Change the connection arguments in `opts`
