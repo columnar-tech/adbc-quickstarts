@@ -51,7 +51,7 @@ limitations under the License.
 3. Wait until the container logs show `Setup has completed`.
 
    ```sh
-   docker logs --tail 10 db2server
+   docker logs db2server 2>&1 | grep 'Setup has completed'
    ```
 
 4. Create a table in Db2 and load data into it:
