@@ -12,7 +12,7 @@ Guidelines for writing quickstarts in this repo.
 - Keep `docker run` commands close to the vendor's docs (e.g. container names); don't standardize them across examples.
 - Run setup steps from the host with `docker exec`; don't make users open a shell inside the container.
 - Install drivers with dbc and load them through the driver manager (e.g. `adbc-driver-manager` in Python), not language packages that bundle a driver.
-- Add the example for every language. If a language can't support it, add a README explaining why.
+- Add the example for every language. If a language can't support it, stop and check with the user that this is expected and prompt them to add a note in the README explaining why.
 - Don't edit the root or per-language READMEs by hand. Add the database to `.github/data/databases.json`; the READMEs are generated from it.
-- Use the vendor's official product name (e.g. "OceanBase Database").
+- Use the vendor's official product name (e.g. "OceanBase Database"). If you don't know the vendor's official product name, stop and ask the user for it.
 - Note known platform issues (e.g. amd64-only images, port conflicts on macOS).
