@@ -43,6 +43,7 @@ Simple C# examples showing how to use ADBC to connect, run a query, and return t
   - [InfluxDB](./flightsql/influxdb)
   - [Sail](./flightsql/sail)
   - [StarRocks](./flightsql/starrocks)
+  - [XTDB](./flightsql/xtdb)
 - [MariaDB](./mariadb)
 - [MotherDuck](./motherduck)
 - [Microsoft SQL Server](./mssql)
